@@ -18,8 +18,10 @@ export function CompletionScreen({
   stars,
   xp,
   words,
+  continueHref = "/",
   children,
 }: {
+  continueHref?: string;
   title: string;
   stars: number | null;
   xp: number;
@@ -76,7 +78,7 @@ export function CompletionScreen({
 
       <div className="mt-auto flex w-full pt-4">
         <BigButton asChild autoFocus>
-          <Link href="/">{t("continue")}</Link>
+          <Link href={continueHref}>{t("continue")}</Link>
         </BigButton>
       </div>
     </div>

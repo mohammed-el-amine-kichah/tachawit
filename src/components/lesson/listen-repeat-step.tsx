@@ -1,5 +1,6 @@
 "use client";
 
+import { useAutoplay } from "./autoplay-context";
 import { Repeat2Icon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
@@ -16,10 +17,11 @@ export function ListenRepeatStep({ entry, audio }: { entry: ViewEntry; audio: Au
   const t = useTranslations("Lesson");
   const player = useAudioPlayer(audio);
   const { play } = player;
+  const autoPlay = useAutoplay();
 
   useEffect(() => {
-    play();
-  }, [play]);
+    if (autoPlay) play();
+  }, [play, autoPlay]);
 
   return (
     <div className="flex flex-col items-center gap-5 text-center">

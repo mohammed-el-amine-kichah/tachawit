@@ -1,5 +1,6 @@
 "use client";
 
+import { useAutoplay } from "./autoplay-context";
 import { SparklesIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
@@ -14,10 +15,11 @@ import { KaraokeText } from "./karaoke-text";
 import { StepLabel } from "./step-label";
 
 /** A new word or phrase: picture, text in the chosen script, meaning, and the speaker's voice. */
-export function IntroduceStep({ entry, audio, autoPlay = true }: { entry: ViewEntry; audio: AudioInfo | null; autoPlay?: boolean }) {
+export function IntroduceStep({ entry, audio }: { entry: ViewEntry; audio: AudioInfo | null }) {
   const t = useTranslations("Lesson");
   const player = useAudioPlayer(audio);
   const { play } = player;
+  const autoPlay = useAutoplay();
 
   useEffect(() => {
     if (autoPlay) play();

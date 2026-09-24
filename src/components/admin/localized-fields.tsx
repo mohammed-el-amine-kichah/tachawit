@@ -4,8 +4,9 @@ import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import type { LocalizedFormValue } from "./localized-form";
 
-export type LocalizedFormValue = { en: string; fr: string; ar: string; dz: string };
+export { emptyLocalized, toLocalizedForm, type LocalizedFormValue } from "./localized-form";
 
 const FIELDS = [
   { key: "en", lang: "en", dir: "ltr" },
@@ -13,12 +14,6 @@ const FIELDS = [
   { key: "ar", lang: "ar", dir: "rtl" },
   { key: "dz", lang: "ar-DZ", dir: "rtl" },
 ] as const;
-
-export const emptyLocalized: LocalizedFormValue = { en: "", fr: "", ar: "", dz: "" };
-
-export function toLocalizedForm(value: Partial<LocalizedFormValue> | null | undefined): LocalizedFormValue {
-  return { ...emptyLocalized, ...(value ?? {}) };
-}
 
 /** One input per UI language, each in its own direction. */
 export function LocalizedFields({

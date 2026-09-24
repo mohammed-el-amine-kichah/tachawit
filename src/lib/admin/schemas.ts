@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { partsOfSpeech } from "@/lib/content/enums";
+import { levelTypes, mapThemes, partsOfSpeech } from "@/lib/content/enums";
+import { unlockRuleSchema } from "@/lib/content/unlock-rule";
 import type { LocalizedText } from "@/lib/content/localized-text";
 
 // Form payloads shared by the admin UI and its server actions. Tachawit text is kept exactly as
@@ -61,3 +62,33 @@ export const regionFormSchema = z.object({
 });
 
 export type RegionFormInput = z.input<typeof regionFormSchema>;
+
+const optionalLocalized = localizedFormSchema.transform((value) => (Object.keys(value).length ? value : null));
+
+export const unitFormSchema = z.object({
+  slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+  title: requiredLocalized,
+  description: optionalLocalized,
+  map_theme: z.enum(mapThemes),
+  cover_image_path: blankToNull,
+});
+
+export type UnitFormInput = z.input<typeof unitFormSchema>;
+
+const optionalId = z.union([z.uuid(), z.literal("")]).transform((value) => (value === "" ? null : value));
+
+export const levelFormSchema = z
+  .object({
+    type: z.enum(levelTypes),
+    title: optionalLocalized,
+    lesson_id: optionalId,
+    quiz_id: optionalId,
+    unlock_rule: unlockRuleSchema,
+  })
+  .transform((value) => ({
+    ...value,
+    lesson_id: value.type === "lesson" || value.type === "story" ? value.lesson_id : null,
+    quiz_id: value.type === "quiz" || value.type === "boss" ? value.quiz_id : null,
+  }));
+
+export type LevelFormInput = z.input<typeof levelFormSchema>;

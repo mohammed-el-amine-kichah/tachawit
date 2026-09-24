@@ -9,6 +9,8 @@ export type AdminError =
   | "not_found"
   | "consent_required"
   | "in_use"
+  | "content_draft"
+  | "entries_draft"
   | "has_audio"
   | "duplicate"
   | "failed";
@@ -23,7 +25,8 @@ export function adminError(error: PostgrestLikeError, context: "audio" | "entry"
   if (error.code === "23503") return context === "speaker" ? "has_audio" : "in_use";
   if (error.code === "23514") {
     if (error.message?.includes("consent")) return "consent_required";
-    if (error.message?.includes("used by") || error.message?.includes("still a draft")) return "in_use";
+    if (error.message?.includes("used by")) return "in_use";
+    if (error.message?.includes("still a draft")) return error.message.includes("entry") ? "entries_draft" : "content_draft";
     return "invalid";
   }
   return "failed";

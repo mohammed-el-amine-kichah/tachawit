@@ -1,5 +1,6 @@
 "use client";
 
+import { useAutoplay } from "@/components/lesson/autoplay-context";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { PlayButton } from "@/components/audio/play-button";
@@ -25,13 +26,14 @@ export function BuildSentenceQuestion({ item, status, seed, onCheckChange }: Que
   const { script } = useScript();
   const player = useAudioPlayer(item.answer.audio);
   const { play } = player;
+  const autoPlay = useAutoplay();
   const { answer, tiles } = useMemo(() => buildTiles(item.answer, item.distractors, script, seed), [item, script, seed]);
   const [placed, setPlaced] = useState<string[]>([]);
   const meta = scriptMeta[script];
 
   useEffect(() => {
-    play();
-  }, [play]);
+    if (autoPlay) play();
+  }, [play, autoPlay]);
 
   const update = (next: string[]) => {
     setPlaced(next);

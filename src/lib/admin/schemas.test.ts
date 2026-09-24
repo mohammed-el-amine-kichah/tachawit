@@ -54,3 +54,42 @@ describe("regionFormSchema", () => {
     expect(regionFormSchema.safeParse({ slug: "Arris Town", name: { en: "Arris", fr: "", ar: "", dz: "" } }).success).toBe(false);
   });
 });
+
+import { levelFormSchema, unitFormSchema } from "./schemas";
+
+describe("unitFormSchema", () => {
+  const base = { slug: "first-words", title: { en: "First words", fr: "", ar: "", dz: "" }, description: { en: "", fr: "", ar: "", dz: "" }, map_theme: "aures_peaks", cover_image_path: "" };
+
+  it("accepts a unit and drops an empty description", () => {
+    const parsed = unitFormSchema.parse(base);
+    expect(parsed.description).toBeNull();
+    expect(parsed.cover_image_path).toBeNull();
+  });
+
+  it("needs a known map theme and a title", () => {
+    expect(unitFormSchema.safeParse({ ...base, map_theme: "moon" }).success).toBe(false);
+    expect(unitFormSchema.safeParse({ ...base, title: { en: "", fr: "", ar: "", dz: "" } }).success).toBe(false);
+  });
+});
+
+describe("levelFormSchema", () => {
+  const lesson = "50000000-0000-4000-8000-000000000001";
+  const quiz = "60000000-0000-4000-8000-000000000001";
+  const base = { type: "lesson", title: { en: "", fr: "", ar: "", dz: "" }, lesson_id: lesson, quiz_id: "", unlock_rule: { type: "previous_completed" } };
+
+  it("links lesson levels to a lesson and clears the quiz", () => {
+    expect(levelFormSchema.parse({ ...base, quiz_id: quiz })).toMatchObject({ lesson_id: lesson, quiz_id: null, title: null });
+  });
+
+  it("links quiz levels to a quiz and clears the lesson", () => {
+    expect(levelFormSchema.parse({ ...base, type: "boss", quiz_id: quiz })).toMatchObject({ lesson_id: null, quiz_id: quiz });
+  });
+
+  it("links nothing for review levels", () => {
+    expect(levelFormSchema.parse({ ...base, type: "review" })).toMatchObject({ lesson_id: null, quiz_id: null });
+  });
+
+  it("validates the unlock rule", () => {
+    expect(levelFormSchema.safeParse({ ...base, unlock_rule: { type: "unit_stars", minStars: 0 } }).success).toBe(false);
+  });
+});

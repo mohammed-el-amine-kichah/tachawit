@@ -3,13 +3,13 @@ import { useTranslations } from "next-intl";
 import { Progress } from "@/components/ui/progress";
 import { Link } from "@/i18n/navigation";
 
-export function PlayerTopBar({ value, label }: { value: number; label: string }) {
+export function PlayerTopBar({ value, label, closeHref = "/" }: { value: number; label: string; closeHref?: string }) {
   const t = useTranslations("Player");
   return (
     <header className="sticky top-0 z-30 bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-2xl items-center gap-3 px-4 py-3">
         <Link
-          href="/"
+          href={closeHref}
           aria-label={t("close")}
           className="grid size-10 shrink-0 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
         >

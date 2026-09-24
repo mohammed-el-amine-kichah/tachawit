@@ -1,0 +1,86 @@
+import { notFound } from "next/navigation";
+import { getLocale, getTranslations } from "next-intl/server";
+import { z } from "zod";
+import { localize } from "@/i18n/localize";
+import { Link } from "@/i18n/navigation";
+import type { DraftItem } from "@/lib/admin/builder";
+import { getContent, listContent, listCultureNoteOptions, type ContentKind } from "@/lib/admin/queries";
+import { localizedTextSchema } from "@/lib/content/localized-text";
+import type { EntryRow } from "@/lib/lesson/view";
+import { ENTRY_WITH_AUDIO } from "@/lib/supabase/queries/entry-select";
+import { createServerSupabase } from "@/lib/supabase/server";
+import { toLocalizedForm } from "../localized-form";
+import { PageHeader } from "../page-header";
+import { StatusBadge } from "../status-badge";
+import { ContentBuilder } from "./content-builder";
+import { NewContentButton } from "./new-content-button";
+
+/** Lessons or quizzes, newest first. */
+export async function ContentListPage({ kind }: { kind: ContentKind }) {
+  const t = await getTranslations("Admin.builder");
+  const locale = await getLocale();
+  const items = await listContent(kind);
+  const base = kind === "lesson" ? "/admin/lessons" : "/admin/quizzes";
+  return (
+    <>
+      <PageHeader title={t(kind === "lesson" ? "lessonsTitle" : "quizzesTitle")} description={t(kind === "lesson" ? "lessonsLead" : "quizzesLead")} actions={<NewContentButton kind={kind} />} />
+      {items.length === 0 ? (
+        <p className="rounded-xl border border-dashed px-4 py-10 text-center text-muted-foreground">{t("emptyList")}</p>
+      ) : (
+        <ul className="divide-y rounded-xl bg-card ring-1 ring-border">
+          {items.map((item) => {
+            const title = localizedTextSchema.safeParse(item.title);
+            return (
+              <li key={item.id}>
+                <Link href={`${base}/${item.id}`} className="flex flex-wrap items-center gap-3 px-4 py-3 hover:bg-muted/50">
+                  <span className="min-w-0 flex-1 font-medium">{title.success ? localize(title.data, locale)?.text : item.id}</span>
+                  <span className="text-sm text-muted-foreground">{t(kind === "lesson" ? "stepCount" : "questionCount", { count: item.count })}</span>
+                  <span className="text-sm text-muted-foreground">{t("usedBy", { count: item.usedBy })}</span>
+                  <StatusBadge status={item.status} />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </>
+  );
+}
+
+/** The builder for one lesson or quiz. */
+export async function ContentEditPage({ kind, id }: { kind: ContentKind; id: string }) {
+  if (!z.uuid().safeParse(id).success) notFound();
+  const t = await getTranslations("Admin.builder");
+  const locale = await getLocale();
+  const [content, notes] = await Promise.all([getContent(kind, id), listCultureNoteOptions()]);
+  if (!content) notFound();
+  const items = z.array(z.looseObject({ id: z.string(), type: z.string() })).catch([]).parse(content.items) as DraftItem[];
+  const entryIds = [
+    ...new Set(
+      items.flatMap((item) => [
+        ...(typeof item.entryId === "string" ? [item.entryId] : []),
+        ...(Array.isArray(item.entryIds) ? (item.entryIds as string[]) : []),
+        ...(Array.isArray(item.distractorEntryIds) ? (item.distractorEntryIds as string[]) : []),
+        ...(Array.isArray(item.lines) ? (item.lines as { entryId: string }[]).map((l) => l.entryId) : []),
+      ]),
+    ),
+  ].filter((value) => z.uuid().safeParse(value).success);
+  const supabase = await createServerSupabase();
+  const { data: rows } = entryIds.length
+    ? await supabase.from("entries").select(ENTRY_WITH_AUDIO).in("id", entryIds).returns<EntryRow[]>()
+    : { data: [] as EntryRow[] };
+  const title = localizedTextSchema.safeParse(content.title);
+
+  return (
+    <>
+      <PageHeader title={(title.success ? localize(title.data, locale)?.text : null) ?? t(kind === "lesson" ? "newLesson" : "newQuiz")} description={t("editLead")} />
+      <ContentBuilder
+        key={content.id}
+        kind={kind}
+        content={{ id: content.id, status: content.status, title: toLocalizedForm(title.success ? title.data : null), items }}
+        initialRows={rows ?? []}
+        notes={notes}
+      />
+    </>
+  );
+}

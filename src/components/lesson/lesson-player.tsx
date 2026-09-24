@@ -30,7 +30,16 @@ function entriesTaught(steps: LessonViewStep[]): string[] {
 }
 
 /** One card at a time, full screen. Audio preloads a step ahead; nothing waits on animations. */
-export function LessonPlayer({ levelId, lesson }: { levelId: string; lesson: LessonView }) {
+export function LessonPlayer({
+  levelId,
+  lesson,
+  exitHref = "/",
+}: {
+  /** The map level being played, or null for an admin preview (nothing is recorded). */
+  levelId: string | null;
+  lesson: LessonView;
+  exitHref?: string;
+}) {
   const t = useTranslations("Lesson");
   const rtl = getDirection(useLocale()) === "rtl";
   const { completeLevel } = useProgress();
@@ -65,7 +74,7 @@ export function LessonPlayer({ levelId, lesson }: { levelId: string; lesson: Les
   }, [flow.index]);
 
   useEffect(() => {
-    if (!flow.finished || recorded.current) return;
+    if (!flow.finished || recorded.current || !levelId) return;
     recorded.current = true;
     completeLevel({ levelId, stars: 3, xp: XP.lesson, entryIds: words });
   }, [flow.finished, completeLevel, levelId, words]);
@@ -73,7 +82,7 @@ export function LessonPlayer({ levelId, lesson }: { levelId: string; lesson: Les
   if (total === 0) {
     return (
       <div className="flex min-h-dvh flex-col">
-        <PlayerTopBar value={0} label={t("progress", { current: 0, total: 0 })} />
+        <PlayerTopBar value={0} label={t("progress", { current: 0, total: 0 })} closeHref={exitHref} />
         <main id="main" className="mx-auto w-full max-w-lg flex-1 px-5 py-10">
           <Notice>{t("empty")}</Notice>
         </main>
@@ -89,10 +98,11 @@ export function LessonPlayer({ levelId, lesson }: { levelId: string; lesson: Les
         <PlayerTopBar
           value={flow.finished ? 1 : flow.index / total}
           label={t("progress", { current: flow.index + 1, total })}
+          closeHref={exitHref}
         />
         <main id="main" className="relative flex flex-1 flex-col overflow-x-clip">
           {flow.finished ? (
-            <CompletionScreen title={t("complete")} stars={3} xp={XP.lesson} words={words.length} />
+            <CompletionScreen title={t("complete")} stars={3} xp={XP.lesson} words={words.length} continueHref={exitHref} />
           ) : (
             <AnimatePresence initial={false} mode="popLayout" custom={custom}>
               <motion.section

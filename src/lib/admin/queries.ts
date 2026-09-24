@@ -163,3 +163,61 @@ export async function listUsers(q: string) {
   if (error) throw error;
   return data;
 }
+
+export type ContentKind = "lesson" | "quiz";
+
+export async function listContent(kind: ContentKind) {
+  const supabase = await createServerSupabase();
+  if (kind === "lesson") {
+    const { data, error } = await supabase.from("lessons").select("id, title, status, steps, updated_at, levels(id)").order("updated_at", { ascending: false });
+    if (error) throw error;
+    return data.map((row) => ({ id: row.id, title: row.title, status: row.status, count: Array.isArray(row.steps) ? row.steps.length : 0, usedBy: row.levels.length }));
+  }
+  const { data, error } = await supabase.from("quizzes").select("id, title, status, questions, updated_at, levels(id)").order("updated_at", { ascending: false });
+  if (error) throw error;
+  return data.map((row) => ({ id: row.id, title: row.title, status: row.status, count: Array.isArray(row.questions) ? row.questions.length : 0, usedBy: row.levels.length }));
+}
+
+export async function getContent(kind: ContentKind, contentId: string) {
+  const supabase = await createServerSupabase();
+  if (kind === "lesson") {
+    const { data, error } = await supabase.from("lessons").select("id, title, status, steps").eq("id", contentId).maybeSingle();
+    if (error) throw error;
+    return data ? { id: data.id, title: data.title, status: data.status, items: data.steps as unknown } : null;
+  }
+  const { data, error } = await supabase.from("quizzes").select("id, title, status, questions").eq("id", contentId).maybeSingle();
+  if (error) throw error;
+  return data ? { id: data.id, title: data.title, status: data.status, items: data.questions as unknown } : null;
+}
+
+export async function listCultureNoteOptions() {
+  const supabase = await createServerSupabase();
+  const { data, error } = await supabase.from("culture_notes").select("id, slug, title, summary, cover_image_path, status").order("slug");
+  if (error) throw error;
+  return data;
+}
+
+export async function listUnits() {
+  const supabase = await createServerSupabase();
+  const { data, error } = await supabase.from("units").select("id, slug, position, title, status, map_theme, levels(id, status)").order("position");
+  if (error) throw error;
+  return data;
+}
+
+export async function getUnitEditor(unitId: string) {
+  const supabase = await createServerSupabase();
+  const [unit, levels, lessons, quizzes, units] = await Promise.all([
+    supabase.from("units").select("id, slug, position, title, description, map_theme, cover_image_path, status").eq("id", unitId).maybeSingle(),
+    supabase
+      .from("levels")
+      .select("id, position, type, title, lesson_id, quiz_id, unlock_rule, map_x, map_y, status")
+      .eq("unit_id", unitId)
+      .order("position"),
+    supabase.from("lessons").select("id, title, status").order("updated_at", { ascending: false }),
+    supabase.from("quizzes").select("id, title, status").order("updated_at", { ascending: false }),
+    supabase.from("units").select("id, title").order("position"),
+  ]);
+  for (const result of [unit, levels, lessons, quizzes, units]) if (result.error) throw result.error;
+  if (!unit.data) return null;
+  return { unit: unit.data, levels: levels.data ?? [], lessons: lessons.data ?? [], quizzes: quizzes.data ?? [], units: units.data ?? [] };
+}

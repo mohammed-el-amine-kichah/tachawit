@@ -807,6 +807,10 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      move_level: {
+        Args: { p_level_id: string; p_unit_id: string }
+        Returns: undefined
+      }
       next_streak: {
         Args: {
           p_current: number
@@ -817,6 +821,11 @@ export type Database = {
         Returns: Record<string, unknown>
       }
       referenced_entry_ids: { Args: { payload: Json }; Returns: string[] }
+      reorder_levels: {
+        Args: { p_level_ids: string[]; p_unit_id: string }
+        Returns: undefined
+      }
+      reorder_units: { Args: { p_unit_ids: string[] }; Returns: undefined }
       require_learner: { Args: { p_today: string }; Returns: string }
     }
     Enums: {

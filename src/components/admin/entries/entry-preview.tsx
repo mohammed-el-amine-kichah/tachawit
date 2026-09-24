@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { AutoplayContext } from "@/components/lesson/autoplay-context";
 import { IntroduceStep } from "@/components/lesson/introduce-step";
 import { ScriptToggle } from "@/components/shared/script-toggle";
 import type { LocalizedText } from "@/lib/content/localized-text";
@@ -17,7 +18,9 @@ export function EntryPreview({ entry, audio }: { entry: ViewEntry; audio: AudioI
       </div>
       <div className="rounded-[2rem] border-8 border-muted bg-background p-5 shadow-raised">
         {entry.text_latin.trim() ? (
-          <IntroduceStep entry={entry} audio={audio} autoPlay={false} />
+          <AutoplayContext value={false}>
+            <IntroduceStep entry={entry} audio={audio} />
+          </AutoplayContext>
         ) : (
           <p className="py-16 text-center text-sm text-muted-foreground">{t("previewEmpty")}</p>
         )}

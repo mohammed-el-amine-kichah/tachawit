@@ -1,5 +1,6 @@
 "use client";
 
+import { useAutoplay } from "@/components/lesson/autoplay-context";
 import { useEffect, useState } from "react";
 import { PlayButton } from "@/components/audio/play-button";
 import { SlowToggle } from "@/components/audio/slow-toggle";
@@ -16,11 +17,12 @@ type Item = Extract<QuizItem, { type: "listen_pick_translation" }>;
 export function ListenPickQuestion({ item, status, onCheckChange }: QuestionProps<Item>) {
   const player = useAudioPlayer(item.answer.audio);
   const { play } = player;
+  const autoPlay = useAutoplay();
   const [selected, setSelected] = useState<string | null>(null);
 
   useEffect(() => {
-    play();
-  }, [play]);
+    if (autoPlay) play();
+  }, [play, autoPlay]);
 
   return (
     <div className="flex flex-col items-center gap-6">
