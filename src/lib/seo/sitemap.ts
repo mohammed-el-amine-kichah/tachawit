@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { defaultLocale, locales, type Locale } from "@/i18n/config";
 
-const PUBLIC_PATHS = ["", "/culture", "/about", "/contribute"];
+const PUBLIC_PATHS = ["", "/culture", "/resources", "/about", "/contribute"];
 
 function localized(origin: string, locale: Locale, path: string): string {
   return `${origin}/${locale}${path}`;

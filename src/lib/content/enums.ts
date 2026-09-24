@@ -16,6 +16,10 @@ export const cultureCategories = [
   "music", "jewelry", "history", "yennayer", "food", "crafts", "daily_life", "other",
 ] as const satisfies readonly Enums["culture_category"][];
 
+export const resourcePlatforms = ["youtube", "tiktok", "facebook", "instagram"] as const satisfies readonly Enums["resource_platform"][];
+
+export type ResourcePlatform = (typeof resourcePlatforms)[number];
+
 export type PartOfSpeech = (typeof partsOfSpeech)[number];
 
 export function isPartOfSpeech(value: unknown): value is PartOfSpeech {

@@ -489,6 +489,42 @@ export type Database = {
         }
         Relationships: []
       }
+      resources: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          platform: Database["public"]["Enums"]["resource_platform"]
+          published_at: string | null
+          status: Database["public"]["Enums"]["content_status"]
+          summary: Json
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          platform: Database["public"]["Enums"]["resource_platform"]
+          published_at?: string | null
+          status?: Database["public"]["Enums"]["content_status"]
+          summary: Json
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          platform?: Database["public"]["Enums"]["resource_platform"]
+          published_at?: string | null
+          status?: Database["public"]["Enums"]["content_status"]
+          summary?: Json
+          updated_at?: string
+          url?: string
+        }
+        Relationships: []
+      }
       speakers: {
         Row: {
           consent_date: string | null
@@ -866,6 +902,7 @@ export type Database = {
         | "particle"
         | "phrase"
         | "expression"
+      resource_platform: "youtube" | "tiktok" | "facebook" | "instagram"
       submission_kind: "word" | "variation" | "correction" | "recording"
       submission_status: "pending" | "approved" | "rejected"
     }
@@ -1031,6 +1068,7 @@ export const Constants = {
         "phrase",
         "expression",
       ],
+      resource_platform: ["youtube", "tiktok", "facebook", "instagram"],
       submission_kind: ["word", "variation", "correction", "recording"],
       submission_status: ["pending", "approved", "rejected"],
     },

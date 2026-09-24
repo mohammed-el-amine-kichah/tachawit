@@ -5,6 +5,7 @@ import {
   InboxIcon,
   LandmarkIcon,
   LayoutDashboardIcon,
+  LibraryIcon,
   MapIcon,
   MapPinIcon,
   MicIcon,
@@ -14,7 +15,7 @@ import {
 } from "lucide-react";
 
 export type AdminSection =
-  | "dashboard" | "entries" | "audio" | "speakers" | "regions" | "units" | "lessons" | "quizzes" | "submissions" | "culture" | "users";
+  | "dashboard" | "entries" | "audio" | "speakers" | "regions" | "units" | "lessons" | "quizzes" | "submissions" | "culture" | "resources" | "users";
 
 export const adminNav: { section: AdminSection; href: string; icon: LucideIcon }[] = [
   { section: "dashboard", href: "/admin", icon: LayoutDashboardIcon },
@@ -27,5 +28,6 @@ export const adminNav: { section: AdminSection; href: string; icon: LucideIcon }
   { section: "regions", href: "/admin/regions", icon: MapPinIcon },
   { section: "submissions", href: "/admin/submissions", icon: InboxIcon },
   { section: "culture", href: "/admin/culture", icon: LandmarkIcon },
+  { section: "resources", href: "/admin/resources", icon: LibraryIcon },
   { section: "users", href: "/admin/users", icon: UsersIcon },
 ];

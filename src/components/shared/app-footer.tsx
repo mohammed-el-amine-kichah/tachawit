@@ -6,11 +6,11 @@ import { SocialIcon } from "./social-icon";
 import { ZMark } from "./z-mark";
 
 const columns = [
-  { title: "learn", links: ["/", "/review", "/culture"] },
+  { title: "learn", links: ["/", "/review", "/culture", "/resources"] },
   { title: "involved", links: ["/contribute", "/about"] },
 ] as const;
 
-const linkKey = { "/": "journey", "/review": "review", "/culture": "culture", "/contribute": "contribute", "/about": "about" } as const;
+const linkKey = { "/": "journey", "/review": "review", "/culture": "culture", "/resources": "resources", "/contribute": "contribute", "/about": "about" } as const;
 
 export function AppFooter() {
   const t = useTranslations("Footer");

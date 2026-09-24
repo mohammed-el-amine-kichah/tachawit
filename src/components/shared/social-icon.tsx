@@ -1,7 +1,7 @@
-import type { SocialNetwork } from "@/lib/site/social";
+import type { ResourcePlatform } from "@/lib/content/enums";
 
 // Simplified brand marks drawn in the current text colour (lucide no longer ships brand icons).
-export function SocialIcon({ network, className }: { network: SocialNetwork; className?: string }) {
+export function SocialIcon({ network, className }: { network: ResourcePlatform; className?: string }) {
   if (network === "tiktok") {
     return (
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
@@ -20,7 +20,12 @@ export function SocialIcon({ network, className }: { network: SocialNetwork; cla
       aria-hidden
       className={className}
     >
-      {network === "instagram" ? (
+      {network === "youtube" ? (
+        <>
+          <path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+          <path d="m10 15 5-3-5-3z" />
+        </>
+      ) : network === "instagram" ? (
         <>
           <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
           <circle cx="12" cy="12" r="4.2" />

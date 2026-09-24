@@ -1,8 +1,9 @@
 import { z } from "zod";
 import { contentKeys } from "@/i18n/config";
-import { cultureCategories, levelTypes, mapThemes, partsOfSpeech } from "@/lib/content/enums";
+import { cultureCategories, levelTypes, mapThemes, partsOfSpeech, resourcePlatforms } from "@/lib/content/enums";
 import { unlockRuleSchema } from "@/lib/content/unlock-rule";
 import type { LocalizedText } from "@/lib/content/localized-text";
+import { isPlatformUrl } from "@/lib/resources/platform";
 
 // Form payloads shared by the admin UI and its server actions. Tachawit text is kept exactly as
 // typed; blank optional fields become null.
@@ -105,3 +106,15 @@ export const cultureFormSchema = z.object({
 });
 
 export type CultureFormInput = z.input<typeof cultureFormSchema>;
+
+export const resourceFormSchema = z
+  .object({
+    platform: z.enum(resourcePlatforms),
+    name: z.string().trim().min(1).max(120),
+    url: z.string().trim().max(2048),
+    summary: requiredLocalized,
+    status: z.enum(["draft", "published"]),
+  })
+  .refine((value) => isPlatformUrl(value.platform, value.url), { path: ["url"], message: "platform_mismatch" });
+
+export type ResourceFormInput = z.input<typeof resourceFormSchema>;

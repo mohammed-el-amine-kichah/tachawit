@@ -112,3 +112,27 @@ describe("cultureFormSchema", () => {
     expect(cultureFormSchema.safeParse({ ...base, title: empty }).success).toBe(false);
   });
 });
+
+import { resourceFormSchema } from "./schemas";
+
+describe("resourceFormSchema", () => {
+  const base = { platform: "youtube", name: " Chaoui songs ", url: " https://www.youtube.com/@chaoui ", summary: { en: "Songs with lyrics", fr: "", ar: "" }, status: "published" };
+
+  it("trims the name and link and keeps only filled summaries", () => {
+    expect(resourceFormSchema.parse(base)).toEqual({
+      platform: "youtube",
+      name: "Chaoui songs",
+      url: "https://www.youtube.com/@chaoui",
+      summary: { en: "Songs with lyrics" },
+      status: "published",
+    });
+  });
+
+  it("needs a name, a summary and a link to the chosen platform", () => {
+    expect(resourceFormSchema.safeParse({ ...base, name: "  " }).success).toBe(false);
+    expect(resourceFormSchema.safeParse({ ...base, summary: { en: "", fr: "", ar: "" } }).success).toBe(false);
+    expect(resourceFormSchema.safeParse({ ...base, platform: "tiktok" }).success).toBe(false);
+    expect(resourceFormSchema.safeParse({ ...base, url: "javascript:alert(1)" }).success).toBe(false);
+    expect(resourceFormSchema.safeParse({ ...base, platform: "myspace" }).success).toBe(false);
+  });
+});

@@ -17,7 +17,8 @@
     "reviewDue": "Révision, {count, plural, one {# mot à revoir} other {# mots à revoir}}",
     "culture": "Culture",
     "about": "À propos",
-    "contribute": "Contribuer"
+    "contribute": "Contribuer",
+    "resources": "Ressources"
   },
   "ScriptToggle": {
     "label": "Écriture des mots en tachawit",
@@ -306,7 +307,8 @@
       "quizzes": "Quiz",
       "submissions": "Propositions",
       "culture": "Culture",
-      "users": "Personnes"
+      "users": "Personnes",
+      "resources": "Ressources"
     },
     "status": {
       "draft": "Brouillon",
@@ -771,6 +773,35 @@
       "rejectNote": "Note (facultatif)",
       "rejected": "Refusé.",
       "openEntry": "Ouvrir l’entrée"
+    },
+    "resources": {
+      "title": "Ressources",
+      "lead": "Liens YouTube, TikTok, Facebook et Instagram qui aident à entendre et pratiquer le tachawit.",
+      "empty": "Pas encore de ressources. Ajoutez la première avec le formulaire.",
+      "add": "Ajouter une ressource",
+      "editTitle": "Modifier la ressource",
+      "platform": "Plateforme",
+      "url": "Lien",
+      "urlHint": "Collez le lien du bouton Partager de l’appli. La plateforme est choisie pour vous.",
+      "urlMismatch": "Ce n’est pas un lien {platform}.",
+      "name": "Nom",
+      "nameHint": "Le nom de la chaîne, du compte ou de la vidéo.",
+      "summary": "Résumé",
+      "visible": "Publiée (visible par les apprenants)",
+      "save": "Enregistrer",
+      "cancelEdit": "Annuler",
+      "added": "Ressource ajoutée.",
+      "saved": "Enregistré.",
+      "edit": "Modifier",
+      "open": "Ouvrir sur {platform}",
+      "publish": "Publier",
+      "unpublish": "Dépublier",
+      "published": "Publié.",
+      "unpublished": "Repassé en brouillon.",
+      "delete": "Supprimer",
+      "deleteTitle": "Supprimer cette ressource ?",
+      "deleteLead": "Les apprenants ne la verront plus. Action irréversible.",
+      "deleted": "Supprimé."
     }
   },
   "MapTheme": {
@@ -796,6 +827,19 @@
       "crafts": "Artisanat",
       "daily_life": "Vie quotidienne",
       "other": "Culture"
+    }
+  },
+  "Resources": {
+    "title": "Ressources",
+    "lead": "Vidéos, chansons et pages du web pour entendre plus de tachawit et continuer à pratiquer.",
+    "empty": "Pas encore de ressources.",
+    "unavailable": "Les ressources n’ont pas pu être chargées pour le moment.",
+    "open": "Ouvrir {name} sur {platform}",
+    "platforms": {
+      "youtube": "YouTube",
+      "tiktok": "TikTok",
+      "facebook": "Facebook",
+      "instagram": "Instagram"
     }
   },
   "Contribute": {

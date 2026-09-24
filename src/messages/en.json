@@ -17,7 +17,8 @@
     "reviewDue": "Review, {count, plural, one {# word due} other {# words due}}",
     "culture": "Culture",
     "about": "About",
-    "contribute": "Contribute"
+    "contribute": "Contribute",
+    "resources": "Resources"
   },
   "ScriptToggle": {
     "label": "Script for Tachawit words",
@@ -306,7 +307,8 @@
       "quizzes": "Quizzes",
       "submissions": "Submissions",
       "culture": "Culture",
-      "users": "People"
+      "users": "People",
+      "resources": "Resources"
     },
     "status": {
       "draft": "Draft",
@@ -771,6 +773,35 @@
       "rejectNote": "Note (optional)",
       "rejected": "Rejected.",
       "openEntry": "Open the entry"
+    },
+    "resources": {
+      "title": "Resources",
+      "lead": "Links to YouTube, TikTok, Facebook and Instagram that help learners hear and practise Tachawit.",
+      "empty": "No resources yet. Add the first one with the form.",
+      "add": "Add a resource",
+      "editTitle": "Edit resource",
+      "platform": "Platform",
+      "url": "Link",
+      "urlHint": "Paste the link from the app’s Share button. The platform is picked for you.",
+      "urlMismatch": "This isn’t a {platform} link.",
+      "name": "Name",
+      "nameHint": "The channel, account or video name.",
+      "summary": "Summary",
+      "visible": "Published (visible to learners)",
+      "save": "Save",
+      "cancelEdit": "Cancel",
+      "added": "Resource added.",
+      "saved": "Saved.",
+      "edit": "Edit",
+      "open": "Open on {platform}",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "published": "Published.",
+      "unpublished": "Moved back to drafts.",
+      "delete": "Delete",
+      "deleteTitle": "Delete this resource?",
+      "deleteLead": "Learners will no longer see it. This can’t be undone.",
+      "deleted": "Deleted."
     }
   },
   "MapTheme": {
@@ -796,6 +827,19 @@
       "crafts": "Crafts",
       "daily_life": "Daily life",
       "other": "Culture"
+    }
+  },
+  "Resources": {
+    "title": "Resources",
+    "lead": "Videos, songs and pages from across the web to hear more Tachawit and keep practising.",
+    "empty": "No resources yet.",
+    "unavailable": "The resources couldn’t be loaded right now.",
+    "open": "Open {name} on {platform}",
+    "platforms": {
+      "youtube": "YouTube",
+      "tiktok": "TikTok",
+      "facebook": "Facebook",
+      "instagram": "Instagram"
     }
   },
   "Contribute": {

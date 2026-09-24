@@ -155,6 +155,13 @@ export async function listRegions() {
   return data;
 }
 
+export async function listResourcesAdmin() {
+  const supabase = await createServerSupabase();
+  const { data, error } = await supabase.from("resources").select("id, platform, name, url, summary, status").order("created_at", { ascending: false });
+  if (error) throw error;
+  return data;
+}
+
 export async function listUsers(q: string) {
   const supabase = await createServerSupabase();
   let query = supabase.from("profiles").select("id, display_name, email, role, created_at").order("created_at", { ascending: false }).limit(100);
