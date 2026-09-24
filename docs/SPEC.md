@@ -1,7 +1,7 @@
 # Project: Tachawit — a gamified web app to learn Chaoui (Tachawit / Aurès Tamazight)
 
 ## Context
-Tachawit is the Amazigh language of the Chaoui people of the Aurès mountains in northeastern Algeria (Batna, Khenchela, Oum El Bouaghi, Tébessa, Biskra). It is mainly an oral language with little learning material online. This app teaches it through native-speaker audio, a gamified level map, and short quizzes. Audio is recorded with native speakers from Merouana, Batna. The tone is proud, warm and cultural: "Reclaim your language."
+Tachawit is the Amazigh language of the Chaoui people of the Aurès mountains in northeastern Algeria (Batna, Khenchela, Oum El Bouaghi, Tébessa, Biskra). It is mainly an oral language with little learning material online. This app teaches it through native-speaker audio, a gamified level map, and short quizzes. Audio is recorded with native speakers from across the Aurès — Batna, Khenchela, Oum El Bouaghi, Tébessa and Biskra — not limited to any single town, and dialect variation across them is shown, not treated as an error. The tone is proud, warm and cultural: "Reclaim your language."
 
 Build it in the phases listed at the end, one phase per request. After each phase, stop and summarize what was built and what's next.
 

@@ -46,7 +46,7 @@
   "Home": {
     "eyebrow": "Tachawit · le tamazight des Aurès",
     "title": "Reprends ta langue.",
-    "lead": "Apprends la langue des montagnes des Aurès avec des voix enregistrées à Merouana, une courte leçon à la fois.",
+    "lead": "Apprends la langue des montagnes des Aurès avec des voix enregistrées dans toute la région, une courte leçon à la fois.",
     "start": "Commencer le parcours",
     "journeyTitle": "Ton parcours",
     "unitNumber": "Unité {number}",
@@ -62,7 +62,7 @@
   },
   "Footer": {
     "tagline": "Reprends ta langue.",
-    "credits": "Voix enregistrées avec des locuteurs natifs de Merouana, Batna.",
+    "credits": "Voix enregistrées avec des locuteurs natifs de tout l’Aurès : Batna, Khenchela, Oum El Bouaghi, Tébessa et Biskra.",
     "linksLabel": "Liens du site"
   },
   "Design": {
@@ -849,7 +849,7 @@
     "title": "À propos de Tachawit",
     "lead": "Un lieu pour apprendre, entendre et garder la langue amazighe des Aurès.",
     "story1": "Le tachawit est parlé par les Chaouis des montagnes des Aurès, de Batna et Khenchela à Oum El Bouaghi, Tébessa et Biskra. Il se transmet surtout à l’oral, à la maison, et il existe très peu de ressources en ligne pour l’apprendre.",
-    "story2": "Ce projet part de ces voix. Les mots et les expressions sont enregistrés avec des locuteurs natifs à Merouana, et chaque leçon est construite autour de l’écoute : des étapes courtes et ludiques, une carte de la région à parcourir, et une révision quotidienne pour que les mots restent.",
+    "story2": "Ce projet part de ces voix. Les mots et les expressions sont enregistrés avec des locuteurs natifs de tout l’Aurès, et chaque leçon est construite autour de l’écoute : des étapes courtes et ludiques, une carte de la région à parcourir, et une révision quotidienne pour que les mots restent.",
     "story3": "C’est aussi un projet collectif. Familles, enseignants et toute personne qui parle tachawit peuvent ajouter des mots, des variantes locales et des enregistrements, pour que la langue de chaque village ait sa place.",
     "pillars": {
       "voices": {
@@ -871,7 +871,7 @@
     "joinTitle": "Tu parles tachawit ?",
     "joinLead": "Partage un mot, une variante de ton village ou un enregistrement. Ça prend une minute.",
     "joinButton": "Contribuer",
-    "contentNote": "Une partie du contenu est encore un exemple, le temps d’enregistrer à Merouana. Tout ce qui est marqué [PLACEHOLDER] sera remplacé."
+    "contentNote": "Une partie du contenu est encore un exemple, le temps d’enregistrer dans toute la région. Tout ce qui est marqué [PLACEHOLDER] sera remplacé."
   },
   "Offline": {
     "title": "Vous êtes hors ligne",

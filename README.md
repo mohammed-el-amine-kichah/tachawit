@@ -146,7 +146,7 @@ All learning content (units, map levels, words, audio, lessons, quizzes, culture
 
 ### Seed content is placeholder
 
-`supabase/seed.sql` holds one unit ("First Words & Greetings") with 3 lessons and 1 quiz so every feature can be tried. **Every word is marked `[PLACEHOLDER]`**: common pan-Amazigh forms chosen only to exercise the app. The audio is synthetic tones, not pronunciation. All of it must be replaced by spellings and recordings verified with native speakers from Merouana.
+`supabase/seed.sql` holds one unit ("First Words & Greetings") with 3 lessons and 1 quiz so every feature can be tried. **Every word is marked `[PLACEHOLDER]`**: common pan-Amazigh forms chosen only to exercise the app. The audio is synthetic tones, not pronunciation. All of it must be replaced by spellings and recordings verified with native speakers from across the Aurès (Batna, Khenchela, Oum El Bouaghi, Tébessa, Biskra).
 
 ## Languages and scripts
 

@@ -2,25 +2,38 @@
 --
 -- EVERYTHING HERE IS [PLACEHOLDER] CONTENT. The words are common pan-Amazigh forms chosen only
 -- to exercise the app; spellings, scripts and translations must be verified and replaced by native
--- speakers from Merouana. The audio files are synthetic tones, not pronunciations.
+-- speakers from across the Aurès. The audio files are synthetic tones, not pronunciations.
 -- Some Arabic-script and Tifinagh spellings are deliberately left empty to exercise the Latin fallback.
 --
 -- Audio files live in supabase/seed-assets/audio/placeholder and are uploaded to the "audio"
 -- bucket by the Supabase CLI (see [storage.buckets.audio] in config.toml).
 
--- Region -------------------------------------------------------------------------
+-- Regions ------------------------------------------------------------------------
+-- The wilayas the spec names as home to Chaoui speakers (docs/SPEC.md). Content is not limited to
+-- Merouana: this is the starting catalog admins tag speakers and entries with from the admin panel
+-- (Regions), and dialect variants across it are shown side by side, never treated as an error.
 insert into public.regions (id, slug, name) values
   ('10000000-0000-4000-8000-000000000001', 'merouana',
-    '{"en": "Merouana (Batna)", "fr": "Merouana (Batna)", "ar": "مروانة (باتنة)", "dz": "مروانة (باتنة)"}');
+    '{"en": "Merouana (Batna)", "fr": "Merouana (Batna)", "ar": "مروانة (باتنة)", "dz": "مروانة (باتنة)"}'),
+  ('10000000-0000-4000-8000-000000000002', 'batna',
+    '{"en": "Batna", "fr": "Batna", "ar": "باتنة", "dz": "باتنة"}'),
+  ('10000000-0000-4000-8000-000000000003', 'khenchela',
+    '{"en": "Khenchela", "fr": "Khenchela", "ar": "خنشلة", "dz": "خنشلة"}'),
+  ('10000000-0000-4000-8000-000000000004', 'oum-el-bouaghi',
+    '{"en": "Oum El Bouaghi", "fr": "Oum El Bouaghi", "ar": "أمّ البواقي", "dz": "أمّ البواقي"}'),
+  ('10000000-0000-4000-8000-000000000005', 'tebessa',
+    '{"en": "Tébessa", "fr": "Tébessa", "ar": "تبسة", "dz": "تبسة"}'),
+  ('10000000-0000-4000-8000-000000000006', 'biskra',
+    '{"en": "Biskra", "fr": "Biskra", "ar": "بسكرة", "dz": "بسكرة"}');
 
 -- Speaker (synthetic placeholder: there is no real person behind these tones) ---
 insert into public.speakers (id, display_name, region_id, consent_given, consent_date, public_bio) values
   ('20000000-0000-4000-8000-000000000001', '[PLACEHOLDER] Synthetic tones',
     '10000000-0000-4000-8000-000000000001', true, '2026-09-24',
-    '{"en": "[PLACEHOLDER] Not a real speaker: generated tones used until recordings from Merouana are added.",
-      "fr": "[PLACEHOLDER] Pas un vrai locuteur : des sons générés en attendant les enregistrements de Merouana.",
-      "ar": "[PLACEHOLDER] ليس متحدثًا حقيقيًا: أصوات مولَّدة في انتظار تسجيلات من مروانة.",
-      "dz": "[PLACEHOLDER] ماشي متكلم حقيقي: أصوات مصنوعة حتى يجيو التسجيلات من مروانة."}');
+    '{"en": "[PLACEHOLDER] Not a real speaker: generated tones used until recordings from across the Aurès are added.",
+      "fr": "[PLACEHOLDER] Pas un vrai locuteur : des sons générés en attendant les enregistrements de tout l’Aurès.",
+      "ar": "[PLACEHOLDER] ليس متحدثًا حقيقيًا: أصوات مولَّدة في انتظار تسجيلات من كل أنحاء الأوراس.",
+      "dz": "[PLACEHOLDER] ماشي متكلم حقيقي: أصوات مصنوعة حتى يجيو التسجيلات من الأوراس كامل."}');
 
 -- Entries ------------------------------------------------------------------------
 insert into public.entries
@@ -157,10 +170,10 @@ insert into public.quizzes (id, title, questions, status) values
 insert into public.units (id, slug, position, title, description, map_theme, status) values
   ('70000000-0000-4000-8000-000000000001', 'first-words', 0,
     '{"en": "First Words & Greetings", "fr": "Premiers mots et salutations", "ar": "الكلمات الأولى والتحيات", "dz": "الكلمات اللولين والسلام"}',
-    '{"en": "[PLACEHOLDER] Sample unit for development. Words and audio will be replaced with verified recordings from Merouana.",
-      "fr": "[PLACEHOLDER] Unité d''exemple pour le développement. Les mots et l''audio seront remplacés par des enregistrements vérifiés de Merouana.",
-      "ar": "[PLACEHOLDER] وحدة تجريبية للتطوير. ستُستبدل الكلمات والتسجيلات بتسجيلات موثّقة من مروانة.",
-      "dz": "[PLACEHOLDER] وحدة تاع تجربة. الكلمات والصوت يتبدلو بتسجيلات صحاح من مروانة."}',
+    '{"en": "[PLACEHOLDER] Sample unit for development. Words and audio will be replaced with verified recordings from across the Aurès.",
+      "fr": "[PLACEHOLDER] Unité d''exemple pour le développement. Les mots et l''audio seront remplacés par des enregistrements vérifiés de tout l''Aurès.",
+      "ar": "[PLACEHOLDER] وحدة تجريبية للتطوير. ستُستبدل الكلمات والتسجيلات بتسجيلات موثّقة من كل أنحاء الأوراس.",
+      "dz": "[PLACEHOLDER] وحدة تاع تجربة. الكلمات والصوت يتبدلو بتسجيلات صحاح من الأوراس كامل."}',
     'aures_peaks', 'published');
 
 insert into public.levels (id, unit_id, position, type, title, lesson_id, quiz_id, map_x, map_y, status) values

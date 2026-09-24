@@ -46,7 +46,7 @@
   "Home": {
     "eyebrow": "Tachawit · Tamazight of the Aurès",
     "title": "Reclaim your language.",
-    "lead": "Learn the language of the Aurès mountains with voices recorded in Merouana, one short lesson at a time.",
+    "lead": "Learn the language of the Aurès mountains with voices recorded across the region, one short lesson at a time.",
     "start": "Start the journey",
     "journeyTitle": "Your journey",
     "unitNumber": "Unit {number}",
@@ -62,7 +62,7 @@
   },
   "Footer": {
     "tagline": "Reclaim your language.",
-    "credits": "Voices recorded with native speakers from Merouana, Batna.",
+    "credits": "Voices recorded with native speakers from across the Aurès: Batna, Khenchela, Oum El Bouaghi, Tébessa and Biskra.",
     "linksLabel": "Site links"
   },
   "Design": {
@@ -849,7 +849,7 @@
     "title": "About Tachawit",
     "lead": "A place to learn, hear and keep the Amazigh language of the Aurès.",
     "story1": "Tachawit is spoken by the Chaoui people of the Aurès mountains, from Batna and Khenchela to Oum El Bouaghi, Tébessa and Biskra. It is mostly passed on by voice, at home, and there is very little to learn it from online.",
-    "story2": "This project starts from those voices. The words and phrases are recorded with native speakers in Merouana, and every lesson is built around listening: short, playful steps, a map of the region to travel through, and a daily review so words stay.",
+    "story2": "This project starts from those voices. The words and phrases are recorded with native speakers from across the Aurès, and every lesson is built around listening: short, playful steps, a map of the region to travel through, and a daily review so words stay.",
     "story3": "It is also a community project. Families, teachers and anyone who speaks Tachawit can add words, local variants and recordings, so that the language of every village has its place.",
     "pillars": {
       "voices": {
@@ -871,7 +871,7 @@
     "joinTitle": "Speak Tachawit?",
     "joinLead": "Share a word, a variant from your village or a recording. It takes a minute.",
     "joinButton": "Contribute",
-    "contentNote": "Some content is still sample material while recordings from Merouana are being made. Anything marked [PLACEHOLDER] will be replaced."
+    "contentNote": "Some content is still sample material while recordings from across the Aurès are being made. Anything marked [PLACEHOLDER] will be replaced."
   },
   "Offline": {
     "title": "You're offline",
