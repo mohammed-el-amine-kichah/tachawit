@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { imagePathSchema } from "@/lib/admin/image-path";
 import { adminError, type ActionResult } from "@/lib/admin/result";
 import { cultureFormSchema, localizedFormSchema, type CultureFormInput } from "@/lib/admin/schemas";
 import { cultureCategories } from "@/lib/content/enums";
@@ -24,6 +25,16 @@ export async function saveCultureNote(noteId: string, input: CultureFormInput): 
   if (!id.safeParse(noteId).success || !values.success) return { ok: false, error: "invalid" };
   return asAdmin(async ({ supabase }) => {
     const { error } = await supabase.from("culture_notes").update(values.data).eq("id", noteId);
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
+  });
+}
+
+/** Attaches (or removes) the cover as soon as it is uploaded, without saving the rest of the form. */
+export async function setCultureCover(noteId: string, path: string | null): Promise<ActionResult> {
+  const cover = imagePathSchema("culture").safeParse(path);
+  if (!id.safeParse(noteId).success || !cover.success) return { ok: false, error: "invalid" };
+  return asAdmin(async ({ supabase }) => {
+    const { error } = await supabase.from("culture_notes").update({ cover_image_path: cover.data }).eq("id", noteId);
     return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }

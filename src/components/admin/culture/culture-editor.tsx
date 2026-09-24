@@ -4,7 +4,7 @@ import { Trash2Icon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { deleteCultureNote, saveCultureNote, setCultureStatus } from "@/app/actions/admin/culture";
+import { deleteCultureNote, saveCultureNote, setCultureCover, setCultureStatus } from "@/app/actions/admin/culture";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -44,6 +44,7 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
   const t = useTranslations("Admin.culture");
   const langs = useTranslations("Admin.languages");
   const cats = useTranslations("Culture.categories");
+  const img = useTranslations("Admin.image");
   const locale = useLocale();
   const router = useRouter();
   const { run, pending } = useAdminAction();
@@ -56,6 +57,12 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
     cover_image_path: note.cover_image_path ?? "",
     unit_id: note.unit_id ?? "",
   });
+
+  // Publishing or unpublishing keeps unsaved edits instead of silently dropping them.
+  const saveThenSetStatus = async (next: "draft" | "published") => {
+    const saved = await saveCultureNote(note.id, values);
+    return saved.ok ? setCultureStatus(note.id, next) : saved;
+  };
 
   return (
     <form
@@ -76,12 +83,12 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
               type="button"
               disabled={pending}
               className="bg-success text-success-foreground hover:bg-success/90"
-              onClick={() => run(() => setCultureStatus(note.id, "published"), { success: t("published") })}
+              onClick={() => run(() => saveThenSetStatus("published"), { success: t("published") })}
             >
               {t("publish")}
             </Button>
           ) : (
-            <Button type="button" variant="outline" disabled={pending} onClick={() => run(() => setCultureStatus(note.id, "draft"), { success: t("unpublished") })}>
+            <Button type="button" variant="outline" disabled={pending} onClick={() => run(() => saveThenSetStatus("draft"), { success: t("unpublished") })}>
               {t("unpublish")}
             </Button>
           )}
@@ -132,7 +139,14 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
 
       <div className="flex flex-col gap-1">
         <Label>{t("cover")}</Label>
-        <ImageField folder="culture" value={values.cover_image_path} onChange={(cover_image_path) => setValues({ ...values, cover_image_path })} />
+        <ImageField
+          folder="culture"
+          value={values.cover_image_path}
+          onChange={(cover_image_path) => {
+            setValues({ ...values, cover_image_path });
+            run(() => setCultureCover(note.id, cover_image_path || null), { success: img(cover_image_path ? "attached" : "removed") });
+          }}
+        />
       </div>
 
       <fieldset className="flex flex-col gap-2">

@@ -4,7 +4,7 @@ import { Trash2Icon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { deleteUnit, saveUnit, setUnitStatus } from "@/app/actions/admin/map";
+import { deleteUnit, saveUnit, setUnitCover, setUnitStatus } from "@/app/actions/admin/map";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -31,6 +31,7 @@ export type EditableUnit = {
 export function UnitForm({ unit }: { unit: EditableUnit }) {
   const t = useTranslations("Admin.map");
   const themes = useTranslations("MapTheme");
+  const img = useTranslations("Admin.image");
   const locale = useLocale();
   const router = useRouter();
   const { run, pending } = useAdminAction();
@@ -41,6 +42,12 @@ export function UnitForm({ unit }: { unit: EditableUnit }) {
     map_theme: unit.map_theme,
     cover_image_path: unit.cover_image_path ?? "",
   });
+
+  // Publishing or unpublishing keeps unsaved edits instead of silently dropping them.
+  const saveThenSetStatus = async (next: "draft" | "published") => {
+    const saved = await saveUnit(unit.id, values);
+    return saved.ok ? setUnitStatus(unit.id, next) : saved;
+  };
 
   return (
     <form
@@ -58,12 +65,12 @@ export function UnitForm({ unit }: { unit: EditableUnit }) {
               type="button"
               className="bg-success text-success-foreground hover:bg-success/90"
               disabled={pending}
-              onClick={() => run(() => setUnitStatus(unit.id, "published"), { success: t("unitPublished") })}
+              onClick={() => run(() => saveThenSetStatus("published"), { success: t("unitPublished") })}
             >
               {t("publishUnit")}
             </Button>
           ) : (
-            <Button type="button" variant="outline" disabled={pending} onClick={() => run(() => setUnitStatus(unit.id, "draft"), { success: t("unitUnpublished") })}>
+            <Button type="button" variant="outline" disabled={pending} onClick={() => run(() => saveThenSetStatus("draft"), { success: t("unitUnpublished") })}>
               {t("unpublishUnit")}
             </Button>
           )}
@@ -103,7 +110,14 @@ export function UnitForm({ unit }: { unit: EditableUnit }) {
       </div>
       <div className="flex flex-col gap-1">
         <Label>{t("cover")}</Label>
-        <ImageField folder="units" value={values.cover_image_path} onChange={(cover_image_path) => setValues({ ...values, cover_image_path })} />
+        <ImageField
+          folder="units"
+          value={values.cover_image_path}
+          onChange={(cover_image_path) => {
+            setValues({ ...values, cover_image_path });
+            run(() => setUnitCover(unit.id, cover_image_path || null), { success: img(cover_image_path ? "attached" : "removed") });
+          }}
+        />
       </div>
       <Button type="submit" disabled={pending} className="self-start">
         {t("saveUnit")}

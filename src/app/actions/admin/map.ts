@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { nextNodePosition } from "@/lib/admin/builder";
+import { imagePathSchema } from "@/lib/admin/image-path";
 import { adminError, type ActionResult } from "@/lib/admin/result";
 import { levelFormSchema, unitFormSchema, type LevelFormInput, type UnitFormInput } from "@/lib/admin/schemas";
 import { levelTypes } from "@/lib/content/enums";
@@ -25,6 +26,16 @@ export async function saveUnit(unitId: string | null, input: UnitFormInput): Pro
       .select("id")
       .single();
     return error ? { ok: false, error: adminError(error) } : { ok: true, id: data.id };
+  });
+}
+
+/** Attaches (or removes) the cover as soon as it is uploaded, without saving the rest of the form. */
+export async function setUnitCover(unitId: string, path: string | null): Promise<ActionResult> {
+  const cover = imagePathSchema("units").safeParse(path);
+  if (!id.safeParse(unitId).success || !cover.success) return { ok: false, error: "invalid" };
+  return asAdmin(async ({ supabase }) => {
+    const { error } = await supabase.from("units").update({ cover_image_path: cover.data }).eq("id", unitId);
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }
 

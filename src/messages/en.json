@@ -350,7 +350,9 @@
       "uploading": "Uploading…",
       "replace": "Replace image",
       "add": "Add image",
-      "remove": "Remove image"
+      "remove": "Remove image",
+      "attached": "Image saved",
+      "removed": "Image removed"
     },
     "entries": {
       "title": "Words & phrases",

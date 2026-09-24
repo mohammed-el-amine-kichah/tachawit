@@ -350,7 +350,9 @@
       "uploading": "Envoi…",
       "replace": "Remplacer l’image",
       "add": "Ajouter une image",
-      "remove": "Retirer l’image"
+      "remove": "Retirer l’image",
+      "attached": "Image enregistrée",
+      "removed": "Image retirée"
     },
     "entries": {
       "title": "Mots et expressions",
