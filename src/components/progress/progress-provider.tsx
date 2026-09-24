@@ -13,7 +13,9 @@ import {
 } from "@/lib/progress/snapshot";
 import { localDate } from "@/lib/progress/streak";
 import { syncProgress } from "@/lib/progress/sync";
-import { createBrowserSupabase } from "@/lib/supabase/client";
+
+// Loaded on first use, so guests never download the Supabase client.
+const browserSupabase = () => import("@/lib/supabase/client").then((module) => module.createBrowserSupabase());
 
 type CompletionInput = Omit<LevelCompletion, "completedAt" | "today">;
 type ReviewInput = Pick<ReviewResult, "grades" | "xp">;
@@ -74,21 +76,22 @@ export function ProgressProvider({
   useEffect(() => {
     if (!userId || !hydrated || merging.current || !hasGuestProgress(guest)) return;
     merging.current = true;
-    const supabase = createBrowserSupabase();
-    void supabase.rpc("merge_guest_progress", { p_snapshot: guest, p_today: localDate() }).then(({ error }) => {
-      if (error) {
+    void browserSupabase()
+      .then((supabase) => supabase.rpc("merge_guest_progress", { p_snapshot: guest, p_today: localDate() }))
+      .then(({ error }) => {
+        if (error) throw error;
+        localProgressStore.clear();
+        router.refresh();
+      })
+      .catch(() => {
         merging.current = false;
-        return;
-      }
-      localProgressStore.clear();
-      router.refresh();
-    });
+      });
   }, [userId, hydrated, guest, router]);
 
   // Send anything that was saved while offline, now and whenever the connection returns.
   useEffect(() => {
     if (!userId) return;
-    const flush = () => void syncProgress(createBrowserSupabase(), userId);
+    const flush = () => void syncProgress(browserSupabase, userId);
     flush();
     window.addEventListener("online", flush);
     return () => window.removeEventListener("online", flush);
@@ -102,7 +105,7 @@ export function ProgressProvider({
         return;
       }
       if (latest.current) commit(applyLevelCompletion(latest.current, full));
-      void syncProgress(createBrowserSupabase(), userId, {
+      void syncProgress(browserSupabase, userId, {
         kind: "complete_level",
         levelId: full.levelId,
         stars: full.stars,
@@ -124,7 +127,7 @@ export function ProgressProvider({
       if (!latest.current) return;
       const next = applyReview(latest.current, full);
       commit(next);
-      void syncProgress(createBrowserSupabase(), userId, {
+      void syncProgress(browserSupabase, userId, {
         kind: "review",
         items: Object.keys(input.grades).map((entryId) => {
           const s = next.srs[entryId];

@@ -3,10 +3,22 @@ import { useTranslations } from "next-intl";
 import { Progress } from "@/components/ui/progress";
 import { Link } from "@/i18n/navigation";
 
-export function PlayerTopBar({ value, label, closeHref = "/" }: { value: number; label: string; closeHref?: string }) {
+export function PlayerTopBar({
+  value,
+  label,
+  heading,
+  closeHref = "/",
+}: {
+  value: number;
+  label: string;
+  /** The page's heading for screen readers (the lesson or quiz title). */
+  heading?: string;
+  closeHref?: string;
+}) {
   const t = useTranslations("Player");
   return (
     <header className="sticky top-0 z-30 bg-background/90 backdrop-blur">
+      {heading && <h1 className="sr-only">{heading}</h1>}
       <div className="mx-auto flex max-w-2xl items-center gap-3 px-4 py-3">
         <Link
           href={closeHref}

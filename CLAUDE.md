@@ -124,7 +124,13 @@ docs/
 8. Contribute page + submissions queue, culture section, about page
 9. PWA/offline, performance, accessibility, polish
 
-**Current phase:** 7 (phases 1–6 done)
+**Current phase:** all 9 phases done. Next: replace placeholder content with verified, consented recordings.
+
+## Offline / PWA
+- `public/sw.js` is plain JavaScript (Next does not compile `public/`). Its pure rules are unit-tested by loading the file in Vitest (`src/lib/offline/service-worker.test.ts`); keep new rules pure and exported on `rules`.
+- Pages ask the worker to keep themselves via `<KeepOffline audio={audioUrlsIn(view)} />`. Only add pages that work without the network and hold no private data other than the header.
+- Keep learner pages light (many learners are on mobile data): no Zod in client code outside the admin panel and the contribute form (use `src/lib/progress/guards.ts` for stored data), and load the Supabase browser client with `import()` only when it is needed.
+- The Content-Security-Policy is built per request in `src/proxy.ts`. A new third-party origin (fonts, analytics, media) must be added in `src/lib/security/csp.ts` with a test, or it will be blocked.
 
 ## Don'ts
 - Don't hardcode content, colors, or UI strings.

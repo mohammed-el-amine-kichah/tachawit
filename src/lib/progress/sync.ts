@@ -24,10 +24,21 @@ async function send(supabase: Client, userId: string, operation: OutboxOperation
   if (error) throw error;
 }
 
-/** Add an operation and try to send everything pending, oldest first. Stops at the first failure. */
-export async function syncProgress(supabase: Client, userId: string, operation?: OutboxOperation): Promise<boolean> {
+/**
+ * Add an operation and try to send everything pending, oldest first. Stops at the first failure.
+ * The operation is saved before the Supabase client is loaded (lazily, so guests never download
+ * it), so nothing is lost if loading fails offline.
+ */
+export async function syncProgress(loadClient: () => Promise<Client>, userId: string, operation?: OutboxOperation): Promise<boolean> {
   const queue = [...readOutbox(userId), ...(operation ? [operation] : [])];
   writeOutbox(userId, queue);
+  if (!queue.length) return true;
+  let supabase: Client;
+  try {
+    supabase = await loadClient();
+  } catch {
+    return false;
+  }
   while (queue.length) {
     try {
       await send(supabase, userId, queue[0]);

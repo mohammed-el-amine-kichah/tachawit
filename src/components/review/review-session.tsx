@@ -74,6 +74,7 @@ export function ReviewSession({ levelId, seed, now }: { levelId: string | null; 
         glossary={session.data.glossary}
         seed={seed}
         title={t("complete")}
+        heading={t("title")}
         onComplete={onComplete}
         scoring={reviewScoring}
       />

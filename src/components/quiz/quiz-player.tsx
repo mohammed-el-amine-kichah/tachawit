@@ -44,6 +44,7 @@ export function QuizPlayer({
   glossary,
   seed,
   title,
+  heading,
   onComplete,
   scoring = quizScoring,
   exitHref = "/",
@@ -55,6 +56,8 @@ export function QuizPlayer({
   seed: number;
   /** Heading of the completion screen. */
   title: string;
+  /** Heading for screen readers while playing (the quiz title). */
+  heading?: string;
   onComplete: (summary: QuizSummary) => void;
   scoring?: (score: QuizScore) => { stars: number | null; xp: number };
 }) {
@@ -87,7 +90,7 @@ export function QuizPlayer({
   if (items.length === 0) {
     return (
       <div className="flex min-h-dvh flex-col">
-        <PlayerTopBar value={0} label={progressLabel} closeHref={exitHref} />
+        <PlayerTopBar value={0} label={progressLabel} heading={heading} closeHref={exitHref} />
         <main id="main" className="mx-auto w-full max-w-lg flex-1 px-5 py-10">
           <Notice>{t("empty")}</Notice>
         </main>
@@ -101,7 +104,7 @@ export function QuizPlayer({
   return (
     <GlossaryContext value={glossary}>
       <div className="flex min-h-dvh flex-col">
-        <PlayerTopBar value={session.finished ? 1 : session.position / session.queue.length} label={progressLabel} closeHref={exitHref} />
+        <PlayerTopBar value={session.finished ? 1 : session.position / session.queue.length} label={progressLabel} heading={heading} closeHref={exitHref} />
         <main id="main" className="relative flex flex-1 flex-col overflow-x-clip">
           {session.finished || !item ? (
             <CompletionScreen title={title} stars={stars} xp={xp} words={words.length} continueHref={exitHref}>

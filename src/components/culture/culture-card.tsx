@@ -23,7 +23,7 @@ export function CultureCard({ note }: { note: Card }) {
       )}
       <div className="flex flex-1 flex-col gap-2 p-5">
         <p className="text-xs font-semibold text-primary uppercase ltr:tracking-wider">{t(note.category)}</p>
-        <LocalizedContent value={note.title} as="h3" className="text-xl leading-snug font-semibold group-hover:underline" />
+        <LocalizedContent value={note.title} as="h2" className="text-xl leading-snug font-semibold group-hover:underline" />
         <LocalizedContent value={note.summary} as="p" className="text-sm text-muted-foreground" />
       </div>
     </Link>

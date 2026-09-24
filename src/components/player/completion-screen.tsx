@@ -38,7 +38,7 @@ export function CompletionScreen({
     <div className="mx-auto flex w-full max-w-md flex-1 flex-col items-center gap-6 px-5 py-8 text-center">
       <Confetti />
       <ZMark className="size-12 text-primary" />
-      <h1 className="text-3xl font-semibold">{title}</h1>
+      <h2 className="text-3xl font-semibold">{title}</h2>
 
       {stars !== null && (
         <div className="flex items-end gap-2" role="img" aria-label={t("stars", { count: stars })}>

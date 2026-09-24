@@ -1,22 +1,24 @@
-import { z } from "zod";
 import { safeStorage } from "@/lib/storage";
-import type { LevelStates } from "./types";
+import { isRecord, readInt, readRecord } from "./guards";
+import type { LevelState, LevelStates } from "./types";
 
 // The level states the learner last saw on the map, to animate what changed since.
 
 const SEEN_KEY = "tachawit:map-seen";
 
-const seenSchema = z.record(
-  z.string(),
-  z.object({ status: z.enum(["locked", "available", "current", "completed"]), stars: z.int().min(0).max(3) }),
-);
+const STATUSES = new Set(["locked", "available", "current", "completed"]);
+
+function readSeen(value: unknown): LevelState | null {
+  if (!isRecord(value) || !STATUSES.has(value.status as string)) return null;
+  const stars = readInt(value.stars, 0, 3);
+  return stars === null ? null : { status: value.status as LevelState["status"], stars };
+}
 
 export function readSeenStates(): LevelStates | null {
   const raw = safeStorage.get(SEEN_KEY);
   if (!raw) return null;
   try {
-    const parsed = seenSchema.safeParse(JSON.parse(raw));
-    return parsed.success ? parsed.data : null;
+    return readRecord(JSON.parse(raw), readSeen);
   } catch {
     return null;
   }

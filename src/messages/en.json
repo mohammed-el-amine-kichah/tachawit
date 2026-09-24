@@ -6,7 +6,8 @@
   "Common": {
     "appName": "Tachawit",
     "skipToContent": "Skip to content",
-    "sampleContent": "Sample content"
+    "sampleContent": "Sample content",
+    "loading": "Loading…"
   },
   "Nav": {
     "label": "Main",
@@ -61,7 +62,8 @@
   },
   "Footer": {
     "tagline": "Reclaim your language.",
-    "credits": "Voices recorded with native speakers from Merouana, Batna."
+    "credits": "Voices recorded with native speakers from Merouana, Batna.",
+    "linksLabel": "Site links"
   },
   "Design": {
     "metaTitle": "Design system",
@@ -870,5 +872,18 @@
     "joinLead": "Share a word, a variant from your village or a recording. It takes a minute.",
     "joinButton": "Contribute",
     "contentNote": "Some content is still sample material while recordings from Merouana are being made. Anything marked [PLACEHOLDER] will be replaced."
+  },
+  "Offline": {
+    "title": "You're offline",
+    "lead": "Lessons you've already opened still work, and your progress stays on this device until you're back online.",
+    "backToMap": "Back to the map",
+    "retry": "Try again",
+    "banner": "You're offline. Lessons you've opened still work."
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "lead": "This page could not load. Your progress is safe. Try again in a moment.",
+    "retry": "Try again",
+    "backToMap": "Back to the map"
   }
 }

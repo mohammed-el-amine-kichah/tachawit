@@ -18,7 +18,7 @@ export function AppFooter() {
             <p>{t("credits")}</p>
           </div>
         </div>
-        <nav aria-label={nav("label")}>
+        <nav aria-label={t("linksLabel")}>
           <ul className="flex flex-wrap gap-x-4 gap-y-2">
             {(["/about", "/contribute", "/culture", "/design"] as const).map((href) => (
               <li key={href}>

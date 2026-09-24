@@ -36,6 +36,14 @@ describe("parseSnapshot", () => {
     const s = applyLevelResult(emptySnapshot(), { levelId: "a", stars: 2, completedAt: "2026-09-24T10:00:00Z" });
     expect(parseSnapshot(JSON.stringify(s))).toEqual(s);
   });
+
+  it("rejects out-of-range values and drops unknown fields", () => {
+    const valid = applyLevelCompletion(emptySnapshot(), { levelId: "l1", stars: 3, xp: 10, entryIds: ["e1"], completedAt: "2026-09-01T10:00:00Z" });
+    const tampered = { ...valid, levels: { l1: { ...valid.levels.l1, stars: 9 } } };
+    expect(parseSnapshot(JSON.stringify(tampered))).toEqual(emptySnapshot());
+    expect(parseSnapshot(JSON.stringify({ ...valid, extra: true }))).toEqual(valid);
+    expect(parseSnapshot(JSON.stringify({ ...valid, xp: -5 }))).toEqual(emptySnapshot());
+  });
 });
 
 describe("applyLevelCompletion", () => {

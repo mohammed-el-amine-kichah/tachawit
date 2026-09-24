@@ -1,37 +1,55 @@
-import { z } from "zod";
 import { safeStorage } from "@/lib/storage";
+import { isRecord, readArray, readInt, readNullableString, readNumber, readString } from "./guards";
 
 // Progress writes for signed-in learners wait here until the server confirms them, so a lesson
 // finished on a flaky connection (or offline) is never lost. Keyed per user.
 
-const operationSchema = z.discriminatedUnion("kind", [
-  z.object({
-    kind: z.literal("complete_level"),
-    levelId: z.string(),
-    stars: z.int(),
-    xp: z.int(),
-    entryIds: z.array(z.string()),
-    today: z.string(),
-  }),
-  z.object({
-    kind: z.literal("review"),
-    items: z.array(
-      z.object({
-        entry_id: z.string(),
-        ease: z.number(),
-        interval_days: z.int(),
-        repetitions: z.int(),
-        lapses: z.int(),
-        due_at: z.string(),
-        last_reviewed_at: z.string().nullable(),
-      }),
-    ),
-    xp: z.int(),
-    today: z.string(),
-  }),
-]);
+type ReviewItem = {
+  entry_id: string;
+  ease: number;
+  interval_days: number;
+  repetitions: number;
+  lapses: number;
+  due_at: string;
+  last_reviewed_at: string | null;
+};
 
-export type OutboxOperation = z.infer<typeof operationSchema>;
+export type OutboxOperation =
+  | { kind: "complete_level"; levelId: string; stars: number; xp: number; entryIds: string[]; today: string }
+  | { kind: "review"; items: ReviewItem[]; xp: number; today: string };
+
+function readReviewItem(value: unknown): ReviewItem | null {
+  if (!isRecord(value)) return null;
+  const item = {
+    entry_id: readString(value.entry_id),
+    ease: readNumber(value.ease),
+    interval_days: readInt(value.interval_days),
+    repetitions: readInt(value.repetitions),
+    lapses: readInt(value.lapses),
+    due_at: readString(value.due_at),
+  };
+  const lastReviewedAt = readNullableString(value.last_reviewed_at);
+  if (Object.values(item).some((field) => field === null) || lastReviewedAt === undefined) return null;
+  return { ...(item as Omit<ReviewItem, "last_reviewed_at">), last_reviewed_at: lastReviewedAt };
+}
+
+function readOperation(value: unknown): OutboxOperation | null {
+  if (!isRecord(value)) return null;
+  const xp = readInt(value.xp);
+  const today = readString(value.today);
+  if (xp === null || today === null) return null;
+  if (value.kind === "complete_level") {
+    const levelId = readString(value.levelId);
+    const stars = readInt(value.stars);
+    const entryIds = readArray(value.entryIds, readString);
+    return levelId === null || stars === null || entryIds === null ? null : { kind: "complete_level", levelId, stars, xp, entryIds, today };
+  }
+  if (value.kind === "review") {
+    const items = readArray(value.items, readReviewItem);
+    return items === null ? null : { kind: "review", items, xp, today };
+  }
+  return null;
+}
 
 const key = (userId: string) => `tachawit:outbox:${userId}`;
 
@@ -39,8 +57,7 @@ export function readOutbox(userId: string): OutboxOperation[] {
   const raw = safeStorage.get(key(userId));
   if (!raw) return [];
   try {
-    const parsed = z.array(operationSchema).safeParse(JSON.parse(raw));
-    return parsed.success ? parsed.data : [];
+    return readArray(JSON.parse(raw), readOperation) ?? [];
   } catch {
     return [];
   }

@@ -102,7 +102,7 @@
   --silver: var(--silver-400);
   --border: var(--sand-200);
   --input: var(--sand-300);
-  --ring: var(--ochre-400);
+  --ring: var(--ochre-600); /* 4.5:1 on sand-50, so keyboard focus is clearly visible */
   --motif: var(--terracotta-500);
   --motif-alt: var(--indigo-600);
   --sky-top: var(--ochre-50);

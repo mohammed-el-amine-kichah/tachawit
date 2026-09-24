@@ -7,6 +7,7 @@ import { BigButton } from "@/components/player/big-button";
 import { CompletionScreen } from "@/components/player/completion-screen";
 import { PlayerFooter } from "@/components/player/player-footer";
 import { PlayerTopBar } from "@/components/player/player-top-bar";
+import { localize } from "@/i18n/localize";
 import { useProgress } from "@/components/progress/progress-provider";
 import { Notice } from "@/components/shared/notice";
 import { getDirection } from "@/i18n/config";
@@ -41,7 +42,9 @@ export function LessonPlayer({
   exitHref?: string;
 }) {
   const t = useTranslations("Lesson");
-  const rtl = getDirection(useLocale()) === "rtl";
+  const locale = useLocale();
+  const rtl = getDirection(locale) === "rtl";
+  const heading = localize(lesson.title, locale)?.text;
   const { completeLevel } = useProgress();
   const [flow, dispatch] = useReducer(lessonFlow, initialFlow);
   const total = lesson.steps.length;
@@ -82,7 +85,7 @@ export function LessonPlayer({
   if (total === 0) {
     return (
       <div className="flex min-h-dvh flex-col">
-        <PlayerTopBar value={0} label={t("progress", { current: 0, total: 0 })} closeHref={exitHref} />
+        <PlayerTopBar value={0} label={t("progress", { current: 0, total: 0 })} heading={heading} closeHref={exitHref} />
         <main id="main" className="mx-auto w-full max-w-lg flex-1 px-5 py-10">
           <Notice>{t("empty")}</Notice>
         </main>
@@ -98,6 +101,7 @@ export function LessonPlayer({
         <PlayerTopBar
           value={flow.finished ? 1 : flow.index / total}
           label={t("progress", { current: flow.index + 1, total })}
+          heading={heading}
           closeHref={exitHref}
         />
         <main id="main" className="relative flex flex-1 flex-col overflow-x-clip">

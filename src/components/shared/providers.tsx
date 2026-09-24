@@ -11,6 +11,7 @@ import type { Script } from "@/lib/script/scripts";
 import type { Account } from "@/lib/supabase/queries/account";
 import type { Theme } from "@/lib/theme/preference";
 import { PreferencesProvider } from "./preferences-provider";
+import { ServiceWorker } from "./service-worker";
 
 export function Providers({
   dir,
@@ -27,6 +28,7 @@ export function Providers({
 }) {
   return (
     <Direction.Provider dir={dir}>
+      <ServiceWorker />
       <MotionConfig reducedMotion="user">
         <TooltipProvider delayDuration={300}>
           <PreferencesProvider initialScript={initialScript} initialTheme={initialTheme}>

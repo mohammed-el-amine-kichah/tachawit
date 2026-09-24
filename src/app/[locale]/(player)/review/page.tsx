@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { ReviewSession } from "@/components/review/review-session";
+import { KeepOffline } from "@/components/shared/keep-offline";
 import { freshSeed } from "@/lib/random";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -17,5 +18,10 @@ function requestTime(): number {
 export default async function ReviewPage({ searchParams }: PageProps<"/[locale]/review">) {
   const { level } = await searchParams;
   const levelId = z.uuid().safeParse(level);
-  return <ReviewSession levelId={levelId.success ? levelId.data : null} seed={freshSeed()} now={requestTime()} />;
+  return (
+    <>
+      <KeepOffline />
+      <ReviewSession levelId={levelId.success ? levelId.data : null} seed={freshSeed()} now={requestTime()} />
+    </>
+  );
 }

@@ -1,40 +1,65 @@
-import { z } from "zod";
 import { newSrsState, review } from "@/lib/srs/sm2";
+import { isRecord, readInt, readNullableString, readNumber, readRecord, readString } from "./guards";
 import { nextStreak } from "./streak";
 
 // A learner's progress as the app works with it. Guests keep it in localStorage;
 // signed-in learners have it loaded from and saved to Supabase.
 
-const levelProgressSchema = z.object({
-  stars: z.int().min(0).max(3),
-  attempts: z.int().nonnegative(),
-  completedAt: z.string().nullable(),
-});
+export type LevelProgress = { stars: number; attempts: number; completedAt: string | null };
 
-const srsStateSchema = z.object({
-  ease: z.number().min(1.3),
-  intervalDays: z.int().nonnegative(),
-  repetitions: z.int().nonnegative(),
-  lapses: z.int().nonnegative(),
-  dueAt: z.string(),
-  lastReviewedAt: z.string().nullable(),
-});
+export type SrsState = {
+  ease: number;
+  intervalDays: number;
+  repetitions: number;
+  lapses: number;
+  dueAt: string;
+  lastReviewedAt: string | null;
+};
 
-export const snapshotSchema = z.object({
-  version: z.literal(1),
-  levels: z.record(z.string(), levelProgressSchema),
-  xp: z.int().nonnegative(),
-  streak: z.object({
-    current: z.int().nonnegative(),
-    longest: z.int().nonnegative(),
-    lastActiveOn: z.string().nullable(),
-  }),
-  srs: z.record(z.string(), srsStateSchema),
-});
+export type ProgressSnapshot = {
+  version: 1;
+  levels: Record<string, LevelProgress>;
+  xp: number;
+  streak: { current: number; longest: number; lastActiveOn: string | null };
+  srs: Record<string, SrsState>;
+};
 
-export type ProgressSnapshot = z.infer<typeof snapshotSchema>;
-export type LevelProgress = z.infer<typeof levelProgressSchema>;
-export type SrsState = z.infer<typeof srsStateSchema>;
+function readLevelProgress(value: unknown): LevelProgress | null {
+  if (!isRecord(value)) return null;
+  const stars = readInt(value.stars, 0, 3);
+  const attempts = readInt(value.attempts, 0);
+  const completedAt = readNullableString(value.completedAt);
+  return stars === null || attempts === null || completedAt === undefined ? null : { stars, attempts, completedAt };
+}
+
+function readSrsState(value: unknown): SrsState | null {
+  if (!isRecord(value)) return null;
+  const ease = readNumber(value.ease, 1.3);
+  const intervalDays = readInt(value.intervalDays, 0);
+  const repetitions = readInt(value.repetitions, 0);
+  const lapses = readInt(value.lapses, 0);
+  const dueAt = readString(value.dueAt);
+  const lastReviewedAt = readNullableString(value.lastReviewedAt);
+  if (ease === null || intervalDays === null || repetitions === null || lapses === null || dueAt === null || lastReviewedAt === undefined) {
+    return null;
+  }
+  return { ease, intervalDays, repetitions, lapses, dueAt, lastReviewedAt };
+}
+
+/** Validates a snapshot read back from storage; null if anything is missing or out of range. */
+export function readSnapshot(value: unknown): ProgressSnapshot | null {
+  if (!isRecord(value) || value.version !== 1 || !isRecord(value.streak)) return null;
+  const levels = readRecord(value.levels, readLevelProgress);
+  const srs = readRecord(value.srs, readSrsState);
+  const xp = readInt(value.xp, 0);
+  const current = readInt(value.streak.current, 0);
+  const longest = readInt(value.streak.longest, 0);
+  const lastActiveOn = readNullableString(value.streak.lastActiveOn);
+  if (levels === null || srs === null || xp === null || current === null || longest === null || lastActiveOn === undefined) {
+    return null;
+  }
+  return { version: 1, levels, xp, streak: { current, longest, lastActiveOn }, srs };
+}
 
 export function emptySnapshot(): ProgressSnapshot {
   return { version: 1, levels: {}, xp: 0, streak: { current: 0, longest: 0, lastActiveOn: null }, srs: {} };
@@ -44,8 +69,7 @@ export function emptySnapshot(): ProgressSnapshot {
 export function parseSnapshot(raw: string | null): ProgressSnapshot {
   if (!raw) return emptySnapshot();
   try {
-    const parsed = snapshotSchema.safeParse(JSON.parse(raw));
-    return parsed.success ? parsed.data : emptySnapshot();
+    return readSnapshot(JSON.parse(raw)) ?? emptySnapshot();
   } catch {
     return emptySnapshot();
   }

@@ -5,7 +5,7 @@ A gamified web app to learn **Tachawit** (Chaoui, the Amazigh language of the Au
 - Product spec: [docs/SPEC.md](docs/SPEC.md)
 - Conventions for contributors and AI agents: [CLAUDE.md](CLAUDE.md)
 
-**Status:** phases 1–8 of 9 done: foundations, the map, lessons, quizzes, progress with accounts and review, the full admin panel (content, audio, builders, map editor), contributions, culture and about pages.
+**Status:** all 9 phases done: foundations, the map, lessons, quizzes, progress with accounts and review, the full admin panel (content, audio, builders, map editor), contributions, culture and about pages, and an installable app that works offline. The learning content is placeholder until native speakers provide and verify it (see [Seed content is placeholder](#seed-content-is-placeholder)).
 
 ## Stack
 
@@ -93,6 +93,23 @@ After that, admins can promote other people from *Admin → People* (`/ar/admin/
 - Signed-in progress is written through database functions (`complete_level`, `log_activity`) that run with the learner's own permissions, so row-level security still applies. Writes wait in a local outbox and are retried when the connection returns.
 - Streaks count the learner's local calendar days; spaced repetition follows SM-2. Both are unit-tested (`src/lib/progress`, `src/lib/srs`).
 
+## Offline and installing
+
+Tachawit installs as an app (web app manifest, icons in `public/icons`) and keeps working offline through a small hand-written service worker, `public/sw.js`. It only runs in production builds (`pnpm build && pnpm start`), since it would get in the way of hot reloading.
+
+- **What is kept:** the map, every level a learner opens (the page and all of its audio, slow versions included), the review page, and an offline page in each language. Build assets are cached as they are used.
+- **How pages load:** from the network first; if the connection is down, or takes more than four seconds, the kept copy is used. Pages never opened show the offline page. Admin, sign-in and API requests are never cached.
+- **Progress offline:** guests keep progress on the device anyway; signed-in learners' progress waits in the outbox and syncs when the connection returns. Review needs a connection to load its words.
+- **Signing out** clears kept pages, since they show the account in the header.
+- **After changing** `public/sw.js`, bump `VERSION` at the top if the static cache should be emptied. The worker is served with `Cache-Control: no-store`, so browsers pick up changes on the next visit.
+
+## Security
+
+- Row-level security on every table (tested with pgTAP); admin screens are also guarded on the server, but the database is the real boundary.
+- A strict Content-Security-Policy with a per-request nonce (`src/proxy.ts`, `src/lib/security/csp.ts`): scripts must carry the nonce; audio, images and API calls may only reach this site and Supabase.
+- Other headers in `next.config.ts`: `X-Frame-Options: DENY`, `nosniff`, a strict referrer policy, HSTS, and a permissions policy that allows only the microphone (for recordings).
+- Contributions are rate-limited on a salted hash of the IP address; the address itself is never stored.
+
 ### Google sign-in
 
 Create an OAuth client in Google Cloud (type *Web application*) with the redirect URI `https://<project-ref>.supabase.co/auth/v1/callback`, then enable Google under *Authentication → Providers* in Supabase. For local Supabase, set `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID` and `SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET`, set `enabled = true` under `[auth.external.google]` in `supabase/config.toml`, and restart Supabase.
@@ -105,7 +122,9 @@ Create an OAuth client in Google Cloud (type *Web application*) with the redirec
    pnpm exec supabase db push     # migrations only; the placeholder seed is not pushed
    ```
 2. In the Supabase dashboard, under *Authentication → URL Configuration*, set the site URL to your domain and add `https://<your-domain>/api/auth/callback` to the redirect URLs. Enable Google if you want it (see above).
-3. Import the repo into Vercel and set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` and `NEXT_PUBLIC_SITE_URL`.
+3. Import the repo into Vercel and set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL` (used for the sitemap, links in emails and social previews) and `SUBMISSION_HASH_SALT`.
+4. Create the first admin (see above), then replace the placeholder content: add speakers with their recorded consent, entries and audio, and build lessons in the admin panel.
+5. `sitemap.xml` and `robots.txt` are generated from the published content; submit the sitemap to search engines if you want the culture articles indexed.
 
 ## Tests
 

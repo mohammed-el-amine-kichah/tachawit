@@ -5,6 +5,7 @@ import { themeTint } from "@/components/map/scenery";
 import { AnimatedZMark } from "@/components/shared/animated-z-mark";
 import { AuresRidges } from "@/components/shared/aures-ridges";
 import { Entrance } from "@/components/shared/entrance";
+import { KeepOffline } from "@/components/shared/keep-offline";
 import { Motif } from "@/components/shared/motif";
 import { Notice } from "@/components/shared/notice";
 import { ZMark } from "@/components/shared/z-mark";
@@ -63,6 +64,7 @@ export default async function HomePage() {
           <Notice className="mx-4 my-10">{t("empty")}</Notice>
         ) : (
           <>
+            <KeepOffline />
             <AuresMap units={units} />
             <div className="flex flex-col items-center gap-3 pt-10 text-center text-sm text-muted-foreground">
               <ZMark className="size-8 text-primary" />

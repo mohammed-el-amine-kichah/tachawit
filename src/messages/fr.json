@@ -6,7 +6,8 @@
   "Common": {
     "appName": "Tachawit",
     "skipToContent": "Aller au contenu",
-    "sampleContent": "Contenu d’exemple"
+    "sampleContent": "Contenu d’exemple",
+    "loading": "Chargement…"
   },
   "Nav": {
     "label": "Principale",
@@ -61,7 +62,8 @@
   },
   "Footer": {
     "tagline": "Reprends ta langue.",
-    "credits": "Voix enregistrées avec des locuteurs natifs de Merouana, Batna."
+    "credits": "Voix enregistrées avec des locuteurs natifs de Merouana, Batna.",
+    "linksLabel": "Liens du site"
   },
   "Design": {
     "metaTitle": "Système de design",
@@ -870,5 +872,18 @@
     "joinLead": "Partage un mot, une variante de ton village ou un enregistrement. Ça prend une minute.",
     "joinButton": "Contribuer",
     "contentNote": "Une partie du contenu est encore un exemple, le temps d’enregistrer à Merouana. Tout ce qui est marqué [PLACEHOLDER] sera remplacé."
+  },
+  "Offline": {
+    "title": "Vous êtes hors ligne",
+    "lead": "Les leçons déjà ouvertes fonctionnent toujours, et vos progrès restent sur cet appareil jusqu'au retour de la connexion.",
+    "backToMap": "Retour à la carte",
+    "retry": "Réessayer",
+    "banner": "Hors ligne. Les leçons déjà ouvertes fonctionnent toujours."
+  },
+  "Error": {
+    "title": "Un problème est survenu",
+    "lead": "Cette page n'a pas pu se charger. Vos progrès sont en sécurité. Réessayez dans un instant.",
+    "retry": "Réessayer",
+    "backToMap": "Retour à la carte"
   }
 }

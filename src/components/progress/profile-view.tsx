@@ -4,6 +4,7 @@ import { BookOpenCheckIcon, FlameIcon, LandmarkIcon, LogOutIcon, ShieldIcon, Zap
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 import { signOut } from "@/app/actions/auth";
+import { forgetKeptPages } from "@/lib/offline/client";
 import { useAccount } from "@/components/auth/account-context";
 import { DisplayNameForm } from "@/components/auth/display-name-form";
 import { Motif } from "@/components/shared/motif";
@@ -84,7 +85,7 @@ export function ProfileView({ units, now }: { units: { id: string; levelIds: str
                     </Link>
                   </Button>
                 )}
-                <form action={signOut}>
+                <form action={signOut} onSubmit={forgetKeptPages}>
                   <Button type="submit" variant="outline">
                     <LogOutIcon aria-hidden className="rtl:-scale-x-100" />
                     {t("signOut")}
