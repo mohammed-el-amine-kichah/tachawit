@@ -189,5 +189,36 @@
     "particle": "أداة",
     "phrase": "عبارة",
     "expression": "تعبير"
+  },
+  "Quiz": {
+    "prompt": {
+      "listen_pick_translation": "ماذا يعني هذا؟",
+      "pick_audio": "أي تسجيل يقول هذا؟",
+      "build_sentence": "رتّب ما تسمعه",
+      "match_pairs": "طابق كل صوت مع معناه",
+      "fill_blank": "أكمل الكلمة الناقصة",
+      "speak": "قلها بصوت مرتفع"
+    },
+    "progress": "السؤال {current} من {total}",
+    "check": "تحقّق",
+    "saidIt": "قلتها",
+    "continue": "متابعة",
+    "praise": {
+      "great": "رائع!",
+      "wellDone": "أحسنت!",
+      "exactly": "بالضبط!",
+      "nice": "جميل!"
+    },
+    "wrongTitle": "ليس تمامًا. إليك الإجابة:",
+    "playAnswer": "استمع إلى الإجابة الصحيحة",
+    "option": "التسجيل {number}",
+    "yourAnswer": "إجابتك",
+    "sounds": "الأصوات",
+    "meanings": "المعاني",
+    "blank": "الكلمة الناقصة",
+    "speakHint": "سجّل صوتك إن أردت، ثم قارنه بصوت المتحدث.",
+    "complete": "اكتمل الاختبار!",
+    "firstTry": "{count} من {total} صحيحة من المحاولة الأولى",
+    "empty": "لا يحتوي هذا الاختبار على أسئلة بعد."
   }
 }

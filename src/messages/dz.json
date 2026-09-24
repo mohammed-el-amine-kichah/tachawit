@@ -189,5 +189,36 @@
     "particle": "أداة",
     "phrase": "عبارة",
     "expression": "تعبير"
+  },
+  "Quiz": {
+    "prompt": {
+      "listen_pick_translation": "واش معناها؟",
+      "pick_audio": "واش من تسجيل يقول هكا؟",
+      "build_sentence": "رتّب واش راك تسمع",
+      "match_pairs": "جمّع كل صوت مع معناه",
+      "fill_blank": "كمّل الكلمة لي ناقصة",
+      "speak": "قولها بصوت عالي"
+    },
+    "progress": "السؤال {current} من {total}",
+    "check": "شوف",
+    "saidIt": "قلتها",
+    "continue": "كمّل",
+    "praise": {
+      "great": "واعر!",
+      "wellDone": "صحّيت!",
+      "exactly": "هي بالضبط!",
+      "nice": "مليح!"
+    },
+    "wrongTitle": "ماشي هي. هاهي الجواب:",
+    "playAnswer": "اسمع الجواب الصحيح",
+    "option": "التسجيل {number}",
+    "yourAnswer": "الجواب تاعك",
+    "sounds": "الأصوات",
+    "meanings": "المعاني",
+    "blank": "الكلمة لي ناقصة",
+    "speakHint": "سجّل روحك إذا حبيت، ومن بعد قارن مع صوت المتكلم.",
+    "complete": "كمّلت الاختبار!",
+    "firstTry": "{count} من {total} صحاح من أول مرة",
+    "empty": "هاد الاختبار مازال ما فيه حتى سؤال."
   }
 }

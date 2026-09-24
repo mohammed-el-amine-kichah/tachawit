@@ -189,5 +189,36 @@
     "particle": "Particule",
     "phrase": "Expression",
     "expression": "Locution"
+  },
+  "Quiz": {
+    "prompt": {
+      "listen_pick_translation": "Qu’est-ce que ça veut dire ?",
+      "pick_audio": "Quel enregistrement dit cela ?",
+      "build_sentence": "Reconstitue ce que tu entends",
+      "match_pairs": "Associe chaque son à son sens",
+      "fill_blank": "Complète le mot manquant",
+      "speak": "Dis-le à voix haute"
+    },
+    "progress": "Question {current} sur {total}",
+    "check": "Vérifier",
+    "saidIt": "Je l’ai dit",
+    "continue": "Continuer",
+    "praise": {
+      "great": "Super !",
+      "wellDone": "Bravo !",
+      "exactly": "Exactement !",
+      "nice": "Bien joué !"
+    },
+    "wrongTitle": "Pas tout à fait. Voici la réponse :",
+    "playAnswer": "Écouter la bonne réponse",
+    "option": "Enregistrement {number}",
+    "yourAnswer": "Ta réponse",
+    "sounds": "Sons",
+    "meanings": "Sens",
+    "blank": "Mot manquant",
+    "speakHint": "Enregistre-toi si tu veux, puis compare avec le locuteur.",
+    "complete": "Quiz terminé !",
+    "firstTry": "{count} sur {total} justes du premier coup",
+    "empty": "Ce quiz n’a pas encore de questions."
   }
 }

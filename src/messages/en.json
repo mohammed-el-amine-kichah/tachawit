@@ -189,5 +189,36 @@
     "particle": "Particle",
     "phrase": "Phrase",
     "expression": "Expression"
+  },
+  "Quiz": {
+    "prompt": {
+      "listen_pick_translation": "What does this mean?",
+      "pick_audio": "Which recording says this?",
+      "build_sentence": "Build what you hear",
+      "match_pairs": "Match each sound with its meaning",
+      "fill_blank": "Fill in the missing word",
+      "speak": "Say it out loud"
+    },
+    "progress": "Question {current} of {total}",
+    "check": "Check",
+    "saidIt": "I said it",
+    "continue": "Continue",
+    "praise": {
+      "great": "Great!",
+      "wellDone": "Well done!",
+      "exactly": "Exactly!",
+      "nice": "Nice one!"
+    },
+    "wrongTitle": "Not quite. Here’s the answer:",
+    "playAnswer": "Play the right answer",
+    "option": "Recording {number}",
+    "yourAnswer": "Your answer",
+    "sounds": "Sounds",
+    "meanings": "Meanings",
+    "blank": "Missing word",
+    "speakHint": "Record yourself if you like, then compare with the speaker.",
+    "complete": "Quiz complete!",
+    "firstTry": "{count} of {total} right on the first try",
+    "empty": "This quiz has no questions yet."
   }
 }

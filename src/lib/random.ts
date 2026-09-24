@@ -28,3 +28,8 @@ export function shuffled<T>(items: readonly T[], random: () => number): T[] {
   }
   return copy;
 }
+
+/** A fresh seed per request, e.g. to reshuffle a quiz on every attempt (call on the server). */
+export function freshSeed(): number {
+  return crypto.getRandomValues(new Uint32Array(1))[0] >>> 1;
+}
