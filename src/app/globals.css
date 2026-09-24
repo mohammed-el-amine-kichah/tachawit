@@ -153,6 +153,20 @@
   }
 }
 
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.72);
+  }
+}
+
+@utility animate-wave {
+  animation: wave 0.9s ease-in-out infinite;
+}
+
 @utility animate-node-pulse {
   animation: node-pulse 1.8s ease-out infinite;
 }

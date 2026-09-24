@@ -45,3 +45,10 @@ export const drawStroke: Variants = {
 export const drawStrokeTransition: Transition = { duration: durations.draw, ease: easings.inOut };
 
 export const instant: Transition = { duration: 0 };
+
+/** Lesson and quiz cards. `custom` is +1 to come in from the reading end, -1 from the start. */
+export const cardSlide: Variants = {
+  enter: (direction: number) => ({ x: direction * 56, opacity: 0 }),
+  center: { x: 0, opacity: 1, transition: { duration: durations.base, ease: easings.out } },
+  exit: (direction: number) => ({ x: direction * -56, opacity: 0, transition: { duration: durations.fast, ease: easings.out } }),
+};

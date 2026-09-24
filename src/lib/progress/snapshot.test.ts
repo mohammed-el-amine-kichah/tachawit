@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyLevelResult, emptySnapshot, parseSnapshot } from "./snapshot";
+import { applyLevelCompletion, applyLevelResult, emptySnapshot, MAX_XP_PER_ACTIVITY, parseSnapshot } from "./snapshot";
 
 describe("applyLevelResult", () => {
   it("records a first completion", () => {
@@ -35,5 +35,26 @@ describe("parseSnapshot", () => {
   it("round-trips a valid snapshot", () => {
     const s = applyLevelResult(emptySnapshot(), { levelId: "a", stars: 2, completedAt: "2026-09-24T10:00:00Z" });
     expect(parseSnapshot(JSON.stringify(s))).toEqual(s);
+  });
+});
+
+describe("applyLevelCompletion", () => {
+  it("records the level and adds the XP earned", () => {
+    const s = applyLevelCompletion(emptySnapshot(), {
+      levelId: "a",
+      stars: 3,
+      xp: 10,
+      entryIds: [],
+      completedAt: "2026-09-24T10:00:00Z",
+    });
+    expect(s.levels.a.stars).toBe(3);
+    expect(s.xp).toBe(10);
+  });
+
+  it("never adds negative or absurd XP", () => {
+    const s = applyLevelCompletion(emptySnapshot(), { levelId: "a", stars: 1, xp: -50, entryIds: [], completedAt: "2026-09-24T10:00:00Z" });
+    expect(s.xp).toBe(0);
+    const big = applyLevelCompletion(emptySnapshot(), { levelId: "a", stars: 1, xp: 10_000, entryIds: [], completedAt: "2026-09-24T10:00:00Z" });
+    expect(big.xp).toBe(MAX_XP_PER_ACTIVITY);
   });
 });

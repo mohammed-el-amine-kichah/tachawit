@@ -131,5 +131,63 @@
     "unitRegion": "Unit {number}",
     "untitled": "Level {number}",
     "end": "More of the Aurès is on its way."
+  },
+  "Player": {
+    "close": "Close and go back to the map",
+    "back": "Previous step",
+    "continue": "Continue",
+    "xp": "+{xp} XP",
+    "xpLabel": "Experience earned",
+    "words": "{count, plural, one {word practised} other {words practised}}",
+    "stars": "{count, plural, one {# star} other {# stars}}"
+  },
+  "Lesson": {
+    "progress": "Step {current} of {total}",
+    "continue": "Continue",
+    "finish": "Finish",
+    "newWord": "New word",
+    "listenRepeat": "Listen and repeat",
+    "sayItAloud": "Say it out loud. You can record yourself and compare.",
+    "culture": "Culture",
+    "readMore": "Read the full story",
+    "dialogue": "Conversation",
+    "playConversation": "Play the conversation",
+    "stopConversation": "Stop",
+    "tapWord": "Tap any word to hear it on its own.",
+    "complete": "Lesson complete!",
+    "empty": "This lesson has no content yet."
+  },
+  "Audio": {
+    "play": "Play",
+    "pause": "Pause",
+    "slow": "Slow",
+    "unavailable": "Audio coming soon",
+    "speaker": "Voice: {name}",
+    "playWord": "Play “{word}”",
+    "noMeaning": "No translation for this word yet.",
+    "fallback": "Not yet written in this script. Shown in Latin."
+  },
+  "Recorder": {
+    "record": "Record yourself",
+    "stop": "Stop",
+    "playMine": "Hear yourself",
+    "compare": "Compare with the speaker",
+    "again": "Record again",
+    "denied": "Microphone access was refused. You can still repeat out loud.",
+    "unsupported": "Recording isn’t available in this browser. Repeat out loud instead."
+  },
+  "PartOfSpeech": {
+    "noun": "Noun",
+    "verb": "Verb",
+    "adjective": "Adjective",
+    "adverb": "Adverb",
+    "pronoun": "Pronoun",
+    "preposition": "Preposition",
+    "conjunction": "Conjunction",
+    "interjection": "Interjection",
+    "numeral": "Number",
+    "particle": "Particle",
+    "phrase": "Phrase",
+    "expression": "Expression"
   }
 }

@@ -131,5 +131,63 @@
     "unitRegion": "الوحدة {number}",
     "untitled": "المستوى {number}",
     "end": "بقية الأوراس في الطريق."
+  },
+  "Player": {
+    "close": "أغلق وارجع إلى الخريطة",
+    "back": "الخطوة السابقة",
+    "continue": "متابعة",
+    "xp": "+{xp} نقطة",
+    "xpLabel": "نقاط الخبرة",
+    "words": "{count, plural, zero {كلمة} one {كلمة تدرّبت عليها} two {كلمتان تدرّبت عليهما} few {كلمات تدرّبت عليها} many {كلمة تدرّبت عليها} other {كلمة تدرّبت عليها}}",
+    "stars": "{count, plural, zero {لا نجوم} one {نجمة واحدة} two {نجمتان} few {# نجوم} many {# نجمة} other {# نجمة}}"
+  },
+  "Lesson": {
+    "progress": "الخطوة {current} من {total}",
+    "continue": "متابعة",
+    "finish": "إنهاء",
+    "newWord": "كلمة جديدة",
+    "listenRepeat": "استمع وردّد",
+    "sayItAloud": "قلها بصوت مرتفع. يمكنك تسجيل صوتك والمقارنة.",
+    "culture": "ثقافة",
+    "readMore": "اقرأ القصة كاملة",
+    "dialogue": "محادثة",
+    "playConversation": "استمع إلى المحادثة",
+    "stopConversation": "إيقاف",
+    "tapWord": "انقر على أي كلمة لتسمعها وحدها.",
+    "complete": "اكتمل الدرس!",
+    "empty": "لا يحتوي هذا الدرس على محتوى بعد."
+  },
+  "Audio": {
+    "play": "تشغيل",
+    "pause": "إيقاف مؤقت",
+    "slow": "ببطء",
+    "unavailable": "الصوت قريبًا",
+    "speaker": "الصوت: {name}",
+    "playWord": "تشغيل «{word}»",
+    "noMeaning": "لا توجد ترجمة لهذه الكلمة بعد.",
+    "fallback": "غير مكتوبة بهذا الخط بعد، تُعرض بالحرف اللاتيني."
+  },
+  "Recorder": {
+    "record": "سجّل صوتك",
+    "stop": "إيقاف",
+    "playMine": "استمع إلى صوتك",
+    "compare": "قارن بصوت المتحدث",
+    "again": "سجّل من جديد",
+    "denied": "رُفض الوصول إلى الميكروفون. يمكنك الترديد بصوت مرتفع.",
+    "unsupported": "التسجيل غير متاح في هذا المتصفح. ردّد بصوت مرتفع."
+  },
+  "PartOfSpeech": {
+    "noun": "اسم",
+    "verb": "فعل",
+    "adjective": "صفة",
+    "adverb": "ظرف",
+    "pronoun": "ضمير",
+    "preposition": "حرف جر",
+    "conjunction": "حرف عطف",
+    "interjection": "تعجّب",
+    "numeral": "عدد",
+    "particle": "أداة",
+    "phrase": "عبارة",
+    "expression": "تعبير"
   }
 }

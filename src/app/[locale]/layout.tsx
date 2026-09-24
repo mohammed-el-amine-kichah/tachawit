@@ -3,8 +3,6 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { AppFooter } from "@/components/shared/app-footer";
-import { AppHeader } from "@/components/shared/app-header";
 import { Providers } from "@/components/shared/providers";
 import { SkipLink } from "@/components/shared/skip-link";
 import { getDirection, getHtmlLang } from "@/i18n/config";
@@ -41,11 +39,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         <NextIntlClientProvider>
           <Providers dir={dir} initialScript={script} initialTheme={theme}>
             <SkipLink />
-            <AppHeader />
-            <main id="main" tabIndex={-1} className="flex-1 outline-none">
-              {children}
-            </main>
-            <AppFooter />
+            {children}
           </Providers>
         </NextIntlClientProvider>
       </body>

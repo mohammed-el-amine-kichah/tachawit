@@ -67,3 +67,25 @@ export function applyLevelResult(snapshot: ProgressSnapshot, input: LevelResultI
     },
   };
 }
+
+/** Upper bound on XP a single lesson, quiz or review can award. */
+export const MAX_XP_PER_ACTIVITY = 100;
+
+export type LevelCompletion = {
+  levelId: string;
+  stars: number;
+  xp: number;
+  /** Entries practised in the level; they join spaced-repetition review. */
+  entryIds: string[];
+  completedAt: string;
+};
+
+export function clampXp(xp: number): number {
+  return Math.min(MAX_XP_PER_ACTIVITY, Math.max(0, Math.round(xp)));
+}
+
+/** A finished level: best stars, XP earned. */
+export function applyLevelCompletion(snapshot: ProgressSnapshot, completion: LevelCompletion): ProgressSnapshot {
+  const next = applyLevelResult(snapshot, completion);
+  return { ...next, xp: next.xp + clampXp(completion.xp) };
+}

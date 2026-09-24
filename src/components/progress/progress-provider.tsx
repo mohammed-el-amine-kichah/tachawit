@@ -3,13 +3,13 @@
 import { createContext, use, useCallback, useMemo, useSyncExternalStore, type ReactNode } from "react";
 import { useHydrated } from "@/hooks/use-hydrated";
 import { localProgressStore } from "@/lib/progress/local-store";
-import { applyLevelResult, type LevelResultInput, type ProgressSnapshot } from "@/lib/progress/snapshot";
+import { applyLevelCompletion, type LevelCompletion, type ProgressSnapshot } from "@/lib/progress/snapshot";
 
 type ProgressContextValue = {
   snapshot: ProgressSnapshot;
   /** False until the learner's saved progress has been loaded in the browser. */
   ready: boolean;
-  recordLevel: (input: LevelResultInput) => void;
+  completeLevel: (completion: Omit<LevelCompletion, "completedAt">) => void;
 };
 
 const ProgressContext = createContext<ProgressContextValue | null>(null);
@@ -22,11 +22,12 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   );
   const ready = useHydrated();
 
-  const recordLevel = useCallback((input: LevelResultInput) => {
-    localProgressStore.update((current) => applyLevelResult(current, input));
+  const completeLevel = useCallback((completion: Omit<LevelCompletion, "completedAt">) => {
+    const completedAt = new Date().toISOString();
+    localProgressStore.update((current) => applyLevelCompletion(current, { ...completion, completedAt }));
   }, []);
 
-  const value = useMemo(() => ({ snapshot, ready, recordLevel }), [snapshot, ready, recordLevel]);
+  const value = useMemo(() => ({ snapshot, ready, completeLevel }), [snapshot, ready, completeLevel]);
   return <ProgressContext value={value}>{children}</ProgressContext>;
 }
 

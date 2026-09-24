@@ -6,7 +6,7 @@ import { resolveTachawitText, type TachawitTextSource } from "@/lib/script/resol
 import type { Script } from "@/lib/script/scripts";
 import { useScript } from "./preferences-provider";
 
-const scriptClassName: Record<Script, string> = {
+export const scriptClassName: Record<Script, string> = {
   latin: "font-sans",
   arabic: "font-arabic",
   tifinagh: "font-tifinagh tracking-wide",

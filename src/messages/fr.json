@@ -131,5 +131,63 @@
     "unitRegion": "Unité {number}",
     "untitled": "Niveau {number}",
     "end": "La suite des Aurès arrive bientôt."
+  },
+  "Player": {
+    "close": "Fermer et revenir à la carte",
+    "back": "Étape précédente",
+    "continue": "Continuer",
+    "xp": "+{xp} XP",
+    "xpLabel": "Expérience gagnée",
+    "words": "{count, plural, one {mot pratiqué} other {mots pratiqués}}",
+    "stars": "{count, plural, one {# étoile} other {# étoiles}}"
+  },
+  "Lesson": {
+    "progress": "Étape {current} sur {total}",
+    "continue": "Continuer",
+    "finish": "Terminer",
+    "newWord": "Nouveau mot",
+    "listenRepeat": "Écoute et répète",
+    "sayItAloud": "Dis-le à voix haute. Tu peux t’enregistrer et comparer.",
+    "culture": "Culture",
+    "readMore": "Lire toute l’histoire",
+    "dialogue": "Conversation",
+    "playConversation": "Écouter la conversation",
+    "stopConversation": "Arrêter",
+    "tapWord": "Touche un mot pour l’entendre seul.",
+    "complete": "Leçon terminée !",
+    "empty": "Cette leçon n’a pas encore de contenu."
+  },
+  "Audio": {
+    "play": "Écouter",
+    "pause": "Pause",
+    "slow": "Lent",
+    "unavailable": "Audio bientôt disponible",
+    "speaker": "Voix : {name}",
+    "playWord": "Écouter « {word} »",
+    "noMeaning": "Pas encore de traduction pour ce mot.",
+    "fallback": "Pas encore écrit dans cette écriture. Affiché en latin."
+  },
+  "Recorder": {
+    "record": "M’enregistrer",
+    "stop": "Arrêter",
+    "playMine": "M’écouter",
+    "compare": "Comparer avec le locuteur",
+    "again": "Recommencer",
+    "denied": "L’accès au micro a été refusé. Tu peux quand même répéter à voix haute.",
+    "unsupported": "L’enregistrement n’est pas disponible dans ce navigateur. Répète à voix haute."
+  },
+  "PartOfSpeech": {
+    "noun": "Nom",
+    "verb": "Verbe",
+    "adjective": "Adjectif",
+    "adverb": "Adverbe",
+    "pronoun": "Pronom",
+    "preposition": "Préposition",
+    "conjunction": "Conjonction",
+    "interjection": "Interjection",
+    "numeral": "Nombre",
+    "particle": "Particule",
+    "phrase": "Expression",
+    "expression": "Locution"
   }
 }
