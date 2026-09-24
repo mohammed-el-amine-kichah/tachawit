@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { LessonPlayer } from "@/components/lesson/lesson-player";
-import { QuizPlayer } from "@/components/quiz/quiz-player";
+import { LevelQuiz } from "@/components/quiz/level-quiz";
 import { localize } from "@/i18n/localize";
+import { getPathname } from "@/i18n/navigation";
 import { freshSeed } from "@/lib/random";
 import { routing } from "@/i18n/routing";
 import { getLessonView } from "@/lib/supabase/queries/lessons";
@@ -32,7 +33,12 @@ export default async function LevelPage({ params }: PageProps<"/[locale]/level/[
     const quiz = await getQuizView(level.quizId);
     if (!quiz) notFound();
     // A fresh order for every attempt; generated on the server so hydration matches.
-    return <QuizPlayer levelId={level.id} quiz={quiz} seed={freshSeed()} />;
+    return <LevelQuiz levelId={level.id} quiz={quiz} seed={freshSeed()} />;
+  }
+
+  if (level.type === "review") {
+    const { locale } = await params;
+    redirect(`${getPathname({ href: "/review", locale: hasLocale(routing.locales, locale) ? locale : routing.defaultLocale })}?level=${level.id}`);
   }
 
   notFound();

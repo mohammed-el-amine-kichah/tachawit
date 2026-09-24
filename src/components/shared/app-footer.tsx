@@ -8,7 +8,7 @@ export function AppFooter() {
   const nav = useTranslations("Nav");
 
   return (
-    <footer className="mt-16">
+    <footer className="mt-16 pb-20 md:pb-0">
       <Motif variant="band" />
       <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">

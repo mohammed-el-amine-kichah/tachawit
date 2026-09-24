@@ -1,15 +1,21 @@
 import createMiddleware from "next-intl/middleware";
 import { NextRequest } from "next/server";
 import { routing } from "@/i18n/routing";
+import { applySession, hasAuthCookie, refreshSession } from "@/lib/supabase/session";
 
 const handleI18n = createMiddleware(routing);
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
+  // Refresh the session first so the locale handling below forwards the fresh cookies.
+  const session = hasAuthCookie(request) ? await refreshSession(request) : null;
+
   // First visits land on the default locale (Arabic) whatever the browser language;
   // a language picked in the switcher is still remembered through next-intl's cookie.
   const headers = new Headers(request.headers);
   headers.delete("accept-language");
-  return handleI18n(new NextRequest(request, { headers }));
+  const response = handleI18n(new NextRequest(request, { headers }));
+
+  return session ? applySession(response, session) : response;
 }
 
 export const config = {

@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { newSrsState, review } from "@/lib/srs/sm2";
+import { nextStreak } from "./streak";
 
 // A learner's progress as the app works with it. Guests keep it in localStorage;
 // signed-in learners have it loaded from and saved to Supabase.
@@ -78,14 +80,47 @@ export type LevelCompletion = {
   /** Entries practised in the level; they join spaced-repetition review. */
   entryIds: string[];
   completedAt: string;
+  /** The learner's local calendar date (YYYY-MM-DD), for the streak. Defaults to completedAt's date. */
+  today?: string;
 };
 
 export function clampXp(xp: number): number {
   return Math.min(MAX_XP_PER_ACTIVITY, Math.max(0, Math.round(xp)));
 }
 
-/** A finished level: best stars, XP earned. */
+/** A finished level: best stars, XP earned, streak, and new words scheduled for review. */
 export function applyLevelCompletion(snapshot: ProgressSnapshot, completion: LevelCompletion): ProgressSnapshot {
   const next = applyLevelResult(snapshot, completion);
-  return { ...next, xp: next.xp + clampXp(completion.xp) };
+  const now = new Date(completion.completedAt);
+  const srs = { ...next.srs };
+  for (const entryId of completion.entryIds) srs[entryId] ??= newSrsState(now);
+  return {
+    ...next,
+    xp: next.xp + clampXp(completion.xp),
+    streak: nextStreak(next.streak, completion.today ?? completion.completedAt.slice(0, 10)),
+    srs,
+  };
+}
+
+export type ReviewResult = {
+  /** SM-2 answer quality per reviewed entry. */
+  grades: Record<string, number>;
+  xp: number;
+  reviewedAt: string;
+  today: string;
+};
+
+/** A finished review session: reschedule each entry, add XP, keep the streak going. */
+export function applyReview(snapshot: ProgressSnapshot, result: ReviewResult): ProgressSnapshot {
+  const now = new Date(result.reviewedAt);
+  const srs = { ...snapshot.srs };
+  for (const [entryId, grade] of Object.entries(result.grades)) {
+    srs[entryId] = review(srs[entryId] ?? newSrsState(now), grade, now);
+  }
+  return {
+    ...snapshot,
+    srs,
+    xp: snapshot.xp + clampXp(result.xp),
+    streak: nextStreak(snapshot.streak, result.today),
+  };
 }

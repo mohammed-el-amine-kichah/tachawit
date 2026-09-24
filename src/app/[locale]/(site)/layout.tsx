@@ -1,5 +1,6 @@
 import { AppFooter } from "@/components/shared/app-footer";
 import { AppHeader } from "@/components/shared/app-header";
+import { BottomNav } from "@/components/shared/bottom-nav";
 
 export default function SiteLayout({ children }: LayoutProps<"/[locale]">) {
   return (
@@ -9,6 +10,7 @@ export default function SiteLayout({ children }: LayoutProps<"/[locale]">) {
         {children}
       </main>
       <AppFooter />
+      <BottomNav />
     </>
   );
 }

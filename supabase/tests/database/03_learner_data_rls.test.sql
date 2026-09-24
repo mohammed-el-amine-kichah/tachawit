@@ -82,7 +82,11 @@ select is(
 set local role authenticated;
 select set_config('request.jwt.claims', '{"sub": "22222222-2222-4222-8222-222222222222", "role": "authenticated"}', true);
 
-select is((select count(*)::int from public.profiles), 3, 'an admin can read every profile');
+select is(
+  (select count(*)::int from public.profiles where id in (
+    '11111111-1111-4111-8111-111111111111', '22222222-2222-4222-8222-222222222222', '33333333-3333-4333-8333-333333333333')),
+  3, 'an admin can read every profile'
+);
 select isnt_empty($$ select 1 from public.level_progress $$, 'an admin can read learner progress for stats');
 select lives_ok(
   $$ update public.profiles set role = 'admin' where id = '33333333-3333-4333-8333-333333333333' $$,

@@ -11,7 +11,10 @@
   "Nav": {
     "label": "Principale",
     "journey": "Parcours",
-    "design": "Système de design"
+    "design": "Système de design",
+    "review": "Révision",
+    "profile": "Profil",
+    "reviewDue": "Révision, {count, plural, one {# mot à revoir} other {# mots à revoir}}"
   },
   "ScriptToggle": {
     "label": "Écriture des mots en tachawit",
@@ -220,5 +223,59 @@
     "complete": "Quiz terminé !",
     "firstTry": "{count} sur {total} justes du premier coup",
     "empty": "Ce quiz n’a pas encore de questions."
+  },
+  "Auth": {
+    "title": "Sauvegarde ta progression",
+    "lead": "Connecte-toi pour retrouver ton parcours sur tous tes appareils. Ce que tu as appris ici te suit.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "toi@exemple.com",
+    "sendLink": "Recevoir un lien de connexion",
+    "sending": "Envoi…",
+    "sent": "Regarde ta boîte mail",
+    "sentLead": "Nous t’avons envoyé un lien de connexion. Ouvre-le sur cet appareil pour continuer.",
+    "or": "ou",
+    "google": "Continuer avec Google",
+    "invalidEmail": "Saisis une adresse e-mail valide.",
+    "failed": "Un problème est survenu. Réessaie dans un instant.",
+    "linkError": "Ce lien a expiré ou a déjà été utilisé. Demandes-en un nouveau.",
+    "googleError": "La connexion Google n’est pas disponible pour le moment.",
+    "privacy": "Ton e-mail sert uniquement à te connecter."
+  },
+  "Profile": {
+    "title": "Profil",
+    "guestName": "Apprenant invité",
+    "xp": "XP total",
+    "streak": "Jours d’affilée",
+    "longest": "Meilleure série : {count, plural, one {# jour} other {# jours}}",
+    "words": "Mots appris",
+    "units": "Unités terminées",
+    "reviewCta": "{count, plural, =0 {Rien à revoir aujourd’hui} one {# mot à revoir} other {# mots à revoir}}",
+    "review": "Réviser",
+    "guestTitle": "Tu apprends en invité",
+    "guestLead": "Ta progression est enregistrée sur cet appareil uniquement. Crée un compte pour la garder partout.",
+    "saveProgress": "Sauvegarder ma progression",
+    "signedInAs": "Connecté en tant que {email}",
+    "displayName": "Nom affiché",
+    "save": "Enregistrer",
+    "saved": "Enregistré.",
+    "saveError": "Impossible d’enregistrer. Réessaie.",
+    "signOut": "Se déconnecter",
+    "admin": "Administration"
+  },
+  "Review": {
+    "title": "Révision du jour",
+    "lead": "Quelques minutes par jour pour garder les mots pour de bon.",
+    "dueCount": "{count, plural, one {# mot est prêt à être revu} other {# mots sont prêts à être revus}}",
+    "start": "Commencer la révision",
+    "allDone": "Tout est à jour !",
+    "allDoneLead": "Ton prochain mot revient {when}.",
+    "practice": "M’entraîner quand même",
+    "nothing": "Rien à revoir pour l’instant",
+    "nothingLead": "Termine une leçon : ses mots reviendront ici au bon moment.",
+    "backToMap": "Retour à la carte",
+    "complete": "Révision terminée !",
+    "loading": "Préparation de ta révision…",
+    "error": "Ta révision n’a pas pu être chargée. Vérifie ta connexion et réessaie.",
+    "unavailable": "Ces mots ne sont plus disponibles."
   }
 }

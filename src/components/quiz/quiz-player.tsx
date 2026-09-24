@@ -8,13 +8,13 @@ import { BigButton } from "@/components/player/big-button";
 import { CompletionScreen } from "@/components/player/completion-screen";
 import { PlayerFooter } from "@/components/player/player-footer";
 import { PlayerTopBar } from "@/components/player/player-top-bar";
-import { useProgress } from "@/components/progress/progress-provider";
 import { Notice } from "@/components/shared/notice";
 import { playSound } from "@/lib/audio/sfx";
 import { cardSlide } from "@/lib/motion";
+import type { QuizQuestion } from "@/lib/content/quiz";
+import type { Glossary, ViewEntry } from "@/lib/lesson/view";
 import { buildQuizItems, type QuizItem } from "@/lib/quiz/build";
-import { initialSession, quizScore, quizSession, starsFor, xpFor } from "@/lib/quiz/session";
-import type { QuizView } from "@/lib/supabase/queries/quizzes";
+import { initialSession, quizScore, quizSession, starsFor, xpFor, type QuestionResult, type QuizScore } from "@/lib/quiz/session";
 import { FeedbackSheet } from "./feedback-sheet";
 import { QuestionView } from "./question-view";
 
@@ -22,16 +22,42 @@ function answerOf(item: QuizItem) {
   return item.type === "match_pairs" ? null : item.answer;
 }
 
-function entryIdsOf(items: QuizItem[]): string[] {
-  const ids = items.flatMap((item) => (item.type === "match_pairs" ? item.pairs.map((p) => p.id) : [item.answer.id]));
-  return [...new Set(ids)];
+function entryIdsOf(item: QuizItem): string[] {
+  return item.type === "match_pairs" ? item.pairs.map((p) => p.id) : [item.answer.id];
 }
 
+export type QuizSummary = {
+  stars: number | null;
+  xp: number;
+  /** Result per question id, and the entries each question practised. */
+  results: Record<string, QuestionResult>;
+  entriesByQuestion: Record<string, string[]>;
+  words: string[];
+};
+
+const quizScoring = (score: QuizScore) => ({ stars: starsFor(score.accuracy), xp: xpFor(score) });
+
 /** Questions one at a time, instant feedback, no hearts: misses come back at the end. */
-export function QuizPlayer({ levelId, quiz, seed }: { levelId: string; quiz: QuizView; seed: number }) {
+export function QuizPlayer({
+  questions,
+  entries,
+  glossary,
+  seed,
+  title,
+  onComplete,
+  scoring = quizScoring,
+}: {
+  questions: QuizQuestion[];
+  entries: Record<string, ViewEntry>;
+  glossary: Glossary;
+  seed: number;
+  /** Heading of the completion screen. */
+  title: string;
+  onComplete: (summary: QuizSummary) => void;
+  scoring?: (score: QuizScore) => { stars: number | null; xp: number };
+}) {
   const t = useTranslations("Quiz");
-  const { completeLevel } = useProgress();
-  const items = useMemo(() => buildQuizItems(quiz.questions, quiz.entries, seed), [quiz, seed]);
+  const items = useMemo(() => buildQuizItems(questions, entries, seed), [questions, entries, seed]);
   const byId = useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
   const [session, dispatch] = useReducer(quizSession, items.map((item) => item.id), initialSession);
   const [check, setCheck] = useState<(() => boolean) | null>(null);
@@ -44,15 +70,15 @@ export function QuizPlayer({ levelId, quiz, seed }: { levelId: string; quiz: Qui
   }, []);
 
   const score = quizScore(session.results);
-  const stars = starsFor(score.accuracy);
-  const xp = xpFor(score);
-  const words = useMemo(() => entryIdsOf(items), [items]);
+  const { stars, xp } = scoring(score);
+  const entriesByQuestion = useMemo(() => Object.fromEntries(items.map((item) => [item.id, entryIdsOf(item)])), [items]);
+  const words = useMemo(() => [...new Set(Object.values(entriesByQuestion).flat())], [entriesByQuestion]);
 
   useEffect(() => {
     if (!session.finished || recorded.current || items.length === 0) return;
     recorded.current = true;
-    completeLevel({ levelId, stars, xp, entryIds: words });
-  }, [session.finished, completeLevel, levelId, stars, xp, words, items.length]);
+    onComplete({ stars, xp, results: session.results, entriesByQuestion, words });
+  }, [session.finished, session.results, onComplete, stars, xp, entriesByQuestion, words, items.length]);
 
   const progressLabel = t("progress", { current: Math.min(session.position + 1, session.queue.length), total: session.queue.length });
 
@@ -71,12 +97,12 @@ export function QuizPlayer({ levelId, quiz, seed }: { levelId: string; quiz: Qui
   const status = session.feedback ?? "answering";
 
   return (
-    <GlossaryContext value={quiz.glossary}>
+    <GlossaryContext value={glossary}>
       <div className="flex min-h-dvh flex-col">
         <PlayerTopBar value={session.finished ? 1 : session.position / session.queue.length} label={progressLabel} />
         <main id="main" className="relative flex flex-1 flex-col overflow-x-clip">
           {session.finished || !item ? (
-            <CompletionScreen title={t("complete")} stars={stars} xp={xp} words={words.length}>
+            <CompletionScreen title={title} stars={stars} xp={xp} words={words.length}>
               <p className="text-muted-foreground">{t("firstTry", { count: score.firstTry, total: score.total })}</p>
             </CompletionScreen>
           ) : (

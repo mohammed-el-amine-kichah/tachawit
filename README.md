@@ -5,7 +5,7 @@ A gamified web app to learn **Tachawit** (Chaoui, the Amazigh language of the Au
 - Product spec: [docs/SPEC.md](docs/SPEC.md)
 - Conventions for contributors and AI agents: [CLAUDE.md](CLAUDE.md)
 
-**Status:** phase 1 of 9 (foundations: design system, i18n with RTL, script toggle, database schema with row-level security, seed data).
+**Status:** phases 1–5 of 9 done: foundations, the map, lessons, quizzes, and progress with accounts and review.
 
 ## Stack
 
@@ -45,6 +45,7 @@ After changing migrations, run `pnpm db:reset` (re-applies migrations and seed) 
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | `.env.local`, Vercel | Supabase API URL (local: `http://127.0.0.1:54321`) |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | `.env.local`, Vercel | Publishable (anon) key. Safe in the browser, since every table is protected by RLS |
+| `NEXT_PUBLIC_SITE_URL` | Vercel | Public address of the site (e.g. `https://tachawit.app`), used in sign-in links. Optional locally |
 | `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID` | shell env when running `pnpm db:start` | Optional: Google sign-in for local Supabase |
 | `SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET` | shell env when running `pnpm db:start` | Optional: Google sign-in for local Supabase |
 
@@ -54,7 +55,7 @@ Never commit `.env.local`. Keep `.env.example` up to date when adding variables.
 
 Admin rights live in `public.profiles.role` and are enforced by row-level security. Hiding the admin UI is not what protects it. A user cannot promote themselves through the API. The first admin is promoted with SQL, which only someone with database access can run.
 
-1. **Create the account.** Until the sign-in screen ships (phase 5), create the user in Supabase Studio: *Authentication → Users → Add user* (local: http://127.0.0.1:54323; hosted: your project dashboard). Signing up creates a `learner` profile automatically.
+1. **Create the account.** Sign in on the site (`/ar/login`) with a magic link or Google. Locally, the email lands in Mailpit (http://127.0.0.1:54324). Signing up creates a `learner` profile automatically.
 2. **Promote it** in the Studio *SQL Editor*:
 
    ```sql
@@ -65,6 +66,17 @@ Admin rights live in `public.profiles.role` and are enforced by row-level securi
 
 After that, admins can promote other users from the admin panel (phase 6).
 
+## Accounts and progress
+
+- Guests learn without an account; progress is kept in the browser (localStorage).
+- Signing in with a magic link or Google merges that guest progress into the account (`merge_guest_progress`).
+- Signed-in progress is written through database functions (`complete_level`, `log_activity`) that run with the learner's own permissions, so row-level security still applies. Writes wait in a local outbox and are retried when the connection returns.
+- Streaks count the learner's local calendar days; spaced repetition follows SM-2. Both are unit-tested (`src/lib/progress`, `src/lib/srs`).
+
+### Google sign-in
+
+Create an OAuth client in Google Cloud (type *Web application*) with the redirect URI `https://<project-ref>.supabase.co/auth/v1/callback`, then enable Google under *Authentication → Providers* in Supabase. For local Supabase, set `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID` and `SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET`, set `enabled = true` under `[auth.external.google]` in `supabase/config.toml`, and restart Supabase.
+
 ## Deploying
 
 1. Create a Supabase project, then link and push the schema:
@@ -72,8 +84,8 @@ After that, admins can promote other users from the admin panel (phase 6).
    pnpm exec supabase link --project-ref <your-project-ref>
    pnpm exec supabase db push     # migrations only; the placeholder seed is not pushed
    ```
-2. In the Supabase dashboard, under *Authentication*, set the site URL and redirect URLs to your domain, and enable the Google provider if you want it.
-3. Import the repo into Vercel and set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+2. In the Supabase dashboard, under *Authentication → URL Configuration*, set the site URL to your domain and add `https://<your-domain>/api/auth/callback` to the redirect URLs. Enable Google if you want it (see above).
+3. Import the repo into Vercel and set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` and `NEXT_PUBLIC_SITE_URL`.
 
 ## Tests
 

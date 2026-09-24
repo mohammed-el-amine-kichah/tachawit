@@ -742,9 +742,79 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      complete_level: {
+        Args: {
+          p_entry_ids: string[]
+          p_level_id: string
+          p_stars: number
+          p_today: string
+          p_xp: number
+        }
+        Returns: {
+          created_at: string
+          current_streak: number
+          last_active_on: string | null
+          longest_streak: number
+          updated_at: string
+          user_id: string
+          xp: number
+        }
+        SetofOptions: {
+          from: "*"
+          to: "learner_stats"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
       is_admin: { Args: never; Returns: boolean }
       is_localized_text: { Args: { value: Json }; Returns: boolean }
+      log_activity: {
+        Args: { p_today: string; p_xp: number }
+        Returns: {
+          created_at: string
+          current_streak: number
+          last_active_on: string | null
+          longest_streak: number
+          updated_at: string
+          user_id: string
+          xp: number
+        }
+        SetofOptions: {
+          from: "*"
+          to: "learner_stats"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      merge_guest_progress: {
+        Args: { p_snapshot: Json; p_today: string }
+        Returns: {
+          created_at: string
+          current_streak: number
+          last_active_on: string | null
+          longest_streak: number
+          updated_at: string
+          user_id: string
+          xp: number
+        }
+        SetofOptions: {
+          from: "*"
+          to: "learner_stats"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      next_streak: {
+        Args: {
+          p_current: number
+          p_last: string
+          p_longest: number
+          p_today: string
+        }
+        Returns: Record<string, unknown>
+      }
       referenced_entry_ids: { Args: { payload: Json }; Returns: string[] }
+      require_learner: { Args: { p_today: string }; Returns: string }
     }
     Enums: {
       app_role: "learner" | "admin"

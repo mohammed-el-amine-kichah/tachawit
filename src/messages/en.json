@@ -11,7 +11,10 @@
   "Nav": {
     "label": "Main",
     "journey": "Journey",
-    "design": "Design system"
+    "design": "Design system",
+    "review": "Review",
+    "profile": "Profile",
+    "reviewDue": "Review, {count, plural, one {# word due} other {# words due}}"
   },
   "ScriptToggle": {
     "label": "Script for Tachawit words",
@@ -220,5 +223,59 @@
     "complete": "Quiz complete!",
     "firstTry": "{count} of {total} right on the first try",
     "empty": "This quiz has no questions yet."
+  },
+  "Auth": {
+    "title": "Save your progress",
+    "lead": "Sign in to keep your journey on every device. What you learned here comes with you.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "sendLink": "Email me a sign-in link",
+    "sending": "Sending…",
+    "sent": "Check your inbox",
+    "sentLead": "We sent you a sign-in link. Open it on this device to continue.",
+    "or": "or",
+    "google": "Continue with Google",
+    "invalidEmail": "Enter a valid email address.",
+    "failed": "Something went wrong. Please try again in a moment.",
+    "linkError": "That sign-in link has expired or was already used. Ask for a new one.",
+    "googleError": "Google sign-in isn’t available right now.",
+    "privacy": "We only use your email to sign you in."
+  },
+  "Profile": {
+    "title": "Profile",
+    "guestName": "Guest learner",
+    "xp": "Total XP",
+    "streak": "Day streak",
+    "longest": "Longest streak: {count, plural, one {# day} other {# days}}",
+    "words": "Words learned",
+    "units": "Units completed",
+    "reviewCta": "{count, plural, =0 {Nothing to review today} one {# word to review} other {# words to review}}",
+    "review": "Review now",
+    "guestTitle": "Learning as a guest",
+    "guestLead": "Your progress is saved on this device only. Create an account to keep it everywhere.",
+    "saveProgress": "Save my progress",
+    "signedInAs": "Signed in as {email}",
+    "displayName": "Display name",
+    "save": "Save",
+    "saved": "Saved.",
+    "saveError": "Couldn’t save. Please try again.",
+    "signOut": "Sign out",
+    "admin": "Admin panel"
+  },
+  "Review": {
+    "title": "Daily review",
+    "lead": "A few minutes a day keeps new words for good.",
+    "dueCount": "{count, plural, one {# word is ready for review} other {# words are ready for review}}",
+    "start": "Start the review",
+    "allDone": "All caught up!",
+    "allDoneLead": "Your next word comes back {when}.",
+    "practice": "Practise anyway",
+    "nothing": "Nothing to review yet",
+    "nothingLead": "Finish a lesson and its words will come back here at the right moment.",
+    "backToMap": "Back to the map",
+    "complete": "Review complete!",
+    "loading": "Preparing your review…",
+    "error": "Your review couldn’t be loaded. Check your connection and try again.",
+    "unavailable": "These words are no longer available."
   }
 }
