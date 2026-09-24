@@ -43,3 +43,6 @@ next-env.d.ts
 
 # local screenshots from manual testing
 /shots
+
+# Google OAuth client secrets downloaded from Google Cloud; keep them out of the repo
+client_secret_*.json
