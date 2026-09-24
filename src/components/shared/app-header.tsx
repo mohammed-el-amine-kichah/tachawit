@@ -1,8 +1,7 @@
 import { Brand } from "./brand";
 import { HeaderNav } from "./header-nav";
 import { LocaleSwitcher } from "./locale-switcher";
-import { ScriptToggle } from "./script-toggle";
-import { ThemeToggle } from "./theme-toggle";
+import { ProfileLink } from "./profile-link";
 
 export function AppHeader() {
   return (
@@ -11,9 +10,8 @@ export function AppHeader() {
         <Brand />
         <HeaderNav />
         <div className="flex items-center gap-1">
-          <ScriptToggle className="me-1" />
           <LocaleSwitcher />
-          <ThemeToggle />
+          <ProfileLink />
         </div>
       </div>
     </header>

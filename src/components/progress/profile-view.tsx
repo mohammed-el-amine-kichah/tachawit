@@ -14,6 +14,7 @@ import { useHydrated } from "@/hooks/use-hydrated";
 import { Link } from "@/i18n/navigation";
 import { displayStreak, localDate } from "@/lib/progress/streak";
 import { dueEntryIds } from "@/lib/srs/sm2";
+import { PreferencesSection } from "./preferences-section";
 import { useProgress } from "./progress-provider";
 
 function Stat({ icon: Icon, value, label, className }: { icon: LucideIcon; value: number | null; label: string; className: string }) {
@@ -26,7 +27,7 @@ function Stat({ icon: Icon, value, label, className }: { icon: LucideIcon; value
   );
 }
 
-/** XP, streak, words learned and units completed, plus the account (or the invitation to create one). */
+/** XP, streak, words learned and units completed, the learner's preferences, and the account (or the invitation to create one). */
 export function ProfileView({ units, now }: { units: { id: string; levelIds: string[] }[]; now: number }) {
   const t = useTranslations("Profile");
   const hydrated = useHydrated();
@@ -68,6 +69,8 @@ export function ProfileView({ units, now }: { units: { id: string; levelIds: str
           )}
         </div>
       )}
+
+      <PreferencesSection />
 
       <section className="overflow-hidden rounded-3xl bg-card shadow-soft ring-1 ring-border">
         <Motif variant="band" className="h-2.5" />

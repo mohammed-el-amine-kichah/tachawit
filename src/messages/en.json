@@ -37,7 +37,10 @@
     "ar": "العربية"
   },
   "ThemeToggle": {
-    "toggle": "Switch between light and dark"
+    "toggle": "Switch between light and dark",
+    "system": "Device",
+    "light": "Light",
+    "dark": "Dark"
   },
   "Home": {
     "eyebrow": "Tachawit · Tamazight of the Aurès",
@@ -272,7 +275,10 @@
     "saved": "Saved.",
     "saveError": "Couldn’t save. Please try again.",
     "signOut": "Sign out",
-    "admin": "Admin panel"
+    "admin": "Admin panel",
+    "preferences": "Preferences",
+    "scriptLead": "Words missing in a script are shown in Latin.",
+    "theme": "Appearance"
   },
   "Review": {
     "title": "Daily review",

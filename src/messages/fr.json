@@ -37,7 +37,10 @@
     "ar": "العربية"
   },
   "ThemeToggle": {
-    "toggle": "Basculer entre clair et sombre"
+    "toggle": "Basculer entre clair et sombre",
+    "system": "Appareil",
+    "light": "Clair",
+    "dark": "Sombre"
   },
   "Home": {
     "eyebrow": "Tachawit · le tamazight des Aurès",
@@ -272,7 +275,10 @@
     "saved": "Enregistré.",
     "saveError": "Impossible d’enregistrer. Réessaie.",
     "signOut": "Se déconnecter",
-    "admin": "Administration"
+    "admin": "Administration",
+    "preferences": "Préférences",
+    "scriptLead": "Les mots pas encore écrits dans une écriture s’affichent en latin.",
+    "theme": "Apparence"
   },
   "Review": {
     "title": "Révision du jour",
