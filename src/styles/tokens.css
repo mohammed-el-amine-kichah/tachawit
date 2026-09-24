@@ -74,6 +74,8 @@
   --radius: 0.875rem;
   --shadow-soft: 0 1px 2px rgb(42 33 24 / 0.06), 0 4px 16px rgb(42 33 24 / 0.08);
   --shadow-raised: 0 2px 4px rgb(42 33 24 / 0.08), 0 12px 32px rgb(42 33 24 / 0.14);
+  /* Darkening overlay for the pressed-button depth of map nodes and big buttons. */
+  --shade: rgb(0 0 0 / 0.22);
 }
 
 /* Light theme (default) ------------------------------------------------------- */
@@ -105,6 +107,16 @@
   --motif-alt: var(--indigo-600);
   --sky-top: var(--ochre-50);
   --sky-bottom: var(--terracotta-100);
+  --gold-foreground: var(--ochre-900);
+  --map-peaks: var(--ochre-50);
+  --map-cedar: var(--cedar-50);
+  --map-cliffs: var(--terracotta-50);
+  --map-palms: var(--ochre-100);
+  --map-far: var(--indigo-200);
+  --map-mid: var(--terracotta-200);
+  --map-foliage: var(--cedar-400);
+  --map-trunk: var(--ochre-700);
+  --map-path: var(--sand-300);
 }
 
 /* Dark theme: deep indigo night sky -------------------------------------------- */
@@ -138,6 +150,16 @@
   --sky-bottom: var(--indigo-800);
   --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.3);
   --shadow-raised: 0 2px 4px rgb(0 0 0 / 0.35), 0 12px 32px rgb(0 0 0 / 0.45);
+  --gold-foreground: var(--ochre-900);
+  --map-peaks: var(--indigo-900);
+  --map-cedar: #0d211a;
+  --map-cliffs: #241722;
+  --map-palms: #221c14;
+  --map-far: var(--indigo-700);
+  --map-mid: var(--indigo-800);
+  --map-foliage: var(--cedar-600);
+  --map-trunk: var(--ochre-800);
+  --map-path: var(--indigo-600);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -171,5 +193,15 @@
     --sky-bottom: var(--indigo-800);
     --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.3);
     --shadow-raised: 0 2px 4px rgb(0 0 0 / 0.35), 0 12px 32px rgb(0 0 0 / 0.45);
+    --gold-foreground: var(--ochre-900);
+    --map-peaks: var(--indigo-900);
+    --map-cedar: #0d211a;
+    --map-cliffs: #241722;
+    --map-palms: #221c14;
+    --map-far: var(--indigo-700);
+    --map-mid: var(--indigo-800);
+    --map-foliage: var(--cedar-600);
+    --map-trunk: var(--ochre-800);
+    --map-path: var(--indigo-600);
   }
 }

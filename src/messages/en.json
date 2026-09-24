@@ -42,9 +42,7 @@
     "lead": "Learn the language of the Aurès mountains with voices recorded in Merouana, one short lesson at a time.",
     "start": "Start the journey",
     "journeyTitle": "Your journey",
-    "journeyLead": "The illustrated map of the Aurès is on its way. For now, here are the units ready to explore.",
     "unitNumber": "Unit {number}",
-    "levelCount": "{count, plural, one {# level} other {# levels}}",
     "empty": "No units are published yet. Add one from the admin panel.",
     "unavailable": "The lessons could not be loaded right now. Please try again in a moment."
   },
@@ -117,5 +115,21 @@
     "title": "This path leads nowhere",
     "lead": "The page you are looking for does not exist.",
     "back": "Back to the journey"
+  },
+  "Map": {
+    "status": {
+      "pending": "Loading",
+      "locked": "Locked",
+      "available": "Open",
+      "current": "Up next",
+      "completed": "Completed"
+    },
+    "stars": "{count, plural, =0 {No stars yet} one {# star} other {# stars}}",
+    "lockedHint": "Finish the earlier levels to open this one.",
+    "unitProgress": "{done}/{total}",
+    "unitProgressLabel": "{done} of {total} levels completed",
+    "unitRegion": "Unit {number}",
+    "untitled": "Level {number}",
+    "end": "More of the Aurès is on its way."
   }
 }

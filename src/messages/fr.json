@@ -42,9 +42,7 @@
     "lead": "Apprends la langue des montagnes des Aurès avec des voix enregistrées à Merouana, une courte leçon à la fois.",
     "start": "Commencer le parcours",
     "journeyTitle": "Ton parcours",
-    "journeyLead": "La carte illustrée des Aurès arrive bientôt. En attendant, voici les unités prêtes à explorer.",
     "unitNumber": "Unité {number}",
-    "levelCount": "{count, plural, one {# niveau} other {# niveaux}}",
     "empty": "Aucune unité n’est encore publiée. Ajoutes-en une depuis l’administration.",
     "unavailable": "Les leçons n’ont pas pu être chargées. Réessaie dans un instant."
   },
@@ -117,5 +115,21 @@
     "title": "Ce chemin ne mène nulle part",
     "lead": "La page que tu cherches n’existe pas.",
     "back": "Retour au parcours"
+  },
+  "Map": {
+    "status": {
+      "pending": "Chargement",
+      "locked": "Verrouillé",
+      "available": "Ouvert",
+      "current": "À suivre",
+      "completed": "Terminé"
+    },
+    "stars": "{count, plural, =0 {Pas encore d’étoile} one {# étoile} other {# étoiles}}",
+    "lockedHint": "Termine les niveaux précédents pour ouvrir celui-ci.",
+    "unitProgress": "{done}/{total}",
+    "unitProgressLabel": "{done} niveaux terminés sur {total}",
+    "unitRegion": "Unité {number}",
+    "untitled": "Niveau {number}",
+    "end": "La suite des Aurès arrive bientôt."
   }
 }

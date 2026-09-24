@@ -34,6 +34,13 @@
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-map-far: var(--map-far);
+  --color-map-mid: var(--map-mid);
+  --color-map-foliage: var(--map-foliage);
+  --color-map-trunk: var(--map-trunk);
+  --color-map-path: var(--map-path);
+  --color-shade: var(--shade);
   --color-silver: var(--silver);
   --color-motif: var(--motif);
   --color-motif-alt: var(--motif-alt);
@@ -98,6 +105,74 @@
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 4 L36 20 L20 36 L4 20 Z' fill='none' stroke='black' stroke-width='1'/%3E%3Cpath d='M20 14 L26 20 L20 26 L14 20 Z' fill='black'/%3E%3Ccircle cx='0' cy='0' r='1.5' fill='black'/%3E%3Ccircle cx='40' cy='0' r='1.5' fill='black'/%3E%3Ccircle cx='0' cy='40' r='1.5' fill='black'/%3E%3Ccircle cx='40' cy='40' r='1.5' fill='black'/%3E%3C/svg%3E");
   mask-repeat: repeat;
   mask-size: 40px 40px;
+}
+
+/* Map: gentle pulse on open nodes and scroll-driven parallax (CSS only, off for reduced motion). */
+@keyframes node-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@keyframes avatar-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes parallax {
+  from {
+    transform: translateY(calc(var(--parallax, 40px) * -1));
+  }
+  to {
+    transform: translateY(var(--parallax, 40px));
+  }
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+@utility animate-node-pulse {
+  animation: node-pulse 1.8s ease-out infinite;
+}
+
+@utility animate-avatar-bob {
+  animation: avatar-bob 2.4s ease-in-out infinite;
+}
+
+@utility animate-nudge {
+  animation: nudge 0.4s ease-in-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .parallax {
+      animation: parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+  }
 }
 
 @layer base {
