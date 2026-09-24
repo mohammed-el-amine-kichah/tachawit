@@ -1,0 +1,121 @@
+{
+  "Metadata": {
+    "title": "Tachawit : reprends ta langue",
+    "description": "Apprends le tachawit, la langue amazighe des Aurès, avec des voix enregistrées par des locuteurs natifs."
+  },
+  "Common": {
+    "appName": "Tachawit",
+    "skipToContent": "Aller au contenu",
+    "sampleContent": "Contenu d’exemple"
+  },
+  "Nav": {
+    "label": "Principale",
+    "journey": "Parcours",
+    "design": "Système de design"
+  },
+  "ScriptToggle": {
+    "label": "Écriture des mots en tachawit",
+    "latin": "Latin",
+    "arabic": "Arabe",
+    "tifinagh": "Tifinagh",
+    "sampleLatin": "Abc",
+    "sampleArabic": "أبج",
+    "sampleTifinagh": "ⴰⴱⴳ",
+    "fallback": "Pas encore écrit dans cette écriture. Affiché en latin."
+  },
+  "LocaleSwitcher": {
+    "label": "Langue de l’interface",
+    "en": "English",
+    "fr": "Français",
+    "ar": "العربية",
+    "dz": "الدارجة"
+  },
+  "ThemeToggle": {
+    "label": "Thème de couleurs",
+    "system": "Comme mon appareil",
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+  "Home": {
+    "eyebrow": "Tachawit · le tamazight des Aurès",
+    "title": "Reprends ta langue.",
+    "lead": "Apprends la langue des montagnes des Aurès avec des voix enregistrées à Merouana, une courte leçon à la fois.",
+    "start": "Commencer le parcours",
+    "journeyTitle": "Ton parcours",
+    "journeyLead": "La carte illustrée des Aurès arrive bientôt. En attendant, voici les unités prêtes à explorer.",
+    "unitNumber": "Unité {number}",
+    "levelCount": "{count, plural, one {# niveau} other {# niveaux}}",
+    "empty": "Aucune unité n’est encore publiée. Ajoutes-en une depuis l’administration.",
+    "unavailable": "Les leçons n’ont pas pu être chargées. Réessaie dans un instant."
+  },
+  "LevelType": {
+    "lesson": "Leçon",
+    "quiz": "Quiz",
+    "review": "Révision",
+    "boss": "Défi",
+    "story": "Histoire"
+  },
+  "Footer": {
+    "tagline": "Reprends ta langue.",
+    "credits": "Voix enregistrées avec des locuteurs natifs de Merouana, Batna."
+  },
+  "Design": {
+    "metaTitle": "Système de design",
+    "title": "Système de design",
+    "lead": "Les couleurs, la typographie, les motifs et les composants de Tachawit. Tout ici est construit à partir de jetons de design.",
+    "colorsTitle": "Couleurs",
+    "semanticTitle": "Rôles",
+    "paletteTitle": "Palette",
+    "swatch": {
+      "background": "Fond",
+      "card": "Carte",
+      "primary": "Principale",
+      "secondary": "Secondaire",
+      "accent": "Accent",
+      "success": "Réussite",
+      "gold": "Étoiles",
+      "muted": "Atténuée",
+      "terracotta": "Terre cuite",
+      "ochre": "Ocre",
+      "indigo": "Indigo profond",
+      "cedar": "Vert cèdre",
+      "silver": "Argent",
+      "sand": "Sable"
+    },
+    "typeTitle": "Typographie",
+    "typeDisplay": "Titres : Noto Serif Display et Reem Kufi",
+    "typeBody": "Texte : Noto Sans et Noto Sans Arabic",
+    "typeTamazight": "Lettres latines du tamazight",
+    "typeArabic": "Écriture arabe",
+    "typeTifinagh": "Tifinagh : Noto Sans Tifinagh",
+    "bodySample": "L’audio d’abord : chaque mot est enregistré par un locuteur natif, et chaque leçon tient dans un trajet en bus.",
+    "glyphsLatin": "ɣ ḥ ṭ ḍ ṣ ẓ ɛ ε č ǧ Ɣ Ḥ Ṭ Ḍ Ṣ Ẓ Ɛ Č Ǧ",
+    "glyphsArabic": "ا ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ڨ ف ق ك ل م ن ه و ي",
+    "glyphsTifinagh": "ⴰ ⴱ ⴳ ⴷ ⴹ ⴻ ⴼ ⴽ ⵀ ⵃ ⵄ ⵅ ⵇ ⵉ ⵊ ⵍ ⵎ ⵏ ⵓ ⵔ ⵕ ⵖ ⵙ ⵚ ⵛ ⵜ ⵟ ⵡ ⵢ ⵣ ⵥ",
+    "componentsTitle": "Composants",
+    "buttonPrimary": "Continuer",
+    "buttonSecondary": "Réécouter",
+    "buttonOutline": "Passer pour l’instant",
+    "buttonGhost": "Plus tard",
+    "badgeNew": "Nouveau",
+    "badgeDone": "Terminé",
+    "progressLabel": "Progression de la leçon",
+    "cardTitle": "Une carte",
+    "cardBody": "Une carte porte une seule idée à la fois, comme une étape de leçon.",
+    "motifsTitle": "Motifs",
+    "motifsLead": "Bordures et textures inspirées du tissage, de la poterie et des bijoux en argent chaouis, avec le ⵣ tifinagh pour emblème.",
+    "motifBand": "Bande tissée",
+    "motifZigzag": "Zigzag de poterie",
+    "motifWeave": "Texture tissée",
+    "motifMark": "L’emblème ⵣ",
+    "tachawitTitle": "Texte en tachawit",
+    "tachawitLead": "Chaque mot en tachawit suit l’écriture choisie dans l’en-tête. S’il manque une écriture, le latin prend le relais.",
+    "tachawitEmpty": "Aucune entrée publiée pour l’instant.",
+    "tachawitUnavailable": "Les entrées n’ont pas pu être chargées."
+  },
+  "NotFound": {
+    "title": "Ce chemin ne mène nulle part",
+    "lead": "La page que tu cherches n’existe pas.",
+    "back": "Retour au parcours"
+  }
+}

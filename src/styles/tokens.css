@@ -1,0 +1,175 @@
+/*
+ * Tachawit design tokens. The only place raw colour values are allowed.
+ * Components use the semantic tokens (mapped into Tailwind in globals.css), never the palette directly.
+ *
+ * Theme selection: <html data-theme="light|dark|system">. "system" follows prefers-color-scheme.
+ */
+
+:root {
+  /* Palette ------------------------------------------------------------------ */
+  --terracotta-50: #fbf1ec;
+  --terracotta-100: #f6ddd1;
+  --terracotta-200: #ecb9a2;
+  --terracotta-300: #e3946f;
+  --terracotta-400: #e07f58;
+  --terracotta-500: #b9532f;
+  --terracotta-600: #9a4225;
+  --terracotta-700: #7b351f;
+  --terracotta-800: #5c291a;
+  --terracotta-900: #3f1d13;
+
+  --ochre-50: #fdf7e8;
+  --ochre-100: #f9eac2;
+  --ochre-200: #f2d68a;
+  --ochre-300: #e8bd4f;
+  --ochre-400: #d9a22c;
+  --ochre-500: #bf861c;
+  --ochre-600: #9a6a16;
+  --ochre-700: #764f13;
+  --ochre-800: #533810;
+  --ochre-900: #35240b;
+
+  --indigo-50: #eef0fa;
+  --indigo-100: #d7dcf2;
+  --indigo-200: #aeb7e2;
+  --indigo-300: #808ccc;
+  --indigo-400: #5563b2;
+  --indigo-500: #3a4796;
+  --indigo-600: #2c3778;
+  --indigo-700: #222b5e;
+  --indigo-800: #181f45;
+  --indigo-900: #10152f;
+  --indigo-950: #0a0e21;
+
+  --cedar-50: #eef6f1;
+  --cedar-100: #d3e9dc;
+  --cedar-200: #a6d2b9;
+  --cedar-300: #72b590;
+  --cedar-400: #47966c;
+  --cedar-500: #2f7a54;
+  --cedar-600: #245f42;
+  --cedar-700: #1c4a34;
+  --cedar-800: #153627;
+  --cedar-900: #0e251b;
+
+  --silver-50: #f7f7f8;
+  --silver-100: #ececef;
+  --silver-200: #d9dadf;
+  --silver-300: #bcbec6;
+  --silver-400: #9a9ca8;
+  --silver-500: #7d808c;
+  --silver-600: #636572;
+  --silver-700: #4d4f5a;
+  --silver-800: #363841;
+  --silver-900: #22242a;
+
+  --sand-50: #fcf9f4;
+  --sand-100: #f6efe4;
+  --sand-200: #ebe0cf;
+  --sand-300: #d9c8ae;
+  --sand-600: #6b5d4f;
+  --sand-900: #2a2118;
+
+  /* Shape and depth --------------------------------------------------------- */
+  --radius: 0.875rem;
+  --shadow-soft: 0 1px 2px rgb(42 33 24 / 0.06), 0 4px 16px rgb(42 33 24 / 0.08);
+  --shadow-raised: 0 2px 4px rgb(42 33 24 / 0.08), 0 12px 32px rgb(42 33 24 / 0.14);
+}
+
+/* Light theme (default) ------------------------------------------------------- */
+:root {
+  color-scheme: light;
+  --background: var(--sand-50);
+  --foreground: var(--sand-900);
+  --card: #ffffff;
+  --card-foreground: var(--sand-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--sand-900);
+  --primary: var(--terracotta-500);
+  --primary-foreground: #ffffff;
+  --secondary: var(--indigo-600);
+  --secondary-foreground: #ffffff;
+  --muted: var(--sand-100);
+  --muted-foreground: var(--sand-600);
+  --accent: var(--ochre-100);
+  --accent-foreground: var(--ochre-800);
+  --destructive: var(--terracotta-700);
+  --success: var(--cedar-500);
+  --success-foreground: #ffffff;
+  --gold: var(--ochre-400);
+  --silver: var(--silver-400);
+  --border: var(--sand-200);
+  --input: var(--sand-300);
+  --ring: var(--ochre-400);
+  --motif: var(--terracotta-500);
+  --motif-alt: var(--indigo-600);
+  --sky-top: var(--ochre-50);
+  --sky-bottom: var(--terracotta-100);
+}
+
+/* Dark theme: deep indigo night sky -------------------------------------------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: var(--indigo-950);
+  --foreground: var(--sand-100);
+  --card: var(--indigo-900);
+  --card-foreground: var(--sand-100);
+  --popover: var(--indigo-800);
+  --popover-foreground: var(--sand-100);
+  --primary: var(--terracotta-400);
+  --primary-foreground: var(--terracotta-900);
+  --secondary: var(--indigo-300);
+  --secondary-foreground: var(--indigo-950);
+  --muted: var(--indigo-800);
+  --muted-foreground: var(--indigo-200);
+  --accent: var(--indigo-700);
+  --accent-foreground: var(--ochre-200);
+  --destructive: var(--terracotta-300);
+  --success: var(--cedar-300);
+  --success-foreground: var(--cedar-900);
+  --gold: var(--ochre-300);
+  --silver: var(--silver-300);
+  --border: var(--indigo-700);
+  --input: var(--indigo-600);
+  --ring: var(--ochre-300);
+  --motif: var(--terracotta-400);
+  --motif-alt: var(--ochre-300);
+  --sky-top: var(--indigo-950);
+  --sky-bottom: var(--indigo-800);
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.3);
+  --shadow-raised: 0 2px 4px rgb(0 0 0 / 0.35), 0 12px 32px rgb(0 0 0 / 0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    color-scheme: dark;
+    --background: var(--indigo-950);
+    --foreground: var(--sand-100);
+    --card: var(--indigo-900);
+    --card-foreground: var(--sand-100);
+    --popover: var(--indigo-800);
+    --popover-foreground: var(--sand-100);
+    --primary: var(--terracotta-400);
+    --primary-foreground: var(--terracotta-900);
+    --secondary: var(--indigo-300);
+    --secondary-foreground: var(--indigo-950);
+    --muted: var(--indigo-800);
+    --muted-foreground: var(--indigo-200);
+    --accent: var(--indigo-700);
+    --accent-foreground: var(--ochre-200);
+    --destructive: var(--terracotta-300);
+    --success: var(--cedar-300);
+    --success-foreground: var(--cedar-900);
+    --gold: var(--ochre-300);
+    --silver: var(--silver-300);
+    --border: var(--indigo-700);
+    --input: var(--indigo-600);
+    --ring: var(--ochre-300);
+    --motif: var(--terracotta-400);
+    --motif-alt: var(--ochre-300);
+    --sky-top: var(--indigo-950);
+    --sky-bottom: var(--indigo-800);
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.3);
+    --shadow-raised: 0 2px 4px rgb(0 0 0 / 0.35), 0 12px 32px rgb(0 0 0 / 0.45);
+  }
+}

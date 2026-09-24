@@ -1,0 +1,121 @@
+{
+  "Metadata": {
+    "title": "تاشاويت: رجّع لغتك",
+    "description": "تعلّم التاشاويت، اللغة الأمازيغية تاع الأوراس، بأصوات مسجّلة عند ناس يهدروها من الصغر."
+  },
+  "Common": {
+    "appName": "تاشاويت",
+    "skipToContent": "روح للمحتوى",
+    "sampleContent": "محتوى تاع تجربة"
+  },
+  "Nav": {
+    "label": "الرئيسية",
+    "journey": "الطريق",
+    "design": "نظام التصميم"
+  },
+  "ScriptToggle": {
+    "label": "الحرف تاع كلمات التاشاويت",
+    "latin": "لاتيني",
+    "arabic": "عربي",
+    "tifinagh": "تيفيناغ",
+    "sampleLatin": "Abc",
+    "sampleArabic": "أبج",
+    "sampleTifinagh": "ⴰⴱⴳ",
+    "fallback": "مازال ما تكتبتش بهاد الحرف، راهي باللاتيني."
+  },
+  "LocaleSwitcher": {
+    "label": "لغة الواجهة",
+    "en": "English",
+    "fr": "Français",
+    "ar": "العربية",
+    "dz": "الدارجة"
+  },
+  "ThemeToggle": {
+    "label": "الألوان",
+    "system": "كيما التيليفون تاعي",
+    "light": "فاتح",
+    "dark": "مغلوق"
+  },
+  "Home": {
+    "eyebrow": "تاشاويت · أمازيغية الأوراس",
+    "title": "رجّع لغتك.",
+    "lead": "تعلّم لغة جبال الأوراس بأصوات مسجّلة في مروانة، درس صغير في كل مرة.",
+    "start": "ابدا الطريق",
+    "journeyTitle": "الطريق تاعك",
+    "journeyLead": "خريطة الأوراس المرسومة جاية في الطريق. حتى لديك، هاذو الوحدات لي واجدين.",
+    "unitNumber": "الوحدة {number}",
+    "levelCount": "{count, plural, zero {حتى مستوى} one {مستوى واحد} two {جوج مستويات} few {# مستويات} many {# مستوى} other {# مستوى}}",
+    "empty": "مازال ما كاين حتى وحدة منشورة. زيد وحدة من لوحة الإدارة.",
+    "unavailable": "ما قدرناش نجيبو الدروس درك. عاود بعد شوية."
+  },
+  "LevelType": {
+    "lesson": "درس",
+    "quiz": "اختبار",
+    "review": "مراجعة",
+    "boss": "تحدّي",
+    "story": "حكاية"
+  },
+  "Footer": {
+    "tagline": "رجّع لغتك.",
+    "credits": "أصوات مسجّلة مع ناس من مروانة، باتنة، يهدرو التاشاويت من الصغر."
+  },
+  "Design": {
+    "metaTitle": "نظام التصميم",
+    "title": "نظام التصميم",
+    "lead": "الألوان، الخطوط، الزخارف والمكوّنات لي تبني تاشاويت. كلش هنا مبني على رموز التصميم.",
+    "colorsTitle": "الألوان",
+    "semanticTitle": "الأدوار",
+    "paletteTitle": "الألوان الأساسية",
+    "swatch": {
+      "background": "الخلفية",
+      "card": "البطاقة",
+      "primary": "الأساسي",
+      "secondary": "الثانوي",
+      "accent": "التمييز",
+      "success": "النجاح",
+      "gold": "النجوم",
+      "muted": "الهادي",
+      "terracotta": "الطين المطيّب",
+      "ochre": "المغرة",
+      "indigo": "النيلي الغامق",
+      "cedar": "أخضر الأرز",
+      "silver": "الفضّة",
+      "sand": "الرملي"
+    },
+    "typeTitle": "الخطوط",
+    "typeDisplay": "العناوين: Noto Serif Display و Reem Kufi",
+    "typeBody": "النصوص: Noto Sans و Noto Sans Arabic",
+    "typeTamazight": "الحروف اللاتينية تاع الأمازيغية",
+    "typeArabic": "الحرف العربي",
+    "typeTifinagh": "تيفيناغ: Noto Sans Tifinagh",
+    "bodySample": "الصوت هو الأول: كل كلمة يسجّلها واحد يهدرها من الصغر، وكل درس قصير قد طريق في الكار.",
+    "glyphsLatin": "ɣ ḥ ṭ ḍ ṣ ẓ ɛ ε č ǧ Ɣ Ḥ Ṭ Ḍ Ṣ Ẓ Ɛ Č Ǧ",
+    "glyphsArabic": "ا ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ڨ ف ق ك ل م ن ه و ي",
+    "glyphsTifinagh": "ⴰ ⴱ ⴳ ⴷ ⴹ ⴻ ⴼ ⴽ ⵀ ⵃ ⵄ ⵅ ⵇ ⵉ ⵊ ⵍ ⵎ ⵏ ⵓ ⵔ ⵕ ⵖ ⵙ ⵚ ⵛ ⵜ ⵟ ⵡ ⵢ ⵣ ⵥ",
+    "componentsTitle": "المكوّنات",
+    "buttonPrimary": "كمّل",
+    "buttonSecondary": "عاود اسمع",
+    "buttonOutline": "فوّت درك",
+    "buttonGhost": "من بعد",
+    "badgeNew": "جديد",
+    "badgeDone": "كمّل",
+    "progressLabel": "وين راك في الدرس",
+    "cardTitle": "بطاقة",
+    "cardBody": "البطاقة فيها فكرة وحدة برك، كيما خطوة وحدة من الدرس.",
+    "motifsTitle": "الزخارف",
+    "motifsLead": "حواشي وملمس مستوحيين من النسيج، الفخار والفضّة الشاوية، و حرف ⵣ تاع تيفيناغ هو الشعار تاعنا.",
+    "motifBand": "شريط منسوج",
+    "motifZigzag": "تعريجة الفخار",
+    "motifWeave": "ملمس منسوج",
+    "motifMark": "شعار ⵣ",
+    "tachawitTitle": "كتابة بالتاشاويت",
+    "tachawitLead": "كل كلمة بالتاشاويت تتبع الحرف لي خيّرتو الفوق. إذا حرف ما كانش، تبان باللاتيني.",
+    "tachawitEmpty": "مازال ما كاين حتى مدخل منشور.",
+    "tachawitUnavailable": "ما قدرناش نجيبو المداخل درك."
+  },
+  "NotFound": {
+    "title": "هاد الطريق ما يوصّل لحتى بلاصة",
+    "lead": "الصفحة لي راك تحوّس عليها ما كايناش.",
+    "back": "ارجع للطريق"
+  }
+}

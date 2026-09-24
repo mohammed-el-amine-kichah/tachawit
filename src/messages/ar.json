@@ -1,0 +1,121 @@
+{
+  "Metadata": {
+    "title": "تاشاويت: استعد لغتك",
+    "description": "تعلّم التاشاويت، اللغة الأمازيغية للأوراس، بأصوات مسجّلة لمتحدثين أصليين."
+  },
+  "Common": {
+    "appName": "تاشاويت",
+    "skipToContent": "انتقل إلى المحتوى",
+    "sampleContent": "محتوى تجريبي"
+  },
+  "Nav": {
+    "label": "الرئيسية",
+    "journey": "الرحلة",
+    "design": "نظام التصميم"
+  },
+  "ScriptToggle": {
+    "label": "الخط المستعمل لكلمات التاشاويت",
+    "latin": "اللاتيني",
+    "arabic": "العربي",
+    "tifinagh": "تيفيناغ",
+    "sampleLatin": "Abc",
+    "sampleArabic": "أبج",
+    "sampleTifinagh": "ⴰⴱⴳ",
+    "fallback": "غير مكتوبة بهذا الخط بعد، تُعرض بالحرف اللاتيني."
+  },
+  "LocaleSwitcher": {
+    "label": "لغة الواجهة",
+    "en": "English",
+    "fr": "Français",
+    "ar": "العربية",
+    "dz": "الدارجة"
+  },
+  "ThemeToggle": {
+    "label": "سمة الألوان",
+    "system": "مثل جهازي",
+    "light": "فاتح",
+    "dark": "داكن"
+  },
+  "Home": {
+    "eyebrow": "تاشاويت · أمازيغية الأوراس",
+    "title": "استعد لغتك.",
+    "lead": "تعلّم لغة جبال الأوراس بأصوات مسجّلة في مروانة، درسًا قصيرًا في كل مرة.",
+    "start": "ابدأ الرحلة",
+    "journeyTitle": "رحلتك",
+    "journeyLead": "خريطة الأوراس المصوّرة في الطريق. إلى ذلك الحين، هذه الوحدات جاهزة للاستكشاف.",
+    "unitNumber": "الوحدة {number}",
+    "levelCount": "{count, plural, zero {لا مستويات} one {مستوى واحد} two {مستويان} few {# مستويات} many {# مستوى} other {# مستوى}}",
+    "empty": "لا توجد وحدات منشورة بعد. أضف واحدة من لوحة الإدارة.",
+    "unavailable": "تعذّر تحميل الدروس الآن. حاول مرة أخرى بعد قليل."
+  },
+  "LevelType": {
+    "lesson": "درس",
+    "quiz": "اختبار",
+    "review": "مراجعة",
+    "boss": "تحدٍّ",
+    "story": "قصة"
+  },
+  "Footer": {
+    "tagline": "استعد لغتك.",
+    "credits": "أصوات مسجّلة مع متحدثين أصليين من مروانة، باتنة."
+  },
+  "Design": {
+    "metaTitle": "نظام التصميم",
+    "title": "نظام التصميم",
+    "lead": "الألوان والخطوط والزخارف والمكوّنات التي تصنع تاشاويت. كل ما هنا مبني على رموز التصميم.",
+    "colorsTitle": "الألوان",
+    "semanticTitle": "الأدوار",
+    "paletteTitle": "لوحة الألوان",
+    "swatch": {
+      "background": "الخلفية",
+      "card": "البطاقة",
+      "primary": "الأساسي",
+      "secondary": "الثانوي",
+      "accent": "التمييز",
+      "success": "النجاح",
+      "gold": "النجوم",
+      "muted": "الهادئ",
+      "terracotta": "الطين المشوي",
+      "ochre": "المغرة",
+      "indigo": "النيلي العميق",
+      "cedar": "أخضر الأرز",
+      "silver": "الفضي",
+      "sand": "الرملي"
+    },
+    "typeTitle": "الخطوط",
+    "typeDisplay": "العناوين: Noto Serif Display و Reem Kufi",
+    "typeBody": "النصوص: Noto Sans و Noto Sans Arabic",
+    "typeTamazight": "الحروف اللاتينية للأمازيغية",
+    "typeArabic": "الخط العربي",
+    "typeTifinagh": "تيفيناغ: Noto Sans Tifinagh",
+    "bodySample": "الصوت أولًا: كل كلمة يسجّلها متحدث أصلي، وكل درس قصير بما يكفي لرحلة في الحافلة.",
+    "glyphsLatin": "ɣ ḥ ṭ ḍ ṣ ẓ ɛ ε č ǧ Ɣ Ḥ Ṭ Ḍ Ṣ Ẓ Ɛ Č Ǧ",
+    "glyphsArabic": "ا ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ڨ ف ق ك ل م ن ه و ي",
+    "glyphsTifinagh": "ⴰ ⴱ ⴳ ⴷ ⴹ ⴻ ⴼ ⴽ ⵀ ⵃ ⵄ ⵅ ⵇ ⵉ ⵊ ⵍ ⵎ ⵏ ⵓ ⵔ ⵕ ⵖ ⵙ ⵚ ⵛ ⵜ ⵟ ⵡ ⵢ ⵣ ⵥ",
+    "componentsTitle": "المكوّنات",
+    "buttonPrimary": "متابعة",
+    "buttonSecondary": "استمع مجددًا",
+    "buttonOutline": "تخطَّ الآن",
+    "buttonGhost": "لاحقًا",
+    "badgeNew": "جديد",
+    "badgeDone": "مكتمل",
+    "progressLabel": "تقدّم الدرس",
+    "cardTitle": "بطاقة",
+    "cardBody": "تحمل البطاقة فكرة واحدة في كل مرة، مثل خطوة واحدة من درس.",
+    "motifsTitle": "الزخارف",
+    "motifsLead": "حواف وملمس مستوحاة من النسيج والفخار والحلي الفضية الشاوية، مع حرف ⵣ التيفيناغي شعارًا لنا.",
+    "motifBand": "شريط منسوج",
+    "motifZigzag": "تعرّج الفخار",
+    "motifWeave": "ملمس منسوج",
+    "motifMark": "شعار ⵣ",
+    "tachawitTitle": "نص بالتاشاويت",
+    "tachawitLead": "كل كلمة بالتاشاويت تتبع الخط المختار في أعلى الصفحة. وإن غاب خط ما، تُعرض بالحرف اللاتيني.",
+    "tachawitEmpty": "لا توجد مداخل منشورة بعد.",
+    "tachawitUnavailable": "تعذّر تحميل المداخل الآن."
+  },
+  "NotFound": {
+    "title": "هذا الطريق لا يؤدي إلى أي مكان",
+    "lead": "الصفحة التي تبحث عنها غير موجودة.",
+    "back": "العودة إلى الرحلة"
+  }
+}

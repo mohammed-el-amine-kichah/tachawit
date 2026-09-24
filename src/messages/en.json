@@ -1,0 +1,121 @@
+{
+  "Metadata": {
+    "title": "Tachawit: reclaim your language",
+    "description": "Learn Tachawit, the Amazigh language of the Aurès, with voices recorded by native speakers."
+  },
+  "Common": {
+    "appName": "Tachawit",
+    "skipToContent": "Skip to content",
+    "sampleContent": "Sample content"
+  },
+  "Nav": {
+    "label": "Main",
+    "journey": "Journey",
+    "design": "Design system"
+  },
+  "ScriptToggle": {
+    "label": "Script for Tachawit words",
+    "latin": "Latin",
+    "arabic": "Arabic",
+    "tifinagh": "Tifinagh",
+    "sampleLatin": "Abc",
+    "sampleArabic": "أبج",
+    "sampleTifinagh": "ⴰⴱⴳ",
+    "fallback": "Not yet written in this script. Shown in Latin."
+  },
+  "LocaleSwitcher": {
+    "label": "Interface language",
+    "en": "English",
+    "fr": "Français",
+    "ar": "العربية",
+    "dz": "الدارجة"
+  },
+  "ThemeToggle": {
+    "label": "Colour theme",
+    "system": "Match my device",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "Home": {
+    "eyebrow": "Tachawit · Tamazight of the Aurès",
+    "title": "Reclaim your language.",
+    "lead": "Learn the language of the Aurès mountains with voices recorded in Merouana, one short lesson at a time.",
+    "start": "Start the journey",
+    "journeyTitle": "Your journey",
+    "journeyLead": "The illustrated map of the Aurès is on its way. For now, here are the units ready to explore.",
+    "unitNumber": "Unit {number}",
+    "levelCount": "{count, plural, one {# level} other {# levels}}",
+    "empty": "No units are published yet. Add one from the admin panel.",
+    "unavailable": "The lessons could not be loaded right now. Please try again in a moment."
+  },
+  "LevelType": {
+    "lesson": "Lesson",
+    "quiz": "Quiz",
+    "review": "Review",
+    "boss": "Challenge",
+    "story": "Story"
+  },
+  "Footer": {
+    "tagline": "Reclaim your language.",
+    "credits": "Voices recorded with native speakers from Merouana, Batna."
+  },
+  "Design": {
+    "metaTitle": "Design system",
+    "title": "Design system",
+    "lead": "Colours, type, motifs and components that shape Tachawit. Everything here is built from design tokens.",
+    "colorsTitle": "Colours",
+    "semanticTitle": "Roles",
+    "paletteTitle": "Palette",
+    "swatch": {
+      "background": "Background",
+      "card": "Card",
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "accent": "Accent",
+      "success": "Success",
+      "gold": "Stars",
+      "muted": "Muted",
+      "terracotta": "Terracotta",
+      "ochre": "Ochre",
+      "indigo": "Deep indigo",
+      "cedar": "Cedar green",
+      "silver": "Silver",
+      "sand": "Sand"
+    },
+    "typeTitle": "Typography",
+    "typeDisplay": "Display: Noto Serif Display and Reem Kufi",
+    "typeBody": "Body: Noto Sans and Noto Sans Arabic",
+    "typeTamazight": "Tamazight Latin letters",
+    "typeArabic": "Arabic script",
+    "typeTifinagh": "Tifinagh: Noto Sans Tifinagh",
+    "bodySample": "Audio comes first: every word is recorded by a native speaker, and every lesson is short enough for a bus ride.",
+    "glyphsLatin": "ɣ ḥ ṭ ḍ ṣ ẓ ɛ ε č ǧ Ɣ Ḥ Ṭ Ḍ Ṣ Ẓ Ɛ Č Ǧ",
+    "glyphsArabic": "ا ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ڨ ف ق ك ل م ن ه و ي",
+    "glyphsTifinagh": "ⴰ ⴱ ⴳ ⴷ ⴹ ⴻ ⴼ ⴽ ⵀ ⵃ ⵄ ⵅ ⵇ ⵉ ⵊ ⵍ ⵎ ⵏ ⵓ ⵔ ⵕ ⵖ ⵙ ⵚ ⵛ ⵜ ⵟ ⵡ ⵢ ⵣ ⵥ",
+    "componentsTitle": "Components",
+    "buttonPrimary": "Continue",
+    "buttonSecondary": "Listen again",
+    "buttonOutline": "Skip for now",
+    "buttonGhost": "Later",
+    "badgeNew": "New",
+    "badgeDone": "Completed",
+    "progressLabel": "Lesson progress",
+    "cardTitle": "A card",
+    "cardBody": "Cards hold one idea at a time, like a single lesson step.",
+    "motifsTitle": "Motifs",
+    "motifsLead": "Borders and textures inspired by Chaoui weaving, pottery and silver jewelry, with the Tifinagh ⵣ as our mark.",
+    "motifBand": "Weaving band",
+    "motifZigzag": "Pottery zigzag",
+    "motifWeave": "Woven texture",
+    "motifMark": "The ⵣ mark",
+    "tachawitTitle": "Tachawit text",
+    "tachawitLead": "Every Tachawit word follows the script chosen in the header. When a script is missing, it falls back to Latin.",
+    "tachawitEmpty": "No published entries yet.",
+    "tachawitUnavailable": "Entries could not be loaded right now."
+  },
+  "NotFound": {
+    "title": "This path leads nowhere",
+    "lead": "The page you are looking for does not exist.",
+    "back": "Back to the journey"
+  }
+}
