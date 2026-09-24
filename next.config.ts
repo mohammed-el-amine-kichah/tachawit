@@ -7,6 +7,11 @@ const supabase = process.env.NEXT_PUBLIC_SUPABASE_URL ? new URL(process.env.NEXT
 const supabaseIsLocal = supabase !== null && ["127.0.0.1", "localhost"].includes(supabase.hostname);
 
 const nextConfig: NextConfig = {
+  // ffmpeg is a native binary: keep it out of the bundle and ship it with the audio route.
+  serverExternalPackages: ["ffmpeg-static"],
+  outputFileTracingIncludes: {
+    "/api/admin/audio": ["./node_modules/ffmpeg-static/ffmpeg"],
+  },
   images: {
     remotePatterns: supabase
       ? [

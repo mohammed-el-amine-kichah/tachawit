@@ -2,16 +2,8 @@ import { MapPinIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { LocalizedContent } from "@/components/shared/localized-content";
 import { Badge } from "@/components/ui/badge";
+import { isPartOfSpeech as isPart } from "@/lib/content/enums";
 import type { ViewEntry } from "@/lib/lesson/view";
-
-const PARTS = [
-  "noun", "verb", "adjective", "adverb", "pronoun", "preposition", "conjunction",
-  "interjection", "numeral", "particle", "phrase", "expression",
-] as const;
-
-function isPart(value: string | null): value is (typeof PARTS)[number] {
-  return value !== null && (PARTS as readonly string[]).includes(value);
-}
 
 /** Part of speech and the region the word was recorded in (dialect variation is shown, not hidden). */
 export function EntryTags({ entry }: { entry: ViewEntry }) {

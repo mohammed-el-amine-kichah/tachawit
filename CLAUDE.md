@@ -124,7 +124,7 @@ docs/
 8. Contribute page + submissions queue, culture section, about page
 9. PWA/offline, performance, accessibility, polish
 
-**Current phase:** 1
+**Current phase:** 7 (phases 1–6 done)
 
 ## Don'ts
 - Don't hardcode content, colors, or UI strings.

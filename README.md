@@ -5,7 +5,7 @@ A gamified web app to learn **Tachawit** (Chaoui, the Amazigh language of the Au
 - Product spec: [docs/SPEC.md](docs/SPEC.md)
 - Conventions for contributors and AI agents: [CLAUDE.md](CLAUDE.md)
 
-**Status:** phases 1–5 of 9 done: foundations, the map, lessons, quizzes, and progress with accounts and review.
+**Status:** phases 1–6 of 9 done: foundations, the map, lessons, quizzes, progress with accounts and review, and the admin panel for words, audio and speakers.
 
 ## Stack
 
@@ -64,7 +64,16 @@ Admin rights live in `public.profiles.role` and are enforced by row-level securi
    where id = (select id from auth.users where email = 'you@example.com');
    ```
 
-After that, admins can promote other users from the admin panel (phase 6).
+After that, admins can promote other people from *Admin → People* (`/ar/admin/users`).
+
+## Admin panel
+
+`/ar/admin` (or any locale). Admins only: the page checks the role on the server and row-level security enforces it in the database.
+
+- **Words & phrases:** search, filter, create and edit in Latin, Arabic script and Tifinagh (with a Tifinagh suggestion from the Latin spelling), four translations, part of speech, region, image and notes. Drafts save automatically; publishing is explicit. A live preview shows the entry exactly as learners see it. Bulk import from CSV (every row becomes a draft).
+- **Audio:** drag and drop a file (MP3, M4A, WAV, WebM, OGG) or record in the browser, trim it, pick the speaker. The server converts it with ffmpeg into mono AAC plus a slow version, keeps the original privately, and creates a draft clip. Word timings are set by tapping along while the clip plays.
+- **Speakers:** name or pseudonym, region, village and consent (with its date). Audio from a speaker without consent cannot be published, and revoking consent unpublishes their audio (enforced by the database).
+- **Regions** and **People** (promote or demote admins).
 
 ## Accounts and progress
 

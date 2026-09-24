@@ -20,7 +20,8 @@ function flatten(messages: Messages, prefix = ""): Map<string, string> {
 }
 
 function placeholders(message: string): string[] {
-  const names = [...message.matchAll(/\{\s*(\w+)\s*[,}]/g)].map((m) => m[1]);
+  // Arguments look like {name} or {name, plural, ...}; plural branches like "one {text}" are not arguments.
+  const names = [...message.matchAll(/(?<!(?:=\d+|zero|one|two|few|many|other)\s*)\{\s*(\w+)\s*[,}]/g)].map((m) => m[1]);
   return [...new Set(names)].sort();
 }
 

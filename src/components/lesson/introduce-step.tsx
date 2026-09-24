@@ -14,14 +14,14 @@ import { KaraokeText } from "./karaoke-text";
 import { StepLabel } from "./step-label";
 
 /** A new word or phrase: picture, text in the chosen script, meaning, and the speaker's voice. */
-export function IntroduceStep({ entry, audio }: { entry: ViewEntry; audio: AudioInfo | null }) {
+export function IntroduceStep({ entry, audio, autoPlay = true }: { entry: ViewEntry; audio: AudioInfo | null; autoPlay?: boolean }) {
   const t = useTranslations("Lesson");
   const player = useAudioPlayer(audio);
   const { play } = player;
 
   useEffect(() => {
-    play();
-  }, [play]);
+    if (autoPlay) play();
+  }, [play, autoPlay]);
 
   return (
     <div className="flex flex-col items-center gap-5 text-center">
