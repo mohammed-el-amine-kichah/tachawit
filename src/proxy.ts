@@ -1,12 +1,17 @@
 import createMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { routing } from "@/i18n/routing";
+import { callbackForStrayCode } from "@/lib/auth/code-landing";
 import { buildContentSecurityPolicy } from "@/lib/security/csp";
 import { applySession, hasAuthCookie, refreshSession } from "@/lib/supabase/session";
 
 const handleI18n = createMiddleware(routing);
 
 export async function proxy(request: NextRequest) {
+  // A sign-in code that Supabase delivered to a page instead of the callback: finish signing in.
+  const callback = callbackForStrayCode(request.nextUrl);
+  if (callback) return NextResponse.redirect(callback);
+
   // Refresh the session first so the locale handling below forwards the fresh cookies.
   const session = hasAuthCookie(request) ? await refreshSession(request) : null;
 
