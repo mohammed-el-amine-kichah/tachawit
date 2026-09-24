@@ -221,3 +221,36 @@ export async function getUnitEditor(unitId: string) {
   if (!unit.data) return null;
   return { unit: unit.data, levels: levels.data ?? [], lessons: lessons.data ?? [], quizzes: quizzes.data ?? [], units: units.data ?? [] };
 }
+
+export async function listCultureAdmin() {
+  const supabase = await createServerSupabase();
+  const { data, error } = await supabase.from("culture_notes").select("id, slug, category, title, status, updated_at").order("updated_at", { ascending: false });
+  if (error) throw error;
+  return data;
+}
+
+export async function getCultureAdmin(noteId: string) {
+  const supabase = await createServerSupabase();
+  const [note, units] = await Promise.all([
+    supabase.from("culture_notes").select("id, slug, category, title, summary, body, cover_image_path, unit_id, status").eq("id", noteId).maybeSingle(),
+    supabase.from("units").select("id, title").order("position"),
+  ]);
+  if (note.error) throw note.error;
+  if (units.error) throw units.error;
+  return note.data ? { note: note.data, units: units.data } : null;
+}
+
+export async function listSubmissions(status: "pending" | "approved" | "rejected") {
+  const supabase = await createServerSupabase();
+  const { data, error } = await supabase
+    .from("submissions")
+    .select("id, kind, status, text_latin, text_arabic, text_tifinagh, translations, region_id, village, message, audio_path, audio_consent, contributor_name, contributor_email, created_at, review_note, created_entry_id, related:entries!submissions_related_entry_id_fkey(id, text_latin)")
+    .eq("status", status)
+    .order("created_at", { ascending: status === "pending" })
+    .limit(100);
+  if (error) throw error;
+  const paths = data.flatMap((s) => (s.audio_path ? [s.audio_path] : []));
+  const signed = paths.length ? await supabase.storage.from("submissions").createSignedUrls(paths, 3600) : { data: [] };
+  const urls = new Map((signed.data ?? []).map((s) => [s.path, s.signedUrl]));
+  return data.map((s) => ({ ...s, audioUrl: s.audio_path ? (urls.get(s.audio_path) ?? null) : null }));
+}

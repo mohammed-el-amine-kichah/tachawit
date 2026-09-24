@@ -5,7 +5,7 @@ A gamified web app to learn **Tachawit** (Chaoui, the Amazigh language of the Au
 - Product spec: [docs/SPEC.md](docs/SPEC.md)
 - Conventions for contributors and AI agents: [CLAUDE.md](CLAUDE.md)
 
-**Status:** phases 1–6 of 9 done: foundations, the map, lessons, quizzes, progress with accounts and review, and the admin panel for words, audio and speakers.
+**Status:** phases 1–8 of 9 done: foundations, the map, lessons, quizzes, progress with accounts and review, the full admin panel (content, audio, builders, map editor), contributions, culture and about pages.
 
 ## Stack
 
@@ -46,6 +46,7 @@ After changing migrations, run `pnpm db:reset` (re-applies migrations and seed) 
 | `NEXT_PUBLIC_SUPABASE_URL` | `.env.local`, Vercel | Supabase API URL (local: `http://127.0.0.1:54321`) |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | `.env.local`, Vercel | Publishable (anon) key. Safe in the browser, since every table is protected by RLS |
 | `NEXT_PUBLIC_SITE_URL` | Vercel | Public address of the site (e.g. `https://tachawit.app`), used in sign-in links. Optional locally |
+| `SUBMISSION_HASH_SALT` | Vercel | Secret used to hash contributors' IP addresses for rate limiting (any long random string) |
 | `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID` | shell env when running `pnpm db:start` | Optional: Google sign-in for local Supabase |
 | `SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET` | shell env when running `pnpm db:start` | Optional: Google sign-in for local Supabase |
 
@@ -73,7 +74,17 @@ After that, admins can promote other people from *Admin → People* (`/ar/admin/
 - **Words & phrases:** search, filter, create and edit in Latin, Arabic script and Tifinagh (with a Tifinagh suggestion from the Latin spelling), four translations, part of speech, region, image and notes. Drafts save automatically; publishing is explicit. A live preview shows the entry exactly as learners see it. Bulk import from CSV (every row becomes a draft).
 - **Audio:** drag and drop a file (MP3, M4A, WAV, WebM, OGG) or record in the browser, trim it, pick the speaker. The server converts it with ffmpeg into mono AAC plus a slow version, keeps the original privately, and creates a draft clip. Word timings are set by tapping along while the clip plays.
 - **Speakers:** name or pseudonym, region, village and consent (with its date). Audio from a speaker without consent cannot be published, and revoking consent unpublishes their audio (enforced by the database).
+- **Lessons & quizzes:** visual builders. Add steps or questions from a menu, reorder them by dragging (or with the arrow buttons), pick words from a searchable list, and see each one live exactly as learners will. A full-screen preview plays the draft; nothing is recorded. Drafts save themselves; publishing checks that everything is complete.
+- **Map & units:** drag levels on the unit's scenery (or use the arrow keys), arrange them evenly, set each level's type, lesson or quiz, and unlock rule, reorder levels and units, and publish. Learners see a level only when the level, its lesson or quiz, and its unit are all published.
+- **Submissions:** listen to contributed recordings, edit, then approve (creating draft entries, or a draft clip from a speaker created with the consent the contributor gave) or reject.
+- **Culture:** articles in Markdown per language, with a formatting toolbar, image upload and preview.
 - **Regions** and **People** (promote or demote admins).
+
+## Contributions and culture
+
+- `/contribute`: anyone can suggest a word, a local variant, a correction, or a recording (microphone or file, with explicit consent to publish). A hidden field catches bots, and each sender is limited to 10 submissions per hour, keyed on a salted hash of their IP address (never the address itself). Everything waits for review.
+- `/culture`: articles about music, silver jewelry, history, Yennayer and food. Bodies use a small Markdown subset rendered as React elements (no raw HTML), so article content can't inject scripts.
+- `/about`: the story of the project and credits to every speaker who gave consent.
 
 ## Accounts and progress
 
@@ -101,7 +112,7 @@ Create an OAuth client in Google Cloud (type *Web application*) with the redirec
 ```bash
 pnpm test        # Vitest: pure logic, Zod content contracts, message catalogs,
                  # plus an integration test of published content (runs when .env.local points at a live Supabase)
-pnpm test:db     # pgTAP: schema, RLS for guests/learners/admins, consent and publish guards, storage, seed
+pnpm db:reset && pnpm test:db   # pgTAP on a fresh seed: schema, RLS, consent and publish guards, progress functions, storage, seed
 pnpm lint && pnpm typecheck && pnpm build
 ```
 

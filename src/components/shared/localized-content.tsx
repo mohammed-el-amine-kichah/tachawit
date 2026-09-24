@@ -9,7 +9,7 @@ export function LocalizedContent({
   className,
 }: {
   value: LocalizedText | null;
-  as?: "span" | "p" | "div" | "h2" | "h3";
+  as?: "span" | "p" | "div" | "h1" | "h2" | "h3";
   className?: string;
 }) {
   const locale = useLocale();

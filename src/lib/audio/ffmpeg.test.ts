@@ -12,6 +12,10 @@ describe("conversionArgs", () => {
     expect(args.at(-1)).toBe("out.m4a");
   });
 
+  it("keeps the whole recording when there is no end", () => {
+    expect(conversionArgs({ input: "a", output: "b", startMs: 0, endMs: null, slow: false })).not.toContain("-to");
+  });
+
   it("slows the recording down without changing its pitch", () => {
     expect(conversionArgs({ input: "a", output: "b", startMs: 0, endMs: 1000, slow: true }).join(" ")).toContain("atempo=0.8");
   });

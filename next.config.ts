@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/admin/audio": ["./node_modules/ffmpeg-static/ffmpeg"],
   },
+  experimental: {
+    // Contributions can include a short voice recording (up to 8 MB).
+    serverActions: { bodySizeLimit: "9mb" },
+  },
   images: {
     remotePatterns: supabase
       ? [

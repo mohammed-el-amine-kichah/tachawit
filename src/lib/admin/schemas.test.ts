@@ -93,3 +93,22 @@ describe("levelFormSchema", () => {
     expect(levelFormSchema.safeParse({ ...base, unlock_rule: { type: "unit_stars", minStars: 0 } }).success).toBe(false);
   });
 });
+
+import { cultureFormSchema } from "./schemas";
+
+describe("cultureFormSchema", () => {
+  const empty = { en: "", fr: "", ar: "", dz: "" };
+  const base = { slug: "yennayer", category: "yennayer", title: { ...empty, en: "Yennayer" }, summary: empty, body: { ...empty, en: "## Yennayer" }, cover_image_path: "", unit_id: "" };
+
+  it("accepts an article and keeps only filled bodies", () => {
+    const parsed = cultureFormSchema.parse(base);
+    expect(parsed.body).toEqual({ en: "## Yennayer" });
+    expect(parsed.summary).toBeNull();
+    expect(parsed.unit_id).toBeNull();
+  });
+
+  it("needs a known category and a title", () => {
+    expect(cultureFormSchema.safeParse({ ...base, category: "sports" }).success).toBe(false);
+    expect(cultureFormSchema.safeParse({ ...base, title: empty }).success).toBe(false);
+  });
+});

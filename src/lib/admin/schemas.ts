@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { levelTypes, mapThemes, partsOfSpeech } from "@/lib/content/enums";
+import { cultureCategories, levelTypes, mapThemes, partsOfSpeech } from "@/lib/content/enums";
 import { unlockRuleSchema } from "@/lib/content/unlock-rule";
 import type { LocalizedText } from "@/lib/content/localized-text";
 
@@ -92,3 +92,15 @@ export const levelFormSchema = z
   }));
 
 export type LevelFormInput = z.input<typeof levelFormSchema>;
+
+export const cultureFormSchema = z.object({
+  slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+  category: z.enum(cultureCategories),
+  title: requiredLocalized,
+  summary: optionalLocalized,
+  body: localizedFormSchema,
+  cover_image_path: blankToNull,
+  unit_id: optionalId,
+});
+
+export type CultureFormInput = z.input<typeof cultureFormSchema>;

@@ -15,13 +15,14 @@ export function conversionArgs({
   input: string;
   output: string;
   startMs: number;
-  endMs: number;
+  /** Null keeps everything to the end of the recording. */
+  endMs: number | null;
   slow: boolean;
 }): string[] {
   const filters = ["loudnorm=I=-16:TP=-1.5:LRA=11", ...(slow ? ["atempo=0.8"] : [])].join(",");
   return [
     "-hide_banner", "-y",
-    "-ss", seconds(startMs), "-to", seconds(endMs),
+    "-ss", seconds(startMs), ...(endMs === null ? [] : ["-to", seconds(endMs)]),
     "-i", input,
     "-vn", "-ac", "1", "-ar", "44100",
     "-af", filters,

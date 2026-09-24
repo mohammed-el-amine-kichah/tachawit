@@ -1,6 +1,6 @@
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(10);
+select plan(11);
 
 select results_eq(
   $$ select title ->> 'en', status::text from public.units where slug = 'first-words' $$,
@@ -66,6 +66,11 @@ select is_empty(
 select isnt_empty(
   $$ select 1 from public.audio_clips where jsonb_array_length(coalesce(word_timestamps, '[]')) > 1 $$,
   'at least one clip has word timestamps to exercise karaoke highlighting'
+);
+
+select isnt_empty(
+  $$ select 1 from public.culture_notes where status = 'published' and summary ->> 'en' like '[PLACEHOLDER]%' $$,
+  'sample culture articles are seeded and marked as placeholders'
 );
 
 select * from finish();

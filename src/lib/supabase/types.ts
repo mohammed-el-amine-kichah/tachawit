@@ -591,6 +591,7 @@ export type Database = {
         Row: {
           audio_consent: boolean
           audio_path: string | null
+          client_hash: string | null
           contributor_email: string | null
           contributor_name: string | null
           created_at: string
@@ -615,6 +616,7 @@ export type Database = {
         Insert: {
           audio_consent?: boolean
           audio_path?: string | null
+          client_hash?: string | null
           contributor_email?: string | null
           contributor_name?: string | null
           created_at?: string
@@ -639,6 +641,7 @@ export type Database = {
         Update: {
           audio_consent?: boolean
           audio_path?: string | null
+          client_hash?: string | null
           contributor_email?: string | null
           contributor_name?: string | null
           created_at?: string
@@ -819,6 +822,10 @@ export type Database = {
           p_today: string
         }
         Returns: Record<string, unknown>
+      }
+      recent_submission_count: {
+        Args: { p_client_hash: string; p_minutes: number }
+        Returns: number
       }
       referenced_entry_ids: { Args: { payload: Json }; Returns: string[] }
       reorder_levels: {

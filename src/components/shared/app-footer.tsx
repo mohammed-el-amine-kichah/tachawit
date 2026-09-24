@@ -19,17 +19,14 @@ export function AppFooter() {
           </div>
         </div>
         <nav aria-label={nav("label")}>
-          <ul className="flex gap-4">
-            <li>
-              <Link href="/" className="underline-offset-4 hover:text-foreground hover:underline">
-                {nav("journey")}
-              </Link>
-            </li>
-            <li>
-              <Link href="/design" className="underline-offset-4 hover:text-foreground hover:underline">
-                {nav("design")}
-              </Link>
-            </li>
+          <ul className="flex flex-wrap gap-x-4 gap-y-2">
+            {(["/about", "/contribute", "/culture", "/design"] as const).map((href) => (
+              <li key={href}>
+                <Link href={href} className="underline-offset-4 hover:text-foreground hover:underline">
+                  {nav(href.slice(1) as "about" | "contribute" | "culture" | "design")}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

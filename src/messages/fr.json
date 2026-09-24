@@ -14,7 +14,10 @@
     "design": "Système de design",
     "review": "Révision",
     "profile": "Profil",
-    "reviewDue": "Révision, {count, plural, one {# mot à revoir} other {# mots à revoir}}"
+    "reviewDue": "Révision, {count, plural, one {# mot à revoir} other {# mots à revoir}}",
+    "culture": "Culture",
+    "about": "À propos",
+    "contribute": "Contribuer"
   },
   "ScriptToggle": {
     "label": "Écriture des mots en tachawit",
@@ -692,6 +695,73 @@
       "deleteUnitTitle": "Supprimer cette unité ?",
       "deleteUnitLead": "Ses niveaux seront aussi supprimés (les leçons et quiz sont conservés).",
       "unitDeleted": "Unité supprimée."
+    },
+    "culture": {
+      "listTitle": "Articles culturels",
+      "listLead": "Articles sur la musique, les bijoux, l’histoire, Yennayer, la cuisine et la vie quotidienne.",
+      "new": "Nouvel article",
+      "create": "Créer",
+      "title": "Titre",
+      "summary": "Résumé",
+      "category": "Catégorie",
+      "slug": "Nom court (pour les liens)",
+      "unit": "Unité liée",
+      "cover": "Image de couverture",
+      "body": "Article",
+      "save": "Enregistrer",
+      "saved": "Enregistré.",
+      "publish": "Publier",
+      "unpublish": "Dépublier",
+      "published": "Publié.",
+      "unpublished": "Repassé en brouillon.",
+      "delete": "Supprimer",
+      "deleteTitle": "Supprimer cet article ?",
+      "deleteLead": "C’est définitif.",
+      "deleted": "Supprimé.",
+      "toolbar": "Mise en forme",
+      "heading": "Titre",
+      "subheading": "Sous-titre",
+      "bold": "Gras",
+      "italic": "Italique",
+      "link": "Lien",
+      "list": "Liste",
+      "quote": "Citation",
+      "image": "Insérer une image",
+      "text": "texte",
+      "imageAlt": "Décris l’image",
+      "imageInvalid": "Utilise une image PNG, JPEG, WebP ou AVIF.",
+      "imageFailed": "L’image n’a pas pu être envoyée.",
+      "preview": "Aperçu",
+      "edit": "Modifier"
+    },
+    "submissions": {
+      "title": "Propositions",
+      "lead": "Suggestions de la communauté. Approuver crée des brouillons à vérifier avant publication.",
+      "filter": "Afficher",
+      "statuses": {
+        "pending": "À examiner",
+        "approved": "Approuvées",
+        "rejected": "Refusées"
+      },
+      "empty": "Rien ici.",
+      "anonymous": "Anonyme",
+      "about": "À propos de",
+      "recording": "Enregistrement proposé",
+      "consentGiven": "Consentement donné pour la publication",
+      "noConsent": "Pas de consentement : ne pas publier",
+      "latin": "Graphie latine",
+      "arabic": "Écriture arabe",
+      "tifinagh": "Tifinagh",
+      "region": "Région",
+      "meaning": "Sens",
+      "approve": "Approuver en brouillon",
+      "markDone": "Marquer comme traité",
+      "approved": "Approuvé : des brouillons ont été créés.",
+      "approvedCorrection": "Marqué comme traité.",
+      "reject": "Refuser",
+      "rejectNote": "Note (facultatif)",
+      "rejected": "Refusé.",
+      "openEntry": "Ouvrir l’entrée"
     }
   },
   "MapTheme": {
@@ -699,5 +769,106 @@
     "cedar_forest": "Forêt de cèdres",
     "cliff_villages": "Villages des falaises",
     "palm_groves": "Palmeraies"
+  },
+  "Culture": {
+    "title": "Culture",
+    "lead": "Musique, argent, récits, Yennayer et la table : les Aurès derrière les mots.",
+    "empty": "Pas encore d’article.",
+    "unavailable": "Les articles n’ont pas pu être chargés.",
+    "back": "Tous les articles",
+    "fromUnit": "Va avec",
+    "noBody": "Cet article n’est pas encore écrit.",
+    "categories": {
+      "music": "Musique",
+      "jewelry": "Bijoux",
+      "history": "Histoire",
+      "yennayer": "Yennayer",
+      "food": "Cuisine",
+      "crafts": "Artisanat",
+      "daily_life": "Vie quotidienne",
+      "other": "Culture"
+    }
+  },
+  "Contribute": {
+    "title": "Contribuer",
+    "lead": "Le tachawit vit dans ta famille et ton village. Partage un mot, une variante locale, une correction ou ta voix. Tout est vérifié avant d’apparaître.",
+    "kindLabel": "Que veux-tu partager ?",
+    "kinds": {
+      "word": "Un mot",
+      "variation": "Une variante locale",
+      "correction": "Une correction",
+      "recording": "Un enregistrement"
+    },
+    "kindHints": {
+      "word": "Un mot ou une expression qui n’est pas encore dans Tachawit.",
+      "variation": "Comment un mot se dit dans ton village ou ta région.",
+      "correction": "Quelque chose qui semble faux : graphie, sens, audio.",
+      "recording": "Enregistre un mot ou une expression avec ta voix."
+    },
+    "variantOf": "De quel mot est-ce une variante ?",
+    "correctionOf": "De quel mot s’agit-il ? (facultatif)",
+    "recordingOf": "Est-ce un mot déjà dans Tachawit ? (facultatif)",
+    "searchWord": "Chercher un mot ou un sens",
+    "clearWord": "Choisir un autre mot",
+    "word": "Le mot, en lettres latines",
+    "localForm": "Comment on le dit chez toi",
+    "whatIsSaid": "Ce que tu dis dans l’enregistrement (facultatif)",
+    "arabicScript": "En écriture arabe (facultatif)",
+    "tifinagh": "En tifinagh (facultatif)",
+    "meaning": "Ce que ça veut dire",
+    "record": "Enregistrer",
+    "stop": "Arrêter",
+    "listen": "Écouter",
+    "redo": "Recommencer",
+    "uploadFile": "Envoyer un fichier",
+    "micDenied": "L’accès au micro a été refusé. Tu peux envoyer un fichier à la place.",
+    "consent": "J’accepte que ma voix soit publiée dans Tachawit pour aider à apprendre, avec mon nom (ou le nom indiqué ci-dessous).",
+    "region": "Région",
+    "village": "Village ou ville",
+    "notes": "Quelque chose à ajouter ? (facultatif)",
+    "whatToFix": "Que faut-il corriger ?",
+    "aboutYou": "À propos de toi",
+    "name": "Ton nom (facultatif)",
+    "email": "E-mail (facultatif, pour te remercier ou te poser une question)",
+    "privacy": "Ton e-mail n’est vu que par les admins. Il n’est jamais partagé.",
+    "send": "Envoyer",
+    "sending": "Envoi…",
+    "thanks": "Tanmirt : merci !",
+    "thanksLead": "Ta contribution est dans la file de vérification. Une fois vérifiée, elle aide tout le monde à apprendre.",
+    "another": "Partager autre chose",
+    "errors": {
+      "invalid": "Merci de remplir les champs obligatoires.",
+      "too_many": "Merci pour toute ton aide ! Attends un peu avant d’en envoyer d’autres.",
+      "audio": "Utilise un enregistrement de moins de 8 Mo (MP3, M4A, WAV, WebM ou OGG).",
+      "failed": "L’envoi a échoué. Réessaie."
+    }
+  },
+  "About": {
+    "title": "À propos de Tachawit",
+    "lead": "Un lieu pour apprendre, entendre et garder la langue amazighe des Aurès.",
+    "story1": "Le tachawit est parlé par les Chaouis des montagnes des Aurès, de Batna et Khenchela à Oum El Bouaghi, Tébessa et Biskra. Il se transmet surtout à l’oral, à la maison, et il existe très peu de ressources en ligne pour l’apprendre.",
+    "story2": "Ce projet part de ces voix. Les mots et les expressions sont enregistrés avec des locuteurs natifs à Merouana, et chaque leçon est construite autour de l’écoute : des étapes courtes et ludiques, une carte de la région à parcourir, et une révision quotidienne pour que les mots restent.",
+    "story3": "C’est aussi un projet collectif. Familles, enseignants et toute personne qui parle tachawit peuvent ajouter des mots, des variantes locales et des enregistrements, pour que la langue de chaque village ait sa place.",
+    "pillars": {
+      "voices": {
+        "title": "De vraies voix",
+        "body": "Chaque mot est dit par un locuteur natif, avec un consentement enregistré pour chaque voix."
+      },
+      "place": {
+        "title": "Ancré dans les Aurès",
+        "body": "Sommets, forêts de cèdres, villages des falaises et palmeraies : la carte, c’est la région."
+      },
+      "community": {
+        "title": "Construit ensemble",
+        "body": "Les propositions et enregistrements de la communauté sont vérifiés puis ajoutés."
+      }
+    },
+    "voicesTitle": "Les voix",
+    "voicesLead": "Merci à toutes les personnes qui ont prêté leur voix.",
+    "voicesSoon": "Les premiers enregistrements arrivent.",
+    "joinTitle": "Tu parles tachawit ?",
+    "joinLead": "Partage un mot, une variante de ton village ou un enregistrement. Ça prend une minute.",
+    "joinButton": "Contribuer",
+    "contentNote": "Une partie du contenu est encore un exemple, le temps d’enregistrer à Merouana. Tout ce qui est marqué [PLACEHOLDER] sera remplacé."
   }
 }

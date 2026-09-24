@@ -11,7 +11,7 @@ import { conversionArgs } from "./ffmpeg";
 const run = promisify(execFile);
 
 /** Converts an uploaded recording into the web and slow versions (AAC in MP4). */
-export async function convertRecording(original: ArrayBuffer, trim: { startMs: number; endMs: number }) {
+export async function convertRecording(original: ArrayBuffer, trim: { startMs: number; endMs: number | null }) {
   if (!ffmpegPath) throw new Error("ffmpeg is not available on this server");
   const dir = await mkdtemp(join(tmpdir(), "tachawit-audio-"));
   try {

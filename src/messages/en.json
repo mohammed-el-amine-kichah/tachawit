@@ -14,7 +14,10 @@
     "design": "Design system",
     "review": "Review",
     "profile": "Profile",
-    "reviewDue": "Review, {count, plural, one {# word due} other {# words due}}"
+    "reviewDue": "Review, {count, plural, one {# word due} other {# words due}}",
+    "culture": "Culture",
+    "about": "About",
+    "contribute": "Contribute"
   },
   "ScriptToggle": {
     "label": "Script for Tachawit words",
@@ -692,6 +695,73 @@
       "deleteUnitTitle": "Delete this unit?",
       "deleteUnitLead": "Its levels are deleted too (lessons and quizzes are kept).",
       "unitDeleted": "Unit deleted."
+    },
+    "culture": {
+      "listTitle": "Culture articles",
+      "listLead": "Articles about music, jewelry, history, Yennayer, food and daily life.",
+      "new": "New article",
+      "create": "Create",
+      "title": "Title",
+      "summary": "Summary",
+      "category": "Category",
+      "slug": "Short name (for links)",
+      "unit": "Linked unit",
+      "cover": "Cover image",
+      "body": "Article",
+      "save": "Save",
+      "saved": "Saved.",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "published": "Published.",
+      "unpublished": "Moved back to draft.",
+      "delete": "Delete",
+      "deleteTitle": "Delete this article?",
+      "deleteLead": "This can’t be undone.",
+      "deleted": "Deleted.",
+      "toolbar": "Formatting",
+      "heading": "Heading",
+      "subheading": "Subheading",
+      "bold": "Bold",
+      "italic": "Italic",
+      "link": "Link",
+      "list": "List",
+      "quote": "Quote",
+      "image": "Insert an image",
+      "text": "text",
+      "imageAlt": "Describe the image",
+      "imageInvalid": "Use a PNG, JPEG, WebP or AVIF image.",
+      "imageFailed": "The image couldn’t be uploaded.",
+      "preview": "Preview",
+      "edit": "Edit"
+    },
+    "submissions": {
+      "title": "Submissions",
+      "lead": "Suggestions from the community. Approving creates drafts to review before publishing.",
+      "filter": "Show",
+      "statuses": {
+        "pending": "To review",
+        "approved": "Approved",
+        "rejected": "Rejected"
+      },
+      "empty": "Nothing here.",
+      "anonymous": "Anonymous",
+      "about": "About",
+      "recording": "Contributed recording",
+      "consentGiven": "Consent given for publishing",
+      "noConsent": "No consent: do not publish",
+      "latin": "Latin spelling",
+      "arabic": "Arabic script",
+      "tifinagh": "Tifinagh",
+      "region": "Region",
+      "meaning": "Meaning",
+      "approve": "Approve as draft",
+      "markDone": "Mark as handled",
+      "approved": "Approved: drafts were created.",
+      "approvedCorrection": "Marked as handled.",
+      "reject": "Reject",
+      "rejectNote": "Note (optional)",
+      "rejected": "Rejected.",
+      "openEntry": "Open the entry"
     }
   },
   "MapTheme": {
@@ -699,5 +769,106 @@
     "cedar_forest": "Cedar forest",
     "cliff_villages": "Cliff villages",
     "palm_groves": "Palm groves"
+  },
+  "Culture": {
+    "title": "Culture",
+    "lead": "Music, silver, stories, Yennayer and the table: the Aurès behind the words.",
+    "empty": "No articles yet.",
+    "unavailable": "The articles couldn’t be loaded right now.",
+    "back": "All articles",
+    "fromUnit": "Goes with",
+    "noBody": "This article hasn’t been written yet.",
+    "categories": {
+      "music": "Music",
+      "jewelry": "Jewelry",
+      "history": "History",
+      "yennayer": "Yennayer",
+      "food": "Food",
+      "crafts": "Crafts",
+      "daily_life": "Daily life",
+      "other": "Culture"
+    }
+  },
+  "Contribute": {
+    "title": "Contribute",
+    "lead": "Tachawit lives in your family and your village. Share a word, a local variant, a correction or your voice. Everything is reviewed before it appears.",
+    "kindLabel": "What would you like to share?",
+    "kinds": {
+      "word": "A word",
+      "variation": "A local variant",
+      "correction": "A correction",
+      "recording": "A recording"
+    },
+    "kindHints": {
+      "word": "A word or expression that isn’t in Tachawit yet.",
+      "variation": "How a word is said in your village or region.",
+      "correction": "Something that looks wrong: spelling, meaning, audio.",
+      "recording": "Record a word or phrase in your own voice."
+    },
+    "variantOf": "Which word is it a variant of?",
+    "correctionOf": "Which word is it about? (optional)",
+    "recordingOf": "Is it a word already in Tachawit? (optional)",
+    "searchWord": "Search a word or meaning",
+    "clearWord": "Choose another word",
+    "word": "The word, in Latin letters",
+    "localForm": "How it’s said where you are",
+    "whatIsSaid": "What you say in the recording (optional)",
+    "arabicScript": "In Arabic script (optional)",
+    "tifinagh": "In Tifinagh (optional)",
+    "meaning": "What it means",
+    "record": "Record",
+    "stop": "Stop",
+    "listen": "Listen",
+    "redo": "Start again",
+    "uploadFile": "Upload a file",
+    "micDenied": "Microphone access was refused. You can upload a file instead.",
+    "consent": "I agree that my voice may be published in Tachawit to help people learn, and that my name (or the name I give below) is shown with it.",
+    "region": "Region",
+    "village": "Village or town",
+    "notes": "Anything to add? (optional)",
+    "whatToFix": "What should be corrected?",
+    "aboutYou": "About you",
+    "name": "Your name (optional)",
+    "email": "Email (optional, so we can thank you or ask a question)",
+    "privacy": "Your email is only seen by the admins. We never share it.",
+    "send": "Send",
+    "sending": "Sending…",
+    "thanks": "Tanmirt: thank you!",
+    "thanksLead": "Your contribution is in the review queue. Once checked, it helps everyone learn.",
+    "another": "Share something else",
+    "errors": {
+      "invalid": "Please fill in the required fields.",
+      "too_many": "Thank you for all your help! Please wait a little before sending more.",
+      "audio": "Use a recording under 8 MB (MP3, M4A, WAV, WebM or OGG).",
+      "failed": "It couldn’t be sent. Please try again."
+    }
+  },
+  "About": {
+    "title": "About Tachawit",
+    "lead": "A place to learn, hear and keep the Amazigh language of the Aurès.",
+    "story1": "Tachawit is spoken by the Chaoui people of the Aurès mountains, from Batna and Khenchela to Oum El Bouaghi, Tébessa and Biskra. It is mostly passed on by voice, at home, and there is very little to learn it from online.",
+    "story2": "This project starts from those voices. The words and phrases are recorded with native speakers in Merouana, and every lesson is built around listening: short, playful steps, a map of the region to travel through, and a daily review so words stay.",
+    "story3": "It is also a community project. Families, teachers and anyone who speaks Tachawit can add words, local variants and recordings, so that the language of every village has its place.",
+    "pillars": {
+      "voices": {
+        "title": "Real voices",
+        "body": "Every word is heard from a native speaker, with consent recorded for each voice."
+      },
+      "place": {
+        "title": "Rooted in the Aurès",
+        "body": "Peaks, cedar forests, cliff villages and palm groves: the map is the region itself."
+      },
+      "community": {
+        "title": "Built together",
+        "body": "Suggestions and recordings from the community are reviewed and added."
+      }
+    },
+    "voicesTitle": "The voices",
+    "voicesLead": "Thank you to everyone who lent their voice.",
+    "voicesSoon": "The first recordings are on their way.",
+    "joinTitle": "Speak Tachawit?",
+    "joinLead": "Share a word, a variant from your village or a recording. It takes a minute.",
+    "joinButton": "Contribute",
+    "contentNote": "Some content is still sample material while recordings from Merouana are being made. Anything marked [PLACEHOLDER] will be replaced."
   }
 }

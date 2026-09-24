@@ -2,6 +2,8 @@ import {
   AudioLinesIcon,
   BookAIcon,
   BookOpenIcon,
+  InboxIcon,
+  LandmarkIcon,
   LayoutDashboardIcon,
   MapIcon,
   MapPinIcon,
@@ -23,5 +25,7 @@ export const adminNav: { section: AdminSection; href: string; icon: LucideIcon }
   { section: "lessons", href: "/admin/lessons", icon: BookOpenIcon },
   { section: "quizzes", href: "/admin/quizzes", icon: SparklesIcon },
   { section: "regions", href: "/admin/regions", icon: MapPinIcon },
+  { section: "submissions", href: "/admin/submissions", icon: InboxIcon },
+  { section: "culture", href: "/admin/culture", icon: LandmarkIcon },
   { section: "users", href: "/admin/users", icon: UsersIcon },
 ];

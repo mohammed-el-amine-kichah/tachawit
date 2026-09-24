@@ -176,3 +176,28 @@ insert into public.levels (id, unit_id, position, type, title, lesson_id, quiz_i
   ('80000000-0000-4000-8000-000000000004', '70000000-0000-4000-8000-000000000001', 3, 'quiz',
     '{"en": "Checkpoint", "fr": "Étape", "ar": "محطة", "dz": "محطة"}',
     null, '60000000-0000-4000-8000-000000000001', 0.46, 0.88, 'published');
+
+-- Culture articles (placeholders to be written with the community) ---------------------------
+insert into public.culture_notes (id, slug, category, title, summary, body, unit_id, status) values
+  ('90000000-0000-4000-8000-000000000001', 'yennayer', 'yennayer',
+    '{"en": "Yennayer, the Amazigh new year", "fr": "Yennayer, le nouvel an amazigh", "ar": "ينّاير، رأس السنة الأمازيغية", "dz": "ينّاير، راس العام الأمازيغي"}',
+    '{"en": "[PLACEHOLDER] In January, families across Tamazgha gather to welcome the new year.",
+      "fr": "[PLACEHOLDER] En janvier, les familles de Tamazgha se réunissent pour accueillir la nouvelle année.",
+      "ar": "[PLACEHOLDER] في يناير، تجتمع العائلات في تامزغا لاستقبال السنة الجديدة.",
+      "dz": "[PLACEHOLDER] في يناير، العايلات في تامزغا يتلمّو باش يستقبلو العام الجديد."}',
+    '{"en": "[PLACEHOLDER] This article is a sample, to be written with people from the Aurès.\n\n## A new year\n\nYennayer marks the start of the Amazigh calendar, around **12 January**. In Algeria it has been a national holiday since 2018.\n\n## Around the table\n\nFamilies share a festive meal and wish each other a good year. Customs vary from village to village: the Aurès has its own.\n\n> Which dishes does your family prepare? [Tell us](/contribute).",
+      "fr": "[PLACEHOLDER] Cet article est un exemple, à écrire avec des habitants des Aurès.\n\n## Une nouvelle année\n\nYennayer marque le début du calendrier amazigh, vers le **12 janvier**. En Algérie, c’est un jour férié national depuis 2018.\n\n## Autour de la table\n\nLes familles partagent un repas de fête et se souhaitent une bonne année. Les coutumes changent d’un village à l’autre : les Aurès ont les leurs.\n\n> Quels plats prépare ta famille ? [Raconte-nous](/contribute).",
+      "ar": "[PLACEHOLDER] هذا المقال مثال، يُكتب مع أهل الأوراس.\n\n## سنة جديدة\n\nيُعلن ينّاير بداية التقويم الأمازيغي، في حدود **12 يناير**. وهو عطلة وطنية في الجزائر منذ 2018.\n\n## حول المائدة\n\nتتقاسم العائلات وجبة احتفالية ويتبادل الناس التهاني. تختلف العادات من قرية إلى أخرى، وللأوراس عاداته.\n\n> ما الأطباق التي تحضّرها عائلتك؟ [أخبرنا](/contribute).",
+      "dz": "[PLACEHOLDER] هاد المقال مثال، يتكتب مع ناس الأوراس.\n\n## عام جديد\n\nينّاير هو بداية العام الأمازيغي، في **12 جانفي** تقريبًا. في الجزائر راهو عطلة وطنية من 2018.\n\n## على الطابلة\n\nالعايلات ياكلو ماكلة تاع فرحة ويتمنّاو عام مليح لبعضاهم. العادات تتبدّل من دشرة لدشرة، والأوراس عندو تاعو.\n\n> واش من ماكلة تطيّب العايلة تاعك؟ [احكيلنا](/contribute)."}',
+    '70000000-0000-4000-8000-000000000001', 'published'),
+  ('90000000-0000-4000-8000-000000000002', 'silver-jewelry', 'jewelry',
+    '{"en": "Silver and its motifs", "fr": "L’argent et ses motifs", "ar": "الفضّة وزخارفها", "dz": "الفضّة والنقشات تاعها"}',
+    '{"en": "[PLACEHOLDER] The geometric motifs of Chaoui silver jewelry also live in weaving and pottery.",
+      "fr": "[PLACEHOLDER] Les motifs géométriques des bijoux chaouis en argent vivent aussi dans le tissage et la poterie.",
+      "ar": "[PLACEHOLDER] تحضر الزخارف الهندسية للحلي الشاوية الفضية في النسيج والفخار أيضًا.",
+      "dz": "[PLACEHOLDER] النقشات تاع الفضّة الشاوية تلقاهم تاني في النسيج والفخار."}',
+    '{"en": "[PLACEHOLDER] This article is a sample, to be written with jewellers and families from the Aurès.\n\n## Shapes that travel\n\nLozenges, triangles and zigzags appear on silver, on woven blankets and on painted pottery. The borders you see in Tachawit are inspired by them.\n\n- brooches that fasten clothing\n- bracelets and anklets\n- headpieces for celebrations",
+      "fr": "[PLACEHOLDER] Cet article est un exemple, à écrire avec des bijoutiers et des familles des Aurès.\n\n## Des formes qui voyagent\n\nLosanges, triangles et zigzags se retrouvent sur l’argent, les couvertures tissées et la poterie peinte. Les bordures de Tachawit s’en inspirent.\n\n- des fibules qui attachent les vêtements\n- des bracelets et des chevillères\n- des parures de tête pour les fêtes",
+      "ar": "[PLACEHOLDER] هذا المقال مثال، يُكتب مع صاغة وعائلات من الأوراس.\n\n## أشكال تتنقّل\n\nالمعيّنات والمثلثات والخطوط المتعرّجة موجودة على الفضّة والأغطية المنسوجة والفخار الملوّن. وحواف تاشاويت مستوحاة منها.\n\n- مشابك لتثبيت الثياب\n- أساور وخلاخيل\n- حلي للرأس في الأعراس",
+      "dz": "[PLACEHOLDER] هاد المقال مثال، يتكتب مع الصيّاغة والعايلات تاع الأوراس.\n\n## أشكال تسافر\n\nالمعيّن، المثلّث والتعريجة تلقاهم في الفضّة، في الحنابل وفي الفخار. والحواشي تاع تاشاويت مستوحيين منهم.\n\n- مشابك باش يشدّو القشّ\n- مقايس وخلاخل\n- حلي تاع الراس للأعراس"}',
+    null, 'published');
