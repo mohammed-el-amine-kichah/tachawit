@@ -34,11 +34,10 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // ffmpeg is a native binary: keep it out of the bundle and ship it with the audio route.
+  // ffmpeg is a native binary: keep it out of the bundle. Tracing ships it with the routes that
+  // convert audio, through its real .pnpm path. Don't add an outputFileTracingIncludes entry for it:
+  // pnpm's node_modules/ffmpeg-static is a symlink, and Vercel rejects files under symlinked folders.
   serverExternalPackages: ["ffmpeg-static"],
-  outputFileTracingIncludes: {
-    "/api/admin/audio": ["./node_modules/ffmpeg-static/ffmpeg"],
-  },
   experimental: {
     // Contributions can include a short voice recording (up to 8 MB).
     serverActions: { bodySizeLimit: "9mb" },
