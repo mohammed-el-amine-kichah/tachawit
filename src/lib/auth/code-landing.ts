@@ -1,3 +1,5 @@
+import { defaultLocale, localePrefixes, locales, type Locale } from "@/i18n/config";
+
 /**
  * Supabase sends people to the project's Site URL instead of the auth callback when the callback
  * isn't in its Redirect URLs allow-list, with the sign-in `?code=` on whatever page that is. This
@@ -15,5 +17,21 @@ export function callbackForStrayCode(url: URL): URL | null {
   const target = new URL("/api/auth/callback", url.origin);
   target.searchParams.set("code", code);
   target.searchParams.set("next", `${url.pathname}${query ? `?${query}` : ""}`);
+  return target;
+}
+
+const prefixes = locales.map((locale) => (localePrefixes as Partial<Record<Locale, string>>)[locale] ?? `/${locale}`);
+
+/**
+ * The same fallback can carry an error instead (an expired link, a sign-in finished twice). Supabase
+ * always adds `error_code`, which tells it apart from the login page's own `?error=` message. Sends
+ * the visitor to the login page, in the language of the page it landed on, to try again.
+ */
+export function loginForAuthError(url: URL): URL | null {
+  if (!url.searchParams.get("error_code")) return null;
+  const first = `/${url.pathname.split("/")[1]}`;
+  const prefix = prefixes.includes(first) ? first : `/${defaultLocale}`;
+  const target = new URL(`${prefix}/login`, url.origin);
+  target.searchParams.set("error", "link");
   return target;
 }
