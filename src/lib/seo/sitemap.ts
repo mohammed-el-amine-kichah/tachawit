@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
-import { defaultLocale, localePrefixes, locales, type Locale } from "@/i18n/config";
+import { defaultLocale, locales, type Locale } from "@/i18n/config";
 
 const PUBLIC_PATHS = ["", "/culture", "/about", "/contribute"];
 
 function localized(origin: string, locale: Locale, path: string): string {
-  const prefix = (localePrefixes as Partial<Record<Locale, string>>)[locale] ?? `/${locale}`;
-  return `${origin}${prefix}${path}`;
+  return `${origin}/${locale}${path}`;
 }
 
 /** Public pages, one entry per page with every language as an alternate. */

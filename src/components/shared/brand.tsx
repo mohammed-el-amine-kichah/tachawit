@@ -9,7 +9,8 @@ export function Brand() {
       <span className="grid size-9 place-items-center rounded-lg bg-primary text-primary-foreground transition-transform duration-150 group-active:scale-95">
         <ZMark className="size-5" />
       </span>
-      <span className="font-heading text-xl font-semibold tracking-tight">{t("appName")}</span>
+      {/* Logo only on phones, so the script, language and theme controls fit; still named for screen readers. */}
+      <span className="font-heading text-xl font-semibold tracking-tight max-sm:sr-only">{t("appName")}</span>
     </Link>
   );
 }

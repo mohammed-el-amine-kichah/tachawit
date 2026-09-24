@@ -8,7 +8,7 @@ const PAGES_CACHE = "tachawit-pages";
 const AUDIO_CACHE = "tachawit-audio";
 const CACHES = [STATIC_CACHE, PAGES_CACHE, AUDIO_CACHE];
 const LIMITS = { [STATIC_CACHE]: 400, [PAGES_CACHE]: 80, [AUDIO_CACHE]: 600 };
-const PREFIXES = ["ar", "dz", "en", "fr"];
+const PREFIXES = ["ar", "en", "fr"];
 const DEFAULT_PREFIX = "ar";
 const OFFLINE_PATHS = PREFIXES.map((prefix) => `/${prefix}/offline`);
 const NETWORK_TIMEOUT_MS = 4000;

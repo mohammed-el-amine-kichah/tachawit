@@ -26,7 +26,6 @@ const LANGS = [
   { key: "en", lang: "en", dir: "ltr" },
   { key: "fr", lang: "fr", dir: "ltr" },
   { key: "ar", lang: "ar", dir: "rtl" },
-  { key: "dz", lang: "ar-DZ", dir: "rtl" },
 ] as const;
 
 export type EditableNote = {
@@ -138,7 +137,7 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
 
       <fieldset className="flex flex-col gap-2">
         <legend className="mb-1 text-sm font-medium">{t("body")}</legend>
-        <Tabs defaultValue={locale === "ar-DZ" ? "dz" : locale}>
+        <Tabs defaultValue={locale}>
           <TabsList>
             {LANGS.map(({ key }) => (
               <TabsTrigger key={key} value={key}>

@@ -29,6 +29,6 @@ export function EntryPreview({ entry, audio }: { entry: ViewEntry; audio: AudioI
   );
 }
 
-export function previewTranslations(values: Record<"en" | "fr" | "ar" | "dz", string>): LocalizedText {
+export function previewTranslations(values: Record<"en" | "fr" | "ar", string>): LocalizedText {
   return Object.fromEntries(Object.entries(values).filter(([, text]) => text.trim())) as LocalizedText;
 }

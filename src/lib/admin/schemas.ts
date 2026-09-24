@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { contentKeys } from "@/i18n/config";
 import { cultureCategories, levelTypes, mapThemes, partsOfSpeech } from "@/lib/content/enums";
 import { unlockRuleSchema } from "@/lib/content/unlock-rule";
 import type { LocalizedText } from "@/lib/content/localized-text";
@@ -8,12 +9,12 @@ import type { LocalizedText } from "@/lib/content/localized-text";
 
 const blankToNull = z.string().transform((value) => (value.trim() === "" ? null : value));
 
-/** The four translation inputs of a form, keeping only the filled ones. */
+/** The translation inputs of a form, keeping only the filled ones. */
 export const localizedFormSchema = z
-  .object({ en: z.string(), fr: z.string(), ar: z.string(), dz: z.string() })
+  .object({ en: z.string(), fr: z.string(), ar: z.string() })
   .transform((value) => {
     const result: LocalizedText = {};
-    for (const key of ["en", "fr", "ar", "dz"] as const) if (value[key].trim()) result[key] = value[key].trim();
+    for (const key of contentKeys) if (value[key].trim()) result[key] = value[key].trim();
     return result;
   });
 

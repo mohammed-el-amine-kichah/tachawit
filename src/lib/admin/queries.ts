@@ -1,4 +1,5 @@
 import "server-only";
+import { contentKeys } from "@/i18n/config";
 import { toAudioInfo, type AudioInfo, type ClipRow } from "@/lib/lesson/view";
 import { getSupabaseEnv } from "@/lib/supabase/env";
 import { createServerSupabase } from "@/lib/supabase/server";
@@ -52,7 +53,7 @@ export async function listEntries({ q, status, page }: { q: string; status: "all
         `text_latin.ilike.${like}`,
         `text_arabic.ilike.${like}`,
         `text_tifinagh.ilike.${like}`,
-        ...["en", "fr", "ar", "dz"].map((key) => `translations->>${key}.ilike.${like}`),
+        ...contentKeys.map((key) => `translations->>${key}.ilike.${like}`),
       ].join(","),
     );
   }

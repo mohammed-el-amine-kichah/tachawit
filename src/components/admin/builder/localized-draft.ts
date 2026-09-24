@@ -1,3 +1,4 @@
+import { contentKeys } from "@/i18n/config";
 import type { LocalizedText } from "@/lib/content/localized-text";
 import { toLocalizedForm, type LocalizedFormValue } from "../localized-form";
 
@@ -9,6 +10,6 @@ export function formOf(value: unknown): LocalizedFormValue {
 /** Back to a draft value: only filled languages, or undefined when empty. */
 export function draftOf(value: LocalizedFormValue): LocalizedText | undefined {
   const result: LocalizedText = {};
-  for (const key of ["en", "fr", "ar", "dz"] as const) if (value[key].trim()) result[key] = value[key];
+  for (const key of contentKeys) if (value[key].trim()) result[key] = value[key];
   return Object.keys(result).length ? result : undefined;
 }

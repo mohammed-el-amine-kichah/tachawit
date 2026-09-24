@@ -1,4 +1,4 @@
-import { defaultLocale, localePrefixes, locales, type Locale } from "@/i18n/config";
+import { defaultLocale, isLocale } from "@/i18n/config";
 
 /**
  * Supabase sends people to the project's Site URL instead of the auth callback when the callback
@@ -20,8 +20,6 @@ export function callbackForStrayCode(url: URL): URL | null {
   return target;
 }
 
-const prefixes = locales.map((locale) => (localePrefixes as Partial<Record<Locale, string>>)[locale] ?? `/${locale}`);
-
 /**
  * The same fallback can carry an error instead (an expired link, a sign-in finished twice). Supabase
  * always adds `error_code`, which tells it apart from the login page's own `?error=` message. Sends
@@ -29,9 +27,8 @@ const prefixes = locales.map((locale) => (localePrefixes as Partial<Record<Local
  */
 export function loginForAuthError(url: URL): URL | null {
   if (!url.searchParams.get("error_code")) return null;
-  const first = `/${url.pathname.split("/")[1]}`;
-  const prefix = prefixes.includes(first) ? first : `/${defaultLocale}`;
-  const target = new URL(`${prefix}/login`, url.origin);
+  const first = url.pathname.split("/")[1];
+  const target = new URL(`/${isLocale(first) ? first : defaultLocale}/login`, url.origin);
   target.searchParams.set("error", "link");
   return target;
 }

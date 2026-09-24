@@ -6,28 +6,16 @@ import {
   getDirection,
   getHtmlLang,
   isLocale,
-  localePrefixes,
   locales,
 } from "./config";
 
 describe("locales", () => {
-  it("supports English, French, Arabic and Darja", () => {
-    expect(locales).toEqual(["en", "fr", "ar", "ar-DZ"]);
+  it("supports English, French and Arabic", () => {
+    expect(locales).toEqual(["en", "fr", "ar"]);
   });
 
-  it("identifies Darja as Algerian Arabic, not 'dz' (the code for Dzongkha)", () => {
-    const formatted = new Intl.NumberFormat("ar-DZ").format(4);
-    expect(formatted).toBe("4");
-    expect(new Intl.PluralRules("ar-DZ").select(4)).toBe("few");
-  });
-
-  it("serves Darja under /dz and the others under their own code", () => {
-    expect(localePrefixes).toEqual({ "ar-DZ": "/dz" });
-  });
-
-  it("stores Darja content under the 'dz' key", () => {
-    expect(getContentKey("ar-DZ")).toBe("dz");
-    expect(getContentKey("fr")).toBe("fr");
+  it("stores content under each locale's own code", () => {
+    for (const locale of locales) expect(getContentKey(locale)).toBe(locale);
   });
 
   it("defaults to Arabic", () => {
@@ -35,8 +23,9 @@ describe("locales", () => {
   });
 
   it("recognises supported locales only", () => {
-    expect(isLocale("ar-DZ")).toBe(true);
+    expect(isLocale("ar")).toBe(true);
     expect(isLocale("dz")).toBe(false);
+    expect(isLocale("ar-DZ")).toBe(false);
     expect(isLocale("de")).toBe(false);
     expect(isLocale(undefined)).toBe(false);
     expect(isLocale(42)).toBe(false);
@@ -44,9 +33,8 @@ describe("locales", () => {
 });
 
 describe("getDirection", () => {
-  it("is RTL for Arabic and Darja", () => {
+  it("is RTL for Arabic", () => {
     expect(getDirection("ar")).toBe("rtl");
-    expect(getDirection("ar-DZ")).toBe("rtl");
   });
 
   it("is LTR for English and French", () => {
@@ -56,11 +44,7 @@ describe("getDirection", () => {
 });
 
 describe("getHtmlLang", () => {
-  it("tags Darja as ar-DZ so screen readers pick an Arabic voice", () => {
-    expect(getHtmlLang("ar-DZ")).toBe("ar-DZ");
-  });
-
-  it("uses the plain tag for the other locales", () => {
+  it("uses the locale's own tag", () => {
     expect(getHtmlLang("en")).toBe("en");
     expect(getHtmlLang("fr")).toBe("fr");
     expect(getHtmlLang("ar")).toBe("ar");
@@ -76,11 +60,7 @@ describe("getContentFallbacks", () => {
     }
   });
 
-  it("falls back from Darja to Arabic before any Latin-script language", () => {
-    expect(getContentFallbacks("ar-DZ").slice(0, 2)).toEqual(["ar-DZ", "ar"]);
-  });
-
-  it("falls back from Arabic to Darja before any Latin-script language", () => {
-    expect(getContentFallbacks("ar").slice(0, 2)).toEqual(["ar", "ar-DZ"]);
+  it("falls back from Arabic to French, the second language most learners read", () => {
+    expect(getContentFallbacks("ar")).toEqual(["ar", "fr", "en"]);
   });
 });

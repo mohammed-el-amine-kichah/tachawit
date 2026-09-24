@@ -12,7 +12,6 @@
   "Nav": {
     "label": "Principale",
     "journey": "Parcours",
-    "design": "Système de design",
     "review": "Révision",
     "profile": "Profil",
     "reviewDue": "Révision, {count, plural, one {# mot à revoir} other {# mots à revoir}}",
@@ -34,14 +33,10 @@
     "label": "Langue de l’interface",
     "en": "English",
     "fr": "Français",
-    "ar": "العربية",
-    "dz": "الدارجة"
+    "ar": "العربية"
   },
   "ThemeToggle": {
-    "label": "Thème de couleurs",
-    "system": "Comme mon appareil",
-    "light": "Clair",
-    "dark": "Sombre"
+    "toggle": "Basculer entre clair et sombre"
   },
   "Home": {
     "eyebrow": "Tachawit · le tamazight des Aurès",
@@ -50,8 +45,10 @@
     "start": "Commencer le parcours",
     "journeyTitle": "Ton parcours",
     "unitNumber": "Unité {number}",
-    "empty": "Aucune unité n’est encore publiée. Ajoutes-en une depuis l’administration.",
-    "unavailable": "Les leçons n’ont pas pu être chargées. Réessaie dans un instant."
+    "empty": "De nouvelles leçons arrivent bientôt. Reviens vite !",
+    "unavailable": "Les leçons n’ont pas pu être chargées. Réessaie dans un instant.",
+    "emptyAdmin": "Aucune unité n’est encore publiée. Les apprenants voient un message « bientôt disponible » jusqu’à ce que tu en publies une.",
+    "emptyAdminAction": "Ouvrir l’éditeur de carte"
   },
   "LevelType": {
     "lesson": "Leçon",
@@ -63,7 +60,16 @@
   "Footer": {
     "tagline": "Reprends ta langue.",
     "credits": "Voix enregistrées avec des locuteurs natifs de tout l’Aurès : Batna, Khenchela, Oum El Bouaghi, Tébessa et Biskra.",
-    "linksLabel": "Liens du site"
+    "brand": "Tachawit",
+    "follow": "Suis-nous",
+    "learn": "Apprendre",
+    "involved": "Participer",
+    "rights": "© Tachawit. Voix partagées avec l’accord des locuteurs.",
+    "social": {
+      "instagram": "Tachawit sur Instagram",
+      "facebook": "Tachawit sur Facebook",
+      "tiktok": "Tachawit sur TikTok"
+    }
   },
   "Design": {
     "metaTitle": "Système de design",
@@ -310,7 +316,6 @@
       "en": "Anglais",
       "fr": "Français",
       "ar": "Arabe",
-      "dz": "Darja",
       "atLeastOne": "au moins une"
     },
     "errors": {
@@ -843,7 +848,9 @@
       "too_many": "Merci pour toute ton aide ! Attends un peu avant d’en envoyer d’autres.",
       "audio": "Utilise un enregistrement de moins de 8 Mo (MP3, M4A, WAV, WebM ou OGG).",
       "failed": "L’envoi a échoué. Réessaie."
-    }
+    },
+    "sendingAs": "Envoyé en tant que {name}",
+    "sendingAsLead": "Les admins voient le nom et l’e-mail de ton compte, uniquement pour te remercier ou te poser une question."
   },
   "About": {
     "title": "À propos de Tachawit",

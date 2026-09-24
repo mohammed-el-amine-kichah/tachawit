@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { snapshotFromRows } from "@/lib/progress/account";
 import type { ProgressSnapshot } from "@/lib/progress/snapshot";
 import { createServerSupabase } from "../server";
@@ -12,8 +13,11 @@ export type AccountUser = {
 
 export type Account = { user: AccountUser; snapshot: ProgressSnapshot };
 
-/** The signed-in learner and their progress, or null for guests. Never cached: it is per user. */
-export async function getAccount(): Promise<Account | null> {
+/**
+ * The signed-in learner and their progress, or null for guests. Never cached across requests (it is
+ * per user); memoized within one request so the layout and a page can both ask.
+ */
+export const getAccount = cache(async (): Promise<Account | null> => {
   const supabase = await createServerSupabase();
   const { data } = await supabase.auth.getClaims();
   const claims = data?.claims;
@@ -36,4 +40,4 @@ export async function getAccount(): Promise<Account | null> {
     },
     snapshot: snapshotFromRows({ levels: levels.data ?? [], stats: stats.data ?? null, srs: srs.data ?? [] }),
   };
-}
+});

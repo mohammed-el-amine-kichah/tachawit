@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { contributionSchema } from "./contribution";
+import { contributionSchema, contributorFor } from "./contribution";
 
 const entry = "30000000-0000-4000-8000-000000000001";
 const base = { text_latin: "", text_arabic: "", text_tifinagh: "", meaning: "", related_entry_id: "", region_id: "", village: "", message: "", contributor_name: "", contributor_email: "", audio_consent: false, has_audio: false };
@@ -37,5 +37,25 @@ describe("contributionSchema", () => {
   it("keeps Tachawit text exactly as typed and maps the meaning to the learner's language", () => {
     const parsed = contributionSchema.parse({ ...base, kind: "word", text_latin: " Aɣrum ", meaning: "bread" });
     expect(parsed.text_latin).toBe(" Aɣrum ");
+  });
+});
+
+describe("contributorFor", () => {
+  const form = { name: "Someone Else", email: "spoof@example.com" };
+
+  it("uses the account for signed-in contributors and ignores what the form sent", () => {
+    expect(contributorFor({ displayName: "Yamina", email: "yamina@example.com" }, form)).toEqual({
+      name: "Yamina",
+      email: "yamina@example.com",
+    });
+  });
+
+  it("leaves the name empty when the account has none, rather than trusting the form", () => {
+    expect(contributorFor({ displayName: null, email: "yamina@example.com" }, form)).toEqual({ name: null, email: "yamina@example.com" });
+  });
+
+  it("uses the optional form fields for guests", () => {
+    expect(contributorFor(null, form)).toEqual({ name: "Someone Else", email: "spoof@example.com" });
+    expect(contributorFor(null, { name: null, email: null })).toEqual({ name: null, email: null });
   });
 });

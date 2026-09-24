@@ -1,4 +1,5 @@
 import { unstable_cache } from "next/cache";
+import { contentKeys } from "@/i18n/config";
 import { z } from "zod";
 import { CONTENT_CACHE_TAG, CONTENT_REVALIDATE_SECONDS } from "@/lib/content/cache";
 import { localizedTextSchema, parseLocalizedText, type LocalizedText } from "@/lib/content/localized-text";
@@ -21,7 +22,7 @@ export type CultureArticle = CultureCard & {
   unit: { title: LocalizedText } | null;
 };
 
-const bodySchema = z.partialRecord(z.enum(["en", "fr", "ar", "dz"]), z.string()).catch({});
+const bodySchema = z.partialRecord(z.enum(contentKeys), z.string()).catch({});
 const optional = (value: unknown) => {
   const parsed = localizedTextSchema.safeParse(value);
   return parsed.success ? parsed.data : null;

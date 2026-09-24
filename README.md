@@ -150,6 +150,6 @@ All learning content (units, map levels, words, audio, lessons, quizzes, culture
 
 ## Languages and scripts
 
-- UI languages: Modern Standard Arabic (`/ar`, the default), Algerian Darja (`/dz`), French (`/fr`) and English (`/en`). Arabic and Darja are right-to-left.
-  Darja's internal locale is `ar-DZ` because `dz` is the ISO code for Dzongkha, and using it makes numbers and plurals format incorrectly. The URL stays `/dz`, and content keys and the message file stay `dz`.
+- UI languages: Modern Standard Arabic (`/ar`, the default), French (`/fr`) and English (`/en`). Arabic is right-to-left.
+  Darja was dropped: old `/dz` links redirect to `/ar`, and a `dz` key left in older content is ignored.
 - Tachawit text can be shown in Latin, Arabic or Tifinagh script (toggle in the header, remembered in a cookie). A missing script falls back to Latin. Always render Tachawit through `<TachawitText>`.

@@ -1,13 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { getContentKey, locales } from "@/i18n/config";
 import ar from "./ar.json";
-import dz from "./dz.json";
 import en from "./en.json";
 import fr from "./fr.json";
 
 type Messages = { [key: string]: string | Messages };
 
-const catalogs: Record<string, Messages> = { en, fr, ar, dz };
+const catalogs: Record<string, Messages> = { en, fr, ar };
 
 function flatten(messages: Messages, prefix = ""): Map<string, string> {
   const result = new Map<string, string>();

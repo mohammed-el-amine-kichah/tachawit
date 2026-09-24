@@ -16,7 +16,7 @@ Full product spec: @docs/SPEC.md — read it before starting any new phase.
 - Tailwind CSS + shadcn/ui
 - Framer Motion (UI animation), Lottie/Rive (celebrations, characters)
 - Supabase: Postgres, Auth (magic link + Google), Storage, RLS
-- next-intl — UI in `en`, `fr`, `ar`, Darja. `ar` and Darja are RTL. Darja's locale is `ar-DZ` (never `dz`, the ISO code for Dzongkha, which breaks number/plural formatting); it is served at `/dz` and uses the `dz` key in content JSON and `messages/dz.json`.
+- next-intl — UI in `en`, `fr`, `ar` (Arabic is the default and RTL). Darja was dropped: old `/dz` links redirect to `/ar`, and older content rows may still carry a `dz` key, which the app ignores.
 - Zod for validation, TanStack Query for client data where needed
 - Package manager: **pnpm**
 - Next.js 16 differs from older versions (e.g. `proxy.ts` replaces `middleware.ts`): read the bundled docs, see @AGENTS.md
@@ -51,7 +51,7 @@ src/
     srs/                 # spaced-repetition logic (pure functions, unit-tested)
     script/              # Latin / Arabic / Tifinagh rendering helpers
     audio/
-  messages/              # next-intl UI strings: en.json fr.json ar.json dz.json
+  messages/              # next-intl UI strings: en.json fr.json ar.json
   styles/
 supabase/
   migrations/
@@ -62,7 +62,7 @@ docs/
 
 ## Domain model (short version — details in SPEC.md)
 - `units` → `levels` (map nodes: lesson / quiz / review / boss / story, with x/y position and unlock rule)
-- `entries` (word/phrase): `text_latin`, `text_arabic`, `text_tifinagh`, translations (en/fr/ar/dz), dialect/region tag
+- `entries` (word/phrase): `text_latin`, `text_arabic`, `text_tifinagh`, translations (en/fr/ar), dialect/region tag
 - `audio_clips` (linked to entry + speaker; optional slow version and word timestamps)
 - `speakers` (region/village, **consent + date required before audio is published**)
 - `lessons` and `quizzes` = ordered steps/questions stored as typed JSON, validated with Zod
@@ -74,7 +74,7 @@ docs/
 - Never machine-translate or invent Tachawit words. Placeholder content must be clearly marked `[PLACEHOLDER]`.
 - Tachawit text always renders through the `<TachawitText entry={...} />` component, which respects the global script toggle and falls back to Latin if a script is missing.
 - Dialect variation is shown, not treated as an error: display the region tag next to variants.
-- UI strings go in `messages/*.json`, never inline. Add all four locales at once (use English as a clearly marked fallback if unsure).
+- UI strings go in `messages/*.json`, never inline. Add all three locales at once (use English as a clearly marked fallback if unsure).
 
 ## RTL
 - Use logical Tailwind utilities (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`, `text-start`) — never `ml-`, `mr-`, `left-`, `right-` for layout.

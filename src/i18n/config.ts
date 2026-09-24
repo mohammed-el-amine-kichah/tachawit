@@ -1,16 +1,14 @@
-// Darja's locale is "ar-DZ" (Algerian Arabic), not "dz", which is the code for Dzongkha and makes
-// Intl format numbers and plurals incorrectly. It is still served under /dz and stored under "dz".
-export const locales = ["en", "fr", "ar", "ar-DZ"] as const;
+export const locales = ["en", "fr", "ar"] as const;
 export type Locale = (typeof locales)[number];
 export type Direction = "ltr" | "rtl";
 
 /** Key used for a locale in multilingual database content and in the message file names. */
-export type ContentKey = "en" | "fr" | "ar" | "dz";
+export type ContentKey = "en" | "fr" | "ar";
+
+/** Every language multilingual content is written in, in editing order. */
+export const contentKeys = ["en", "fr", "ar"] as const satisfies readonly ContentKey[];
 
 export const defaultLocale: Locale = "ar";
-
-/** URL prefixes that differ from the locale code. */
-export const localePrefixes = { "ar-DZ": "/dz" } as const satisfies Partial<Record<Locale, `/${string}`>>;
 
 type LocaleMeta = {
   dir: Direction;
@@ -20,10 +18,9 @@ type LocaleMeta = {
 };
 
 const localeMeta: Record<Locale, LocaleMeta> = {
-  en: { dir: "ltr", contentKey: "en", contentFallbacks: ["en", "fr", "ar", "ar-DZ"] },
-  fr: { dir: "ltr", contentKey: "fr", contentFallbacks: ["fr", "en", "ar", "ar-DZ"] },
-  ar: { dir: "rtl", contentKey: "ar", contentFallbacks: ["ar", "ar-DZ", "fr", "en"] },
-  "ar-DZ": { dir: "rtl", contentKey: "dz", contentFallbacks: ["ar-DZ", "ar", "fr", "en"] },
+  en: { dir: "ltr", contentKey: "en", contentFallbacks: ["en", "fr", "ar"] },
+  fr: { dir: "ltr", contentKey: "fr", contentFallbacks: ["fr", "en", "ar"] },
+  ar: { dir: "rtl", contentKey: "ar", contentFallbacks: ["ar", "fr", "en"] },
 };
 
 export function isLocale(value: unknown): value is Locale {

@@ -12,8 +12,9 @@ describe("localizedTextSchema", () => {
     expect(localizedTextSchema.safeParse({ en: "  " }).success).toBe(false);
   });
 
-  it("rejects unknown locales so typos surface in the admin", () => {
-    expect(localizedTextSchema.safeParse({ en: "Water", es: "Agua" }).success).toBe(false);
+  it("drops languages the site doesn't offer, such as Darja in older rows", () => {
+    expect(localizedTextSchema.parse({ en: "Water", dz: "الما" })).toEqual({ en: "Water" });
+    expect(localizedTextSchema.safeParse({ dz: "الما" }).success).toBe(false);
   });
 
   it("rejects non-string values", () => {

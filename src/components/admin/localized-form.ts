@@ -1,9 +1,9 @@
-// Plain helpers for the four-language form fields; usable on the server and in the browser.
+// Plain helpers for the multilingual form fields; usable on the server and in the browser.
 
-export type LocalizedFormValue = { en: string; fr: string; ar: string; dz: string };
+export type LocalizedFormValue = { en: string; fr: string; ar: string };
 
-export const emptyLocalized: LocalizedFormValue = { en: "", fr: "", ar: "", dz: "" };
+export const emptyLocalized: LocalizedFormValue = { en: "", fr: "", ar: "" };
 
 export function toLocalizedForm(value: Partial<LocalizedFormValue> | null | undefined): LocalizedFormValue {
-  return { ...emptyLocalized, ...(value ?? {}) };
+  return { en: value?.en ?? "", fr: value?.fr ?? "", ar: value?.ar ?? "" };
 }

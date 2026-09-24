@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { parseCsv, rowsToEntries } from "@/lib/admin/csv";
 
-const TEMPLATE = "text_latin,text_arabic,text_tifinagh,en,fr,ar,dz,part_of_speech,region,notes\n";
+const TEMPLATE = "text_latin,text_arabic,text_tifinagh,en,fr,ar,part_of_speech,region,notes\n";
 
 /** Paste or open a CSV, check it, then import every valid row as a draft. */
 export function CsvImport({ regionsBySlug }: { regionsBySlug: Record<string, string> }) {

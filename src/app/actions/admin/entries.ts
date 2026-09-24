@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { contentKeys } from "@/i18n/config";
 import { parseCsv, rowsToEntries, type ImportError } from "@/lib/admin/csv";
 import { adminError, type ActionResult } from "@/lib/admin/result";
 import { entryFormSchema, type EntryFormInput } from "@/lib/admin/schemas";
@@ -63,7 +64,7 @@ export async function searchEntries(query: string): Promise<EntryOption[]> {
     let request = supabase.from("entries").select("id, text_latin, translations, status").order("text_latin").limit(20);
     if (term) {
       const like = `*${term}*`;
-      request = request.or([`text_latin.ilike.${like}`, ...["en", "fr", "ar", "dz"].map((k) => `translations->>${k}.ilike.${like}`)].join(","));
+      request = request.or([`text_latin.ilike.${like}`, ...contentKeys.map((k) => `translations->>${k}.ilike.${like}`)].join(","));
     }
     const { data } = await request;
     return data ?? [];

@@ -15,12 +15,11 @@ describe("sitemapEntries", () => {
     ]);
   });
 
-  it("points search engines to every language, with Darja under /dz", () => {
+  it("points search engines to every language", () => {
     expect(entries[4].alternates?.languages).toEqual({
       en: "https://tachawit.app/en/culture/yennayer",
       fr: "https://tachawit.app/fr/culture/yennayer",
       ar: "https://tachawit.app/ar/culture/yennayer",
-      "ar-DZ": "https://tachawit.app/dz/culture/yennayer",
       "x-default": "https://tachawit.app/ar/culture/yennayer",
     });
   });

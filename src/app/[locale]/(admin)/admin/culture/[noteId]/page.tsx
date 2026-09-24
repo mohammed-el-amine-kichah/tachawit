@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { contentKeys } from "@/i18n/config";
 import { getLocale } from "next-intl/server";
 import { z } from "zod";
 import { CultureEditor } from "@/components/admin/culture/culture-editor";
@@ -16,7 +17,7 @@ export default async function EditCulturePage({ params }: PageProps<"/[locale]/a
   const { note } = data;
   const title = parseLocalizedText(note.title);
   const summary = localizedTextSchema.safeParse(note.summary);
-  const body = z.partialRecord(z.enum(["en", "fr", "ar", "dz"]), z.string()).catch({}).parse(note.body);
+  const body = z.partialRecord(z.enum(contentKeys), z.string()).catch({}).parse(note.body);
   return (
     <>
       <PageHeader title={localize(title, locale)?.text ?? note.slug} />

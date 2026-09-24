@@ -42,3 +42,13 @@ export const contributionSchema = z
   });
 
 export type ContributionInput = z.input<typeof contributionSchema>;
+
+type Contributor = { name: string | null; email: string | null };
+
+/**
+ * Who a submission is credited to. Signed-in contributors are identified by their account, so a
+ * name or email sent from the form is ignored; guests may leave either or both empty.
+ */
+export function contributorFor(account: { displayName: string | null; email: string | null } | null, form: Contributor): Contributor {
+  return account ? { name: account.displayName, email: account.email } : form;
+}

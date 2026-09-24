@@ -12,7 +12,6 @@ const FIELDS = [
   { key: "en", lang: "en", dir: "ltr" },
   { key: "fr", lang: "fr", dir: "ltr" },
   { key: "ar", lang: "ar", dir: "rtl" },
-  { key: "dz", lang: "ar-DZ", dir: "rtl" },
 ] as const;
 
 /** One input per UI language, each in its own direction. */

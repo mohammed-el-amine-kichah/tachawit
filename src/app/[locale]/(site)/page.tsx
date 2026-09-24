@@ -10,6 +10,8 @@ import { Motif } from "@/components/shared/motif";
 import { Notice } from "@/components/shared/notice";
 import { ZMark } from "@/components/shared/z-mark";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
+import { getAccount } from "@/lib/supabase/queries/account";
 import { getMapUnits, type MapUnit } from "@/lib/supabase/queries/units";
 
 async function loadUnits(): Promise<MapUnit[] | null> {
@@ -21,11 +23,21 @@ async function loadUnits(): Promise<MapUnit[] | null> {
   }
 }
 
+/** Admins get a pointer to the map editor on an empty map; learners never see admin wording. */
+async function viewerIsAdmin(): Promise<boolean> {
+  try {
+    return (await getAccount())?.user.role === "admin";
+  } catch {
+    return false;
+  }
+}
+
 export default async function HomePage() {
   const t = await getTranslations("Home");
   const map = await getTranslations("Map");
   const units = await loadUnits();
   const firstTheme = units?.[0]?.mapTheme;
+  const showAdminHint = units?.length === 0 && (await viewerIsAdmin());
 
   return (
     <>
@@ -60,6 +72,13 @@ export default async function HomePage() {
         </h2>
         {units === null ? (
           <Notice className="mx-4 my-10">{t("unavailable")}</Notice>
+        ) : units.length === 0 && showAdminHint ? (
+          <div className="mx-4 my-10 flex flex-col items-center gap-3">
+            <Notice className="w-full">{t("emptyAdmin")}</Notice>
+            <Button asChild variant="outline" className="rounded-full">
+              <Link href="/admin/units">{t("emptyAdminAction")}</Link>
+            </Button>
+          </div>
         ) : units.length === 0 ? (
           <Notice className="mx-4 my-10">{t("empty")}</Notice>
         ) : (

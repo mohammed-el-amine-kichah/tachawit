@@ -11,15 +11,11 @@ describe("localize", () => {
   });
 
   it("falls back along the locale's fallback chain and reports it", () => {
-    expect(localize({ ar: "مرحبا", en: "Hello" }, "ar-DZ")).toEqual({
-      text: "مرحبا",
-      locale: "ar",
+    expect(localize({ fr: "Bonjour", en: "Hello" }, "ar")).toEqual({
+      text: "Bonjour",
+      locale: "fr",
       isFallback: true,
     });
-  });
-
-  it("reads Darja from the 'dz' content key", () => {
-    expect(localize({ dz: "سلام", ar: "مرحبا" }, "ar-DZ")).toEqual({ text: "سلام", locale: "ar-DZ", isFallback: false });
   });
 
   it("treats blank strings as missing", () => {

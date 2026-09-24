@@ -12,7 +12,6 @@
   "Nav": {
     "label": "Main",
     "journey": "Journey",
-    "design": "Design system",
     "review": "Review",
     "profile": "Profile",
     "reviewDue": "Review, {count, plural, one {# word due} other {# words due}}",
@@ -34,14 +33,10 @@
     "label": "Interface language",
     "en": "English",
     "fr": "Français",
-    "ar": "العربية",
-    "dz": "الدارجة"
+    "ar": "العربية"
   },
   "ThemeToggle": {
-    "label": "Colour theme",
-    "system": "Match my device",
-    "light": "Light",
-    "dark": "Dark"
+    "toggle": "Switch between light and dark"
   },
   "Home": {
     "eyebrow": "Tachawit · Tamazight of the Aurès",
@@ -50,8 +45,10 @@
     "start": "Start the journey",
     "journeyTitle": "Your journey",
     "unitNumber": "Unit {number}",
-    "empty": "No units are published yet. Add one from the admin panel.",
-    "unavailable": "The lessons could not be loaded right now. Please try again in a moment."
+    "empty": "New lessons are on their way. Check back soon.",
+    "unavailable": "The lessons could not be loaded right now. Please try again in a moment.",
+    "emptyAdmin": "No units are published yet. Learners see a “coming soon” message until you publish one.",
+    "emptyAdminAction": "Open the map editor"
   },
   "LevelType": {
     "lesson": "Lesson",
@@ -63,7 +60,16 @@
   "Footer": {
     "tagline": "Reclaim your language.",
     "credits": "Voices recorded with native speakers from across the Aurès: Batna, Khenchela, Oum El Bouaghi, Tébessa and Biskra.",
-    "linksLabel": "Site links"
+    "brand": "Tachawit",
+    "follow": "Follow us",
+    "learn": "Learn",
+    "involved": "Get involved",
+    "rights": "© Tachawit. Voices shared with the speakers’ consent.",
+    "social": {
+      "instagram": "Tachawit on Instagram",
+      "facebook": "Tachawit on Facebook",
+      "tiktok": "Tachawit on TikTok"
+    }
   },
   "Design": {
     "metaTitle": "Design system",
@@ -310,7 +316,6 @@
       "en": "English",
       "fr": "French",
       "ar": "Arabic",
-      "dz": "Darja",
       "atLeastOne": "at least one"
     },
     "errors": {
@@ -843,7 +848,9 @@
       "too_many": "Thank you for all your help! Please wait a little before sending more.",
       "audio": "Use a recording under 8 MB (MP3, M4A, WAV, WebM or OGG).",
       "failed": "It couldn’t be sent. Please try again."
-    }
+    },
+    "sendingAs": "Sending as {name}",
+    "sendingAsLead": "Admins see your account’s name and email, only to thank you or ask a question."
   },
   "About": {
     "title": "About Tachawit",

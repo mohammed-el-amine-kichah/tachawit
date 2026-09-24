@@ -10,7 +10,7 @@ Build it in the phases listed at the end, one phase per request. After each phas
 - Tailwind CSS + shadcn/ui as the base components
 - Framer Motion for UI animation; Lottie or Rive for character/celebration animations
 - Supabase (Postgres): Auth (email magic link + Google), Storage (audio and images), Row Level Security
-- next-intl for UI translations: English, French, Modern Standard Arabic, Algerian Darja. Arabic and Darja are RTL, so the layout must flip correctly.
+- next-intl for UI translations: English, French, Modern Standard Arabic. Arabic is RTL, so the layout must flip correctly.
 - PWA: installable, with lessons the user has opened cached for offline use
 
 ## Core principle: all content is data, never code
@@ -19,7 +19,7 @@ Every lesson, quiz, word, audio clip, map node and culture note lives in the dat
 ## Data model (adapt as needed, but keep these concepts)
 - **units**: title (multilingual), description, order, map theme/region, cover illustration, status (draft/published)
 - **levels** (nodes on the map): belongs to a unit, order, type (lesson / quiz / review / boss / story), unlock rule (default: previous level completed), map position (x, y)
-- **entries** (a word or phrase): text_latin, text_arabic, text_tifinagh, translations (en, fr, ar, darja), part of speech, dialect/region tag, notes, image (optional)
+- **entries** (a word or phrase): text_latin, text_arabic, text_tifinagh, translations (en, fr, ar), part of speech, dialect/region tag, notes, image (optional)
 - **audio_clips**: file, linked entry, speaker (linked), duration, slow version (optional), transcript with word-level timestamps (optional)
 - **speakers**: name or pseudonym, region/village, consent given (boolean + date), public bio (optional)
 - **lessons**: ordered list of steps. Step types: introduce entry (audio + text + image), listen and repeat, culture note, dialogue (multiple speakers, line by line)

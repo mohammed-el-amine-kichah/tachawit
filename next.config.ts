@@ -19,6 +19,13 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    // Darja (/dz) was dropped; send old links and installed apps to the Arabic pages.
+    return [
+      { source: "/dz", destination: "/ar", permanent: true },
+      { source: "/dz/:path*", destination: "/ar/:path*", permanent: true },
+    ];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

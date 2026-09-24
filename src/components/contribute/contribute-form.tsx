@@ -4,6 +4,7 @@ import { HeartHandshakeIcon, MicIcon, PlayIcon, RotateCcwIcon, SquareIcon, Uploa
 import { useLocale, useTranslations } from "next-intl";
 import { useRef, useState, useTransition } from "react";
 import { submitContribution, type ContributionResult, type PublicEntryOption } from "@/app/actions/contribute";
+import { useAccount } from "@/components/auth/account-context";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -20,6 +21,7 @@ import { PublicEntryPicker } from "./public-entry-picker";
 /** Share a word, a local variant, a correction or a recording. Everything is reviewed before publishing. */
 export function ContributeForm({ regions }: { regions: { id: string; name: LocalizedText }[] }) {
   const t = useTranslations("Contribute");
+  const account = useAccount();
   const locale = useLocale();
   const [kind, setKind] = useState<ContributionKind>("word");
   const [entry, setEntry] = useState<PublicEntryOption | null>(null);
@@ -198,18 +200,25 @@ export function ContributeForm({ regions }: { regions: { id: string; name: Local
         <Textarea id="message" name="message" rows={3} maxLength={2000} required={kind === "correction"} />
       </div>
 
-      <fieldset className="grid gap-4 rounded-2xl bg-muted/50 p-4 sm:grid-cols-2">
-        <legend className="sr-only">{t("aboutYou")}</legend>
-        <div className="flex flex-col gap-1">
-          <Label htmlFor="contributor_name">{t("name")}</Label>
-          <Input id="contributor_name" name="contributor_name" maxLength={80} autoComplete="name" />
+      {account ? (
+        <div className="rounded-2xl bg-muted/50 p-4">
+          <p className="text-sm font-medium">{t("sendingAs", { name: account.displayName ?? account.email ?? "" })}</p>
+          <p className="text-xs text-muted-foreground">{t("sendingAsLead")}</p>
         </div>
-        <div className="flex flex-col gap-1">
-          <Label htmlFor="contributor_email">{t("email")}</Label>
-          <Input id="contributor_email" name="contributor_email" type="email" dir="ltr" maxLength={254} autoComplete="email" />
-        </div>
-        <p className="text-xs text-muted-foreground sm:col-span-2">{t("privacy")}</p>
-      </fieldset>
+      ) : (
+        <fieldset className="grid gap-4 rounded-2xl bg-muted/50 p-4 sm:grid-cols-2">
+          <legend className="sr-only">{t("aboutYou")}</legend>
+          <div className="flex flex-col gap-1">
+            <Label htmlFor="contributor_name">{t("name")}</Label>
+            <Input id="contributor_name" name="contributor_name" maxLength={80} autoComplete="name" />
+          </div>
+          <div className="flex flex-col gap-1">
+            <Label htmlFor="contributor_email">{t("email")}</Label>
+            <Input id="contributor_email" name="contributor_email" type="email" dir="ltr" maxLength={254} autoComplete="email" />
+          </div>
+          <p className="text-xs text-muted-foreground sm:col-span-2">{t("privacy")}</p>
+        </fieldset>
+      )}
 
       {/* Hidden from people; bots fill it in. */}
       <div aria-hidden className="absolute -start-[9999px] h-0 w-0 overflow-hidden">

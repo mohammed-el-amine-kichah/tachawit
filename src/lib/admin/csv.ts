@@ -1,4 +1,5 @@
 import { isPartOfSpeech, type PartOfSpeech } from "@/lib/content/enums";
+import { contentKeys } from "@/i18n/config";
 import type { LocalizedText } from "@/lib/content/localized-text";
 
 /** RFC 4180-style CSV: quoted fields, doubled quotes, commas and newlines inside quotes. */
@@ -57,7 +58,7 @@ export type ImportError = { line: number; problem: ImportProblem };
 const blankToNull = (value: string | undefined) => (value && value.trim() !== "" ? value : null);
 
 /**
- * Validates spreadsheet rows (columns: text_latin, text_arabic, text_tifinagh, en, fr, ar, dz,
+ * Validates spreadsheet rows (columns: text_latin, text_arabic, text_tifinagh, en, fr, ar,
  * part_of_speech, region, notes). Everything is imported as a draft for review before publishing.
  */
 export function rowsToEntries(
@@ -70,7 +71,7 @@ export function rowsToEntries(
   rows.forEach((row, index) => {
     const line = index + 2;
     const translations: LocalizedText = {};
-    for (const key of ["en", "fr", "ar", "dz"] as const) {
+    for (const key of contentKeys) {
       const value = row[key]?.trim();
       if (value) translations[key] = value;
     }

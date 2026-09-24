@@ -32,7 +32,8 @@ describe("loginForAuthError", () => {
 
   it("uses Arabic, the default language, when the page has none", () => {
     expect(loginForAuthError(at("/?error=access_denied&error_code=otp_expired"))?.pathname).toBe("/ar/login");
-    expect(loginForAuthError(at("/dz/profile?error_code=bad_oauth_state"))?.pathname).toBe("/dz/login");
+    expect(loginForAuthError(at("/en/profile?error_code=bad_oauth_state"))?.pathname).toBe("/en/login");
+    expect(loginForAuthError(at("/dz/profile?error_code=bad_oauth_state"))?.pathname).toBe("/ar/login");
   });
 
   it("leaves the login page's own error message and ordinary pages alone", () => {

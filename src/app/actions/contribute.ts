@@ -4,8 +4,8 @@ import { createHash, randomUUID } from "node:crypto";
 import { headers } from "next/headers";
 import { getLocale } from "next-intl/server";
 import { z } from "zod";
-import { getContentKey, isLocale } from "@/i18n/config";
-import { contributionSchema } from "@/lib/culture/contribution";
+import { contentKeys, getContentKey, isLocale } from "@/i18n/config";
+import { contributionSchema, contributorFor } from "@/lib/culture/contribution";
 import { createPublicClient } from "@/lib/supabase/public";
 import { createServerSupabase } from "@/lib/supabase/server";
 
@@ -65,8 +65,16 @@ export async function submitContribution(form: FormData): Promise<ContributionRe
   if ((recent ?? 0) >= PER_HOUR) return { ok: false, error: "too_many" };
 
   const { data: claims } = await supabase.auth.getClaims();
+  const userId = claims?.claims.sub ?? null;
   const locale = await getLocale();
   const values = parsed.data;
+
+  // Signed-in contributors are credited from their account, never from the form fields.
+  const profile = userId ? (await supabase.from("profiles").select("display_name, email").eq("id", userId).maybeSingle()).data : null;
+  const contributor = contributorFor(
+    userId ? { displayName: profile?.display_name ?? null, email: profile?.email ?? claims?.claims.email ?? null } : null,
+    { name: values.contributor_name, email: values.contributor_email },
+  );
 
   let audioPath: string | null = null;
   if (file) {
@@ -90,9 +98,9 @@ export async function submitContribution(form: FormData): Promise<ContributionRe
     message: values.message.trim() ? values.message : null,
     audio_path: audioPath,
     audio_consent: values.audio_consent,
-    contributor_name: values.contributor_name,
-    contributor_email: values.contributor_email,
-    submitter_id: claims?.claims.sub ?? null,
+    contributor_name: contributor.name,
+    contributor_email: contributor.email,
+    submitter_id: userId,
     client_hash: hash,
   });
   if (error) {
@@ -112,7 +120,7 @@ export async function searchPublishedEntries(query: string): Promise<PublicEntry
   const { data } = await createPublicClient()
     .from("entries")
     .select("id, text_latin, translations")
-    .or([`text_latin.ilike.${like}`, ...["en", "fr", "ar", "dz"].map((k) => `translations->>${k}.ilike.${like}`)].join(","))
+    .or([`text_latin.ilike.${like}`, ...contentKeys.map((k) => `translations->>${k}.ilike.${like}`)].join(","))
     .limit(10);
   return data ?? [];
 }

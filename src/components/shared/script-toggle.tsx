@@ -31,7 +31,7 @@ export function ScriptToggle({ className }: { className?: string }) {
           key={item.script}
           value={item.script}
           aria-label={t(item.script)}
-          title={t(item.script)}
+          title={`${t("label")}: ${t(item.script)}`}
           className={cn("min-w-11 px-2 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground", item.className)}
         >
           {t(item.sample)}

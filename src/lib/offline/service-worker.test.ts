@@ -50,7 +50,7 @@ describe("routeFor", () => {
 
 describe("isKeptPage", () => {
   it("keeps the map, opened levels, review and the offline page in every language", () => {
-    for (const path of ["/ar", "/dz", "/en/level/0b1c", "/fr/review", "/ar/offline"]) {
+    for (const path of ["/ar", "/fr", "/en/level/0b1c", "/fr/review", "/ar/offline"]) {
       expect(rules.isKeptPage(path), path).toBe(true);
     }
   });
@@ -65,12 +65,13 @@ describe("isKeptPage", () => {
 describe("offlinePathFor", () => {
   it("answers in the language of the page that failed, Arabic by default", () => {
     expect(rules.offlinePathFor("/fr/level/1")).toBe("/fr/offline");
-    expect(rules.offlinePathFor("/dz")).toBe("/dz/offline");
+    expect(rules.offlinePathFor("/en")).toBe("/en/offline");
+    expect(rules.offlinePathFor("/dz")).toBe("/ar/offline");
     expect(rules.offlinePathFor("/something")).toBe("/ar/offline");
   });
 
   it("precaches one offline page per language", () => {
-    expect(rules.OFFLINE_PATHS.sort()).toEqual(["/ar/offline", "/dz/offline", "/en/offline", "/fr/offline"]);
+    expect(rules.OFFLINE_PATHS.sort()).toEqual(["/ar/offline", "/en/offline", "/fr/offline"]);
   });
 });
 
