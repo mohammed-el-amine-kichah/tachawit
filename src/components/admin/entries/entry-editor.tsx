@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, LoaderIcon, SparklesIcon, Trash2Icon } from "lucide-react";
+import { CheckIcon, LoaderIcon, SparklesIcon, Trash2Icon, TriangleAlertIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
@@ -60,6 +60,7 @@ const selectClassName = "h-10 w-full rounded-md border border-input bg-backgroun
 export function EntryEditor({ entry, clips, regions }: { entry: EditableEntry | null; clips: AdminClip[]; regions: Region[] }) {
   const t = useTranslations("Admin.entries");
   const e = useTranslations("Admin.errors");
+  const p = useTranslations("Admin.publish");
   const pos = useTranslations("PartOfSpeech");
   const locale = useLocale();
   const router = useRouter();
@@ -121,6 +122,7 @@ export function EntryEditor({ entry, clips, regions }: { entry: EditableEntry | 
     });
 
   const primary = clips.find((c) => c.isPrimary) ?? clips[0];
+  const audible = clips.some((c) => c.status === "published" && c.speaker?.consent);
   const previewEntry = {
     id: entry?.id ?? "new",
     text_latin: values.text_latin,
@@ -157,6 +159,12 @@ export function EntryEditor({ entry, clips, regions }: { entry: EditableEntry | 
               draft ? t("autosaving") : t("unsaved")
             ) : null}
           </span>
+          {entry && !audible && (
+            <span className="flex items-center gap-1 text-sm">
+              <TriangleAlertIcon aria-hidden className="size-4 text-gold-foreground dark:text-gold" />
+              {p("entryNoAudio")}
+            </span>
+          )}
           <div className="ms-auto flex flex-wrap gap-2">
             {(!entry || !draft) && (
               <Button type="submit" disabled={saving || (!!entry && !dirty)}>

@@ -10,13 +10,16 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { localize } from "@/i18n/localize";
 import { getPathname, Link } from "@/i18n/navigation";
-import { blankQuestion, blankStep, itemIssues, nextId, type DraftItem } from "@/lib/admin/builder";
+import { blankQuestion, blankStep, itemIssues, nextId, referencedEntryIds, type DraftItem } from "@/lib/admin/builder";
 import type { LessonStepType } from "@/lib/content/lesson";
 import { localizedTextSchema } from "@/lib/content/localized-text";
 import type { QuizQuestionType } from "@/lib/content/quiz";
 import type { CultureNoteRow, EntryRow } from "@/lib/lesson/view";
 import { ConfirmButton } from "../confirm-button";
 import { LocalizedFields, type LocalizedFormValue } from "../localized-fields";
+import { PublishChecklist } from "../publish/publish-checklist";
+import { ReadinessBanner } from "../publish/readiness-banner";
+import { useReadiness } from "../publish/use-readiness";
 import { StatusBadge } from "../status-badge";
 import { BuilderPreview } from "./builder-preview";
 import { ItemList } from "./item-list";
@@ -26,16 +29,6 @@ import { useEntryRows } from "./use-entry-rows";
 
 const STEP_TYPES: LessonStepType[] = ["introduce", "listen_repeat", "dialogue", "culture_note"];
 const QUESTION_TYPES: QuizQuestionType[] = ["listen_pick_translation", "pick_audio", "build_sentence", "match_pairs", "fill_blank", "speak"];
-
-function referencedIds(items: DraftItem[]): string[] {
-  const out: string[] = [];
-  for (const item of items) {
-    if (typeof item.entryId === "string" && item.entryId) out.push(item.entryId);
-    for (const key of ["entryIds", "distractorEntryIds"]) if (Array.isArray(item[key])) out.push(...(item[key] as string[]));
-    if (Array.isArray(item.lines)) for (const line of item.lines as { entryId?: string }[]) if (line.entryId) out.push(line.entryId);
-  }
-  return [...new Set(out)];
-}
 
 /**
  * Visual builder for a lesson or a quiz: add steps or questions from a menu, reorder them,
@@ -72,13 +65,15 @@ export function ContentBuilder({
   const complete = items.length > 0 && Object.keys(issues).length === 0;
   const latest = useRef({ title, items });
   const selected = items.find((i) => i.id === selectedId) ?? null;
+  const readiness = useReadiness(kind, content.id, `${content.status}:${savedJson}`);
+  const [checklistOpen, setChecklistOpen] = useState(false);
 
   useEffect(() => {
     latest.current = { title, items };
   }, [title, items]);
 
   useEffect(() => {
-    void ensure(referencedIds(items));
+    void ensure(referencedEntryIds(items));
   }, [items, ensure]);
 
   const save = (quiet: boolean) => {
@@ -102,16 +97,27 @@ export function ContentBuilder({
     // eslint-disable-next-line react-hooks/exhaustive-deps -- save reads the latest values through a ref
   }, [currentJson, draft, dirty]);
 
-  const changeStatus = (next: "draft" | "published") =>
+  // Saves first, so the checklist describes exactly what is on screen.
+  const openChecklist = () =>
+    startChanging(async () => {
+      if (dirty) {
+        const saved = await saveContent(kind, content.id, latest.current);
+        if (!saved.ok) return void toast.error(saved.error === "invalid" && !draft ? t("completeFirst") : e(saved.error));
+        setSavedJson(JSON.stringify(latest.current));
+      }
+      if (await readiness.reload()) setChecklistOpen(true);
+    });
+
+  const unpublish = () =>
     startChanging(async () => {
       if (dirty) {
         const saved = await saveContent(kind, content.id, latest.current);
         if (!saved.ok) return void toast.error(e(saved.error));
         setSavedJson(JSON.stringify(latest.current));
       }
-      const result = await setContentStatus(kind, content.id, next);
-      if (!result.ok) return void toast.error(result.error === "invalid" ? t("completeFirst") : e(result.error));
-      toast.success(next === "published" ? t("published") : t("unpublished"));
+      const result = await setContentStatus(kind, content.id, "draft");
+      if (!result.ok) return void toast.error(e(result.error));
+      toast.success(t("unpublished"));
       router.refresh();
     });
 
@@ -171,11 +177,11 @@ export function ContentBuilder({
             </Button>
           )}
           {draft ? (
-            <Button type="button" onClick={() => changeStatus("published")} disabled={changing || !complete} className="bg-success text-success-foreground hover:bg-success/90">
+            <Button type="button" onClick={openChecklist} disabled={changing || !complete} className="bg-success text-success-foreground hover:bg-success/90">
               {t("publish")}
             </Button>
           ) : (
-            <Button type="button" variant="outline" onClick={() => changeStatus("draft")} disabled={changing}>
+            <Button type="button" variant="outline" onClick={unpublish} disabled={changing}>
               {t("unpublish")}
             </Button>
           )}
@@ -198,6 +204,9 @@ export function ContentBuilder({
           />
         </div>
       </div>
+
+      {readiness.state && <ReadinessBanner state={readiness.state} onReview={openChecklist} />}
+      <PublishChecklist kind={kind} contentId={content.id} input={readiness.input} open={checklistOpen} onOpenChange={setChecklistOpen} />
 
       <LocalizedFields id="title" label={t("title")} required value={title} onChange={setTitle} />
 

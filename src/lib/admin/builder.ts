@@ -68,6 +68,19 @@ function issueFor(kind: "lesson" | "quiz", item: DraftItem): ItemIssue | null {
   return "invalid";
 }
 
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/** Every word or phrase a lesson or quiz uses (answers, choices, pairs, dialogue lines), once each. */
+export function referencedEntryIds(items: readonly DraftItem[]): string[] {
+  const ids: unknown[] = [];
+  for (const item of items) {
+    ids.push(item.entryId);
+    for (const key of ["entryIds", "distractorEntryIds"]) if (Array.isArray(item[key])) ids.push(...(item[key] as unknown[]));
+    if (Array.isArray(item.lines)) for (const line of item.lines as { entryId?: unknown }[]) ids.push(line?.entryId);
+  }
+  return [...new Set(ids.filter((id): id is string => typeof id === "string" && UUID.test(id)))];
+}
+
 /** What each incomplete step or question is missing, by id. Empty when everything is ready. */
 export function itemIssues(kind: "lesson" | "quiz", items: readonly DraftItem[]): Record<string, ItemIssue> {
   const issues: Record<string, ItemIssue> = {};

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDownIcon, ArrowUpIcon, Trash2Icon } from "lucide-react";
+import { ArrowDownIcon, ArrowUpIcon, EyeIcon, EyeOffIcon, Trash2Icon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { deleteLevel, moveLevel, saveLevel, setLevelStatus } from "@/app/actions/admin/map";
@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { localize } from "@/i18n/localize";
+import { levelBlockers } from "@/lib/admin/readiness";
 import { levelTypes } from "@/lib/content/enums";
 import type { LocalizedText } from "@/lib/content/localized-text";
 import type { UnlockRule } from "@/lib/content/unlock-rule";
@@ -198,9 +199,32 @@ function LevelForm({
   );
 }
 
+/** Whether learners can see the level, and if not, why. */
+function Visibility({ level, unitStatus, lessons, quizzes }: { level: PanelLevel; unitStatus: "draft" | "published"; lessons: Option[]; quizzes: Option[] }) {
+  const t = useTranslations("Admin.publish");
+  const usesLesson = level.type === "lesson" || level.type === "story";
+  const contentId = usesLesson ? level.lesson_id : level.quiz_id;
+  const contentStatus = contentId ? ((usesLesson ? lessons : quizzes).find((o) => o.id === contentId)?.status ?? null) : null;
+  const blockers = levelBlockers({ type: level.type, status: level.status, contentStatus }, unitStatus);
+  return blockers.length === 0 ? (
+    <p className="flex items-center gap-2 rounded-lg bg-success/10 px-3 py-2 text-sm">
+      <EyeIcon aria-hidden className="size-4 shrink-0 text-success" />
+      {t("levelLive")}
+    </p>
+  ) : (
+    <p className="flex items-start gap-2 rounded-lg bg-gold/15 px-3 py-2 text-sm">
+      <EyeOffIcon aria-hidden className="mt-0.5 size-4 shrink-0" />
+      <span>
+        <span className="font-medium">{t("levelHidden")}</span> {blockers.map((b) => t(`levelBlockers.${b}`)).join(" · ")}
+      </span>
+    </p>
+  );
+}
+
 /** The unit's levels in journey order, and the settings of the selected one. */
 export function LevelPanel({
   unitId,
+  unitStatus,
   levels,
   selectedId,
   onSelect,
@@ -210,6 +234,7 @@ export function LevelPanel({
   units,
 }: {
   unitId: string;
+  unitStatus: "draft" | "published";
   levels: PanelLevel[];
   selectedId: string | null;
   onSelect: (id: string) => void;
@@ -251,7 +276,8 @@ export function LevelPanel({
         ))}
       </ol>
       {selected && (
-        <div className="rounded-2xl bg-card p-4 ring-1 ring-border">
+        <div className="flex flex-col gap-4 rounded-2xl bg-card p-4 ring-1 ring-border">
+          <Visibility level={selected} unitStatus={unitStatus} lessons={lessons} quizzes={quizzes} />
           <LevelForm
             key={JSON.stringify(selected)}
             level={selected}

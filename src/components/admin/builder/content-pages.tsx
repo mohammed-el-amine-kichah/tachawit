@@ -3,7 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { localize } from "@/i18n/localize";
 import { Link } from "@/i18n/navigation";
-import type { DraftItem } from "@/lib/admin/builder";
+import { referencedEntryIds, type DraftItem } from "@/lib/admin/builder";
 import { getContent, listContent, listCultureNoteOptions, type ContentKind } from "@/lib/admin/queries";
 import { localizedTextSchema } from "@/lib/content/localized-text";
 import type { EntryRow } from "@/lib/lesson/view";
@@ -55,16 +55,7 @@ export async function ContentEditPage({ kind, id }: { kind: ContentKind; id: str
   const [content, notes] = await Promise.all([getContent(kind, id), listCultureNoteOptions()]);
   if (!content) notFound();
   const items = z.array(z.looseObject({ id: z.string(), type: z.string() })).catch([]).parse(content.items) as DraftItem[];
-  const entryIds = [
-    ...new Set(
-      items.flatMap((item) => [
-        ...(typeof item.entryId === "string" ? [item.entryId] : []),
-        ...(Array.isArray(item.entryIds) ? (item.entryIds as string[]) : []),
-        ...(Array.isArray(item.distractorEntryIds) ? (item.distractorEntryIds as string[]) : []),
-        ...(Array.isArray(item.lines) ? (item.lines as { entryId: string }[]).map((l) => l.entryId) : []),
-      ]),
-    ),
-  ].filter((value) => z.uuid().safeParse(value).success);
+  const entryIds = referencedEntryIds(items);
   const supabase = await createServerSupabase();
   const { data: rows } = entryIds.length
     ? await supabase.from("entries").select(ENTRY_WITH_AUDIO).in("id", entryIds).returns<EntryRow[]>()

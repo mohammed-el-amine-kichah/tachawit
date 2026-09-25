@@ -21,6 +21,7 @@ type Option = { id: string; title: LocalizedText; status: "draft" | "published" 
 export function UnitEditor({
   unitId,
   theme,
+  unitStatus,
   levels: serverLevels,
   lessons,
   quizzes,
@@ -28,6 +29,7 @@ export function UnitEditor({
 }: {
   unitId: string;
   theme: MapTheme;
+  unitStatus: "draft" | "published";
   levels: EditorLevel[];
   lessons: Option[];
   quizzes: Option[];
@@ -95,6 +97,7 @@ export function UnitEditor({
       <aside aria-label={t("levels")}>
         <LevelPanel
           unitId={unitId}
+          unitStatus={unitStatus}
           levels={levels}
           selectedId={selectedId}
           onSelect={setSelectedId}

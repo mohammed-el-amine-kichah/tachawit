@@ -2,6 +2,8 @@
 
 import { z } from "zod";
 import { adminError, type ActionResult } from "@/lib/admin/result";
+import { getPublishReadiness } from "@/lib/admin/queries";
+import { applySelection, readiness, type ReadinessInput } from "@/lib/admin/readiness";
 import { localizedFormSchema } from "@/lib/admin/schemas";
 import { lessonStepsSchema } from "@/lib/content/lesson";
 import { quizQuestionsSchema } from "@/lib/content/quiz";
@@ -81,6 +83,61 @@ export async function setContentStatus(kind: Kind, contentId: string, next: "dra
     }
     const { error } = await writeContent(admin, kind, contentId, { status: next });
     return error ? { ok: false, error: adminError(error) } : { ok: true };
+  });
+}
+
+/** Everything the publish checklist shows, read fresh from the database. */
+export async function checkReadiness(kind: Kind, contentId: string): Promise<ActionResult<ReadinessInput>> {
+  if (!id.safeParse(contentId).success || !["lesson", "quiz"].includes(kind)) return { ok: false, error: "invalid" };
+  return asAdmin(
+    async () => {
+      const input = await getPublishReadiness(kind, contentId).catch(() => undefined);
+      if (input === undefined) return { ok: false, error: "failed" };
+      return input ? { ok: true, data: input } : { ok: false, error: "not_found" };
+    },
+    { invalidate: false },
+  );
+}
+
+const selectionSchema = z.strictObject({
+  clipIds: z.array(id).max(200),
+  levelIds: z.array(id).max(50),
+  unitIds: z.array(id).max(50),
+});
+
+/**
+ * Publishes a lesson or quiz together with what learners need to reach it: the words it uses,
+ * one recording for each word nobody can hear yet (only from consenting speakers), and the
+ * levels and units ticked in the checklist. The plan is worked out again here from the database;
+ * the selection can only narrow it. Leaves go first, so learners never meet a lesson whose
+ * words are still hidden, and each step satisfies the database's own publish guards.
+ */
+export async function publishWithDependencies(kind: Kind, contentId: string, selection: z.input<typeof selectionSchema>): Promise<ActionResult> {
+  const chosen = selectionSchema.safeParse(selection);
+  if (!id.safeParse(contentId).success || !["lesson", "quiz"].includes(kind) || !chosen.success) return { ok: false, error: "invalid" };
+
+  return asAdmin(async (admin) => {
+    const input = await getPublishReadiness(kind, contentId).catch(() => undefined);
+    if (input === undefined) return { ok: false, error: "failed" };
+    if (!input) return { ok: false, error: "not_found" };
+    const state = readiness(input);
+    if (!state.canPublish || !strict(kind).safeParse(input.items).success) return { ok: false, error: "invalid" };
+    const plan = applySelection(state.plan, chosen.data);
+    const { supabase } = admin;
+
+    const none = Promise.resolve({ error: null });
+    const steps = [
+      () => (plan.clipIds.length ? supabase.from("audio_clips").update({ status: "published" }).in("id", plan.clipIds) : none),
+      () => (plan.entryIds.length ? supabase.from("entries").update({ status: "published" }).in("id", plan.entryIds) : none),
+      () => (plan.content ? writeContent(admin, kind, contentId, { status: "published" }) : none),
+      () => (plan.levelIds.length ? supabase.from("levels").update({ status: "published" }).in("id", plan.levelIds) : none),
+      () => (plan.unitIds.length ? supabase.from("units").update({ status: "published" }).in("id", plan.unitIds) : none),
+    ];
+    for (const step of steps) {
+      const { error } = await step();
+      if (error) return { ok: false, error: adminError(error) };
+    }
+    return { ok: true };
   });
 }
 

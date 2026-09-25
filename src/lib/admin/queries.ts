@@ -1,5 +1,7 @@
 import "server-only";
 import { contentKeys } from "@/i18n/config";
+import { referencedEntryIds, type DraftItem } from "@/lib/admin/builder";
+import type { ReadinessInput } from "@/lib/admin/readiness";
 import { toAudioInfo, type AudioInfo, type ClipRow } from "@/lib/lesson/view";
 import { getSupabaseEnv } from "@/lib/supabase/env";
 import { createServerSupabase } from "@/lib/supabase/server";
@@ -261,4 +263,49 @@ export async function listSubmissions(status: "pending" | "approved" | "rejected
   const signed = paths.length ? await supabase.storage.from("submissions").createSignedUrls(paths, 3600) : { data: [] };
   const urls = new Map((signed.data ?? []).map((s) => [s.path, s.signedUrl]));
   return data.map((s) => ({ ...s, audioUrl: s.audio_path ? (urls.get(s.audio_path) ?? null) : null }));
+}
+
+/** What the publish checklist needs: the content, every word it uses with its recordings, and its levels. */
+export async function getPublishReadiness(kind: ContentKind, contentId: string): Promise<ReadinessInput | null> {
+  const supabase = await createServerSupabase();
+  const content =
+    kind === "lesson"
+      ? await supabase.from("lessons").select("status, items:steps").eq("id", contentId).maybeSingle()
+      : await supabase.from("quizzes").select("status, items:questions").eq("id", contentId).maybeSingle();
+  if (content.error) throw content.error;
+  if (!content.data) return null;
+  const items = (Array.isArray(content.data.items) ? content.data.items : []) as DraftItem[];
+  const ids = referencedEntryIds(items);
+
+  const [entries, levels] = await Promise.all([
+    ids.length
+      ? supabase.from("entries").select("id, text_latin, status, audio_clips(id, status, is_primary, speakers(display_name, consent_given))").in("id", ids)
+      : Promise.resolve({ data: [], error: null }),
+    supabase
+      .from("levels")
+      .select("id, position, title, status, units(id, title, status)")
+      .eq(kind === "lesson" ? "lesson_id" : "quiz_id", contentId)
+      .order("position"),
+  ]);
+  if (entries.error) throw entries.error;
+  if (levels.error) throw levels.error;
+
+  return {
+    kind,
+    status: content.data.status,
+    items,
+    entries: entries.data.map((e) => ({
+      id: e.id,
+      text: e.text_latin,
+      status: e.status,
+      clips: e.audio_clips.map((c) => ({
+        id: c.id,
+        status: c.status,
+        isPrimary: c.is_primary,
+        consent: c.speakers?.consent_given ?? false,
+        speaker: c.speakers?.display_name ?? null,
+      })),
+    })),
+    levels: levels.data.flatMap((l) => (l.units ? [{ id: l.id, position: l.position, title: l.title, status: l.status, unit: l.units }] : [])),
+  };
 }

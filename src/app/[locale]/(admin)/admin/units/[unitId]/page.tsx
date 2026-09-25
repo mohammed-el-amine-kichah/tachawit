@@ -30,6 +30,7 @@ export default async function UnitPage({ params }: PageProps<"/[locale]/admin/un
         <UnitEditor
           unitId={data.unit.id}
           theme={data.unit.map_theme}
+          unitStatus={data.unit.status}
           levels={data.levels.map((l) => {
             const rule = unlockRuleSchema.safeParse(l.unlock_rule);
             return {

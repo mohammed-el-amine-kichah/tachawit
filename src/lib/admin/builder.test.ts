@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { autoArrange, blankQuestion, blankStep, itemIssues, moveItem, nextId, nextNodePosition } from "./builder";
+import { autoArrange, blankQuestion, blankStep, itemIssues, moveItem, nextId, nextNodePosition, referencedEntryIds } from "./builder";
 
 const E = "30000000-0000-4000-8000-000000000001";
 const F = "30000000-0000-4000-8000-000000000002";
@@ -41,6 +41,22 @@ describe("blank items and their issues", () => {
     expect(itemIssues("quiz", [blankQuestion("match_pairs", "q2")])).toEqual({ q2: "pairs" });
     expect(itemIssues("quiz", [{ ...blankQuestion("speak", "q3"), entryId: E }])).toEqual({});
     expect(itemIssues("quiz", [{ ...blankQuestion("match_pairs", "q4"), entryIds: [E, F] }])).toEqual({});
+  });
+});
+
+describe("referencedEntryIds", () => {
+  it("collects every word a lesson or quiz uses, once each, skipping empty picks", () => {
+    const items = [
+      { id: "s1", type: "introduce", entryId: E },
+      { id: "s2", type: "dialogue", lines: [{ speaker: "A", entryId: F }, { speaker: "B", entryId: "" }] },
+      { id: "q1", type: "listen_pick_translation", entryId: "", distractorEntryIds: [E, F] },
+      { id: "q2", type: "match_pairs", entryIds: [F] },
+    ];
+    expect(referencedEntryIds(items)).toEqual([E, F]);
+  });
+
+  it("ignores values that are not word ids", () => {
+    expect(referencedEntryIds([{ id: "s1", type: "introduce", entryId: 42 }, { id: "s2", type: "introduce", entryId: "not-an-id" }])).toEqual([]);
   });
 });
 
