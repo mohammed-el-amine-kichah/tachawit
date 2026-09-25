@@ -12,13 +12,14 @@ export default async function EditEntryPage({ params }: PageProps<"/[locale]/adm
   const { entryId } = await params;
   if (!z.uuid().safeParse(entryId).success) notFound();
   const t = await getTranslations("Admin.entries");
+  const nav = await getTranslations("Admin.nav");
   const [data, regions, speakers] = await Promise.all([getEntryForEditing(entryId), listRegions(), speakerOptions()]);
   if (!data) notFound();
   const translations = localizedTextSchema.safeParse(data.entry.translations);
 
   return (
     <>
-      <PageHeader title={data.entry.text_latin} description={t("editLead")} />
+      <PageHeader title={data.entry.text_latin} description={t("editLead")} back={{ href: "/admin/entries", label: nav("entries") }} />
       <div className="flex flex-col gap-10">
         <EntryEditor
           key={data.entry.id}

@@ -518,7 +518,15 @@
     "picker": {
       "search": "Chercher des mots et expressions",
       "results": "Résultats",
-      "none": "Rien trouvé."
+      "none": "Rien trouvé.",
+      "createNew": "Créer « {text} » comme nouveau mot",
+      "newWord": "Nouveau mot ou expression",
+      "latin": "Tachawit (écriture latine)",
+      "meaningIn": "Sens en {language}",
+      "newWordHint": "Enregistré comme brouillon. Ajoutez les autres écritures, les sens et l’audio plus tard depuis sa fiche.",
+      "createDraft": "Créer le brouillon",
+      "cancel": "Annuler",
+      "created": "Mot créé comme brouillon."
     },
     "import": {
       "title": "Importer depuis un tableur",
@@ -662,7 +670,14 @@
       "preview": "Ce que voient les apprenants",
       "previewSelect": "Choisis une étape pour l’aperçu.",
       "previewIncomplete": "Complète cet élément pour l’aperçu.",
-      "backToBuilder": "Retour à l’éditeur"
+      "backToBuilder": "Retour à l’éditeur",
+      "onMap": "Sur la carte :",
+      "notOnMapYet": "sur aucun niveau pour l’instant",
+      "addToMap": "Ajouter à la carte",
+      "addToMapLead": "Ajoute un nouveau niveau brouillon à la fin de l’unité, qui affiche déjà ce contenu.",
+      "unit": "Unité",
+      "addToUnit": "Ajouter à {unit}",
+      "addedToMap": "Ajouté à {unit} comme niveau brouillon."
     },
     "map": {
       "unitsTitle": "Carte et unités",
@@ -723,7 +738,11 @@
       "deleteUnit": "Supprimer l’unité",
       "deleteUnitTitle": "Supprimer cette unité ?",
       "deleteUnitLead": "Ses niveaux seront aussi supprimés (les leçons et quiz sont conservés).",
-      "unitDeleted": "Unité supprimée."
+      "unitDeleted": "Unité supprimée.",
+      "openInBuilder": "Ouvrir dans l’éditeur",
+      "newLessonForLevel": "Nouvelle leçon",
+      "newQuizForLevel": "Nouveau quiz",
+      "newContentForLevelLead": "Crée un brouillon, le place sur ce niveau et ouvre l’éditeur."
     },
     "culture": {
       "listTitle": "Articles culturels",

@@ -22,6 +22,7 @@ export function UnitEditor({
   unitId,
   theme,
   unitStatus,
+  initialLevelId,
   levels: serverLevels,
   lessons,
   quizzes,
@@ -30,6 +31,7 @@ export function UnitEditor({
   unitId: string;
   theme: MapTheme;
   unitStatus: "draft" | "published";
+  initialLevelId: string | null;
   levels: EditorLevel[];
   lessons: Option[];
   quizzes: Option[];
@@ -40,7 +42,7 @@ export function UnitEditor({
   const { run, pending } = useAdminAction();
   const [levels, setLevels] = useState(serverLevels);
   const [loadedFrom, setLoadedFrom] = useState(serverLevels);
-  const [selectedId, setSelectedId] = useState<string | null>(serverLevels[0]?.id ?? null);
+  const [selectedId, setSelectedId] = useState<string | null>(initialLevelId);
 
   // Fresh data from the server (after any save) replaces the local copy.
   if (serverLevels !== loadedFrom) {

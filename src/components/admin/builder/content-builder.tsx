@@ -23,6 +23,7 @@ import { useReadiness } from "../publish/use-readiness";
 import { StatusBadge } from "../status-badge";
 import { BuilderPreview } from "./builder-preview";
 import { ItemList } from "./item-list";
+import { MapLinks, type MapLevel, type UnitOption } from "./map-links";
 import { QuestionEditor } from "./question-editor";
 import { StepEditor } from "./step-editor";
 import { useEntryRows } from "./use-entry-rows";
@@ -40,11 +41,15 @@ export function ContentBuilder({
   content,
   initialRows,
   notes,
+  mapLevels,
+  units,
 }: {
   kind: "lesson" | "quiz";
   content: { id: string; title: LocalizedFormValue; status: "draft" | "published"; items: DraftItem[] };
   initialRows: EntryRow[];
   notes: CultureNoteRow[];
+  mapLevels: MapLevel[];
+  units: UnitOption[];
 }) {
   const t = useTranslations("Admin.builder");
   const e = useTranslations("Admin.errors");
@@ -65,7 +70,7 @@ export function ContentBuilder({
   const complete = items.length > 0 && Object.keys(issues).length === 0;
   const latest = useRef({ title, items });
   const selected = items.find((i) => i.id === selectedId) ?? null;
-  const readiness = useReadiness(kind, content.id, `${content.status}:${savedJson}`);
+  const readiness = useReadiness(kind, content.id, `${content.status}:${savedJson}:${mapLevels.map((l) => l.id).join()}`);
   const [checklistOpen, setChecklistOpen] = useState(false);
 
   useEffect(() => {
@@ -206,6 +211,7 @@ export function ContentBuilder({
       </div>
 
       {readiness.state && <ReadinessBanner state={readiness.state} onReview={openChecklist} />}
+      <MapLinks kind={kind} contentId={content.id} levels={mapLevels} units={units} />
       <PublishChecklist kind={kind} contentId={content.id} input={readiness.input} open={checklistOpen} onOpenChange={setChecklistOpen} />
 
       <LocalizedFields id="title" label={t("title")} required value={title} onChange={setTitle} />

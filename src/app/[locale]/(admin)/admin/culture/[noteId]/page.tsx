@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { contentKeys } from "@/i18n/config";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { CultureEditor } from "@/components/admin/culture/culture-editor";
 import { PageHeader } from "@/components/admin/page-header";
@@ -12,6 +12,7 @@ export default async function EditCulturePage({ params }: PageProps<"/[locale]/a
   const { noteId } = await params;
   if (!z.uuid().safeParse(noteId).success) notFound();
   const locale = await getLocale();
+  const nav = await getTranslations("Admin.nav");
   const data = await getCultureAdmin(noteId);
   if (!data) notFound();
   const { note } = data;
@@ -20,7 +21,7 @@ export default async function EditCulturePage({ params }: PageProps<"/[locale]/a
   const body = z.partialRecord(z.enum(contentKeys), z.string()).catch({}).parse(note.body);
   return (
     <>
-      <PageHeader title={localize(title, locale)?.text ?? note.slug} />
+      <PageHeader title={localize(title, locale)?.text ?? note.slug} back={{ href: "/admin/culture", label: nav("culture") }} />
       <CultureEditor
         key={JSON.stringify(note)}
         note={{ ...note, title, summary: summary.success ? summary.data : null, body }}

@@ -4,7 +4,7 @@ import { z } from "zod";
 import { nextNodePosition } from "@/lib/admin/builder";
 import { imagePathSchema } from "@/lib/admin/image-path";
 import { adminError, type ActionResult } from "@/lib/admin/result";
-import { levelFormSchema, unitFormSchema, type LevelFormInput, type UnitFormInput } from "@/lib/admin/schemas";
+import { levelFormSchema, localizedFormSchema, unitFormSchema, type LevelFormInput, type UnitFormInput } from "@/lib/admin/schemas";
 import { levelTypes } from "@/lib/content/enums";
 import { asAdmin } from "./run";
 
@@ -66,8 +66,13 @@ export async function reorderUnits(unitIds: string[]): Promise<ActionResult> {
   });
 }
 
-export async function createLevel(unitId: string, type: (typeof levelTypes)[number]): Promise<ActionResult> {
+const usesLesson = (type: (typeof levelTypes)[number]) => type === "lesson" || type === "story";
+const usesQuiz = (type: (typeof levelTypes)[number]) => type === "quiz" || type === "boss";
+
+/** Adds a draft level at the end of the unit, optionally already showing a lesson or quiz. */
+export async function createLevel(unitId: string, type: (typeof levelTypes)[number], contentId?: string): Promise<ActionResult> {
   if (!id.safeParse(unitId).success || !levelTypes.includes(type)) return { ok: false, error: "invalid" };
+  if (contentId !== undefined && (!id.safeParse(contentId).success || !(usesLesson(type) || usesQuiz(type)))) return { ok: false, error: "invalid" };
   return asAdmin(async ({ supabase }) => {
     const { data: levels, error: readError } = await supabase
       .from("levels")
@@ -76,12 +81,31 @@ export async function createLevel(unitId: string, type: (typeof levelTypes)[numb
       .order("position");
     if (readError) return { ok: false, error: adminError(readError) };
     const place = nextNodePosition(levels.map((l) => ({ x: l.map_x, y: l.map_y })));
+    const link = contentId ? (usesLesson(type) ? { lesson_id: contentId } : { quiz_id: contentId }) : {};
     const { data, error } = await supabase
       .from("levels")
-      .insert({ unit_id: unitId, type, position: (levels.at(-1)?.position ?? -1) + 1, map_x: place.x, map_y: place.y })
+      .insert({ unit_id: unitId, type, position: (levels.at(-1)?.position ?? -1) + 1, map_x: place.x, map_y: place.y, ...link })
       .select("id")
       .single();
     return error ? { ok: false, error: adminError(error) } : { ok: true, id: data.id };
+  });
+}
+
+/** Creates a draft lesson or quiz (whichever the level's type shows) and puts it on the level. */
+export async function createContentForLevel(levelId: string, title: z.input<typeof localizedFormSchema>): Promise<ActionResult> {
+  const parsedTitle = localizedFormSchema.refine((value) => Object.keys(value).length > 0).safeParse(title);
+  if (!id.safeParse(levelId).success || !parsedTitle.success) return { ok: false, error: "invalid" };
+  return asAdmin(async ({ supabase }) => {
+    const { data: level, error: readError } = await supabase.from("levels").select("type").eq("id", levelId).single();
+    if (readError) return { ok: false, error: adminError(readError) };
+    if (!usesLesson(level.type) && !usesQuiz(level.type)) return { ok: false, error: "invalid" };
+    const created = usesLesson(level.type)
+      ? await supabase.from("lessons").insert({ title: parsedTitle.data }).select("id").single()
+      : await supabase.from("quizzes").insert({ title: parsedTitle.data }).select("id").single();
+    if (created.error) return { ok: false, error: adminError(created.error) };
+    const link = usesLesson(level.type) ? { lesson_id: created.data.id } : { quiz_id: created.data.id };
+    const { error } = await supabase.from("levels").update(link).eq("id", levelId);
+    return error ? { ok: false, error: adminError(error) } : { ok: true, id: created.data.id };
   });
 }
 

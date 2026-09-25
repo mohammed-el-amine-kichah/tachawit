@@ -188,16 +188,18 @@ export async function listContent(kind: ContentKind) {
   return data.map((row) => ({ id: row.id, title: row.title, status: row.status, count: Array.isArray(row.questions) ? row.questions.length : 0, usedBy: row.levels.length }));
 }
 
+const CONTENT_LEVELS = "levels(id, unit_id, position, title, units(title))";
+
 export async function getContent(kind: ContentKind, contentId: string) {
   const supabase = await createServerSupabase();
   if (kind === "lesson") {
-    const { data, error } = await supabase.from("lessons").select("id, title, status, steps").eq("id", contentId).maybeSingle();
+    const { data, error } = await supabase.from("lessons").select(`id, title, status, steps, ${CONTENT_LEVELS}`).eq("id", contentId).maybeSingle();
     if (error) throw error;
-    return data ? { id: data.id, title: data.title, status: data.status, items: data.steps as unknown } : null;
+    return data ? { id: data.id, title: data.title, status: data.status, items: data.steps as unknown, levels: data.levels } : null;
   }
-  const { data, error } = await supabase.from("quizzes").select("id, title, status, questions").eq("id", contentId).maybeSingle();
+  const { data, error } = await supabase.from("quizzes").select(`id, title, status, questions, ${CONTENT_LEVELS}`).eq("id", contentId).maybeSingle();
   if (error) throw error;
-  return data ? { id: data.id, title: data.title, status: data.status, items: data.questions as unknown } : null;
+  return data ? { id: data.id, title: data.title, status: data.status, items: data.questions as unknown, levels: data.levels } : null;
 }
 
 export async function listCultureNoteOptions() {

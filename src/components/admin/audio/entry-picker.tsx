@@ -1,21 +1,24 @@
 "use client";
 
-import { SearchIcon } from "lucide-react";
+import { PlusIcon, SearchIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useState } from "react";
 import { searchEntries, type EntryOption } from "@/app/actions/admin/entries";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { localize } from "@/i18n/localize";
 import { localizedTextSchema } from "@/lib/content/localized-text";
+import { QuickEntryForm } from "../entries/quick-entry-form";
 import { StatusBadge } from "../status-badge";
 
-/** Search entries by spelling or meaning, and pick one. */
+/** Search entries by spelling or meaning and pick one, or create a missing one on the spot. */
 export function EntryPicker({ onPick, autoFocus }: { onPick: (entry: EntryOption) => void; autoFocus?: boolean }) {
   const t = useTranslations("Admin.picker");
   const locale = useLocale();
   const id = useId();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<EntryOption[]>([]);
+  const [creating, setCreating] = useState(false);
 
   useEffect(() => {
     let alive = true;
@@ -61,6 +64,18 @@ export function EntryPicker({ onPick, autoFocus }: { onPick: (entry: EntryOption
           );
         })}
       </ul>
+      {creating ? (
+        <QuickEntryForm initialLatin={query.trim()} onCreated={onPick} onCancel={() => setCreating(false)} />
+      ) : (
+        query.trim() && (
+          <Button type="button" variant="ghost" size="sm" className="self-start" onClick={() => setCreating(true)}>
+            <PlusIcon aria-hidden />
+            <span>
+              {t("createNew", { text: query.trim() })}
+            </span>
+          </Button>
+        )
+      )}
     </div>
   );
 }

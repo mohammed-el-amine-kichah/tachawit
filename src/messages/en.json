@@ -518,7 +518,15 @@
     "picker": {
       "search": "Search words and phrases",
       "results": "Results",
-      "none": "Nothing found."
+      "none": "Nothing found.",
+      "createNew": "Create “{text}” as a new word",
+      "newWord": "New word or phrase",
+      "latin": "Tachawit (Latin script)",
+      "meaningIn": "Meaning in {language}",
+      "newWordHint": "Saved as a draft. Add the other scripts, meanings and audio later from its entry page.",
+      "createDraft": "Create draft",
+      "cancel": "Cancel",
+      "created": "Word created as a draft."
     },
     "import": {
       "title": "Import from a spreadsheet",
@@ -662,7 +670,14 @@
       "preview": "What learners see",
       "previewSelect": "Select a step to preview it.",
       "previewIncomplete": "Complete this item to preview it.",
-      "backToBuilder": "Back to the builder"
+      "backToBuilder": "Back to the builder",
+      "onMap": "On the map:",
+      "notOnMapYet": "not on any level yet",
+      "addToMap": "Add to the map",
+      "addToMapLead": "Adds a new draft level at the end of the unit, already showing this.",
+      "unit": "Unit",
+      "addToUnit": "Add to {unit}",
+      "addedToMap": "Added to {unit} as a draft level."
     },
     "map": {
       "unitsTitle": "Map & units",
@@ -723,7 +738,11 @@
       "deleteUnit": "Delete unit",
       "deleteUnitTitle": "Delete this unit?",
       "deleteUnitLead": "Its levels are deleted too (lessons and quizzes are kept).",
-      "unitDeleted": "Unit deleted."
+      "unitDeleted": "Unit deleted.",
+      "openInBuilder": "Open in the builder",
+      "newLessonForLevel": "New lesson",
+      "newQuizForLevel": "New quiz",
+      "newContentForLevelLead": "Creates a draft, puts it on this level and opens the builder."
     },
     "culture": {
       "listTitle": "Culture articles",

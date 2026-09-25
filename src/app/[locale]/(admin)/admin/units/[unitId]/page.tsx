@@ -14,10 +14,12 @@ const optionalText = (value: unknown) => {
   return parsed.success ? parsed.data : null;
 };
 
-export default async function UnitPage({ params }: PageProps<"/[locale]/admin/units/[unitId]">) {
+export default async function UnitPage({ params, searchParams }: PageProps<"/[locale]/admin/units/[unitId]">) {
   const { unitId } = await params;
+  const { level: levelParam } = await searchParams;
   if (!z.uuid().safeParse(unitId).success) notFound();
   const t = await getTranslations("Admin.map");
+  const nav = await getTranslations("Admin.nav");
   const locale = await getLocale();
   const data = await getUnitEditor(unitId);
   if (!data) notFound();
@@ -25,12 +27,13 @@ export default async function UnitPage({ params }: PageProps<"/[locale]/admin/un
 
   return (
     <>
-      <PageHeader title={localize(title, locale)?.text ?? data.unit.slug} description={t("unitLead")} />
+      <PageHeader title={localize(title, locale)?.text ?? data.unit.slug} description={t("unitLead")} back={{ href: "/admin/units", label: nav("units") }} />
       <div className="flex flex-col gap-10">
         <UnitEditor
           unitId={data.unit.id}
           theme={data.unit.map_theme}
           unitStatus={data.unit.status}
+          initialLevelId={data.levels.find((l) => l.id === levelParam)?.id ?? data.levels[0]?.id ?? null}
           levels={data.levels.map((l) => {
             const rule = unlockRuleSchema.safeParse(l.unlock_rule);
             return {

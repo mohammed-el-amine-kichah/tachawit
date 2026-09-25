@@ -4,7 +4,7 @@ import { z } from "zod";
 import { localize } from "@/i18n/localize";
 import { Link } from "@/i18n/navigation";
 import { referencedEntryIds, type DraftItem } from "@/lib/admin/builder";
-import { getContent, listContent, listCultureNoteOptions, type ContentKind } from "@/lib/admin/queries";
+import { getContent, listContent, listCultureNoteOptions, listUnits, type ContentKind } from "@/lib/admin/queries";
 import { localizedTextSchema } from "@/lib/content/localized-text";
 import type { EntryRow } from "@/lib/lesson/view";
 import { ENTRY_WITH_AUDIO } from "@/lib/supabase/queries/entry-select";
@@ -51,8 +51,10 @@ export async function ContentListPage({ kind }: { kind: ContentKind }) {
 export async function ContentEditPage({ kind, id }: { kind: ContentKind; id: string }) {
   if (!z.uuid().safeParse(id).success) notFound();
   const t = await getTranslations("Admin.builder");
+  const nav = await getTranslations("Admin.nav");
+  const tm = await getTranslations("Admin.map");
   const locale = await getLocale();
-  const [content, notes] = await Promise.all([getContent(kind, id), listCultureNoteOptions()]);
+  const [content, notes, units] = await Promise.all([getContent(kind, id), listCultureNoteOptions(), listUnits()]);
   if (!content) notFound();
   const items = z.array(z.looseObject({ id: z.string(), type: z.string() })).catch([]).parse(content.items) as DraftItem[];
   const entryIds = referencedEntryIds(items);
@@ -61,16 +63,31 @@ export async function ContentEditPage({ kind, id }: { kind: ContentKind; id: str
     ? await supabase.from("entries").select(ENTRY_WITH_AUDIO).in("id", entryIds).returns<EntryRow[]>()
     : { data: [] as EntryRow[] };
   const title = localizedTextSchema.safeParse(content.title);
+  const textOf = (value: unknown) => {
+    const parsed = localizedTextSchema.safeParse(value);
+    return parsed.success ? (localize(parsed.data, locale)?.text ?? null) : null;
+  };
+  const mapLevels = content.levels.map((level) => ({
+    id: level.id,
+    unitId: level.unit_id,
+    label: `${textOf(level.units?.title) ?? ""} › ${textOf(level.title) ?? tm("levelNumber", { number: level.position + 1 })}`,
+  }));
 
   return (
     <>
-      <PageHeader title={(title.success ? localize(title.data, locale)?.text : null) ?? t(kind === "lesson" ? "newLesson" : "newQuiz")} description={t("editLead")} />
+      <PageHeader
+        title={(title.success ? localize(title.data, locale)?.text : null) ?? t(kind === "lesson" ? "newLesson" : "newQuiz")}
+        description={t("editLead")}
+        back={{ href: kind === "lesson" ? "/admin/lessons" : "/admin/quizzes", label: nav(kind === "lesson" ? "lessons" : "quizzes") }}
+      />
       <ContentBuilder
         key={content.id}
         kind={kind}
         content={{ id: content.id, status: content.status, title: toLocalizedForm(title.success ? title.data : null), items }}
         initialRows={rows ?? []}
         notes={notes}
+        mapLevels={mapLevels}
+        units={units.map((u) => ({ id: u.id, title: textOf(u.title) ?? u.slug }))}
       />
     </>
   );

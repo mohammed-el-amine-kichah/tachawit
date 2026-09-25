@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDownIcon, ArrowUpIcon, EyeIcon, EyeOffIcon, Trash2Icon } from "lucide-react";
+import { ArrowDownIcon, ArrowUpIcon, EyeIcon, EyeOffIcon, PencilIcon, Trash2Icon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { deleteLevel, moveLevel, saveLevel, setLevelStatus } from "@/app/actions/admin/map";
@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { localize } from "@/i18n/localize";
+import { Link } from "@/i18n/navigation";
 import { levelBlockers } from "@/lib/admin/readiness";
 import { levelTypes } from "@/lib/content/enums";
 import type { LocalizedText } from "@/lib/content/localized-text";
@@ -20,6 +21,7 @@ import { ConfirmButton } from "../confirm-button";
 import { LocalizedFields, toLocalizedForm } from "../localized-fields";
 import { StatusBadge } from "../status-badge";
 import { useAdminAction } from "../use-admin-action";
+import { NewContentForLevel } from "./new-content-for-level";
 
 export type PanelLevel = {
   id: string;
@@ -59,6 +61,8 @@ function LevelForm({
   const [lessonId, setLessonId] = useState(level.lesson_id ?? "");
   const [quizId, setQuizId] = useState(level.quiz_id ?? "");
   const [rule, setRule] = useState<UnlockRule>(level.unlockRule);
+  const contentKind = type === "lesson" || type === "story" ? "lesson" : type === "quiz" || type === "boss" ? "quiz" : null;
+  const contentId = contentKind === "lesson" ? lessonId : quizId;
   const optionLabel = (o: Option) => `${localize(o.title, locale)?.text ?? o.id.slice(0, 8)}${o.status === "draft" ? ` · ${t("draft")}` : ""}`;
 
   return (
@@ -103,30 +107,33 @@ function LevelForm({
         </select>
       </div>
 
-      {(type === "lesson" || type === "story") && (
+      {contentKind && (
         <div className="flex flex-col gap-1">
-          <Label htmlFor="level-lesson">{t("lesson")}</Label>
-          <select id="level-lesson" className={selectClassName} value={lessonId} onChange={(e) => setLessonId(e.target.value)}>
+          <Label htmlFor="level-content">{t(contentKind)}</Label>
+          <select
+            id="level-content"
+            className={selectClassName}
+            value={contentId}
+            onChange={(e) => (contentKind === "lesson" ? setLessonId : setQuizId)(e.target.value)}
+          >
             <option value="">—</option>
-            {lessons.map((o) => (
+            {(contentKind === "lesson" ? lessons : quizzes).map((o) => (
               <option key={o.id} value={o.id}>
                 {optionLabel(o)}
               </option>
             ))}
           </select>
-        </div>
-      )}
-      {(type === "quiz" || type === "boss") && (
-        <div className="flex flex-col gap-1">
-          <Label htmlFor="level-quiz">{t("quiz")}</Label>
-          <select id="level-quiz" className={selectClassName} value={quizId} onChange={(e) => setQuizId(e.target.value)}>
-            <option value="">—</option>
-            {quizzes.map((o) => (
-              <option key={o.id} value={o.id}>
-                {optionLabel(o)}
-              </option>
-            ))}
-          </select>
+          <div className="flex flex-wrap gap-1">
+            {contentId && (
+              <Button asChild variant="ghost" size="sm">
+                <Link href={`/admin/${contentKind === "lesson" ? "lessons" : "quizzes"}/${contentId}`}>
+                  <PencilIcon aria-hidden />
+                  {t("openInBuilder")}
+                </Link>
+              </Button>
+            )}
+            <NewContentForLevel levelId={level.id} kind={contentKind} initialTitle={title} disabled={type !== level.type} />
+          </div>
         </div>
       )}
 
