@@ -1,0 +1,1100 @@
+{
+  "unit": {
+    "id": "7c010000-0000-4000-8000-000000000001",
+    "slug": "greetings-introductions",
+    "title": {
+      "en": "Greetings & Introductions",
+      "fr": "Salutations et présentations",
+      "ar": "التحيات والتعارف"
+    },
+    "description": {
+      "en": "Say hello, ask how someone is, and introduce yourself in Tachawit.",
+      "fr": "Dire bonjour, prendre des nouvelles et se présenter en tachawit.",
+      "ar": "ألقِ التحية، واسأل عن الحال، وقدّم نفسك بالشاوية."
+    },
+    "map_theme": "aures_peaks"
+  },
+  "entries": [
+    {
+      "id": "3c010000-0000-4000-8000-000000000001",
+      "text_latin": "azul",
+      "text_arabic": "أزول",
+      "text_tifinagh": "ⴰⵣⵓⵍ",
+      "translations": {
+        "en": "hello",
+        "fr": "bonjour",
+        "ar": "مرحبًا"
+      },
+      "part_of_speech": "interjection",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000002",
+      "text_latin": "azul fellak",
+      "text_arabic": "أزول فلاك",
+      "text_tifinagh": "ⴰⵣⵓⵍ ⴼⴻⵍⵍⴰⴽ",
+      "translations": {
+        "en": "hello (to a man)",
+        "fr": "bonjour (à un homme)",
+        "ar": "مرحبًا (لرجل)"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000003",
+      "text_latin": "azul fellam",
+      "text_arabic": "أزول فلام",
+      "text_tifinagh": "ⴰⵣⵓⵍ ⴼⴻⵍⵍⴰⵎ",
+      "translations": {
+        "en": "hello (to a woman)",
+        "fr": "bonjour (à une femme)",
+        "ar": "مرحبًا (لامرأة)"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000004",
+      "text_latin": "azul fellawen",
+      "text_arabic": "أزول فلاون",
+      "text_tifinagh": "ⴰⵣⵓⵍ ⴼⴻⵍⵍⴰⵡⴻⵏ",
+      "translations": {
+        "en": "hello, everyone",
+        "fr": "bonjour à tous",
+        "ar": "مرحبًا بكم جميعًا"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000005",
+      "text_latin": "labas",
+      "text_arabic": "لاباس",
+      "text_tifinagh": "ⵍⴰⴱⴰⵙ",
+      "translations": {
+        "en": "fine, all good",
+        "fr": "ça va, bien",
+        "ar": "بخير"
+      },
+      "part_of_speech": "expression",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000006",
+      "text_latin": "tanmirt",
+      "text_arabic": "تانميرت",
+      "text_tifinagh": "ⵜⴰⵏⵎⵉⵔⵜ",
+      "translations": {
+        "en": "thank you",
+        "fr": "merci",
+        "ar": "شكرًا"
+      },
+      "part_of_speech": "interjection",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000007",
+      "text_latin": "ih",
+      "text_arabic": "إه",
+      "text_tifinagh": "ⵉⵀ",
+      "translations": {
+        "en": "yes",
+        "fr": "oui",
+        "ar": "نعم"
+      },
+      "part_of_speech": "particle",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000008",
+      "text_latin": "ala",
+      "text_arabic": "ألا",
+      "text_tifinagh": "ⴰⵍⴰ",
+      "translations": {
+        "en": "no",
+        "fr": "non",
+        "ar": "لا"
+      },
+      "part_of_speech": "particle",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000009",
+      "text_latin": "nec",
+      "text_arabic": "نش",
+      "text_tifinagh": "ⵏⴻⵛ",
+      "translations": {
+        "en": "I, me",
+        "fr": "je, moi",
+        "ar": "أنا"
+      },
+      "part_of_speech": "pronoun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000010",
+      "text_latin": "cek",
+      "text_arabic": "شك",
+      "text_tifinagh": "ⵛⴻⴽ",
+      "translations": {
+        "en": "you (to a man)",
+        "fr": "toi (à un homme)",
+        "ar": "أنتَ"
+      },
+      "part_of_speech": "pronoun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000011",
+      "text_latin": "cem",
+      "text_arabic": "شم",
+      "text_tifinagh": "ⵛⴻⵎ",
+      "translations": {
+        "en": "you (to a woman)",
+        "fr": "toi (à une femme)",
+        "ar": "أنتِ"
+      },
+      "part_of_speech": "pronoun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000012",
+      "text_latin": "netta",
+      "text_arabic": "نتا",
+      "text_tifinagh": "ⵏⴻⵜⵜⴰ",
+      "translations": {
+        "en": "he, him",
+        "fr": "il, lui",
+        "ar": "هو"
+      },
+      "part_of_speech": "pronoun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000013",
+      "text_latin": "nettat",
+      "text_arabic": "نتات",
+      "text_tifinagh": "ⵏⴻⵜⵜⴰⵜ",
+      "translations": {
+        "en": "she, her",
+        "fr": "elle",
+        "ar": "هي"
+      },
+      "part_of_speech": "pronoun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000014",
+      "text_latin": "ula d nec",
+      "text_arabic": "أولا د نش",
+      "text_tifinagh": "ⵓⵍⴰ ⴷ ⵏⴻⵛ",
+      "translations": {
+        "en": "me too",
+        "fr": "moi aussi",
+        "ar": "وأنا أيضًا"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000015",
+      "text_latin": "mamec",
+      "text_arabic": "مامش",
+      "text_tifinagh": "ⵎⴰⵎⴻⵛ",
+      "translations": {
+        "en": "how",
+        "fr": "comment",
+        "ar": "كيف"
+      },
+      "part_of_speech": "adverb",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000016",
+      "text_latin": "mamec telliḍ",
+      "text_arabic": "مامش تليض",
+      "text_tifinagh": "ⵎⴰⵎⴻⵛ ⵜⴻⵍⵍⵉⴹ",
+      "translations": {
+        "en": "how are you?",
+        "fr": "comment vas-tu ?",
+        "ar": "كيف حالك؟"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000017",
+      "text_latin": "isem",
+      "text_arabic": "إسم",
+      "text_tifinagh": "ⵉⵙⴻⵎ",
+      "translations": {
+        "en": "name",
+        "fr": "nom",
+        "ar": "اسم"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000018",
+      "text_latin": "min",
+      "text_arabic": "مين",
+      "text_tifinagh": "ⵎⵉⵏ",
+      "translations": {
+        "en": "what",
+        "fr": "quoi, quel",
+        "ar": "ماذا، ما"
+      },
+      "part_of_speech": "pronoun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000019",
+      "text_latin": "min isem-nnek",
+      "text_arabic": "مين إسمنك",
+      "text_tifinagh": "ⵎⵉⵏ ⵉⵙⴻⵎ-ⵏⵏⴻⴽ",
+      "translations": {
+        "en": "what's your name? (to a man)",
+        "fr": "comment t'appelles-tu ? (à un homme)",
+        "ar": "ما اسمك؟ (لرجل)"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000020",
+      "text_latin": "min isem-nnem",
+      "text_arabic": "مين إسمنم",
+      "text_tifinagh": "ⵎⵉⵏ ⵉⵙⴻⵎ-ⵏⵏⴻⵎ",
+      "translations": {
+        "en": "what's your name? (to a woman)",
+        "fr": "comment t'appelles-tu ? (à une femme)",
+        "ar": "ما اسمكِ؟ (لامرأة)"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000021",
+      "text_latin": "isem-inu Aksil",
+      "text_arabic": "إسمينو أكسيل",
+      "text_tifinagh": "ⵉⵙⴻⵎ-ⵉⵏⵓ ⴰⴽⵙⵉⵍ",
+      "translations": {
+        "en": "my name is Aksil",
+        "fr": "je m'appelle Aksil",
+        "ar": "اسمي أكسيل"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000022",
+      "text_latin": "isem-inu Dihya",
+      "text_arabic": "إسمينو ديهيا",
+      "text_tifinagh": "ⵉⵙⴻⵎ-ⵉⵏⵓ ⴷⵉⵀⵢⴰ",
+      "translations": {
+        "en": "my name is Dihya",
+        "fr": "je m'appelle Dihya",
+        "ar": "اسمي ديهيا"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000023",
+      "text_latin": "ameddukel",
+      "text_arabic": "أمدوكل",
+      "text_tifinagh": "ⴰⵎⴻⴷⴷⵓⴽⴻⵍ",
+      "translations": {
+        "en": "friend (a man)",
+        "fr": "ami",
+        "ar": "صديق"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000024",
+      "text_latin": "tameddukelt",
+      "text_arabic": "تامدوكلت",
+      "text_tifinagh": "ⵜⴰⵎⴻⴷⴷⵓⴽⴻⵍⵜ",
+      "translations": {
+        "en": "friend (a woman)",
+        "fr": "amie",
+        "ar": "صديقة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000025",
+      "text_latin": "acawi",
+      "text_arabic": "أشاوي",
+      "text_tifinagh": "ⴰⵛⴰⵡⵉ",
+      "translations": {
+        "en": "Chaoui (a Chaoui man)",
+        "fr": "Chaoui (un homme chaoui)",
+        "ar": "شاوي"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000026",
+      "text_latin": "tacawit",
+      "text_arabic": "تاشاويت",
+      "text_tifinagh": "ⵜⴰⵛⴰⵡⵉⵜ",
+      "translations": {
+        "en": "Tachawit, the Chaoui language",
+        "fr": "le tachawit, la langue chaouie",
+        "ar": "الشاوية (اللغة)"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000027",
+      "text_latin": "Awras",
+      "text_arabic": "أوراس",
+      "text_tifinagh": "ⴰⵡⵔⴰⵙ",
+      "translations": {
+        "en": "the Aurès",
+        "fr": "les Aurès",
+        "ar": "الأوراس"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000028",
+      "text_latin": "nec d acawi",
+      "text_arabic": "نش د أشاوي",
+      "text_tifinagh": "ⵏⴻⵛ ⴷ ⴰⵛⴰⵡⵉ",
+      "translations": {
+        "en": "I'm Chaoui (said by a man)",
+        "fr": "je suis chaoui (dit par un homme)",
+        "ar": "أنا شاوي"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000029",
+      "text_latin": "nec d tacawit",
+      "text_arabic": "نش د تاشاويت",
+      "text_tifinagh": "ⵏⴻⵛ ⴷ ⵜⴰⵛⴰⵡⵉⵜ",
+      "translations": {
+        "en": "I'm Chaoui (said by a woman)",
+        "fr": "je suis chaouie (dit par une femme)",
+        "ar": "أنا شاوية"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000030",
+      "text_latin": "amaziɣ",
+      "text_arabic": "أمازيغ",
+      "text_tifinagh": "ⴰⵎⴰⵣⵉⵖ",
+      "translations": {
+        "en": "Amazigh (an Amazigh man)",
+        "fr": "Amazigh (un homme amazigh)",
+        "ar": "أمازيغي"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000031",
+      "text_latin": "tamaziɣt",
+      "text_arabic": "تامازيغت",
+      "text_tifinagh": "ⵜⴰⵎⴰⵣⵉⵖⵜ",
+      "translations": {
+        "en": "Tamazight, the Amazigh language",
+        "fr": "le tamazight, la langue amazighe",
+        "ar": "الأمازيغية (اللغة)"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000032",
+      "text_latin": "ur fhimeɣ ca",
+      "text_arabic": "أور فهيمغ شا",
+      "text_tifinagh": "ⵓⵔ ⴼⵀⵉⵎⴻⵖ ⵛⴰ",
+      "translations": {
+        "en": "I don't understand",
+        "fr": "je ne comprends pas",
+        "ar": "لا أفهم"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000033",
+      "text_latin": "cek d acawi",
+      "text_arabic": "شك د أشاوي",
+      "text_tifinagh": "ⵛⴻⴽ ⴷ ⴰⵛⴰⵡⵉ",
+      "translations": {
+        "en": "are you Chaoui? (to a man)",
+        "fr": "es-tu chaoui ? (à un homme)",
+        "ar": "هل أنت شاوي؟"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c010000-0000-4000-8000-000000000034",
+      "text_latin": "ssiwleɣ tacawit",
+      "text_arabic": "سيولغ تاشاويت",
+      "text_tifinagh": "ⵙⵙⵉⵡⵍⴻⵖ ⵜⴰⵛⴰⵡⵉⵜ",
+      "translations": {
+        "en": "I speak Tachawit",
+        "fr": "je parle tachawit",
+        "ar": "أتكلّم الشاوية"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    }
+  ],
+  "lessons": [
+    {
+      "id": "5c010000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "Hello!",
+        "fr": "Bonjour !",
+        "ar": "مرحبًا!"
+      },
+      "steps": [
+        {
+          "id": "u1l1-1",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000001"
+        },
+        {
+          "id": "u1l1-2",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000002"
+        },
+        {
+          "id": "u1l1-3",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000003"
+        },
+        {
+          "id": "u1l1-4",
+          "type": "listen_repeat",
+          "entryId": "3c010000-0000-4000-8000-000000000003"
+        },
+        {
+          "id": "u1l1-5",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000004"
+        },
+        {
+          "id": "u1l1-6",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000005"
+        },
+        {
+          "id": "u1l1-7",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000006"
+        },
+        {
+          "id": "u1l1-8",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000007"
+        },
+        {
+          "id": "u1l1-9",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000008"
+        },
+        {
+          "id": "u1l1-10",
+          "type": "listen_repeat",
+          "entryId": "3c010000-0000-4000-8000-000000000007"
+        }
+      ]
+    },
+    {
+      "id": "5c010000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "You and me",
+        "fr": "Toi et moi",
+        "ar": "أنا وأنت"
+      },
+      "steps": [
+        {
+          "id": "u1l2-1",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000009"
+        },
+        {
+          "id": "u1l2-2",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000010"
+        },
+        {
+          "id": "u1l2-3",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000011"
+        },
+        {
+          "id": "u1l2-4",
+          "type": "listen_repeat",
+          "entryId": "3c010000-0000-4000-8000-000000000011"
+        },
+        {
+          "id": "u1l2-5",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000012"
+        },
+        {
+          "id": "u1l2-6",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000013"
+        },
+        {
+          "id": "u1l2-7",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000014"
+        },
+        {
+          "id": "u1l2-8",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000015"
+        },
+        {
+          "id": "u1l2-9",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000016"
+        },
+        {
+          "id": "u1l2-10",
+          "type": "listen_repeat",
+          "entryId": "3c010000-0000-4000-8000-000000000016"
+        }
+      ]
+    },
+    {
+      "id": "5c010000-0000-4000-8000-000000000003",
+      "title": {
+        "en": "What's your name?",
+        "fr": "Comment t'appelles-tu ?",
+        "ar": "ما اسمك؟"
+      },
+      "steps": [
+        {
+          "id": "u1l3-1",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000017"
+        },
+        {
+          "id": "u1l3-2",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000018"
+        },
+        {
+          "id": "u1l3-3",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000019"
+        },
+        {
+          "id": "u1l3-4",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000020"
+        },
+        {
+          "id": "u1l3-5",
+          "type": "listen_repeat",
+          "entryId": "3c010000-0000-4000-8000-000000000019"
+        },
+        {
+          "id": "u1l3-6",
+          "type": "culture_note",
+          "title": {
+            "en": "Dihya and Aksil",
+            "fr": "Dihya et Aksil",
+            "ar": "ديهيا وأكسيل"
+          },
+          "body": {
+            "en": "Dihya, also known as the Kahina, led Amazigh resistance from the Aurès at the end of the 7th century. Aksil, or Kusayla, was an Amazigh king of the same period. Both names are still given to children today.",
+            "fr": "Dihya, aussi appelée la Kahina, mena la résistance amazighe depuis les Aurès à la fin du VIIe siècle. Aksil, ou Koceila, fut un roi amazigh de la même époque. Ces deux prénoms sont encore donnés aux enfants aujourd'hui.",
+            "ar": "قادت ديهيا، المعروفة أيضًا بالكاهنة، المقاومة الأمازيغية من الأوراس في أواخر القرن السابع الميلادي. وكان أكسيل، أو كسيلة، ملكًا أمازيغيًا من الفترة نفسها. وما زال الاسمان يُطلقان على الأطفال إلى اليوم."
+          }
+        },
+        {
+          "id": "u1l3-7",
+          "type": "dialogue",
+          "title": {
+            "en": "First meeting",
+            "fr": "Première rencontre",
+            "ar": "أول لقاء"
+          },
+          "lines": [
+            {
+              "speaker": "Dihya",
+              "entryId": "3c010000-0000-4000-8000-000000000002"
+            },
+            {
+              "speaker": "Aksil",
+              "entryId": "3c010000-0000-4000-8000-000000000003"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c010000-0000-4000-8000-000000000016"
+            },
+            {
+              "speaker": "Aksil",
+              "entryId": "3c010000-0000-4000-8000-000000000005"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c010000-0000-4000-8000-000000000019"
+            },
+            {
+              "speaker": "Aksil",
+              "entryId": "3c010000-0000-4000-8000-000000000021"
+            },
+            {
+              "speaker": "Aksil",
+              "entryId": "3c010000-0000-4000-8000-000000000020"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c010000-0000-4000-8000-000000000022"
+            }
+          ]
+        },
+        {
+          "id": "u1l3-8",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000023"
+        },
+        {
+          "id": "u1l3-9",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000024"
+        },
+        {
+          "id": "u1l3-10",
+          "type": "listen_repeat",
+          "entryId": "3c010000-0000-4000-8000-000000000022"
+        }
+      ]
+    },
+    {
+      "id": "5c010000-0000-4000-8000-000000000004",
+      "title": {
+        "en": "Chaoui and proud",
+        "fr": "Fiers d'être chaouis",
+        "ar": "شاوي وأفتخر"
+      },
+      "steps": [
+        {
+          "id": "u1l4-1",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000025"
+        },
+        {
+          "id": "u1l4-2",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000026"
+        },
+        {
+          "id": "u1l4-3",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000027"
+        },
+        {
+          "id": "u1l4-4",
+          "type": "culture_note",
+          "title": {
+            "en": "Tachawit",
+            "fr": "Le tachawit",
+            "ar": "الشاوية"
+          },
+          "body": {
+            "en": "Tachawit is the Amazigh language of the Chaoui people of the Aurès, spoken around Batna, Khenchela, Oum El Bouaghi, Tébessa and Biskra. Pronunciation changes from village to village: in many places the t of tacawit sounds close to an h. Words here use the standard Tamazight spelling, and the recordings let you hear how people really say them.",
+            "fr": "Le tachawit est la langue amazighe des Chaouis des Aurès, parlée autour de Batna, Khenchela, Oum El Bouaghi, Tébessa et Biskra. La prononciation change d'un village à l'autre : dans bien des endroits, le t de tacawit se prononce presque comme un h. Ici, les mots suivent l'orthographe standard du tamazight, et les enregistrements font entendre comment on les dit vraiment.",
+            "ar": "الشاوية لغة أمازيغية يتكلمها الشاوية في الأوراس، حول باتنة وخنشلة وأم البواقي وتبسة وبسكرة. يختلف النطق من قرية إلى أخرى: في أماكن كثيرة تُنطق التاء في tacawit قريبة من الهاء. تُكتب الكلمات هنا بالإملاء المعياري للأمازيغية، وتُسمعك التسجيلات كيف ينطقها الناس فعلًا."
+          }
+        },
+        {
+          "id": "u1l4-5",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000028"
+        },
+        {
+          "id": "u1l4-6",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000029"
+        },
+        {
+          "id": "u1l4-7",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000030"
+        },
+        {
+          "id": "u1l4-8",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000031"
+        },
+        {
+          "id": "u1l4-9",
+          "type": "introduce",
+          "entryId": "3c010000-0000-4000-8000-000000000032"
+        },
+        {
+          "id": "u1l4-10",
+          "type": "dialogue",
+          "title": {
+            "en": "Are you Chaoui?",
+            "fr": "Tu es chaoui ?",
+            "ar": "هل أنت شاوي؟"
+          },
+          "lines": [
+            {
+              "speaker": "Tiziri",
+              "entryId": "3c010000-0000-4000-8000-000000000002"
+            },
+            {
+              "speaker": "Massin",
+              "entryId": "3c010000-0000-4000-8000-000000000003"
+            },
+            {
+              "speaker": "Tiziri",
+              "entryId": "3c010000-0000-4000-8000-000000000033"
+            },
+            {
+              "speaker": "Massin",
+              "entryId": "3c010000-0000-4000-8000-000000000007"
+            },
+            {
+              "speaker": "Massin",
+              "entryId": "3c010000-0000-4000-8000-000000000028"
+            },
+            {
+              "speaker": "Tiziri",
+              "entryId": "3c010000-0000-4000-8000-000000000014"
+            },
+            {
+              "speaker": "Tiziri",
+              "entryId": "3c010000-0000-4000-8000-000000000029"
+            },
+            {
+              "speaker": "Massin",
+              "entryId": "3c010000-0000-4000-8000-000000000034"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "6c010000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "Greetings check",
+        "fr": "Bilan : salutations",
+        "ar": "مراجعة: التحيات"
+      },
+      "questions": [
+        {
+          "id": "u1q-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c010000-0000-4000-8000-000000000009",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000010",
+            "3c010000-0000-4000-8000-000000000011",
+            "3c010000-0000-4000-8000-000000000012"
+          ]
+        },
+        {
+          "id": "u1q-2",
+          "type": "pick_audio",
+          "entryId": "3c010000-0000-4000-8000-000000000003",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000002",
+            "3c010000-0000-4000-8000-000000000004"
+          ]
+        },
+        {
+          "id": "u1q-3",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c010000-0000-4000-8000-000000000001",
+            "3c010000-0000-4000-8000-000000000006",
+            "3c010000-0000-4000-8000-000000000007",
+            "3c010000-0000-4000-8000-000000000008"
+          ]
+        },
+        {
+          "id": "u1q-4",
+          "type": "build_sentence",
+          "entryId": "3c010000-0000-4000-8000-000000000019",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000016"
+          ]
+        },
+        {
+          "id": "u1q-5",
+          "type": "fill_blank",
+          "entryId": "3c010000-0000-4000-8000-000000000028",
+          "blankWordIndex": 0,
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000010",
+            "3c010000-0000-4000-8000-000000000012"
+          ]
+        },
+        {
+          "id": "u1q-6",
+          "type": "listen_pick_translation",
+          "entryId": "3c010000-0000-4000-8000-000000000016",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000019",
+            "3c010000-0000-4000-8000-000000000032"
+          ]
+        },
+        {
+          "id": "u1q-7",
+          "type": "pick_audio",
+          "entryId": "3c010000-0000-4000-8000-000000000026",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000025",
+            "3c010000-0000-4000-8000-000000000031"
+          ]
+        },
+        {
+          "id": "u1q-8",
+          "type": "fill_blank",
+          "entryId": "3c010000-0000-4000-8000-000000000029",
+          "blankWordIndex": 2,
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000024",
+            "3c010000-0000-4000-8000-000000000031"
+          ]
+        },
+        {
+          "id": "u1q-9",
+          "type": "speak",
+          "entryId": "3c010000-0000-4000-8000-000000000016"
+        },
+        {
+          "id": "u1q-10",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c010000-0000-4000-8000-000000000009",
+            "3c010000-0000-4000-8000-000000000010",
+            "3c010000-0000-4000-8000-000000000012",
+            "3c010000-0000-4000-8000-000000000013"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6c010000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "Greetings challenge",
+        "fr": "Défi : salutations",
+        "ar": "تحدّي التحيات"
+      },
+      "questions": [
+        {
+          "id": "u1b-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c010000-0000-4000-8000-000000000020",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000019",
+            "3c010000-0000-4000-8000-000000000016"
+          ]
+        },
+        {
+          "id": "u1b-2",
+          "type": "pick_audio",
+          "entryId": "3c010000-0000-4000-8000-000000000023",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000024",
+            "3c010000-0000-4000-8000-000000000030"
+          ]
+        },
+        {
+          "id": "u1b-3",
+          "type": "build_sentence",
+          "entryId": "3c010000-0000-4000-8000-000000000034",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000032"
+          ]
+        },
+        {
+          "id": "u1b-4",
+          "type": "build_sentence",
+          "entryId": "3c010000-0000-4000-8000-000000000033",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000029"
+          ]
+        },
+        {
+          "id": "u1b-5",
+          "type": "fill_blank",
+          "entryId": "3c010000-0000-4000-8000-000000000033",
+          "blankWordIndex": 0,
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000009",
+            "3c010000-0000-4000-8000-000000000012"
+          ]
+        },
+        {
+          "id": "u1b-6",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c010000-0000-4000-8000-000000000025",
+            "3c010000-0000-4000-8000-000000000026",
+            "3c010000-0000-4000-8000-000000000027",
+            "3c010000-0000-4000-8000-000000000017",
+            "3c010000-0000-4000-8000-000000000031"
+          ]
+        },
+        {
+          "id": "u1b-7",
+          "type": "listen_pick_translation",
+          "entryId": "3c010000-0000-4000-8000-000000000027",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000026",
+            "3c010000-0000-4000-8000-000000000017"
+          ]
+        },
+        {
+          "id": "u1b-8",
+          "type": "pick_audio",
+          "entryId": "3c010000-0000-4000-8000-000000000032",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000034",
+            "3c010000-0000-4000-8000-000000000014"
+          ]
+        },
+        {
+          "id": "u1b-9",
+          "type": "fill_blank",
+          "entryId": "3c010000-0000-4000-8000-000000000014",
+          "blankWordIndex": 2,
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000010",
+            "3c010000-0000-4000-8000-000000000011"
+          ]
+        },
+        {
+          "id": "u1b-10",
+          "type": "speak",
+          "entryId": "3c010000-0000-4000-8000-000000000029"
+        },
+        {
+          "id": "u1b-11",
+          "type": "listen_pick_translation",
+          "entryId": "3c010000-0000-4000-8000-000000000007",
+          "distractorEntryIds": [
+            "3c010000-0000-4000-8000-000000000008"
+          ]
+        },
+        {
+          "id": "u1b-12",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c010000-0000-4000-8000-000000000002",
+            "3c010000-0000-4000-8000-000000000003",
+            "3c010000-0000-4000-8000-000000000004"
+          ]
+        }
+      ]
+    }
+  ],
+  "levels": [
+    {
+      "id": "8c010000-0000-4000-8000-000000000001",
+      "position": 0,
+      "type": "lesson",
+      "title": {
+        "en": "Hello!",
+        "fr": "Bonjour !",
+        "ar": "مرحبًا!"
+      },
+      "lesson_id": "5c010000-0000-4000-8000-000000000001",
+      "quiz_id": null,
+      "map_x": 0.5,
+      "map_y": 0.08
+    },
+    {
+      "id": "8c010000-0000-4000-8000-000000000002",
+      "position": 1,
+      "type": "lesson",
+      "title": {
+        "en": "You and me",
+        "fr": "Toi et moi",
+        "ar": "أنا وأنت"
+      },
+      "lesson_id": "5c010000-0000-4000-8000-000000000002",
+      "quiz_id": null,
+      "map_x": 0.28,
+      "map_y": 0.26
+    },
+    {
+      "id": "8c010000-0000-4000-8000-000000000003",
+      "position": 2,
+      "type": "lesson",
+      "title": {
+        "en": "What's your name?",
+        "fr": "Comment t'appelles-tu ?",
+        "ar": "ما اسمك؟"
+      },
+      "lesson_id": "5c010000-0000-4000-8000-000000000003",
+      "quiz_id": null,
+      "map_x": 0.7,
+      "map_y": 0.44
+    },
+    {
+      "id": "8c010000-0000-4000-8000-000000000004",
+      "position": 3,
+      "type": "lesson",
+      "title": {
+        "en": "Chaoui and proud",
+        "fr": "Fiers d'être chaouis",
+        "ar": "شاوي وأفتخر"
+      },
+      "lesson_id": "5c010000-0000-4000-8000-000000000004",
+      "quiz_id": null,
+      "map_x": 0.3,
+      "map_y": 0.62
+    },
+    {
+      "id": "8c010000-0000-4000-8000-000000000005",
+      "position": 4,
+      "type": "quiz",
+      "title": {
+        "en": "Checkpoint",
+        "fr": "Étape",
+        "ar": "محطة"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c010000-0000-4000-8000-000000000001",
+      "map_x": 0.68,
+      "map_y": 0.78
+    },
+    {
+      "id": "8c010000-0000-4000-8000-000000000006",
+      "position": 5,
+      "type": "boss",
+      "title": {
+        "en": "Final challenge",
+        "fr": "Défi final",
+        "ar": "التحدي الأخير"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c010000-0000-4000-8000-000000000002",
+      "map_x": 0.5,
+      "map_y": 0.92
+    }
+  ]
+}

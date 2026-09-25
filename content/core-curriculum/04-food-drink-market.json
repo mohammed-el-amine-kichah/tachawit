@@ -1,0 +1,1099 @@
+{
+  "unit": {
+    "id": "7c040000-0000-4000-8000-000000000001",
+    "slug": "food-drink-market",
+    "title": {
+      "en": "Food, Drink & the Market",
+      "fr": "Nourriture, boissons et marché",
+      "ar": "الطعام والشراب والسوق"
+    },
+    "description": {
+      "en": "Ask for bread and water, share a meal, and shop for dates at the market.",
+      "fr": "Demander du pain et de l'eau, partager un repas et acheter des dattes au marché.",
+      "ar": "اطلب الخبز والماء، وشارك في وجبة، واشترِ التمر من السوق."
+    },
+    "map_theme": "palm_groves"
+  },
+  "entries": [
+    {
+      "id": "3c040000-0000-4000-8000-000000000001",
+      "text_latin": "aman",
+      "text_arabic": "أمان",
+      "text_tifinagh": "ⴰⵎⴰⵏ",
+      "translations": {
+        "en": "water",
+        "fr": "eau",
+        "ar": "ماء"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000002",
+      "text_latin": "aɣrum",
+      "text_arabic": "أغروم",
+      "text_tifinagh": "ⴰⵖⵔⵓⵎ",
+      "translations": {
+        "en": "bread",
+        "fr": "pain",
+        "ar": "خبز"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000003",
+      "text_latin": "tisent",
+      "text_arabic": "تيسنت",
+      "text_tifinagh": "ⵜⵉⵙⴻⵏⵜ",
+      "translations": {
+        "en": "salt",
+        "fr": "sel",
+        "ar": "ملح"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000004",
+      "text_latin": "zzit",
+      "text_arabic": "زيت",
+      "text_tifinagh": "ⵣⵣⵉⵜ",
+      "translations": {
+        "en": "oil",
+        "fr": "huile",
+        "ar": "زيت"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000005",
+      "text_latin": "sew",
+      "text_arabic": "سو",
+      "text_tifinagh": "ⵙⴻⵡ",
+      "translations": {
+        "en": "drink!",
+        "fr": "bois !",
+        "ar": "اشرب"
+      },
+      "part_of_speech": "verb",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000006",
+      "text_latin": "ecc",
+      "text_arabic": "أش",
+      "text_tifinagh": "ⴻⵛⵛ",
+      "translations": {
+        "en": "eat!",
+        "fr": "mange !",
+        "ar": "كُلْ"
+      },
+      "part_of_speech": "verb",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000007",
+      "text_latin": "sew aman",
+      "text_arabic": "سو أمان",
+      "text_tifinagh": "ⵙⴻⵡ ⴰⵎⴰⵏ",
+      "translations": {
+        "en": "drink some water",
+        "fr": "bois de l'eau",
+        "ar": "اشرب الماء"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000008",
+      "text_latin": "ecc aɣrum",
+      "text_arabic": "أش أغروم",
+      "text_tifinagh": "ⴻⵛⵛ ⴰⵖⵔⵓⵎ",
+      "translations": {
+        "en": "eat some bread",
+        "fr": "mange du pain",
+        "ar": "كُلِ الخبز"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000009",
+      "text_latin": "aksum",
+      "text_arabic": "أكسوم",
+      "text_tifinagh": "ⴰⴽⵙⵓⵎ",
+      "translations": {
+        "en": "meat",
+        "fr": "viande",
+        "ar": "لحم"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000010",
+      "text_latin": "tamellalt",
+      "text_arabic": "تاملالت",
+      "text_tifinagh": "ⵜⴰⵎⴻⵍⵍⴰⵍⵜ",
+      "translations": {
+        "en": "egg",
+        "fr": "œuf",
+        "ar": "بيضة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000011",
+      "text_latin": "aɣi",
+      "text_arabic": "أغي",
+      "text_tifinagh": "ⴰⵖⵉ",
+      "translations": {
+        "en": "milk; buttermilk",
+        "fr": "lait ; petit-lait",
+        "ar": "حليب؛ لبن"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000012",
+      "text_latin": "udi",
+      "text_arabic": "أودي",
+      "text_tifinagh": "ⵓⴷⵉ",
+      "translations": {
+        "en": "butter (smen)",
+        "fr": "beurre (smen)",
+        "ar": "سمن"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000013",
+      "text_latin": "tament",
+      "text_arabic": "تامنت",
+      "text_tifinagh": "ⵜⴰⵎⴻⵏⵜ",
+      "translations": {
+        "en": "honey",
+        "fr": "miel",
+        "ar": "عسل"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000014",
+      "text_latin": "irden",
+      "text_arabic": "إردن",
+      "text_tifinagh": "ⵉⵔⴷⴻⵏ",
+      "translations": {
+        "en": "wheat",
+        "fr": "blé",
+        "ar": "قمح"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000015",
+      "text_latin": "timẓin",
+      "text_arabic": "تيمزين",
+      "text_tifinagh": "ⵜⵉⵎⵥⵉⵏ",
+      "translations": {
+        "en": "barley",
+        "fr": "orge",
+        "ar": "شعير"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000016",
+      "text_latin": "aren",
+      "text_arabic": "أرن",
+      "text_tifinagh": "ⴰⵔⴻⵏ",
+      "translations": {
+        "en": "flour",
+        "fr": "farine",
+        "ar": "دقيق"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000017",
+      "text_latin": "seksu",
+      "text_arabic": "سكسو",
+      "text_tifinagh": "ⵙⴻⴽⵙⵓ",
+      "translations": {
+        "en": "couscous",
+        "fr": "couscous",
+        "ar": "كسكس"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000018",
+      "text_latin": "azalim",
+      "text_arabic": "أزاليم",
+      "text_tifinagh": "ⴰⵣⴰⵍⵉⵎ",
+      "translations": {
+        "en": "onion",
+        "fr": "oignon",
+        "ar": "بصل"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000019",
+      "text_latin": "tiskert",
+      "text_arabic": "تيسكرت",
+      "text_tifinagh": "ⵜⵉⵙⴽⴻⵔⵜ",
+      "translations": {
+        "en": "garlic",
+        "fr": "ail",
+        "ar": "ثوم"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000020",
+      "text_latin": "imensi",
+      "text_arabic": "إمنسي",
+      "text_tifinagh": "ⵉⵎⴻⵏⵙⵉ",
+      "translations": {
+        "en": "dinner",
+        "fr": "dîner",
+        "ar": "عشاء"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000021",
+      "text_latin": "efk-iyi",
+      "text_arabic": "أفكيي",
+      "text_tifinagh": "ⴻⴼⴽ-ⵉⵢⵉ",
+      "translations": {
+        "en": "give me",
+        "fr": "donne-moi",
+        "ar": "أعطني"
+      },
+      "part_of_speech": "verb",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000022",
+      "text_latin": "efk-iyi aman",
+      "text_arabic": "أفكيي أمان",
+      "text_tifinagh": "ⴻⴼⴽ-ⵉⵢⵉ ⴰⵎⴰⵏ",
+      "translations": {
+        "en": "give me some water",
+        "fr": "donne-moi de l'eau",
+        "ar": "أعطني ماءً"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000023",
+      "text_latin": "efk-iyi aɣrum",
+      "text_arabic": "أفكيي أغروم",
+      "text_tifinagh": "ⴻⴼⴽ-ⵉⵢⵉ ⴰⵖⵔⵓⵎ",
+      "translations": {
+        "en": "give me some bread",
+        "fr": "donne-moi du pain",
+        "ar": "أعطني خبزًا"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000024",
+      "text_latin": "yelha",
+      "text_arabic": "يلها",
+      "text_tifinagh": "ⵢⴻⵍⵀⴰ",
+      "translations": {
+        "en": "it's good",
+        "fr": "c'est bon",
+        "ar": "إنه طيّب"
+      },
+      "part_of_speech": "verb",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000025",
+      "text_latin": "aman n tala",
+      "text_arabic": "أمان ن تالا",
+      "text_tifinagh": "ⴰⵎⴰⵏ ⵏ ⵜⴰⵍⴰ",
+      "translations": {
+        "en": "spring water",
+        "fr": "eau de source",
+        "ar": "ماء العين"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000026",
+      "text_latin": "ssuq",
+      "text_arabic": "سوق",
+      "text_tifinagh": "ⵙⵙⵓⵇ",
+      "translations": {
+        "en": "market",
+        "fr": "marché",
+        "ar": "سوق"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000027",
+      "text_latin": "tiyni",
+      "text_arabic": "تييني",
+      "text_tifinagh": "ⵜⵉⵢⵏⵉ",
+      "translations": {
+        "en": "dates",
+        "fr": "dattes",
+        "ar": "تمر"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000028",
+      "text_latin": "azemmur",
+      "text_arabic": "أزمور",
+      "text_tifinagh": "ⴰⵣⴻⵎⵎⵓⵔ",
+      "translations": {
+        "en": "olives",
+        "fr": "olives",
+        "ar": "زيتون"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000029",
+      "text_latin": "xseɣ",
+      "text_arabic": "خسغ",
+      "text_tifinagh": "ⵅⵙⴻⵖ",
+      "translations": {
+        "en": "I want",
+        "fr": "je veux",
+        "ar": "أريد"
+      },
+      "part_of_speech": "verb",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000030",
+      "text_latin": "xseɣ aman",
+      "text_arabic": "خسغ أمان",
+      "text_tifinagh": "ⵅⵙⴻⵖ ⴰⵎⴰⵏ",
+      "translations": {
+        "en": "I want some water",
+        "fr": "je veux de l'eau",
+        "ar": "أريد ماءً"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000031",
+      "text_latin": "ur xseɣ ca",
+      "text_arabic": "أور خسغ شا",
+      "text_tifinagh": "ⵓⵔ ⵅⵙⴻⵖ ⵛⴰ",
+      "translations": {
+        "en": "I don't want any",
+        "fr": "je n'en veux pas",
+        "ar": "لا أريد"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000032",
+      "text_latin": "tiyni n Biskra",
+      "text_arabic": "تييني ن بسكرة",
+      "text_tifinagh": "ⵜⵉⵢⵏⵉ ⵏ ⴱⵉⵙⴽⵔⴰ",
+      "translations": {
+        "en": "dates from Biskra",
+        "fr": "dattes de Biskra",
+        "ar": "تمر بسكرة"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000033",
+      "text_latin": "xseɣ tiyni",
+      "text_arabic": "خسغ تييني",
+      "text_tifinagh": "ⵅⵙⴻⵖ ⵜⵉⵢⵏⵉ",
+      "translations": {
+        "en": "I want some dates",
+        "fr": "je veux des dattes",
+        "ar": "أريد تمرًا"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000034",
+      "text_latin": "xseɣ tament",
+      "text_arabic": "خسغ تامنت",
+      "text_tifinagh": "ⵅⵙⴻⵖ ⵜⴰⵎⴻⵏⵜ",
+      "translations": {
+        "en": "I want some honey",
+        "fr": "je veux du miel",
+        "ar": "أريد عسلًا"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c040000-0000-4000-8000-000000000035",
+      "text_latin": "tament n udrar",
+      "text_arabic": "تامنت ن أودرار",
+      "text_tifinagh": "ⵜⴰⵎⴻⵏⵜ ⵏ ⵓⴷⵔⴰⵔ",
+      "translations": {
+        "en": "mountain honey",
+        "fr": "miel de montagne",
+        "ar": "عسل الجبل"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    }
+  ],
+  "lessons": [
+    {
+      "id": "5c040000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "Bread and water",
+        "fr": "Le pain et l'eau",
+        "ar": "الخبز والماء"
+      },
+      "steps": [
+        {
+          "id": "u4l1-1",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000001"
+        },
+        {
+          "id": "u4l1-2",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000002"
+        },
+        {
+          "id": "u4l1-3",
+          "type": "listen_repeat",
+          "entryId": "3c040000-0000-4000-8000-000000000002"
+        },
+        {
+          "id": "u4l1-4",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000003"
+        },
+        {
+          "id": "u4l1-5",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000004"
+        },
+        {
+          "id": "u4l1-6",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000005"
+        },
+        {
+          "id": "u4l1-7",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000006"
+        },
+        {
+          "id": "u4l1-8",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000007"
+        },
+        {
+          "id": "u4l1-9",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000008"
+        },
+        {
+          "id": "u4l1-10",
+          "type": "listen_repeat",
+          "entryId": "3c040000-0000-4000-8000-000000000007"
+        }
+      ]
+    },
+    {
+      "id": "5c040000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "From the farm",
+        "fr": "De la ferme",
+        "ar": "من المزرعة"
+      },
+      "steps": [
+        {
+          "id": "u4l2-1",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000009"
+        },
+        {
+          "id": "u4l2-2",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000010"
+        },
+        {
+          "id": "u4l2-3",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000011"
+        },
+        {
+          "id": "u4l2-4",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000012"
+        },
+        {
+          "id": "u4l2-5",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000013"
+        },
+        {
+          "id": "u4l2-6",
+          "type": "listen_repeat",
+          "entryId": "3c040000-0000-4000-8000-000000000013"
+        },
+        {
+          "id": "u4l2-7",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000014"
+        },
+        {
+          "id": "u4l2-8",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000015"
+        },
+        {
+          "id": "u4l2-9",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000016"
+        },
+        {
+          "id": "u4l2-10",
+          "type": "listen_repeat",
+          "entryId": "3c040000-0000-4000-8000-000000000010"
+        }
+      ]
+    },
+    {
+      "id": "5c040000-0000-4000-8000-000000000003",
+      "title": {
+        "en": "At the table",
+        "fr": "À table",
+        "ar": "على المائدة"
+      },
+      "steps": [
+        {
+          "id": "u4l3-1",
+          "type": "culture_note",
+          "title": {
+            "en": "Chakhchoukha",
+            "fr": "La chakhchoukha",
+            "ar": "الشخشوخة"
+          },
+          "body": {
+            "en": "Chakhchoukha is a signature dish of the Aurès and Biskra: thin flatbread torn into small pieces and soaked in a spiced sauce with meat and chickpeas. It is served to guests and at family celebrations.",
+            "fr": "La chakhchoukha est un plat emblématique des Aurès et de Biskra : une galette fine déchirée en petits morceaux, arrosée d'une sauce épicée à la viande et aux pois chiches. On la sert aux invités et lors des fêtes de famille.",
+            "ar": "الشخشوخة طبق مميّز للأوراس وبسكرة: رقائق خبز رقيقة تُقطَّع قطعًا صغيرة وتُسقى بمرق متبّل باللحم والحمّص. تُقدَّم للضيوف وفي المناسبات العائلية."
+          }
+        },
+        {
+          "id": "u4l3-2",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000017"
+        },
+        {
+          "id": "u4l3-3",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000018"
+        },
+        {
+          "id": "u4l3-4",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000019"
+        },
+        {
+          "id": "u4l3-5",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000020"
+        },
+        {
+          "id": "u4l3-6",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000021"
+        },
+        {
+          "id": "u4l3-7",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000022"
+        },
+        {
+          "id": "u4l3-8",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000023"
+        },
+        {
+          "id": "u4l3-9",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000024"
+        },
+        {
+          "id": "u4l3-10",
+          "type": "dialogue",
+          "title": {
+            "en": "Dinner is ready",
+            "fr": "À table !",
+            "ar": "العشاء جاهز"
+          },
+          "lines": [
+            {
+              "speaker": "Massin",
+              "entryId": "3c040000-0000-4000-8000-000000000008"
+            },
+            {
+              "speaker": "Tanina",
+              "entryId": "3c010000-0000-4000-8000-000000000006"
+            },
+            {
+              "speaker": "Tanina",
+              "entryId": "3c040000-0000-4000-8000-000000000022"
+            },
+            {
+              "speaker": "Massin",
+              "entryId": "3c040000-0000-4000-8000-000000000025"
+            },
+            {
+              "speaker": "Tanina",
+              "entryId": "3c040000-0000-4000-8000-000000000024"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5c040000-0000-4000-8000-000000000004",
+      "title": {
+        "en": "At the market",
+        "fr": "Au marché",
+        "ar": "في السوق"
+      },
+      "steps": [
+        {
+          "id": "u4l4-1",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000026"
+        },
+        {
+          "id": "u4l4-2",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000027"
+        },
+        {
+          "id": "u4l4-3",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000028"
+        },
+        {
+          "id": "u4l4-4",
+          "type": "listen_repeat",
+          "entryId": "3c040000-0000-4000-8000-000000000027"
+        },
+        {
+          "id": "u4l4-5",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000029"
+        },
+        {
+          "id": "u4l4-6",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000030"
+        },
+        {
+          "id": "u4l4-7",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000031"
+        },
+        {
+          "id": "u4l4-8",
+          "type": "culture_note",
+          "title": {
+            "en": "Dates of the Ziban",
+            "fr": "Les dattes des Ziban",
+            "ar": "تمور الزيبان"
+          },
+          "body": {
+            "en": "South of the Aurès, the oases of the Ziban around Biskra are famous for their dates, above all Deglet Nour. The harvest takes place in autumn.",
+            "fr": "Au sud des Aurès, les oasis des Ziban, autour de Biskra, sont réputées pour leurs dattes, surtout la Deglet Nour. La récolte a lieu en automne.",
+            "ar": "جنوب الأوراس، تشتهر واحات الزيبان حول بسكرة بتمورها، وأشهرها دقلة نور. ويكون الجني في الخريف."
+          }
+        },
+        {
+          "id": "u4l4-9",
+          "type": "introduce",
+          "entryId": "3c040000-0000-4000-8000-000000000032"
+        },
+        {
+          "id": "u4l4-10",
+          "type": "dialogue",
+          "title": {
+            "en": "At the market stall",
+            "fr": "Au stand",
+            "ar": "عند البائع"
+          },
+          "lines": [
+            {
+              "speaker": "Yuba",
+              "entryId": "3c010000-0000-4000-8000-000000000003"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c010000-0000-4000-8000-000000000002"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c040000-0000-4000-8000-000000000033"
+            },
+            {
+              "speaker": "Yuba",
+              "entryId": "3c040000-0000-4000-8000-000000000032"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c040000-0000-4000-8000-000000000034"
+            },
+            {
+              "speaker": "Yuba",
+              "entryId": "3c040000-0000-4000-8000-000000000035"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c010000-0000-4000-8000-000000000006"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "6c040000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "Food check",
+        "fr": "Bilan : la nourriture",
+        "ar": "مراجعة: الطعام"
+      },
+      "questions": [
+        {
+          "id": "u4q-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c040000-0000-4000-8000-000000000001",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000002",
+            "3c040000-0000-4000-8000-000000000003",
+            "3c040000-0000-4000-8000-000000000004"
+          ]
+        },
+        {
+          "id": "u4q-2",
+          "type": "pick_audio",
+          "entryId": "3c040000-0000-4000-8000-000000000013",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000012",
+            "3c040000-0000-4000-8000-000000000011"
+          ]
+        },
+        {
+          "id": "u4q-3",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c040000-0000-4000-8000-000000000009",
+            "3c040000-0000-4000-8000-000000000010",
+            "3c040000-0000-4000-8000-000000000014",
+            "3c040000-0000-4000-8000-000000000015"
+          ]
+        },
+        {
+          "id": "u4q-4",
+          "type": "build_sentence",
+          "entryId": "3c040000-0000-4000-8000-000000000007",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000008"
+          ]
+        },
+        {
+          "id": "u4q-5",
+          "type": "fill_blank",
+          "entryId": "3c040000-0000-4000-8000-000000000008",
+          "blankWordIndex": 1,
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000001",
+            "3c040000-0000-4000-8000-000000000003"
+          ]
+        },
+        {
+          "id": "u4q-6",
+          "type": "listen_pick_translation",
+          "entryId": "3c040000-0000-4000-8000-000000000005",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000006",
+            "3c040000-0000-4000-8000-000000000021"
+          ]
+        },
+        {
+          "id": "u4q-7",
+          "type": "pick_audio",
+          "entryId": "3c040000-0000-4000-8000-000000000023",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000022",
+            "3c040000-0000-4000-8000-000000000007"
+          ]
+        },
+        {
+          "id": "u4q-8",
+          "type": "speak",
+          "entryId": "3c040000-0000-4000-8000-000000000022"
+        },
+        {
+          "id": "u4q-9",
+          "type": "fill_blank",
+          "entryId": "3c040000-0000-4000-8000-000000000022",
+          "blankWordIndex": 1,
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000002",
+            "3c040000-0000-4000-8000-000000000013"
+          ]
+        },
+        {
+          "id": "u4q-10",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c040000-0000-4000-8000-000000000017",
+            "3c040000-0000-4000-8000-000000000018",
+            "3c040000-0000-4000-8000-000000000019",
+            "3c040000-0000-4000-8000-000000000020"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6c040000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "Market challenge",
+        "fr": "Défi : le marché",
+        "ar": "تحدّي السوق"
+      },
+      "questions": [
+        {
+          "id": "u4b-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c040000-0000-4000-8000-000000000032",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000025",
+            "3c040000-0000-4000-8000-000000000035"
+          ]
+        },
+        {
+          "id": "u4b-2",
+          "type": "pick_audio",
+          "entryId": "3c040000-0000-4000-8000-000000000026",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000020",
+            "3c040000-0000-4000-8000-000000000017"
+          ]
+        },
+        {
+          "id": "u4b-3",
+          "type": "build_sentence",
+          "entryId": "3c040000-0000-4000-8000-000000000033",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000031"
+          ]
+        },
+        {
+          "id": "u4b-4",
+          "type": "build_sentence",
+          "entryId": "3c040000-0000-4000-8000-000000000035",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000025"
+          ]
+        },
+        {
+          "id": "u4b-5",
+          "type": "fill_blank",
+          "entryId": "3c040000-0000-4000-8000-000000000030",
+          "blankWordIndex": 1,
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000027",
+            "3c040000-0000-4000-8000-000000000028"
+          ]
+        },
+        {
+          "id": "u4b-6",
+          "type": "fill_blank",
+          "entryId": "3c040000-0000-4000-8000-000000000025",
+          "blankWordIndex": 0,
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000011",
+            "3c040000-0000-4000-8000-000000000004"
+          ]
+        },
+        {
+          "id": "u4b-7",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c040000-0000-4000-8000-000000000027",
+            "3c040000-0000-4000-8000-000000000028",
+            "3c040000-0000-4000-8000-000000000016",
+            "3c040000-0000-4000-8000-000000000012"
+          ]
+        },
+        {
+          "id": "u4b-8",
+          "type": "listen_pick_translation",
+          "entryId": "3c040000-0000-4000-8000-000000000031",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000030",
+            "3c040000-0000-4000-8000-000000000023"
+          ]
+        },
+        {
+          "id": "u4b-9",
+          "type": "pick_audio",
+          "entryId": "3c040000-0000-4000-8000-000000000029",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000024",
+            "3c040000-0000-4000-8000-000000000005"
+          ]
+        },
+        {
+          "id": "u4b-10",
+          "type": "speak",
+          "entryId": "3c040000-0000-4000-8000-000000000032"
+        },
+        {
+          "id": "u4b-11",
+          "type": "listen_pick_translation",
+          "entryId": "3c040000-0000-4000-8000-000000000027",
+          "distractorEntryIds": [
+            "3c040000-0000-4000-8000-000000000028",
+            "3c040000-0000-4000-8000-000000000013"
+          ]
+        },
+        {
+          "id": "u4b-12",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c040000-0000-4000-8000-000000000001",
+            "3c040000-0000-4000-8000-000000000002",
+            "3c040000-0000-4000-8000-000000000003",
+            "3c040000-0000-4000-8000-000000000004",
+            "3c040000-0000-4000-8000-000000000009"
+          ]
+        }
+      ]
+    }
+  ],
+  "levels": [
+    {
+      "id": "8c040000-0000-4000-8000-000000000001",
+      "position": 0,
+      "type": "lesson",
+      "title": {
+        "en": "Bread and water",
+        "fr": "Le pain et l'eau",
+        "ar": "الخبز والماء"
+      },
+      "lesson_id": "5c040000-0000-4000-8000-000000000001",
+      "quiz_id": null,
+      "map_x": 0.5,
+      "map_y": 0.08
+    },
+    {
+      "id": "8c040000-0000-4000-8000-000000000002",
+      "position": 1,
+      "type": "lesson",
+      "title": {
+        "en": "From the farm",
+        "fr": "De la ferme",
+        "ar": "من المزرعة"
+      },
+      "lesson_id": "5c040000-0000-4000-8000-000000000002",
+      "quiz_id": null,
+      "map_x": 0.28,
+      "map_y": 0.26
+    },
+    {
+      "id": "8c040000-0000-4000-8000-000000000003",
+      "position": 2,
+      "type": "lesson",
+      "title": {
+        "en": "At the table",
+        "fr": "À table",
+        "ar": "على المائدة"
+      },
+      "lesson_id": "5c040000-0000-4000-8000-000000000003",
+      "quiz_id": null,
+      "map_x": 0.7,
+      "map_y": 0.44
+    },
+    {
+      "id": "8c040000-0000-4000-8000-000000000004",
+      "position": 3,
+      "type": "lesson",
+      "title": {
+        "en": "At the market",
+        "fr": "Au marché",
+        "ar": "في السوق"
+      },
+      "lesson_id": "5c040000-0000-4000-8000-000000000004",
+      "quiz_id": null,
+      "map_x": 0.3,
+      "map_y": 0.62
+    },
+    {
+      "id": "8c040000-0000-4000-8000-000000000005",
+      "position": 4,
+      "type": "quiz",
+      "title": {
+        "en": "Checkpoint",
+        "fr": "Étape",
+        "ar": "محطة"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c040000-0000-4000-8000-000000000001",
+      "map_x": 0.68,
+      "map_y": 0.78
+    },
+    {
+      "id": "8c040000-0000-4000-8000-000000000006",
+      "position": 5,
+      "type": "boss",
+      "title": {
+        "en": "Final challenge",
+        "fr": "Défi final",
+        "ar": "التحدي الأخير"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c040000-0000-4000-8000-000000000002",
+      "map_x": 0.5,
+      "map_y": 0.92
+    }
+  ]
+}

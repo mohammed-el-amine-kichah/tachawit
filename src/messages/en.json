@@ -280,6 +280,28 @@
     "scriptLead": "Words missing in a script are shown in Latin.",
     "theme": "Appearance"
   },
+  "Speaker": {
+    "title": "Lend your voice",
+    "lead": "Native speakers from across the Aurès record the words learners hear. Anyone with an account can become a speaker.",
+    "signIn": "Sign in to become a speaker",
+    "name": "Name shown with your recordings",
+    "nameHint": "Your real name or a pseudonym, as you prefer.",
+    "region": "Region",
+    "village": "Village or town",
+    "consent": "I agree that my recordings are published in Tachawit",
+    "consentLead": "Learners will hear your voice, with this name, region and village. You can withdraw at any time: your recordings are then taken off the site.",
+    "consentSince": "Consent given on {date}",
+    "withdrawWarning": "Saving will take all your recordings off the site.",
+    "become": "Become a speaker",
+    "save": "Save",
+    "saved": "Saved.",
+    "errors": {
+      "sign_in": "Please sign in first.",
+      "invalid": "Please check the name and region.",
+      "failed": "It couldn’t be saved. Please try again."
+    },
+    "defaultName": "Speaker from the Aurès"
+  },
   "Review": {
     "title": "Daily review",
     "lead": "A few minutes a day keeps new words for good.",
@@ -332,7 +354,6 @@
       "not_found": "It no longer exists.",
       "consent_required": "This speaker has no recorded consent, so their audio can’t be published.",
       "in_use": "It’s used by something published. Unpublish that first.",
-      "has_audio": "This speaker still has recordings. Delete or move them first.",
       "duplicate": "That already exists.",
       "failed": "Something went wrong. Please try again.",
       "content_draft": "Publish its lesson or quiz first.",
@@ -412,7 +433,14 @@
       "region": "Region or dialect",
       "image": "Image",
       "notes": "Notes",
-      "notesHint": "For admins: sources, variants, anything to check."
+      "notesHint": "For admins: sources, variants, anything to check.",
+      "selectAll": "Select all on this page",
+      "selected": "{count} selected",
+      "selectEntry": "Select {entry}",
+      "publishSelected": "Publish {count}",
+      "unpublishSelected": "Unpublish {count}",
+      "batchPublished": "{count, plural, one {# entry published} other {# entries published}}",
+      "batchUnpublished": "{count, plural, one {# entry back to draft} other {# entries back to draft}}"
     },
     "audio": {
       "title": "Audio",
@@ -434,7 +462,7 @@
       "added": "Recording added as a draft.",
       "conversionFailed": "The recording couldn’t be converted. Try another file.",
       "uploadFailed": "The upload failed. Please try again.",
-      "needSpeaker": "Add a speaker first: every recording needs one.",
+      "needSpeaker": "No one has offered their voice yet. Speakers sign up from their own profile (Profile → Lend your voice).",
       "dropHere": "Drop an audio file here, or click to choose",
       "formats": "MP3, M4A, WAV, WebM or OGG",
       "or": "or",
@@ -471,19 +499,21 @@
       "deleted": "Deleted."
     },
     "timings": {
-      "help": "Press start, then tap the big button (or Space) as each word begins. Tap once more where the last word ends.",
-      "endMark": "end",
-      "restart": "Start again",
-      "start": "Start",
-      "slow": "Slower",
-      "undo": "Undo",
-      "tap": "Tap: {word}",
-      "done": "All words marked",
+      "help": "The cuts split the recording into words. Drag a cut to where a word starts or ends, or select it and use the arrow keys. Tap a word to hear just that part.",
+      "cutLabel": "Cut {number}: {time}",
+      "cutBefore": "start of “{word}”",
+      "cutAfter": "end of “{word}”",
+      "cutBetween": "between “{before}” and “{after}”",
+      "waveform": "Recording, with a cut at each word boundary",
+      "playWord": "Play “{word}”",
+      "reset": "Guess from the pauses",
       "check": "Play with highlighting",
       "save": "Save timings",
       "saved": "Timings saved.",
       "cleared": "Timings removed.",
-      "clear": "Remove timings"
+      "clear": "Remove timings",
+      "noWords": "Link this recording to a word or phrase first.",
+      "slow": "Slower"
     },
     "picker": {
       "search": "Search words and phrases",
@@ -511,24 +541,7 @@
     },
     "speakers": {
       "title": "Speakers",
-      "lead": "The voices of Tachawit, and the consent they gave.",
-      "new": "New speaker",
-      "saved": "Saved.",
-      "name": "Name or pseudonym",
-      "nameHint": "Shown to learners with their recordings.",
-      "region": "Region",
-      "village": "Village",
-      "consent": "Consent recorded",
-      "consentHint": "They agreed to have their voice published in Tachawit. Keep the signed form or recording safe.",
-      "consentDate": "Date of consent",
-      "revokeWarning": "Removing consent unpublishes all their recordings.",
-      "bio": "Public bio (optional)",
-      "save": "Save",
-      "create": "Create speaker",
-      "delete": "Delete",
-      "deleteTitle": "Delete this speaker?",
-      "deleteLead": "Only possible if they have no recordings.",
-      "deleted": "Deleted.",
+      "lead": "Members who offered their voice from their profile, with the consent they gave. Speakers manage their own details and consent.",
       "consentOn": "Consent on {date}",
       "consentMissing": "No consent recorded",
       "recordings": "{count, plural, one {# recording} other {# recordings}}"
@@ -881,7 +894,7 @@
     "redo": "Start again",
     "uploadFile": "Upload a file",
     "micDenied": "Microphone access was refused. You can upload a file instead.",
-    "consent": "I agree that my voice may be published in Tachawit to help people learn, and that my name (or the name I give below) is shown with it.",
+    "consent": "I agree that my recordings are published in Tachawit to help people learn, with my speaker name, region and village. This makes me a speaker: I can change my details or withdraw my consent at any time from my profile.",
     "region": "Region",
     "village": "Village or town",
     "notes": "Anything to add? (optional)",
@@ -899,10 +912,13 @@
       "invalid": "Please fill in the required fields.",
       "too_many": "Thank you for all your help! Please wait a little before sending more.",
       "audio": "Use a recording under 8 MB (MP3, M4A, WAV, WebM or OGG).",
-      "failed": "It couldn’t be sent. Please try again."
+      "failed": "It couldn’t be sent. Please try again.",
+      "sign_in": "Please sign in first."
     },
     "sendingAs": "Sending as {name}",
-    "sendingAsLead": "Admins see your account’s name and email, only to thank you or ask a question."
+    "sendingAsLead": "Admins see your account’s name and email, only to thank you or ask a question.",
+    "signInToRecord": "Sign in to send a recording: it is credited to you as a speaker, with your consent.",
+    "signInLink": "Sign in"
   },
   "About": {
     "title": "About Tachawit",

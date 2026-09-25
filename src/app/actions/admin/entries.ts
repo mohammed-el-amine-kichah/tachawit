@@ -19,7 +19,7 @@ export async function saveEntry(entryId: string | null, input: EntryFormInput): 
       ? supabase.from("entries").update(values.data).eq("id", entryId).select("id").single()
       : supabase.from("entries").insert(values.data).select("id").single();
     const { data, error } = await query;
-    if (error) return { ok: false, error: adminError(error, "entry") };
+    if (error) return { ok: false, error: adminError(error) };
     return { ok: true, id: data.id };
   });
 }
@@ -28,7 +28,16 @@ export async function setEntryStatus(entryId: string, next: "draft" | "published
   if (!id.safeParse(entryId).success || !status.safeParse(next).success) return { ok: false, error: "invalid" };
   return asAdmin(async ({ supabase }) => {
     const { error } = await supabase.from("entries").update({ status: next }).eq("id", entryId);
-    return error ? { ok: false, error: adminError(error, "entry") } : { ok: true };
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
+  });
+}
+
+/** Publishes or unpublishes several entries at once; the database guards still apply to each. */
+export async function setEntriesStatus(entryIds: string[], next: "draft" | "published"): Promise<ActionResult> {
+  if (!z.array(id).min(1).max(200).safeParse(entryIds).success || !status.safeParse(next).success) return { ok: false, error: "invalid" };
+  return asAdmin(async ({ supabase }) => {
+    const { error } = await supabase.from("entries").update({ status: next }).in("id", entryIds);
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }
 
@@ -36,7 +45,7 @@ export async function deleteEntry(entryId: string): Promise<ActionResult> {
   if (!id.safeParse(entryId).success) return { ok: false, error: "invalid" };
   return asAdmin(async ({ supabase }) => {
     const { error } = await supabase.from("entries").delete().eq("id", entryId);
-    return error ? { ok: false, error: adminError(error, "entry") } : { ok: true };
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }
 

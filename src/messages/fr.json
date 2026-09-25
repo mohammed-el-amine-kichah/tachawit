@@ -280,6 +280,28 @@
     "scriptLead": "Les mots pas encore écrits dans une écriture s’affichent en latin.",
     "theme": "Apparence"
   },
+  "Speaker": {
+    "title": "Prête ta voix",
+    "lead": "Des locuteurs de tout l’Aurès enregistrent les mots que les apprenants entendent. Toute personne ayant un compte peut devenir locutrice ou locuteur.",
+    "signIn": "Connecte-toi pour devenir locuteur",
+    "name": "Nom affiché avec tes enregistrements",
+    "nameHint": "Ton vrai nom ou un pseudonyme, comme tu préfères.",
+    "region": "Région",
+    "village": "Village ou ville",
+    "consent": "J’accepte que mes enregistrements soient publiés dans Tachawit",
+    "consentLead": "Les apprenants entendront ta voix, avec ce nom, cette région et ce village. Tu peux retirer ton accord à tout moment : tes enregistrements sont alors retirés du site.",
+    "consentSince": "Accord donné le {date}",
+    "withdrawWarning": "En enregistrant, tous tes enregistrements seront retirés du site.",
+    "become": "Devenir locuteur",
+    "save": "Enregistrer",
+    "saved": "Enregistré.",
+    "errors": {
+      "sign_in": "Connecte-toi d’abord.",
+      "invalid": "Vérifie le nom et la région.",
+      "failed": "L’enregistrement a échoué. Réessaie."
+    },
+    "defaultName": "Voix des Aurès"
+  },
   "Review": {
     "title": "Révision du jour",
     "lead": "Quelques minutes par jour pour garder les mots pour de bon.",
@@ -332,7 +354,6 @@
       "not_found": "Cet élément n’existe plus.",
       "consent_required": "Ce locuteur n’a pas de consentement enregistré : son audio ne peut pas être publié.",
       "in_use": "C’est utilisé par un contenu publié. Dépublie-le d’abord.",
-      "has_audio": "Ce locuteur a encore des enregistrements. Supprime-les ou déplace-les d’abord.",
       "duplicate": "Cela existe déjà.",
       "failed": "Un problème est survenu. Réessaie.",
       "content_draft": "Publie d’abord sa leçon ou son quiz.",
@@ -412,7 +433,14 @@
       "region": "Région ou parler",
       "image": "Image",
       "notes": "Notes",
-      "notesHint": "Pour les admins : sources, variantes, points à vérifier."
+      "notesHint": "Pour les admins : sources, variantes, points à vérifier.",
+      "selectAll": "Tout sélectionner sur cette page",
+      "selected": "{count} sélectionnés",
+      "selectEntry": "Sélectionner {entry}",
+      "publishSelected": "Publier {count}",
+      "unpublishSelected": "Dépublier {count}",
+      "batchPublished": "{count, plural, one {# entrée publiée} other {# entrées publiées}}",
+      "batchUnpublished": "{count, plural, one {# entrée repassée en brouillon} other {# entrées repassées en brouillon}}"
     },
     "audio": {
       "title": "Audio",
@@ -434,7 +462,7 @@
       "added": "Enregistrement ajouté en brouillon.",
       "conversionFailed": "L’enregistrement n’a pas pu être converti. Essaie un autre fichier.",
       "uploadFailed": "L’envoi a échoué. Réessaie.",
-      "needSpeaker": "Ajoute d’abord un locuteur : chaque enregistrement en a besoin.",
+      "needSpeaker": "Personne n’a encore prêté sa voix. Les locuteurs s’inscrivent depuis leur propre profil (Profil → Prête ta voix).",
       "dropHere": "Dépose un fichier audio ici, ou clique pour choisir",
       "formats": "MP3, M4A, WAV, WebM ou OGG",
       "or": "ou",
@@ -471,19 +499,21 @@
       "deleted": "Supprimé."
     },
     "timings": {
-      "help": "Appuie sur Démarrer, puis touche le grand bouton (ou Espace) au début de chaque mot. Touche une fois de plus à la fin du dernier mot.",
-      "endMark": "fin",
-      "restart": "Recommencer",
-      "start": "Démarrer",
-      "slow": "Plus lent",
-      "undo": "Annuler",
-      "tap": "Touche : {word}",
-      "done": "Tous les mots sont marqués",
+      "help": "Les coupures découpent l’enregistrement en mots. Fais glisser une coupure là où un mot commence ou finit, ou sélectionne-la et utilise les flèches. Touche un mot pour n’entendre que lui.",
+      "cutLabel": "Coupure {number} : {time}",
+      "cutBefore": "début de « {word} »",
+      "cutAfter": "fin de « {word} »",
+      "cutBetween": "entre « {before} » et « {after} »",
+      "waveform": "Enregistrement, avec une coupure à chaque limite de mot",
+      "playWord": "Écouter « {word} »",
+      "reset": "Deviner d’après les pauses",
       "check": "Écouter avec le surlignage",
       "save": "Enregistrer le minutage",
       "saved": "Minutage enregistré.",
       "cleared": "Minutage retiré.",
-      "clear": "Retirer le minutage"
+      "clear": "Retirer le minutage",
+      "noWords": "Lie d’abord cet enregistrement à un mot ou une expression.",
+      "slow": "Plus lent"
     },
     "picker": {
       "search": "Chercher des mots et expressions",
@@ -511,24 +541,7 @@
     },
     "speakers": {
       "title": "Locuteurs",
-      "lead": "Les voix de Tachawit et le consentement qu’elles ont donné.",
-      "new": "Nouveau locuteur",
-      "saved": "Enregistré.",
-      "name": "Nom ou pseudonyme",
-      "nameHint": "Affiché aux apprenants avec ses enregistrements.",
-      "region": "Région",
-      "village": "Village",
-      "consent": "Consentement enregistré",
-      "consentHint": "La personne accepte que sa voix soit publiée dans Tachawit. Conserve le formulaire signé ou l’enregistrement.",
-      "consentDate": "Date du consentement",
-      "revokeWarning": "Retirer le consentement dépublie tous ses enregistrements.",
-      "bio": "Présentation publique (facultatif)",
-      "save": "Enregistrer",
-      "create": "Créer le locuteur",
-      "delete": "Supprimer",
-      "deleteTitle": "Supprimer ce locuteur ?",
-      "deleteLead": "Possible seulement s’il n’a aucun enregistrement.",
-      "deleted": "Supprimé.",
+      "lead": "Les membres qui ont prêté leur voix depuis leur profil, avec l’accord qu’ils ont donné. Chacun gère lui-même ses informations et son accord.",
       "consentOn": "Consentement le {date}",
       "consentMissing": "Pas de consentement enregistré",
       "recordings": "{count, plural, one {# enregistrement} other {# enregistrements}}"
@@ -881,7 +894,7 @@
     "redo": "Recommencer",
     "uploadFile": "Envoyer un fichier",
     "micDenied": "L’accès au micro a été refusé. Tu peux envoyer un fichier à la place.",
-    "consent": "J’accepte que ma voix soit publiée dans Tachawit pour aider à apprendre, avec mon nom (ou le nom indiqué ci-dessous).",
+    "consent": "J’accepte que mes enregistrements soient publiés dans Tachawit pour aider à apprendre, avec mon nom de locuteur, ma région et mon village. Cela fait de moi un locuteur : je peux modifier mes informations ou retirer mon accord à tout moment depuis mon profil.",
     "region": "Région",
     "village": "Village ou ville",
     "notes": "Quelque chose à ajouter ? (facultatif)",
@@ -899,10 +912,13 @@
       "invalid": "Merci de remplir les champs obligatoires.",
       "too_many": "Merci pour toute ton aide ! Attends un peu avant d’en envoyer d’autres.",
       "audio": "Utilise un enregistrement de moins de 8 Mo (MP3, M4A, WAV, WebM ou OGG).",
-      "failed": "L’envoi a échoué. Réessaie."
+      "failed": "L’envoi a échoué. Réessaie.",
+      "sign_in": "Connecte-toi d’abord."
     },
     "sendingAs": "Envoyé en tant que {name}",
-    "sendingAsLead": "Les admins voient le nom et l’e-mail de ton compte, uniquement pour te remercier ou te poser une question."
+    "sendingAsLead": "Les admins voient le nom et l’e-mail de ton compte, uniquement pour te remercier ou te poser une question.",
+    "signInToRecord": "Connecte-toi pour envoyer un enregistrement : il t’est attribué comme locuteur, avec ton accord.",
+    "signInLink": "Se connecter"
   },
   "About": {
     "title": "À propos de Tachawit",

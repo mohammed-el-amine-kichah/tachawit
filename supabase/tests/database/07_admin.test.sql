@@ -40,13 +40,13 @@ select isnt_empty(
   $$ select 1 from public.profiles where email = 'amina.b@test.local' $$,
   'an admin can find a learner by email'
 );
-select lives_ok(
-  $$ insert into public.speakers (display_name, consent_given, consent_date) values ('Yamina', true, current_date) $$,
-  'an admin can record a speaker with consent'
-);
 select throws_ok(
-  $$ insert into public.speakers (display_name, consent_given) values ('No date', true) $$,
-  '23514', null, 'consent needs a date'
+  $$ insert into public.speakers (id, display_name, consent_given) values ('11111111-1111-4111-8111-111111111111', 'Amina', true) $$,
+  '42501', null, 'an admin cannot make someone a speaker'
+);
+select is_empty(
+  $$ update public.speakers set consent_given = true returning 1 $$,
+  'an admin cannot give consent for anyone'
 );
 reset role;
 

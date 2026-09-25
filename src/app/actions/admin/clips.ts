@@ -11,7 +11,7 @@ export async function setClipStatus(clipId: string, next: "draft" | "published")
   if (!id.safeParse(clipId).success || !["draft", "published"].includes(next)) return { ok: false, error: "invalid" };
   return asAdmin(async ({ supabase }) => {
     const { error } = await supabase.from("audio_clips").update({ status: next }).eq("id", clipId);
-    return error ? { ok: false, error: adminError(error, "audio") } : { ok: true };
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }
 

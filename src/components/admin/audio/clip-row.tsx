@@ -2,7 +2,7 @@
 
 import { AlertTriangleIcon, Clock3Icon, LinkIcon, StarIcon, Trash2Icon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { deleteClip, linkClip, setClipStatus, setPrimaryClip } from "@/app/actions/admin/clips";
 import { PlayButton } from "@/components/audio/play-button";
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,7 @@ export function ClipRow({ clip, entryText, showEntry }: { clip: AdminClip; entry
   const [timingsOpen, setTimingsOpen] = useState(false);
   const [linkOpen, setLinkOpen] = useState(false);
   const text = entryText ?? clip.entry?.text_latin ?? null;
+  const words = useMemo(() => (text ? splitWords(text) : []), [text]);
 
   return (
     <li className="flex flex-wrap items-center gap-3 rounded-xl bg-card p-3 ring-1 ring-border">
@@ -97,7 +98,7 @@ export function ClipRow({ clip, entryText, showEntry }: { clip: AdminClip; entry
               clipId={clip.id}
               url={clip.audio.url}
               durationMs={clip.durationMs ?? 5000}
-              words={splitWords(text)}
+              words={words}
               initial={clip.audio.words}
               onSaved={() => setTimingsOpen(false)}
             />

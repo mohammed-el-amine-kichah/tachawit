@@ -66,7 +66,7 @@ export async function saveContent(
       if (!valid.success || valid.data.length === 0) return { ok: false, error: "invalid" };
     }
     const { error } = await writeContent(admin, kind, contentId, { title: title.data, items: items.data as Json });
-    return error ? { ok: false, error: adminError(error, "content") } : { ok: true };
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }
 
@@ -80,7 +80,7 @@ export async function setContentStatus(kind: Kind, contentId: string, next: "dra
       if (!items.success || items.data.length === 0) return { ok: false, error: "invalid" };
     }
     const { error } = await writeContent(admin, kind, contentId, { status: next });
-    return error ? { ok: false, error: adminError(error, "content") } : { ok: true };
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }
 
@@ -88,7 +88,7 @@ export async function deleteContent(kind: Kind, contentId: string): Promise<Acti
   if (!id.safeParse(contentId).success) return { ok: false, error: "invalid" };
   return asAdmin(async ({ supabase }) => {
     const { error } = await supabase.from(table(kind)).delete().eq("id", contentId);
-    return error ? { ok: false, error: adminError(error, "content") } : { ok: true };
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }
 

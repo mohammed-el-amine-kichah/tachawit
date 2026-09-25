@@ -72,11 +72,11 @@ After that, admins can promote other people from *Admin → People* (`/ar/admin/
 `/ar/admin` (or any locale). Admins only: the page checks the role on the server and row-level security enforces it in the database.
 
 - **Words & phrases:** search, filter, create and edit in Latin, Arabic script and Tifinagh (with a Tifinagh suggestion from the Latin spelling), four translations, part of speech, region, image and notes. Drafts save automatically; publishing is explicit. A live preview shows the entry exactly as learners see it. Bulk import from CSV (every row becomes a draft).
-- **Audio:** drag and drop a file (MP3, M4A, WAV, WebM, OGG) or record in the browser, trim it, pick the speaker. The server converts it with ffmpeg into mono AAC plus a slow version, keeps the original privately, and creates a draft clip. Word timings are set by tapping along while the clip plays.
-- **Speakers:** name or pseudonym, region, village and consent (with its date). Audio from a speaker without consent cannot be published, and revoking consent unpublishes their audio (enforced by the database).
+- **Audio:** drag and drop a file (MP3, M4A, WAV, WebM, OGG) or record in the browser, trim it, pick the speaker. The server converts it with ffmpeg into mono AAC plus a slow version, keeps the original privately, and creates a draft clip. Word timings are set by placing cuts on the waveform, starting from a guess made from the pauses.
+- **Speakers:** read-only list. Any signed-in user becomes a speaker from their profile (*Lend your voice*): name or pseudonym, region, village and consent, dated by the database. Admins cannot create speakers or give consent for anyone. Audio from a speaker without consent cannot be published, withdrawing consent unpublishes their audio, and deleting the account deletes it (all enforced by the database).
 - **Lessons & quizzes:** visual builders. Add steps or questions from a menu, reorder them by dragging (or with the arrow buttons), pick words from a searchable list, and see each one live exactly as learners will. A full-screen preview plays the draft; nothing is recorded. Drafts save themselves; publishing checks that everything is complete.
 - **Map & units:** drag levels on the unit's scenery (or use the arrow keys), arrange them evenly, set each level's type, lesson or quiz, and unlock rule, reorder levels and units, and publish. Learners see a level only when the level, its lesson or quiz, and its unit are all published.
-- **Submissions:** listen to contributed recordings, edit, then approve (creating draft entries, or a draft clip from a speaker created with the consent the contributor gave) or reject.
+- **Submissions:** listen to contributed recordings, edit, then approve (creating draft entries, or a draft clip credited to the contributor, who must be signed in: sending a recording with consent makes them a speaker) or reject.
 - **Culture:** articles in Markdown per language, with a formatting toolbar, image upload and preview.
 - **Regions** and **People** (promote or demote admins).
 
@@ -84,7 +84,7 @@ After that, admins can promote other people from *Admin → People* (`/ar/admin/
 
 - `/contribute`: anyone can suggest a word, a local variant, a correction, or a recording (microphone or file, with explicit consent to publish). A hidden field catches bots, and each sender is limited to 10 submissions per hour, keyed on a salted hash of their IP address (never the address itself). Everything waits for review.
 - `/culture`: articles about music, silver jewelry, history, Yennayer and food. Bodies use a small Markdown subset rendered as React elements (no raw HTML), so article content can't inject scripts.
-- `/about`: the story of the project and credits to every speaker who gave consent.
+- `/about`: the story of the project and credits to every speaker with published recordings.
 
 ## Accounts and progress
 
@@ -123,7 +123,7 @@ Create an OAuth client in Google Cloud (type *Web application*) with the redirec
    ```
 2. In the Supabase dashboard, under *Authentication → URL Configuration*, set the site URL to your domain and add `https://<your-domain>/api/auth/callback` to the redirect URLs. Enable Google if you want it (see above).
 3. Import the repo into Vercel and set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL` (used for the sitemap, links in emails and social previews) and `SUBMISSION_HASH_SALT`.
-4. Create the first admin (see above), then replace the placeholder content: add speakers with their recorded consent, entries and audio, and build lessons in the admin panel.
+4. Create the first admin (see above), then replace the placeholder content: ask native speakers to sign up and turn on *Lend your voice* in their profile, then add entries and audio, and build lessons in the admin panel.
 5. `sitemap.xml` and `robots.txt` are generated from the published content; submit the sitemap to search engines if you want the culture articles indexed.
 
 ## Tests

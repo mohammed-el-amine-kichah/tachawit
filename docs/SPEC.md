@@ -21,7 +21,7 @@ Every lesson, quiz, word, audio clip, map node and culture note lives in the dat
 - **levels** (nodes on the map): belongs to a unit, order, type (lesson / quiz / review / boss / story), unlock rule (default: previous level completed), map position (x, y)
 - **entries** (a word or phrase): text_latin, text_arabic, text_tifinagh, translations (en, fr, ar), part of speech, dialect/region tag, notes, image (optional)
 - **audio_clips**: file, linked entry, speaker (linked), duration, slow version (optional), transcript with word-level timestamps (optional)
-- **speakers**: name or pseudonym, region/village, consent given (boolean + date), public bio (optional)
+- **speakers**: one per user account; name or pseudonym, region/village, consent given (boolean + date set when given), public bio (optional)
 - **lessons**: ordered list of steps. Step types: introduce entry (audio + text + image), listen and repeat, culture note, dialogue (multiple speakers, line by line)
 - **quizzes**: ordered list of questions. Question types:
   1. listen → pick the correct translation
@@ -82,12 +82,12 @@ Only accessible to users with the admin role (enforced by Supabase RLS, not just
 
 - **Dashboard**: counts of content, pending submissions, basic learner stats
 - **Entries**: create/edit words and phrases in all three scripts and four translations; attach audio; tag dialect/region. Bulk import from CSV.
-- **Audio**: drag-and-drop upload (mp3, m4a, wav, webm) OR record directly in the browser; waveform preview; trim start/end; auto-convert to a web-friendly format; link to an entry and a speaker. Optional word-timestamp editor: play the audio and tap to mark where each word starts.
+- **Audio**: drag-and-drop upload (mp3, m4a, wav, webm) OR record directly in the browser; waveform preview; trim start/end; auto-convert to a web-friendly format; link to an entry and a speaker. Optional word-timestamp editor: place cuts on the waveform where each word starts and ends (a first guess comes from the pauses), then check with playback.
 - **Lessons & quizzes**: visual builder. Add steps/questions from a menu, reorder by drag-and-drop, pick entries from a searchable list, live preview exactly as the learner will see it.
 - **Map editor**: drag level nodes to place them on the map, reorder levels, assign them to units.
 - **Draft / publish**: nothing appears to learners until published. Preview drafts before publishing.
 - **Submissions queue**: listen, approve (convert to entry), edit, or reject.
-- **Speakers**: manage speakers and record consent.
+- **Speakers**: see who has offered their voice and their consent. Speakers are user accounts: any user becomes a speaker and gives or withdraws consent from their own profile; admins cannot create speakers.
 - **Culture notes**: rich text editor with images.
 
 ## Quality requirements

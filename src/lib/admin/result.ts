@@ -11,18 +11,17 @@ export type AdminError =
   | "in_use"
   | "content_draft"
   | "entries_draft"
-  | "has_audio"
   | "duplicate"
   | "failed";
 
 type PostgrestLikeError = { code?: string; message?: string } | null | undefined;
 
 /** Maps database errors (including the publish and consent guards) to admin error keys. */
-export function adminError(error: PostgrestLikeError, context: "audio" | "entry" | "speaker" | "content" = "content"): AdminError {
+export function adminError(error: PostgrestLikeError): AdminError {
   if (!error) return "failed";
   if (error.code === "42501") return "forbidden";
   if (error.code === "23505") return "duplicate";
-  if (error.code === "23503") return context === "speaker" ? "has_audio" : "in_use";
+  if (error.code === "23503") return "in_use";
   if (error.code === "23514") {
     if (error.message?.includes("consent")) return "consent_required";
     if (error.message?.includes("used by")) return "in_use";

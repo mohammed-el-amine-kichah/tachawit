@@ -2,14 +2,14 @@
 
 import { createHash, randomUUID } from "node:crypto";
 import { headers } from "next/headers";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { contentKeys, getContentKey, isLocale } from "@/i18n/config";
 import { contributionSchema, contributorFor } from "@/lib/culture/contribution";
 import { createPublicClient } from "@/lib/supabase/public";
 import { createServerSupabase } from "@/lib/supabase/server";
 
-export type ContributionResult = { ok: true } | { ok: false; error: "invalid" | "too_many" | "audio" | "failed" };
+export type ContributionResult = { ok: true } | { ok: false; error: "invalid" | "too_many" | "audio" | "sign_in" | "failed" };
 
 const MAX_AUDIO_BYTES = 8 * 1024 * 1024;
 const PER_HOUR = 10;
@@ -66,6 +66,8 @@ export async function submitContribution(form: FormData): Promise<ContributionRe
 
   const { data: claims } = await supabase.auth.getClaims();
   const userId = claims?.claims.sub ?? null;
+  // A recording is credited to a speaker, and speakers are accounts.
+  if (file && !userId) return { ok: false, error: "sign_in" };
   const locale = await getLocale();
   const values = parsed.data;
 
@@ -82,6 +84,24 @@ export async function submitContribution(form: FormData): Promise<ContributionRe
     const upload = await supabase.storage.from("submissions").upload(audioPath, file, { contentType: type });
     if (upload.error) {
       console.error("Contribution audio upload failed", upload.error.message);
+      return { ok: false, error: "failed" };
+    }
+  }
+
+  // Consenting to publish a recording makes the sender a speaker, managed from their own profile.
+  if (file && userId) {
+    const { data: speaker } = await supabase.from("speakers").select("id").eq("id", userId).maybeSingle();
+    const { error: speakerError } = speaker
+      ? await supabase.from("speakers").update({ consent_given: true }).eq("id", userId)
+      : await supabase.from("speakers").insert({
+          id: userId,
+          display_name: contributor.name ?? (await getTranslations("Speaker"))("defaultName"),
+          region_id: values.region_id,
+          village: values.village,
+          consent_given: true,
+        });
+    if (speakerError) {
+      console.error("Contribution speaker profile failed", speakerError.message);
       return { ok: false, error: "failed" };
     }
   }

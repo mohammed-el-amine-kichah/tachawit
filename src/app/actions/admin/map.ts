@@ -90,7 +90,7 @@ export async function saveLevel(levelId: string, input: LevelFormInput): Promise
   if (!id.safeParse(levelId).success || !values.success) return { ok: false, error: "invalid" };
   return asAdmin(async ({ supabase }) => {
     const { error } = await supabase.from("levels").update(values.data).eq("id", levelId);
-    return error ? { ok: false, error: adminError(error, "content") } : { ok: true };
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }
 
@@ -98,7 +98,7 @@ export async function setLevelStatus(levelId: string, next: "draft" | "published
   if (!id.safeParse(levelId).success || !statusSchema.safeParse(next).success) return { ok: false, error: "invalid" };
   return asAdmin(async ({ supabase }) => {
     const { error } = await supabase.from("levels").update({ status: next }).eq("id", levelId);
-    return error ? { ok: false, error: adminError(error, "content") } : { ok: true };
+    return error ? { ok: false, error: adminError(error) } : { ok: true };
   });
 }
 

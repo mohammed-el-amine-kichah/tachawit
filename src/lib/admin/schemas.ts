@@ -35,29 +35,6 @@ export const entryFormSchema = z.object({
 export type EntryFormInput = z.input<typeof entryFormSchema>;
 export type EntryFormValues = z.output<typeof entryFormSchema>;
 
-const isoDate = /^\d{4}-\d{2}-\d{2}$/;
-
-function tomorrow(): string {
-  return new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
-}
-
-export const speakerFormSchema = z
-  .object({
-    display_name: z.string().trim().min(1).max(80),
-    region_id: z.union([z.uuid(), z.literal("")]).transform((value) => (value === "" ? null : value)),
-    village: blankToNull,
-    consent_given: z.boolean(),
-    consent_date: z.union([z.string().regex(isoDate), z.literal("")]).transform((value) => (value === "" ? null : value)),
-    bio: localizedFormSchema,
-  })
-  .superRefine((value, ctx) => {
-    if (value.consent_given && !value.consent_date) ctx.addIssue({ code: "custom", path: ["consent_date"], message: "required" });
-    if (value.consent_date && value.consent_date > tomorrow()) ctx.addIssue({ code: "custom", path: ["consent_date"], message: "future" });
-  })
-  .transform(({ bio, ...rest }) => ({ ...rest, public_bio: Object.keys(bio).length ? bio : null }));
-
-export type SpeakerFormInput = z.input<typeof speakerFormSchema>;
-
 export const regionFormSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
   name: requiredLocalized,

@@ -542,7 +542,7 @@ export type Database = {
           consent_given?: boolean
           created_at?: string
           display_name: string
-          id?: string
+          id: string
           public_bio?: Json | null
           region_id?: string | null
           updated_at?: string
@@ -560,6 +560,13 @@ export type Database = {
           village?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "speakers_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "speakers_region_id_fkey"
             columns: ["region_id"]

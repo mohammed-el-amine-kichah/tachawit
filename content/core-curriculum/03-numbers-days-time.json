@@ -1,0 +1,1069 @@
+{
+  "unit": {
+    "id": "7c030000-0000-4000-8000-000000000001",
+    "slug": "numbers-days-time",
+    "title": {
+      "en": "Numbers, Days & Time",
+      "fr": "Nombres, jours et temps",
+      "ar": "الأعداد والأيام والوقت"
+    },
+    "description": {
+      "en": "Count from one to ten, and talk about today, tomorrow and the new year.",
+      "fr": "Compter de un à dix, parler d'aujourd'hui, de demain et du nouvel an.",
+      "ar": "عُدّ من واحد إلى عشرة، وتحدّث عن اليوم والغد ورأس السنة."
+    },
+    "map_theme": "aures_peaks"
+  },
+  "entries": [
+    {
+      "id": "3c030000-0000-4000-8000-000000000001",
+      "text_latin": "ijjen",
+      "text_arabic": "إجن",
+      "text_tifinagh": "ⵉⵊⵊⴻⵏ",
+      "translations": {
+        "en": "one",
+        "fr": "un",
+        "ar": "واحد"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000002",
+      "text_latin": "ijjet",
+      "text_arabic": "إجت",
+      "text_tifinagh": "ⵉⵊⵊⴻⵜ",
+      "translations": {
+        "en": "one (feminine)",
+        "fr": "une",
+        "ar": "واحدة"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000003",
+      "text_latin": "sin",
+      "text_arabic": "سين",
+      "text_tifinagh": "ⵙⵉⵏ",
+      "translations": {
+        "en": "two",
+        "fr": "deux",
+        "ar": "اثنان"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000004",
+      "text_latin": "snat",
+      "text_arabic": "سنات",
+      "text_tifinagh": "ⵙⵏⴰⵜ",
+      "translations": {
+        "en": "two (feminine)",
+        "fr": "deux (féminin)",
+        "ar": "اثنتان"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000005",
+      "text_latin": "kraḍ",
+      "text_arabic": "كراض",
+      "text_tifinagh": "ⴽⵔⴰⴹ",
+      "translations": {
+        "en": "three",
+        "fr": "trois",
+        "ar": "ثلاثة"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000006",
+      "text_latin": "kkuẓ",
+      "text_arabic": "كوز",
+      "text_tifinagh": "ⴽⴽⵓⵥ",
+      "translations": {
+        "en": "four",
+        "fr": "quatre",
+        "ar": "أربعة"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000007",
+      "text_latin": "semmus",
+      "text_arabic": "سموس",
+      "text_tifinagh": "ⵙⴻⵎⵎⵓⵙ",
+      "translations": {
+        "en": "five",
+        "fr": "cinq",
+        "ar": "خمسة"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000008",
+      "text_latin": "sḍis",
+      "text_arabic": "سضيس",
+      "text_tifinagh": "ⵙⴹⵉⵙ",
+      "translations": {
+        "en": "six",
+        "fr": "six",
+        "ar": "ستة"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000009",
+      "text_latin": "sa",
+      "text_arabic": "سا",
+      "text_tifinagh": "ⵙⴰ",
+      "translations": {
+        "en": "seven",
+        "fr": "sept",
+        "ar": "سبعة"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000010",
+      "text_latin": "tam",
+      "text_arabic": "تام",
+      "text_tifinagh": "ⵜⴰⵎ",
+      "translations": {
+        "en": "eight",
+        "fr": "huit",
+        "ar": "ثمانية"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000011",
+      "text_latin": "tẓa",
+      "text_arabic": "تزا",
+      "text_tifinagh": "ⵜⵥⴰ",
+      "translations": {
+        "en": "nine",
+        "fr": "neuf",
+        "ar": "تسعة"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000012",
+      "text_latin": "mraw",
+      "text_arabic": "مراو",
+      "text_tifinagh": "ⵎⵔⴰⵡ",
+      "translations": {
+        "en": "ten",
+        "fr": "dix",
+        "ar": "عشرة"
+      },
+      "part_of_speech": "numeral",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000013",
+      "text_latin": "acḥal",
+      "text_arabic": "أشحال",
+      "text_tifinagh": "ⴰⵛⵃⴰⵍ",
+      "translations": {
+        "en": "how many; how much",
+        "fr": "combien",
+        "ar": "كم"
+      },
+      "part_of_speech": "adverb",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000014",
+      "text_latin": "amezwaru",
+      "text_arabic": "أمزوارو",
+      "text_tifinagh": "ⴰⵎⴻⵣⵡⴰⵔⵓ",
+      "translations": {
+        "en": "first",
+        "fr": "premier",
+        "ar": "الأوّل"
+      },
+      "part_of_speech": "adjective",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000015",
+      "text_latin": "aneggaru",
+      "text_arabic": "أنڨارو",
+      "text_tifinagh": "ⴰⵏⴻⴳⴳⴰⵔⵓ",
+      "translations": {
+        "en": "last",
+        "fr": "dernier",
+        "ar": "الأخير"
+      },
+      "part_of_speech": "adjective",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000016",
+      "text_latin": "ass",
+      "text_arabic": "أس",
+      "text_tifinagh": "ⴰⵙⵙ",
+      "translations": {
+        "en": "day",
+        "fr": "jour",
+        "ar": "يوم"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000017",
+      "text_latin": "ussan",
+      "text_arabic": "أوسان",
+      "text_tifinagh": "ⵓⵙⵙⴰⵏ",
+      "translations": {
+        "en": "days",
+        "fr": "jours",
+        "ar": "أيام"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000018",
+      "text_latin": "iḍ",
+      "text_arabic": "إض",
+      "text_tifinagh": "ⵉⴹ",
+      "translations": {
+        "en": "night",
+        "fr": "nuit",
+        "ar": "ليل، ليلة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000019",
+      "text_latin": "assa",
+      "text_arabic": "أسا",
+      "text_tifinagh": "ⴰⵙⵙⴰ",
+      "translations": {
+        "en": "today",
+        "fr": "aujourd'hui",
+        "ar": "اليوم"
+      },
+      "part_of_speech": "adverb",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000020",
+      "text_latin": "azekka",
+      "text_arabic": "أزكا",
+      "text_tifinagh": "ⴰⵣⴻⴽⴽⴰ",
+      "translations": {
+        "en": "tomorrow",
+        "fr": "demain",
+        "ar": "غدًا"
+      },
+      "part_of_speech": "adverb",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000021",
+      "text_latin": "iḍelli",
+      "text_arabic": "إضلي",
+      "text_tifinagh": "ⵉⴹⴻⵍⵍⵉ",
+      "translations": {
+        "en": "yesterday",
+        "fr": "hier",
+        "ar": "أمس"
+      },
+      "part_of_speech": "adverb",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000022",
+      "text_latin": "tameddit",
+      "text_arabic": "تامديت",
+      "text_tifinagh": "ⵜⴰⵎⴻⴷⴷⵉⵜ",
+      "translations": {
+        "en": "evening",
+        "fr": "soir",
+        "ar": "مساء"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000023",
+      "text_latin": "tura",
+      "text_arabic": "تورا",
+      "text_tifinagh": "ⵜⵓⵔⴰ",
+      "translations": {
+        "en": "now",
+        "fr": "maintenant",
+        "ar": "الآن"
+      },
+      "part_of_speech": "adverb",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000024",
+      "text_latin": "yal ass",
+      "text_arabic": "يال أس",
+      "text_tifinagh": "ⵢⴰⵍ ⴰⵙⵙ",
+      "translations": {
+        "en": "every day",
+        "fr": "chaque jour",
+        "ar": "كل يوم"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000025",
+      "text_latin": "aseggas",
+      "text_arabic": "أسڨاس",
+      "text_tifinagh": "ⴰⵙⴻⴳⴳⴰⵙ",
+      "translations": {
+        "en": "year",
+        "fr": "année",
+        "ar": "سنة، عام"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000026",
+      "text_latin": "yennayer",
+      "text_arabic": "يناير",
+      "text_tifinagh": "ⵢⴻⵏⵏⴰⵢⴻⵔ",
+      "translations": {
+        "en": "Yennayer, the Amazigh new year",
+        "fr": "Yennayer, le nouvel an amazigh",
+        "ar": "ينّاير، رأس السنة الأمازيغية"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000027",
+      "text_latin": "aseggas ameggaz",
+      "text_arabic": "أسڨاس أمڨاز",
+      "text_tifinagh": "ⴰⵙⴻⴳⴳⴰⵙ ⴰⵎⴻⴳⴳⴰⵣ",
+      "translations": {
+        "en": "happy new year",
+        "fr": "bonne année",
+        "ar": "سنة سعيدة"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000028",
+      "text_latin": "assa d yennayer",
+      "text_arabic": "أسا د يناير",
+      "text_tifinagh": "ⴰⵙⵙⴰ ⴷ ⵢⴻⵏⵏⴰⵢⴻⵔ",
+      "translations": {
+        "en": "today is Yennayer",
+        "fr": "aujourd'hui, c'est Yennayer",
+        "ar": "اليوم ينّاير"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000029",
+      "text_latin": "ula d cek",
+      "text_arabic": "أولا د شك",
+      "text_tifinagh": "ⵓⵍⴰ ⴷ ⵛⴻⴽ",
+      "translations": {
+        "en": "you too (to a man)",
+        "fr": "toi aussi (à un homme)",
+        "ar": "وأنت أيضًا"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000030",
+      "text_latin": "sin n wussan",
+      "text_arabic": "سين ن وسان",
+      "text_tifinagh": "ⵙⵉⵏ ⵏ ⵡⵓⵙⵙⴰⵏ",
+      "translations": {
+        "en": "two days",
+        "fr": "deux jours",
+        "ar": "يومان"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000031",
+      "text_latin": "kraḍ n wussan",
+      "text_arabic": "كراض ن وسان",
+      "text_tifinagh": "ⴽⵔⴰⴹ ⵏ ⵡⵓⵙⵙⴰⵏ",
+      "translations": {
+        "en": "three days",
+        "fr": "trois jours",
+        "ar": "ثلاثة أيام"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000032",
+      "text_latin": "ar azekka",
+      "text_arabic": "أر أزكا",
+      "text_tifinagh": "ⴰⵔ ⴰⵣⴻⴽⴽⴰ",
+      "translations": {
+        "en": "see you tomorrow",
+        "fr": "à demain",
+        "ar": "إلى الغد"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000033",
+      "text_latin": "acḥal n wussan",
+      "text_arabic": "أشحال ن وسان",
+      "text_tifinagh": "ⴰⵛⵃⴰⵍ ⵏ ⵡⵓⵙⵙⴰⵏ",
+      "translations": {
+        "en": "how many days?",
+        "fr": "combien de jours ?",
+        "ar": "كم يومًا؟"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c030000-0000-4000-8000-000000000034",
+      "text_latin": "azekka d ass n ssuq",
+      "text_arabic": "أزكا د أس ن سوق",
+      "text_tifinagh": "ⴰⵣⴻⴽⴽⴰ ⴷ ⴰⵙⵙ ⵏ ⵙⵙⵓⵇ",
+      "translations": {
+        "en": "tomorrow is market day",
+        "fr": "demain, c'est jour de marché",
+        "ar": "غدًا يوم السوق"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    }
+  ],
+  "lessons": [
+    {
+      "id": "5c030000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "One to five",
+        "fr": "De un à cinq",
+        "ar": "من واحد إلى خمسة"
+      },
+      "steps": [
+        {
+          "id": "u3l1-1",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000001"
+        },
+        {
+          "id": "u3l1-2",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000002"
+        },
+        {
+          "id": "u3l1-3",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000003"
+        },
+        {
+          "id": "u3l1-4",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000004"
+        },
+        {
+          "id": "u3l1-5",
+          "type": "listen_repeat",
+          "entryId": "3c030000-0000-4000-8000-000000000003"
+        },
+        {
+          "id": "u3l1-6",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000005"
+        },
+        {
+          "id": "u3l1-7",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000006"
+        },
+        {
+          "id": "u3l1-8",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000007"
+        },
+        {
+          "id": "u3l1-9",
+          "type": "listen_repeat",
+          "entryId": "3c030000-0000-4000-8000-000000000007"
+        },
+        {
+          "id": "u3l1-10",
+          "type": "culture_note",
+          "title": {
+            "en": "Counting in Tachawit",
+            "fr": "Compter en tachawit",
+            "ar": "العدّ بالشاوية"
+          },
+          "body": {
+            "en": "These are the Tamazight numbers. In everyday conversation, many Chaoui speakers switch to Arabic numbers from three upward, especially for prices and times, so you will hear both.",
+            "fr": "Voici les nombres en tamazight. Dans la conversation de tous les jours, beaucoup de Chaouis passent aux nombres arabes à partir de trois, surtout pour les prix et l'heure : tu entendras les deux.",
+            "ar": "هذه هي الأعداد بالأمازيغية. في الحديث اليومي، ينتقل كثير من الشاوية إلى الأعداد العربية ابتداءً من ثلاثة، خاصة في الأسعار والأوقات، لذلك ستسمع الاثنين."
+          }
+        }
+      ]
+    },
+    {
+      "id": "5c030000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "Six to ten",
+        "fr": "De six à dix",
+        "ar": "من ستة إلى عشرة"
+      },
+      "steps": [
+        {
+          "id": "u3l2-1",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000008"
+        },
+        {
+          "id": "u3l2-2",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000009"
+        },
+        {
+          "id": "u3l2-3",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000010"
+        },
+        {
+          "id": "u3l2-4",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000011"
+        },
+        {
+          "id": "u3l2-5",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000012"
+        },
+        {
+          "id": "u3l2-6",
+          "type": "listen_repeat",
+          "entryId": "3c030000-0000-4000-8000-000000000012"
+        },
+        {
+          "id": "u3l2-7",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000013"
+        },
+        {
+          "id": "u3l2-8",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000014"
+        },
+        {
+          "id": "u3l2-9",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000015"
+        },
+        {
+          "id": "u3l2-10",
+          "type": "listen_repeat",
+          "entryId": "3c030000-0000-4000-8000-000000000011"
+        }
+      ]
+    },
+    {
+      "id": "5c030000-0000-4000-8000-000000000003",
+      "title": {
+        "en": "Day and night",
+        "fr": "Le jour et la nuit",
+        "ar": "النهار والليل"
+      },
+      "steps": [
+        {
+          "id": "u3l3-1",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000016"
+        },
+        {
+          "id": "u3l3-2",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000017"
+        },
+        {
+          "id": "u3l3-3",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000018"
+        },
+        {
+          "id": "u3l3-4",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000019"
+        },
+        {
+          "id": "u3l3-5",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000020"
+        },
+        {
+          "id": "u3l3-6",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000021"
+        },
+        {
+          "id": "u3l3-7",
+          "type": "listen_repeat",
+          "entryId": "3c030000-0000-4000-8000-000000000020"
+        },
+        {
+          "id": "u3l3-8",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000022"
+        },
+        {
+          "id": "u3l3-9",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000023"
+        },
+        {
+          "id": "u3l3-10",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000024"
+        }
+      ]
+    },
+    {
+      "id": "5c030000-0000-4000-8000-000000000004",
+      "title": {
+        "en": "A new year",
+        "fr": "Une nouvelle année",
+        "ar": "سنة جديدة"
+      },
+      "steps": [
+        {
+          "id": "u3l4-1",
+          "type": "culture_note",
+          "title": {
+            "en": "Yennayer",
+            "fr": "Yennayer",
+            "ar": "ينّاير"
+          },
+          "body": {
+            "en": "Yennayer, the first day of the Amazigh year, falls around 12 January and has been a public holiday in Algeria since 2018. Families in the Aurès share a festive meal and wish each other aseggas ameggaz, a happy new year.",
+            "fr": "Yennayer, premier jour de l'année amazighe, tombe vers le 12 janvier ; c'est un jour férié en Algérie depuis 2018. Dans les Aurès, les familles partagent un repas de fête et se souhaitent aseggas ameggaz, bonne année.",
+            "ar": "ينّاير هو أول يوم في السنة الأمازيغية، ويوافق نحو 12 يناير، وهو عطلة رسمية في الجزائر منذ 2018. تجتمع العائلات في الأوراس على وجبة احتفالية ويتبادل الناس التهنئة بـ aseggas ameggaz، أي سنة سعيدة."
+          }
+        },
+        {
+          "id": "u3l4-2",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000025"
+        },
+        {
+          "id": "u3l4-3",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000026"
+        },
+        {
+          "id": "u3l4-4",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000027"
+        },
+        {
+          "id": "u3l4-5",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000028"
+        },
+        {
+          "id": "u3l4-6",
+          "type": "dialogue",
+          "title": {
+            "en": "Happy new year",
+            "fr": "Bonne année",
+            "ar": "سنة سعيدة"
+          },
+          "lines": [
+            {
+              "speaker": "Tanina",
+              "entryId": "3c030000-0000-4000-8000-000000000028"
+            },
+            {
+              "speaker": "Massin",
+              "entryId": "3c030000-0000-4000-8000-000000000027"
+            },
+            {
+              "speaker": "Tanina",
+              "entryId": "3c030000-0000-4000-8000-000000000029"
+            },
+            {
+              "speaker": "Massin",
+              "entryId": "3c010000-0000-4000-8000-000000000006"
+            }
+          ]
+        },
+        {
+          "id": "u3l4-7",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000030"
+        },
+        {
+          "id": "u3l4-8",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000031"
+        },
+        {
+          "id": "u3l4-9",
+          "type": "introduce",
+          "entryId": "3c030000-0000-4000-8000-000000000032"
+        },
+        {
+          "id": "u3l4-10",
+          "type": "dialogue",
+          "title": {
+            "en": "See you tomorrow",
+            "fr": "À demain",
+            "ar": "إلى الغد"
+          },
+          "lines": [
+            {
+              "speaker": "Aksil",
+              "entryId": "3c030000-0000-4000-8000-000000000033"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c030000-0000-4000-8000-000000000031"
+            },
+            {
+              "speaker": "Aksil",
+              "entryId": "3c030000-0000-4000-8000-000000000034"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c030000-0000-4000-8000-000000000032"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "6c030000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "Numbers check",
+        "fr": "Bilan : les nombres",
+        "ar": "مراجعة: الأعداد"
+      },
+      "questions": [
+        {
+          "id": "u3q-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c030000-0000-4000-8000-000000000003",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000005",
+            "3c030000-0000-4000-8000-000000000006",
+            "3c030000-0000-4000-8000-000000000007"
+          ]
+        },
+        {
+          "id": "u3q-2",
+          "type": "pick_audio",
+          "entryId": "3c030000-0000-4000-8000-000000000012",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000011",
+            "3c030000-0000-4000-8000-000000000010"
+          ]
+        },
+        {
+          "id": "u3q-3",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c030000-0000-4000-8000-000000000001",
+            "3c030000-0000-4000-8000-000000000003",
+            "3c030000-0000-4000-8000-000000000005",
+            "3c030000-0000-4000-8000-000000000006",
+            "3c030000-0000-4000-8000-000000000007"
+          ]
+        },
+        {
+          "id": "u3q-4",
+          "type": "build_sentence",
+          "entryId": "3c030000-0000-4000-8000-000000000030",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000031"
+          ]
+        },
+        {
+          "id": "u3q-5",
+          "type": "fill_blank",
+          "entryId": "3c030000-0000-4000-8000-000000000031",
+          "blankWordIndex": 0,
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000003",
+            "3c030000-0000-4000-8000-000000000006"
+          ]
+        },
+        {
+          "id": "u3q-6",
+          "type": "listen_pick_translation",
+          "entryId": "3c030000-0000-4000-8000-000000000019",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000020",
+            "3c030000-0000-4000-8000-000000000021"
+          ]
+        },
+        {
+          "id": "u3q-7",
+          "type": "pick_audio",
+          "entryId": "3c030000-0000-4000-8000-000000000018",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000016",
+            "3c030000-0000-4000-8000-000000000022"
+          ]
+        },
+        {
+          "id": "u3q-8",
+          "type": "speak",
+          "entryId": "3c030000-0000-4000-8000-000000000024"
+        },
+        {
+          "id": "u3q-9",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c030000-0000-4000-8000-000000000008",
+            "3c030000-0000-4000-8000-000000000009",
+            "3c030000-0000-4000-8000-000000000010",
+            "3c030000-0000-4000-8000-000000000011",
+            "3c030000-0000-4000-8000-000000000012"
+          ]
+        },
+        {
+          "id": "u3q-10",
+          "type": "listen_pick_translation",
+          "entryId": "3c030000-0000-4000-8000-000000000013",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000023",
+            "3c030000-0000-4000-8000-000000000019"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6c030000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "Time challenge",
+        "fr": "Défi : le temps",
+        "ar": "تحدّي الوقت"
+      },
+      "questions": [
+        {
+          "id": "u3b-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c030000-0000-4000-8000-000000000027",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000032",
+            "3c030000-0000-4000-8000-000000000024"
+          ]
+        },
+        {
+          "id": "u3b-2",
+          "type": "pick_audio",
+          "entryId": "3c030000-0000-4000-8000-000000000026",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000025",
+            "3c030000-0000-4000-8000-000000000022"
+          ]
+        },
+        {
+          "id": "u3b-3",
+          "type": "build_sentence",
+          "entryId": "3c030000-0000-4000-8000-000000000028",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000032"
+          ]
+        },
+        {
+          "id": "u3b-4",
+          "type": "build_sentence",
+          "entryId": "3c030000-0000-4000-8000-000000000034",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000033"
+          ]
+        },
+        {
+          "id": "u3b-5",
+          "type": "fill_blank",
+          "entryId": "3c030000-0000-4000-8000-000000000028",
+          "blankWordIndex": 0,
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000020",
+            "3c030000-0000-4000-8000-000000000021"
+          ]
+        },
+        {
+          "id": "u3b-6",
+          "type": "fill_blank",
+          "entryId": "3c030000-0000-4000-8000-000000000024",
+          "blankWordIndex": 1,
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000018",
+            "3c030000-0000-4000-8000-000000000025"
+          ]
+        },
+        {
+          "id": "u3b-7",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c030000-0000-4000-8000-000000000016",
+            "3c030000-0000-4000-8000-000000000018",
+            "3c030000-0000-4000-8000-000000000025",
+            "3c030000-0000-4000-8000-000000000022"
+          ]
+        },
+        {
+          "id": "u3b-8",
+          "type": "listen_pick_translation",
+          "entryId": "3c030000-0000-4000-8000-000000000002",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000004",
+            "3c030000-0000-4000-8000-000000000005"
+          ]
+        },
+        {
+          "id": "u3b-9",
+          "type": "pick_audio",
+          "entryId": "3c030000-0000-4000-8000-000000000014",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000015"
+          ]
+        },
+        {
+          "id": "u3b-10",
+          "type": "speak",
+          "entryId": "3c030000-0000-4000-8000-000000000027"
+        },
+        {
+          "id": "u3b-11",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c030000-0000-4000-8000-000000000019",
+            "3c030000-0000-4000-8000-000000000020",
+            "3c030000-0000-4000-8000-000000000021",
+            "3c030000-0000-4000-8000-000000000023"
+          ]
+        },
+        {
+          "id": "u3b-12",
+          "type": "listen_pick_translation",
+          "entryId": "3c030000-0000-4000-8000-000000000029",
+          "distractorEntryIds": [
+            "3c030000-0000-4000-8000-000000000032",
+            "3c030000-0000-4000-8000-000000000027"
+          ]
+        }
+      ]
+    }
+  ],
+  "levels": [
+    {
+      "id": "8c030000-0000-4000-8000-000000000001",
+      "position": 0,
+      "type": "lesson",
+      "title": {
+        "en": "One to five",
+        "fr": "De un à cinq",
+        "ar": "من واحد إلى خمسة"
+      },
+      "lesson_id": "5c030000-0000-4000-8000-000000000001",
+      "quiz_id": null,
+      "map_x": 0.5,
+      "map_y": 0.08
+    },
+    {
+      "id": "8c030000-0000-4000-8000-000000000002",
+      "position": 1,
+      "type": "lesson",
+      "title": {
+        "en": "Six to ten",
+        "fr": "De six à dix",
+        "ar": "من ستة إلى عشرة"
+      },
+      "lesson_id": "5c030000-0000-4000-8000-000000000002",
+      "quiz_id": null,
+      "map_x": 0.28,
+      "map_y": 0.26
+    },
+    {
+      "id": "8c030000-0000-4000-8000-000000000003",
+      "position": 2,
+      "type": "lesson",
+      "title": {
+        "en": "Day and night",
+        "fr": "Le jour et la nuit",
+        "ar": "النهار والليل"
+      },
+      "lesson_id": "5c030000-0000-4000-8000-000000000003",
+      "quiz_id": null,
+      "map_x": 0.7,
+      "map_y": 0.44
+    },
+    {
+      "id": "8c030000-0000-4000-8000-000000000004",
+      "position": 3,
+      "type": "lesson",
+      "title": {
+        "en": "A new year",
+        "fr": "Une nouvelle année",
+        "ar": "سنة جديدة"
+      },
+      "lesson_id": "5c030000-0000-4000-8000-000000000004",
+      "quiz_id": null,
+      "map_x": 0.3,
+      "map_y": 0.62
+    },
+    {
+      "id": "8c030000-0000-4000-8000-000000000005",
+      "position": 4,
+      "type": "quiz",
+      "title": {
+        "en": "Checkpoint",
+        "fr": "Étape",
+        "ar": "محطة"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c030000-0000-4000-8000-000000000001",
+      "map_x": 0.68,
+      "map_y": 0.78
+    },
+    {
+      "id": "8c030000-0000-4000-8000-000000000006",
+      "position": 5,
+      "type": "boss",
+      "title": {
+        "en": "Final challenge",
+        "fr": "Défi final",
+        "ar": "التحدي الأخير"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c030000-0000-4000-8000-000000000002",
+      "map_x": 0.5,
+      "map_y": 0.92
+    }
+  ]
+}

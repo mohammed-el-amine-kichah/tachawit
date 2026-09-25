@@ -5,7 +5,8 @@ select plan(21);
 -- Fixtures (as the postgres superuser)
 insert into auth.users (id, email) values
   ('11111111-1111-4111-8111-111111111111', 'learner@test.local'),
-  ('22222222-2222-4222-8222-222222222222', 'admin@test.local');
+  ('22222222-2222-4222-8222-222222222222', 'admin@test.local'),
+  ('cccccccc-0000-4000-8000-000000000001', 'speaker@test.local');
 update public.profiles set role = 'admin' where id = '22222222-2222-4222-8222-222222222222';
 
 insert into public.units (id, slug, position, title, status) values
@@ -68,18 +69,21 @@ select lives_ok(
 );
 
 -- Consent rules (enforced by triggers, whoever the caller is) ----------------
+-- Consent is given and withdrawn by the speakers themselves; publishing is the admin's.
 select throws_ok(
   $$ update public.audio_clips set status = 'published' where storage_path = 'test/no-consent.m4a' $$,
   '23514', null, 'audio cannot be published for a speaker without consent'
 );
-update public.speakers set consent_given = true, consent_date = current_date
-  where id = 'cccccccc-0000-4000-8000-000000000001';
+select set_config('request.jwt.claims', '{"sub": "cccccccc-0000-4000-8000-000000000001", "role": "authenticated"}', true);
+update public.speakers set consent_given = true where id = 'cccccccc-0000-4000-8000-000000000001';
+select set_config('request.jwt.claims', '{"sub": "22222222-2222-4222-8222-222222222222", "role": "authenticated"}', true);
 select lives_ok(
   $$ update public.audio_clips set status = 'published' where storage_path = 'test/no-consent.m4a' $$,
   'audio can be published once consent is recorded'
 );
-update public.speakers set consent_given = false, consent_date = null
-  where id = 'cccccccc-0000-4000-8000-000000000001';
+select set_config('request.jwt.claims', '{"sub": "cccccccc-0000-4000-8000-000000000001", "role": "authenticated"}', true);
+update public.speakers set consent_given = false where id = 'cccccccc-0000-4000-8000-000000000001';
+select set_config('request.jwt.claims', '{"sub": "22222222-2222-4222-8222-222222222222", "role": "authenticated"}', true);
 select is(
   (select status::text from public.audio_clips where storage_path = 'test/no-consent.m4a'),
   'draft', 'revoking consent unpublishes the speaker''s audio'

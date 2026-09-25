@@ -1,0 +1,1086 @@
+{
+  "unit": {
+    "id": "7c060000-0000-4000-8000-000000000001",
+    "slug": "nature-animals-aures",
+    "title": {
+      "en": "Nature, Animals & the Aurès",
+      "fr": "Nature, animaux et Aurès",
+      "ar": "الطبيعة والحيوانات والأوراس"
+    },
+    "description": {
+      "en": "Mountains, cedars, weather and seasons, and the animals of the Aurès.",
+      "fr": "Montagnes, cèdres, météo et saisons, et les animaux des Aurès.",
+      "ar": "الجبال والأرز والطقس والفصول، وحيوانات الأوراس."
+    },
+    "map_theme": "cedar_forest"
+  },
+  "entries": [
+    {
+      "id": "3c060000-0000-4000-8000-000000000001",
+      "text_latin": "adrar",
+      "text_arabic": "أدرار",
+      "text_tifinagh": "ⴰⴷⵔⴰⵔ",
+      "translations": {
+        "en": "mountain",
+        "fr": "montagne",
+        "ar": "جبل"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000002",
+      "text_latin": "tala",
+      "text_arabic": "تالا",
+      "text_tifinagh": "ⵜⴰⵍⴰ",
+      "translations": {
+        "en": "spring (of water)",
+        "fr": "source",
+        "ar": "عين، نبع"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000003",
+      "text_latin": "aẓru",
+      "text_arabic": "أزرو",
+      "text_tifinagh": "ⴰⵥⵔⵓ",
+      "translations": {
+        "en": "stone, rock",
+        "fr": "pierre, rocher",
+        "ar": "حجر، صخرة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000004",
+      "text_latin": "akal",
+      "text_arabic": "أكال",
+      "text_tifinagh": "ⴰⴽⴰⵍ",
+      "translations": {
+        "en": "earth, soil",
+        "fr": "terre",
+        "ar": "تراب، أرض"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000005",
+      "text_latin": "idgel",
+      "text_arabic": "إدڨل",
+      "text_tifinagh": "ⵉⴷⴳⴻⵍ",
+      "translations": {
+        "en": "cedar",
+        "fr": "cèdre",
+        "ar": "أرز"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000006",
+      "text_latin": "tazdayt",
+      "text_arabic": "تازدايت",
+      "text_tifinagh": "ⵜⴰⵣⴷⴰⵢⵜ",
+      "translations": {
+        "en": "palm tree",
+        "fr": "palmier",
+        "ar": "نخلة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000007",
+      "text_latin": "tafukt",
+      "text_arabic": "تافوكت",
+      "text_tifinagh": "ⵜⴰⴼⵓⴽⵜ",
+      "translations": {
+        "en": "sun",
+        "fr": "soleil",
+        "ar": "شمس"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000008",
+      "text_latin": "ayyur",
+      "text_arabic": "أيور",
+      "text_tifinagh": "ⴰⵢⵢⵓⵔ",
+      "translations": {
+        "en": "moon; month",
+        "fr": "lune ; mois",
+        "ar": "قمر؛ شهر"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000009",
+      "text_latin": "itran",
+      "text_arabic": "إتران",
+      "text_tifinagh": "ⵉⵜⵔⴰⵏ",
+      "translations": {
+        "en": "stars",
+        "fr": "étoiles",
+        "ar": "نجوم"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000010",
+      "text_latin": "anẓar",
+      "text_arabic": "أنزار",
+      "text_tifinagh": "ⴰⵏⵥⴰⵔ",
+      "translations": {
+        "en": "rain",
+        "fr": "pluie",
+        "ar": "مطر"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000011",
+      "text_latin": "adfel",
+      "text_arabic": "أدفل",
+      "text_tifinagh": "ⴰⴷⴼⴻⵍ",
+      "translations": {
+        "en": "snow",
+        "fr": "neige",
+        "ar": "ثلج"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000012",
+      "text_latin": "aḍu",
+      "text_arabic": "أضو",
+      "text_tifinagh": "ⴰⴹⵓ",
+      "translations": {
+        "en": "wind",
+        "fr": "vent",
+        "ar": "ريح"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000013",
+      "text_latin": "asemmiḍ",
+      "text_arabic": "أسميض",
+      "text_tifinagh": "ⴰⵙⴻⵎⵎⵉⴹ",
+      "translations": {
+        "en": "cold",
+        "fr": "froid",
+        "ar": "برد"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000014",
+      "text_latin": "adrar n Celya",
+      "text_arabic": "أدرار ن شيليا",
+      "text_tifinagh": "ⴰⴷⵔⴰⵔ ⵏ ⵛⴻⵍⵢⴰ",
+      "translations": {
+        "en": "Mount Chélia",
+        "fr": "le mont Chélia",
+        "ar": "جبل شيليا"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000015",
+      "text_latin": "adfel ɣef udrar",
+      "text_arabic": "أدفل غف أودرار",
+      "text_tifinagh": "ⴰⴷⴼⴻⵍ ⵖⴻⴼ ⵓⴷⵔⴰⵔ",
+      "translations": {
+        "en": "snow on the mountain",
+        "fr": "de la neige sur la montagne",
+        "ar": "ثلج على الجبل"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000016",
+      "text_latin": "yella usemmiḍ",
+      "text_arabic": "يلا أوسميض",
+      "text_tifinagh": "ⵢⴻⵍⵍⴰ ⵓⵙⴻⵎⵎⵉⴹ",
+      "translations": {
+        "en": "it's cold",
+        "fr": "il fait froid",
+        "ar": "الجوّ بارد"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000017",
+      "text_latin": "yekkat unẓar",
+      "text_arabic": "يكات أونزار",
+      "text_tifinagh": "ⵢⴻⴽⴽⴰⵜ ⵓⵏⵥⴰⵔ",
+      "translations": {
+        "en": "it's raining",
+        "fr": "il pleut",
+        "ar": "إنها تمطر"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000018",
+      "text_latin": "tafsut",
+      "text_arabic": "تافسوت",
+      "text_tifinagh": "ⵜⴰⴼⵙⵓⵜ",
+      "translations": {
+        "en": "spring (season)",
+        "fr": "printemps",
+        "ar": "ربيع"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000019",
+      "text_latin": "anebdu",
+      "text_arabic": "أنبدو",
+      "text_tifinagh": "ⴰⵏⴻⴱⴷⵓ",
+      "translations": {
+        "en": "summer",
+        "fr": "été",
+        "ar": "صيف"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000020",
+      "text_latin": "tagrest",
+      "text_arabic": "تاڨرست",
+      "text_tifinagh": "ⵜⴰⴳⵔⴻⵙⵜ",
+      "translations": {
+        "en": "winter",
+        "fr": "hiver",
+        "ar": "شتاء"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000021",
+      "text_latin": "amellal",
+      "text_arabic": "أملال",
+      "text_tifinagh": "ⴰⵎⴻⵍⵍⴰⵍ",
+      "translations": {
+        "en": "white",
+        "fr": "blanc",
+        "ar": "أبيض"
+      },
+      "part_of_speech": "adjective",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000022",
+      "text_latin": "azeggaɣ",
+      "text_arabic": "أزڨاغ",
+      "text_tifinagh": "ⴰⵣⴻⴳⴳⴰⵖ",
+      "translations": {
+        "en": "red",
+        "fr": "rouge",
+        "ar": "أحمر"
+      },
+      "part_of_speech": "adjective",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000023",
+      "text_latin": "ayis",
+      "text_arabic": "أيس",
+      "text_tifinagh": "ⴰⵢⵉⵙ",
+      "translations": {
+        "en": "horse",
+        "fr": "cheval",
+        "ar": "حصان"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000024",
+      "text_latin": "ayis amellal",
+      "text_arabic": "أيس أملال",
+      "text_tifinagh": "ⴰⵢⵉⵙ ⴰⵎⴻⵍⵍⴰⵍ",
+      "translations": {
+        "en": "a white horse",
+        "fr": "un cheval blanc",
+        "ar": "حصان أبيض"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000025",
+      "text_latin": "aydi",
+      "text_arabic": "أيدي",
+      "text_tifinagh": "ⴰⵢⴷⵉ",
+      "translations": {
+        "en": "dog",
+        "fr": "chien",
+        "ar": "كلب"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000026",
+      "text_latin": "aɣyul",
+      "text_arabic": "أغيول",
+      "text_tifinagh": "ⴰⵖⵢⵓⵍ",
+      "translations": {
+        "en": "donkey",
+        "fr": "âne",
+        "ar": "حمار"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000027",
+      "text_latin": "taɣaṭ",
+      "text_arabic": "تاغاط",
+      "text_tifinagh": "ⵜⴰⵖⴰⵟ",
+      "translations": {
+        "en": "goat",
+        "fr": "chèvre",
+        "ar": "عنزة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000028",
+      "text_latin": "ulli",
+      "text_arabic": "أولي",
+      "text_tifinagh": "ⵓⵍⵍⵉ",
+      "translations": {
+        "en": "sheep (the flock)",
+        "fr": "moutons, brebis",
+        "ar": "غنم"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000029",
+      "text_latin": "izimer",
+      "text_arabic": "إزيمر",
+      "text_tifinagh": "ⵉⵣⵉⵎⴻⵔ",
+      "translations": {
+        "en": "lamb",
+        "fr": "agneau",
+        "ar": "حَمَل"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000030",
+      "text_latin": "tafunast",
+      "text_arabic": "تافوناست",
+      "text_tifinagh": "ⵜⴰⴼⵓⵏⴰⵙⵜ",
+      "translations": {
+        "en": "cow",
+        "fr": "vache",
+        "ar": "بقرة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000031",
+      "text_latin": "tayaziṭ",
+      "text_arabic": "تايازيط",
+      "text_tifinagh": "ⵜⴰⵢⴰⵣⵉⵟ",
+      "translations": {
+        "en": "hen",
+        "fr": "poule",
+        "ar": "دجاجة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000032",
+      "text_latin": "ayaziḍ",
+      "text_arabic": "أيازيض",
+      "text_tifinagh": "ⴰⵢⴰⵣⵉⴹ",
+      "translations": {
+        "en": "rooster",
+        "fr": "coq",
+        "ar": "ديك"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000033",
+      "text_latin": "alɣem",
+      "text_arabic": "ألغم",
+      "text_tifinagh": "ⴰⵍⵖⴻⵎ",
+      "translations": {
+        "en": "camel",
+        "fr": "chameau",
+        "ar": "جمل"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000034",
+      "text_latin": "uccen",
+      "text_arabic": "أوشن",
+      "text_tifinagh": "ⵓⵛⵛⴻⵏ",
+      "translations": {
+        "en": "jackal",
+        "fr": "chacal",
+        "ar": "ابن آوى"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000035",
+      "text_latin": "mani tella taɣaṭ",
+      "text_arabic": "ماني تلا تاغاط",
+      "text_tifinagh": "ⵎⴰⵏⵉ ⵜⴻⵍⵍⴰ ⵜⴰⵖⴰⵟ",
+      "translations": {
+        "en": "where is the goat?",
+        "fr": "où est la chèvre ?",
+        "ar": "أين العنزة؟"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c060000-0000-4000-8000-000000000036",
+      "text_latin": "tella ɣef uẓru",
+      "text_arabic": "تلا غف أوزرو",
+      "text_tifinagh": "ⵜⴻⵍⵍⴰ ⵖⴻⴼ ⵓⵥⵔⵓ",
+      "translations": {
+        "en": "it's on the rock",
+        "fr": "elle est sur le rocher",
+        "ar": "إنها على الصخرة"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    }
+  ],
+  "lessons": [
+    {
+      "id": "5c060000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "Mountains and springs",
+        "fr": "Montagnes et sources",
+        "ar": "الجبال والعيون"
+      },
+      "steps": [
+        {
+          "id": "u6l1-1",
+          "type": "culture_note",
+          "title": {
+            "en": "Cedars of the Aurès",
+            "fr": "Les cèdres des Aurès",
+            "ar": "أرز الأوراس"
+          },
+          "body": {
+            "en": "Mount Chélia, at 2,328 m, is the highest peak in northern Algeria. Its slopes and the Belezma mountains near Batna are covered with Atlas cedar forests, some of the trees centuries old. In winter the peaks are often white with snow.",
+            "fr": "Le mont Chélia, à 2 328 m, est le plus haut sommet du nord de l'Algérie. Ses pentes et les monts du Belezma, près de Batna, sont couverts de forêts de cèdres de l'Atlas, dont certains arbres ont plusieurs siècles. En hiver, les sommets sont souvent blancs de neige.",
+            "ar": "جبل شيليا، بارتفاع 2328 مترًا، هو أعلى قمة في شمال الجزائر. وتكسو سفوحَه وجبالَ بلزمة قربَ باتنة غاباتُ أرز الأطلس، وبعض أشجارها عمرها قرون. وفي الشتاء كثيرًا ما تبيضّ القمم بالثلج."
+          }
+        },
+        {
+          "id": "u6l1-2",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000001"
+        },
+        {
+          "id": "u6l1-3",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000002"
+        },
+        {
+          "id": "u6l1-4",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000003"
+        },
+        {
+          "id": "u6l1-5",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000004"
+        },
+        {
+          "id": "u6l1-6",
+          "type": "listen_repeat",
+          "entryId": "3c060000-0000-4000-8000-000000000001"
+        },
+        {
+          "id": "u6l1-7",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000005"
+        },
+        {
+          "id": "u6l1-8",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000006"
+        },
+        {
+          "id": "u6l1-9",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000007"
+        },
+        {
+          "id": "u6l1-10",
+          "type": "listen_repeat",
+          "entryId": "3c060000-0000-4000-8000-000000000002"
+        }
+      ]
+    },
+    {
+      "id": "5c060000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "Sky and weather",
+        "fr": "Le ciel et le temps",
+        "ar": "السماء والطقس"
+      },
+      "steps": [
+        {
+          "id": "u6l2-1",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000008"
+        },
+        {
+          "id": "u6l2-2",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000009"
+        },
+        {
+          "id": "u6l2-3",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000010"
+        },
+        {
+          "id": "u6l2-4",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000011"
+        },
+        {
+          "id": "u6l2-5",
+          "type": "listen_repeat",
+          "entryId": "3c060000-0000-4000-8000-000000000011"
+        },
+        {
+          "id": "u6l2-6",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000012"
+        },
+        {
+          "id": "u6l2-7",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000013"
+        },
+        {
+          "id": "u6l2-8",
+          "type": "dialogue",
+          "title": {
+            "en": "Winter in the Aurès",
+            "fr": "L'hiver dans les Aurès",
+            "ar": "الشتاء في الأوراس"
+          },
+          "lines": [
+            {
+              "speaker": "Aksil",
+              "entryId": "3c060000-0000-4000-8000-000000000014"
+            },
+            {
+              "speaker": "Tiziri",
+              "entryId": "3c060000-0000-4000-8000-000000000015"
+            },
+            {
+              "speaker": "Aksil",
+              "entryId": "3c060000-0000-4000-8000-000000000016"
+            },
+            {
+              "speaker": "Tiziri",
+              "entryId": "3c060000-0000-4000-8000-000000000017"
+            }
+          ]
+        },
+        {
+          "id": "u6l2-9",
+          "type": "listen_repeat",
+          "entryId": "3c060000-0000-4000-8000-000000000010"
+        }
+      ]
+    },
+    {
+      "id": "5c060000-0000-4000-8000-000000000003",
+      "title": {
+        "en": "Seasons and colours",
+        "fr": "Saisons et couleurs",
+        "ar": "الفصول والألوان"
+      },
+      "steps": [
+        {
+          "id": "u6l3-1",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000018"
+        },
+        {
+          "id": "u6l3-2",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000019"
+        },
+        {
+          "id": "u6l3-3",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000020"
+        },
+        {
+          "id": "u6l3-4",
+          "type": "listen_repeat",
+          "entryId": "3c060000-0000-4000-8000-000000000020"
+        },
+        {
+          "id": "u6l3-5",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000021"
+        },
+        {
+          "id": "u6l3-6",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000022"
+        },
+        {
+          "id": "u6l3-7",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000023"
+        },
+        {
+          "id": "u6l3-8",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000024"
+        },
+        {
+          "id": "u6l3-9",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000025"
+        },
+        {
+          "id": "u6l3-10",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000026"
+        }
+      ]
+    },
+    {
+      "id": "5c060000-0000-4000-8000-000000000004",
+      "title": {
+        "en": "Animals of the Aurès",
+        "fr": "Les animaux des Aurès",
+        "ar": "حيوانات الأوراس"
+      },
+      "steps": [
+        {
+          "id": "u6l4-1",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000027"
+        },
+        {
+          "id": "u6l4-2",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000028"
+        },
+        {
+          "id": "u6l4-3",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000029"
+        },
+        {
+          "id": "u6l4-4",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000030"
+        },
+        {
+          "id": "u6l4-5",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000031"
+        },
+        {
+          "id": "u6l4-6",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000032"
+        },
+        {
+          "id": "u6l4-7",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000033"
+        },
+        {
+          "id": "u6l4-8",
+          "type": "introduce",
+          "entryId": "3c060000-0000-4000-8000-000000000034"
+        },
+        {
+          "id": "u6l4-9",
+          "type": "listen_repeat",
+          "entryId": "3c060000-0000-4000-8000-000000000027"
+        },
+        {
+          "id": "u6l4-10",
+          "type": "dialogue",
+          "title": {
+            "en": "The lost goat",
+            "fr": "La chèvre perdue",
+            "ar": "العنزة الضائعة"
+          },
+          "lines": [
+            {
+              "speaker": "Tanina",
+              "entryId": "3c010000-0000-4000-8000-000000000002"
+            },
+            {
+              "speaker": "Yuba",
+              "entryId": "3c010000-0000-4000-8000-000000000003"
+            },
+            {
+              "speaker": "Yuba",
+              "entryId": "3c060000-0000-4000-8000-000000000035"
+            },
+            {
+              "speaker": "Tanina",
+              "entryId": "3c060000-0000-4000-8000-000000000036"
+            },
+            {
+              "speaker": "Yuba",
+              "entryId": "3c010000-0000-4000-8000-000000000006"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "6c060000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "Nature check",
+        "fr": "Bilan : la nature",
+        "ar": "مراجعة: الطبيعة"
+      },
+      "questions": [
+        {
+          "id": "u6q-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c060000-0000-4000-8000-000000000001",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000002",
+            "3c060000-0000-4000-8000-000000000003",
+            "3c060000-0000-4000-8000-000000000004"
+          ]
+        },
+        {
+          "id": "u6q-2",
+          "type": "pick_audio",
+          "entryId": "3c060000-0000-4000-8000-000000000006",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000005",
+            "3c060000-0000-4000-8000-000000000007"
+          ]
+        },
+        {
+          "id": "u6q-3",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c060000-0000-4000-8000-000000000007",
+            "3c060000-0000-4000-8000-000000000008",
+            "3c060000-0000-4000-8000-000000000009",
+            "3c060000-0000-4000-8000-000000000010"
+          ]
+        },
+        {
+          "id": "u6q-4",
+          "type": "build_sentence",
+          "entryId": "3c060000-0000-4000-8000-000000000015",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000017"
+          ]
+        },
+        {
+          "id": "u6q-5",
+          "type": "fill_blank",
+          "entryId": "3c060000-0000-4000-8000-000000000024",
+          "blankWordIndex": 1,
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000022"
+          ]
+        },
+        {
+          "id": "u6q-6",
+          "type": "listen_pick_translation",
+          "entryId": "3c060000-0000-4000-8000-000000000011",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000010",
+            "3c060000-0000-4000-8000-000000000012"
+          ]
+        },
+        {
+          "id": "u6q-7",
+          "type": "pick_audio",
+          "entryId": "3c060000-0000-4000-8000-000000000020",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000018",
+            "3c060000-0000-4000-8000-000000000019"
+          ]
+        },
+        {
+          "id": "u6q-8",
+          "type": "speak",
+          "entryId": "3c060000-0000-4000-8000-000000000014"
+        },
+        {
+          "id": "u6q-9",
+          "type": "fill_blank",
+          "entryId": "3c060000-0000-4000-8000-000000000015",
+          "blankWordIndex": 0,
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000010",
+            "3c060000-0000-4000-8000-000000000012"
+          ]
+        },
+        {
+          "id": "u6q-10",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c060000-0000-4000-8000-000000000018",
+            "3c060000-0000-4000-8000-000000000019",
+            "3c060000-0000-4000-8000-000000000020"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6c060000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "Aurès challenge",
+        "fr": "Défi : les Aurès",
+        "ar": "تحدّي الأوراس"
+      },
+      "questions": [
+        {
+          "id": "u6b-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c060000-0000-4000-8000-000000000027",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000028",
+            "3c060000-0000-4000-8000-000000000030",
+            "3c060000-0000-4000-8000-000000000029"
+          ]
+        },
+        {
+          "id": "u6b-2",
+          "type": "pick_audio",
+          "entryId": "3c060000-0000-4000-8000-000000000032",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000031",
+            "3c060000-0000-4000-8000-000000000034"
+          ]
+        },
+        {
+          "id": "u6b-3",
+          "type": "build_sentence",
+          "entryId": "3c060000-0000-4000-8000-000000000035",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000036"
+          ]
+        },
+        {
+          "id": "u6b-4",
+          "type": "build_sentence",
+          "entryId": "3c060000-0000-4000-8000-000000000036",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000015"
+          ]
+        },
+        {
+          "id": "u6b-5",
+          "type": "fill_blank",
+          "entryId": "3c060000-0000-4000-8000-000000000035",
+          "blankWordIndex": 2,
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000030",
+            "3c060000-0000-4000-8000-000000000031"
+          ]
+        },
+        {
+          "id": "u6b-6",
+          "type": "fill_blank",
+          "entryId": "3c060000-0000-4000-8000-000000000014",
+          "blankWordIndex": 0,
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000002",
+            "3c060000-0000-4000-8000-000000000003"
+          ]
+        },
+        {
+          "id": "u6b-7",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c060000-0000-4000-8000-000000000025",
+            "3c060000-0000-4000-8000-000000000023",
+            "3c060000-0000-4000-8000-000000000026",
+            "3c060000-0000-4000-8000-000000000033",
+            "3c060000-0000-4000-8000-000000000034"
+          ]
+        },
+        {
+          "id": "u6b-8",
+          "type": "listen_pick_translation",
+          "entryId": "3c060000-0000-4000-8000-000000000017",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000016",
+            "3c060000-0000-4000-8000-000000000015"
+          ]
+        },
+        {
+          "id": "u6b-9",
+          "type": "pick_audio",
+          "entryId": "3c060000-0000-4000-8000-000000000029",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000027",
+            "3c060000-0000-4000-8000-000000000028"
+          ]
+        },
+        {
+          "id": "u6b-10",
+          "type": "speak",
+          "entryId": "3c060000-0000-4000-8000-000000000016"
+        },
+        {
+          "id": "u6b-11",
+          "type": "listen_pick_translation",
+          "entryId": "3c060000-0000-4000-8000-000000000013",
+          "distractorEntryIds": [
+            "3c060000-0000-4000-8000-000000000012",
+            "3c060000-0000-4000-8000-000000000004"
+          ]
+        },
+        {
+          "id": "u6b-12",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c060000-0000-4000-8000-000000000001",
+            "3c060000-0000-4000-8000-000000000002",
+            "3c060000-0000-4000-8000-000000000005",
+            "3c060000-0000-4000-8000-000000000006",
+            "3c060000-0000-4000-8000-000000000022"
+          ]
+        }
+      ]
+    }
+  ],
+  "levels": [
+    {
+      "id": "8c060000-0000-4000-8000-000000000001",
+      "position": 0,
+      "type": "lesson",
+      "title": {
+        "en": "Mountains and springs",
+        "fr": "Montagnes et sources",
+        "ar": "الجبال والعيون"
+      },
+      "lesson_id": "5c060000-0000-4000-8000-000000000001",
+      "quiz_id": null,
+      "map_x": 0.5,
+      "map_y": 0.08
+    },
+    {
+      "id": "8c060000-0000-4000-8000-000000000002",
+      "position": 1,
+      "type": "lesson",
+      "title": {
+        "en": "Sky and weather",
+        "fr": "Le ciel et le temps",
+        "ar": "السماء والطقس"
+      },
+      "lesson_id": "5c060000-0000-4000-8000-000000000002",
+      "quiz_id": null,
+      "map_x": 0.28,
+      "map_y": 0.26
+    },
+    {
+      "id": "8c060000-0000-4000-8000-000000000003",
+      "position": 2,
+      "type": "lesson",
+      "title": {
+        "en": "Seasons and colours",
+        "fr": "Saisons et couleurs",
+        "ar": "الفصول والألوان"
+      },
+      "lesson_id": "5c060000-0000-4000-8000-000000000003",
+      "quiz_id": null,
+      "map_x": 0.7,
+      "map_y": 0.44
+    },
+    {
+      "id": "8c060000-0000-4000-8000-000000000004",
+      "position": 3,
+      "type": "lesson",
+      "title": {
+        "en": "Animals of the Aurès",
+        "fr": "Les animaux des Aurès",
+        "ar": "حيوانات الأوراس"
+      },
+      "lesson_id": "5c060000-0000-4000-8000-000000000004",
+      "quiz_id": null,
+      "map_x": 0.3,
+      "map_y": 0.62
+    },
+    {
+      "id": "8c060000-0000-4000-8000-000000000005",
+      "position": 4,
+      "type": "quiz",
+      "title": {
+        "en": "Checkpoint",
+        "fr": "Étape",
+        "ar": "محطة"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c060000-0000-4000-8000-000000000001",
+      "map_x": 0.68,
+      "map_y": 0.78
+    },
+    {
+      "id": "8c060000-0000-4000-8000-000000000006",
+      "position": 5,
+      "type": "boss",
+      "title": {
+        "en": "Final challenge",
+        "fr": "Défi final",
+        "ar": "التحدي الأخير"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c060000-0000-4000-8000-000000000002",
+      "map_x": 0.5,
+      "map_y": 0.92
+    }
+  ]
+}

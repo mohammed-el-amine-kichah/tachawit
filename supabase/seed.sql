@@ -27,6 +27,10 @@ insert into public.regions (id, slug, name) values
     '{"en": "Biskra", "fr": "Biskra", "ar": "بسكرة"}');
 
 -- Speaker (synthetic placeholder: there is no real person behind these tones) ---
+-- Speakers are accounts, so the placeholder voice gets one. It has no password and cannot sign in.
+insert into auth.users (id, aud, role, email, confirmation_token, recovery_token, email_change_token_new, email_change) values
+  ('20000000-0000-4000-8000-000000000001', 'authenticated', 'authenticated', 'placeholder-voice@tachawit.test', '', '', '', '');
+
 insert into public.speakers (id, display_name, region_id, consent_given, consent_date, public_bio) values
   ('20000000-0000-4000-8000-000000000001', '[PLACEHOLDER] Synthetic tones',
     '10000000-0000-4000-8000-000000000001', true, '2026-09-24',

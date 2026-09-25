@@ -1,0 +1,1083 @@
+{
+  "unit": {
+    "id": "7c020000-0000-4000-8000-000000000001",
+    "slug": "family-people",
+    "title": {
+      "en": "Family & People",
+      "fr": "La famille et les gens",
+      "ar": "العائلة والناس"
+    },
+    "description": {
+      "en": "Name the people closest to you and introduce your family.",
+      "fr": "Nommer ses proches et présenter sa famille.",
+      "ar": "سمِّ أقرب الناس إليك وقدّم عائلتك."
+    },
+    "map_theme": "cliff_villages"
+  },
+  "entries": [
+    {
+      "id": "3c020000-0000-4000-8000-000000000001",
+      "text_latin": "yemma",
+      "text_arabic": "يما",
+      "text_tifinagh": "ⵢⴻⵎⵎⴰ",
+      "translations": {
+        "en": "my mother",
+        "fr": "ma mère",
+        "ar": "أمّي"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000002",
+      "text_latin": "baba",
+      "text_arabic": "بابا",
+      "text_tifinagh": "ⴱⴰⴱⴰ",
+      "translations": {
+        "en": "my father",
+        "fr": "mon père",
+        "ar": "أبي"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000003",
+      "text_latin": "mmi",
+      "text_arabic": "مي",
+      "text_tifinagh": "ⵎⵎⵉ",
+      "translations": {
+        "en": "my son",
+        "fr": "mon fils",
+        "ar": "ابني"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000004",
+      "text_latin": "illi",
+      "text_arabic": "إلي",
+      "text_tifinagh": "ⵉⵍⵍⵉ",
+      "translations": {
+        "en": "my daughter",
+        "fr": "ma fille",
+        "ar": "ابنتي"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000005",
+      "text_latin": "wa",
+      "text_arabic": "وا",
+      "text_tifinagh": "ⵡⴰ",
+      "translations": {
+        "en": "this one (masculine)",
+        "fr": "celui-ci",
+        "ar": "هذا"
+      },
+      "part_of_speech": "pronoun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000006",
+      "text_latin": "ta",
+      "text_arabic": "تا",
+      "text_tifinagh": "ⵜⴰ",
+      "translations": {
+        "en": "this one (feminine)",
+        "fr": "celle-ci",
+        "ar": "هذه"
+      },
+      "part_of_speech": "pronoun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000007",
+      "text_latin": "wa d baba",
+      "text_arabic": "وا د بابا",
+      "text_tifinagh": "ⵡⴰ ⴷ ⴱⴰⴱⴰ",
+      "translations": {
+        "en": "this is my father",
+        "fr": "voici mon père",
+        "ar": "هذا أبي"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000008",
+      "text_latin": "ta d yemma",
+      "text_arabic": "تا د يما",
+      "text_tifinagh": "ⵜⴰ ⴷ ⵢⴻⵎⵎⴰ",
+      "translations": {
+        "en": "this is my mother",
+        "fr": "voici ma mère",
+        "ar": "هذه أمّي"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000009",
+      "text_latin": "uma",
+      "text_arabic": "أوما",
+      "text_tifinagh": "ⵓⵎⴰ",
+      "translations": {
+        "en": "my brother",
+        "fr": "mon frère",
+        "ar": "أخي"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000010",
+      "text_latin": "ultma",
+      "text_arabic": "أولتما",
+      "text_tifinagh": "ⵓⵍⵜⵎⴰ",
+      "translations": {
+        "en": "my sister",
+        "fr": "ma sœur",
+        "ar": "أختي"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000011",
+      "text_latin": "wa d uma",
+      "text_arabic": "وا د أوما",
+      "text_tifinagh": "ⵡⴰ ⴷ ⵓⵎⴰ",
+      "translations": {
+        "en": "this is my brother",
+        "fr": "voici mon frère",
+        "ar": "هذا أخي"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000012",
+      "text_latin": "ta d ultma",
+      "text_arabic": "تا د أولتما",
+      "text_tifinagh": "ⵜⴰ ⴷ ⵓⵍⵜⵎⴰ",
+      "translations": {
+        "en": "this is my sister",
+        "fr": "voici ma sœur",
+        "ar": "هذه أختي"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000013",
+      "text_latin": "wa d mmi",
+      "text_arabic": "وا د مي",
+      "text_tifinagh": "ⵡⴰ ⴷ ⵎⵎⵉ",
+      "translations": {
+        "en": "this is my son",
+        "fr": "voici mon fils",
+        "ar": "هذا ابني"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000014",
+      "text_latin": "ta d illi",
+      "text_arabic": "تا د إلي",
+      "text_tifinagh": "ⵜⴰ ⴷ ⵉⵍⵍⵉ",
+      "translations": {
+        "en": "this is my daughter",
+        "fr": "voici ma fille",
+        "ar": "هذه ابنتي"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000015",
+      "text_latin": "ameqqran",
+      "text_arabic": "أمقران",
+      "text_tifinagh": "ⴰⵎⴻⵇⵇⵔⴰⵏ",
+      "translations": {
+        "en": "big; the eldest",
+        "fr": "grand ; l'aîné",
+        "ar": "كبير؛ الأكبر"
+      },
+      "part_of_speech": "adjective",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000016",
+      "text_latin": "amecṭuḥ",
+      "text_arabic": "أمشطوح",
+      "text_tifinagh": "ⴰⵎⴻⵛⵟⵓⵃ",
+      "translations": {
+        "en": "small; the youngest",
+        "fr": "petit ; le cadet",
+        "ar": "صغير؛ الأصغر"
+      },
+      "part_of_speech": "adjective",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000017",
+      "text_latin": "argaz",
+      "text_arabic": "أرڨاز",
+      "text_tifinagh": "ⴰⵔⴳⴰⵣ",
+      "translations": {
+        "en": "man; husband",
+        "fr": "homme ; mari",
+        "ar": "رجل؛ زوج"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000018",
+      "text_latin": "tamɣart",
+      "text_arabic": "تامغارت",
+      "text_tifinagh": "ⵜⴰⵎⵖⴰⵔⵜ",
+      "translations": {
+        "en": "woman; wife",
+        "fr": "femme ; épouse",
+        "ar": "امرأة؛ زوجة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000019",
+      "text_latin": "irgazen",
+      "text_arabic": "إرڨازن",
+      "text_tifinagh": "ⵉⵔⴳⴰⵣⴻⵏ",
+      "translations": {
+        "en": "men",
+        "fr": "hommes",
+        "ar": "رجال"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000020",
+      "text_latin": "amɣar",
+      "text_arabic": "أمغار",
+      "text_tifinagh": "ⴰⵎⵖⴰⵔ",
+      "translations": {
+        "en": "old man; elder",
+        "fr": "vieil homme ; ancien",
+        "ar": "شيخ؛ رجل مُسنّ"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000021",
+      "text_latin": "medden",
+      "text_arabic": "مدن",
+      "text_tifinagh": "ⵎⴻⴷⴷⴻⵏ",
+      "translations": {
+        "en": "people",
+        "fr": "les gens",
+        "ar": "الناس"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000022",
+      "text_latin": "netta d argaz-inu",
+      "text_arabic": "نتا د أرڨازينو",
+      "text_tifinagh": "ⵏⴻⵜⵜⴰ ⴷ ⴰⵔⴳⴰⵣ-ⵉⵏⵓ",
+      "translations": {
+        "en": "he is my husband",
+        "fr": "c'est mon mari",
+        "ar": "هو زوجي"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000023",
+      "text_latin": "nettat d tamɣart-inu",
+      "text_arabic": "نتات د تامغارتينو",
+      "text_tifinagh": "ⵏⴻⵜⵜⴰⵜ ⴷ ⵜⴰⵎⵖⴰⵔⵜ-ⵉⵏⵓ",
+      "translations": {
+        "en": "she is my wife",
+        "fr": "c'est ma femme",
+        "ar": "هي زوجتي"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000024",
+      "text_latin": "tawacult",
+      "text_arabic": "تاواشولت",
+      "text_tifinagh": "ⵜⴰⵡⴰⵛⵓⵍⵜ",
+      "translations": {
+        "en": "family",
+        "fr": "famille",
+        "ar": "عائلة"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000025",
+      "text_latin": "yemma-k",
+      "text_arabic": "يماك",
+      "text_tifinagh": "ⵢⴻⵎⵎⴰ-ⴽ",
+      "translations": {
+        "en": "your mother (to a man)",
+        "fr": "ta mère (à un homme)",
+        "ar": "أمّك (لرجل)"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000026",
+      "text_latin": "yemma-m",
+      "text_arabic": "يمام",
+      "text_tifinagh": "ⵢⴻⵎⵎⴰ-ⵎ",
+      "translations": {
+        "en": "your mother (to a woman)",
+        "fr": "ta mère (à une femme)",
+        "ar": "أمّكِ (لامرأة)"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000027",
+      "text_latin": "baba-k",
+      "text_arabic": "باباك",
+      "text_tifinagh": "ⴱⴰⴱⴰ-ⴽ",
+      "translations": {
+        "en": "your father (to a man)",
+        "fr": "ton père (à un homme)",
+        "ar": "أبوك (لرجل)"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000028",
+      "text_latin": "yemma-s",
+      "text_arabic": "يماس",
+      "text_tifinagh": "ⵢⴻⵎⵎⴰ-ⵙ",
+      "translations": {
+        "en": "his or her mother",
+        "fr": "sa mère",
+        "ar": "أمّه، أمّها"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000029",
+      "text_latin": "baba-s",
+      "text_arabic": "باباس",
+      "text_tifinagh": "ⴱⴰⴱⴰ-ⵙ",
+      "translations": {
+        "en": "his or her father",
+        "fr": "son père",
+        "ar": "أبوه، أبوها"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000030",
+      "text_latin": "tawacult-inu",
+      "text_arabic": "تاواشولتينو",
+      "text_tifinagh": "ⵜⴰⵡⴰⵛⵓⵍⵜ-ⵉⵏⵓ",
+      "translations": {
+        "en": "my family",
+        "fr": "ma famille",
+        "ar": "عائلتي"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000031",
+      "text_latin": "anebgi",
+      "text_arabic": "أنبڨي",
+      "text_tifinagh": "ⴰⵏⴻⴱⴳⵉ",
+      "translations": {
+        "en": "guest",
+        "fr": "invité",
+        "ar": "ضيف"
+      },
+      "part_of_speech": "noun",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000032",
+      "text_latin": "mani",
+      "text_arabic": "ماني",
+      "text_tifinagh": "ⵎⴰⵏⵉ",
+      "translations": {
+        "en": "where",
+        "fr": "où",
+        "ar": "أين"
+      },
+      "part_of_speech": "adverb",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000033",
+      "text_latin": "mani tella yemma-k",
+      "text_arabic": "ماني تلا يماك",
+      "text_tifinagh": "ⵎⴰⵏⵉ ⵜⴻⵍⵍⴰ ⵢⴻⵎⵎⴰ-ⴽ",
+      "translations": {
+        "en": "where is your mother? (to a man)",
+        "fr": "où est ta mère ? (à un homme)",
+        "ar": "أين أمّك؟"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000034",
+      "text_latin": "yemma tella deg taddart",
+      "text_arabic": "يما تلا دڨ تادارت",
+      "text_tifinagh": "ⵢⴻⵎⵎⴰ ⵜⴻⵍⵍⴰ ⴷⴻⴳ ⵜⴰⴷⴷⴰⵔⵜ",
+      "translations": {
+        "en": "my mother is at home",
+        "fr": "ma mère est à la maison",
+        "ar": "أمّي في البيت"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    },
+    {
+      "id": "3c020000-0000-4000-8000-000000000035",
+      "text_latin": "netta d baba-k",
+      "text_arabic": "نتا د باباك",
+      "text_tifinagh": "ⵏⴻⵜⵜⴰ ⴷ ⴱⴰⴱⴰ-ⴽ",
+      "translations": {
+        "en": "is he your father? (to a man)",
+        "fr": "c'est ton père ? (à un homme)",
+        "ar": "هل هو أبوك؟"
+      },
+      "part_of_speech": "phrase",
+      "region_id": null
+    }
+  ],
+  "lessons": [
+    {
+      "id": "5c020000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "Mother and father",
+        "fr": "Mère et père",
+        "ar": "الأم والأب"
+      },
+      "steps": [
+        {
+          "id": "u2l1-1",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000001"
+        },
+        {
+          "id": "u2l1-2",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000002"
+        },
+        {
+          "id": "u2l1-3",
+          "type": "listen_repeat",
+          "entryId": "3c020000-0000-4000-8000-000000000001"
+        },
+        {
+          "id": "u2l1-4",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000003"
+        },
+        {
+          "id": "u2l1-5",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000004"
+        },
+        {
+          "id": "u2l1-6",
+          "type": "listen_repeat",
+          "entryId": "3c020000-0000-4000-8000-000000000004"
+        },
+        {
+          "id": "u2l1-7",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000005"
+        },
+        {
+          "id": "u2l1-8",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000006"
+        },
+        {
+          "id": "u2l1-9",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000007"
+        },
+        {
+          "id": "u2l1-10",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000008"
+        }
+      ]
+    },
+    {
+      "id": "5c020000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "Brothers and sisters",
+        "fr": "Frères et sœurs",
+        "ar": "الإخوة والأخوات"
+      },
+      "steps": [
+        {
+          "id": "u2l2-1",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000009"
+        },
+        {
+          "id": "u2l2-2",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000010"
+        },
+        {
+          "id": "u2l2-3",
+          "type": "listen_repeat",
+          "entryId": "3c020000-0000-4000-8000-000000000010"
+        },
+        {
+          "id": "u2l2-4",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000011"
+        },
+        {
+          "id": "u2l2-5",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000012"
+        },
+        {
+          "id": "u2l2-6",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000013"
+        },
+        {
+          "id": "u2l2-7",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000014"
+        },
+        {
+          "id": "u2l2-8",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000015"
+        },
+        {
+          "id": "u2l2-9",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000016"
+        },
+        {
+          "id": "u2l2-10",
+          "type": "dialogue",
+          "title": {
+            "en": "Meet my family",
+            "fr": "Voici ma famille",
+            "ar": "تعرّف على عائلتي"
+          },
+          "lines": [
+            {
+              "speaker": "Yuba",
+              "entryId": "3c020000-0000-4000-8000-000000000007"
+            },
+            {
+              "speaker": "Tiziri",
+              "entryId": "3c010000-0000-4000-8000-000000000002"
+            },
+            {
+              "speaker": "Yuba",
+              "entryId": "3c020000-0000-4000-8000-000000000008"
+            },
+            {
+              "speaker": "Tiziri",
+              "entryId": "3c010000-0000-4000-8000-000000000003"
+            },
+            {
+              "speaker": "Yuba",
+              "entryId": "3c020000-0000-4000-8000-000000000011"
+            },
+            {
+              "speaker": "Yuba",
+              "entryId": "3c020000-0000-4000-8000-000000000012"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5c020000-0000-4000-8000-000000000003",
+      "title": {
+        "en": "Men and women",
+        "fr": "Hommes et femmes",
+        "ar": "الرجال والنساء"
+      },
+      "steps": [
+        {
+          "id": "u2l3-1",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000017"
+        },
+        {
+          "id": "u2l3-2",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000018"
+        },
+        {
+          "id": "u2l3-3",
+          "type": "listen_repeat",
+          "entryId": "3c020000-0000-4000-8000-000000000017"
+        },
+        {
+          "id": "u2l3-4",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000019"
+        },
+        {
+          "id": "u2l3-5",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000020"
+        },
+        {
+          "id": "u2l3-6",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000021"
+        },
+        {
+          "id": "u2l3-7",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000022"
+        },
+        {
+          "id": "u2l3-8",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000023"
+        },
+        {
+          "id": "u2l3-9",
+          "type": "listen_repeat",
+          "entryId": "3c020000-0000-4000-8000-000000000018"
+        },
+        {
+          "id": "u2l3-10",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000024"
+        }
+      ]
+    },
+    {
+      "id": "5c020000-0000-4000-8000-000000000004",
+      "title": {
+        "en": "Your family",
+        "fr": "Ta famille",
+        "ar": "عائلتك"
+      },
+      "steps": [
+        {
+          "id": "u2l4-1",
+          "type": "culture_note",
+          "title": {
+            "en": "“My” is built in",
+            "fr": "Le « mon » est déjà dedans",
+            "ar": "«ياء المتكلّم» جزء من الكلمة"
+          },
+          "body": {
+            "en": "Many family words already mean “my …”: yemma is “my mother” and baba is “my father”. To talk about someone else's family, add an ending: -k when you speak to a man, -m when you speak to a woman, and -s for “his” or “her”.",
+            "fr": "Beaucoup de mots de la famille veulent déjà dire « mon… » : yemma, c'est « ma mère », et baba, « mon père ». Pour parler de la famille de quelqu'un d'autre, on ajoute une terminaison : -k quand on parle à un homme, -m quand on parle à une femme, et -s pour « son » ou « sa ».",
+            "ar": "كثير من كلمات القرابة تعني أصلًا «...ي»: yemma تعني «أمّي» وbaba تعني «أبي». وللحديث عن عائلة شخص آخر نضيف لاحقة: ‎-k عند مخاطبة رجل، و‎-m عند مخاطبة امرأة، و‎-s بمعنى «ـه» أو «ـها»."
+          }
+        },
+        {
+          "id": "u2l4-2",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000025"
+        },
+        {
+          "id": "u2l4-3",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000026"
+        },
+        {
+          "id": "u2l4-4",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000027"
+        },
+        {
+          "id": "u2l4-5",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000028"
+        },
+        {
+          "id": "u2l4-6",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000029"
+        },
+        {
+          "id": "u2l4-7",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000030"
+        },
+        {
+          "id": "u2l4-8",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000031"
+        },
+        {
+          "id": "u2l4-9",
+          "type": "introduce",
+          "entryId": "3c020000-0000-4000-8000-000000000032"
+        },
+        {
+          "id": "u2l4-10",
+          "type": "dialogue",
+          "title": {
+            "en": "Where is your mother?",
+            "fr": "Où est ta mère ?",
+            "ar": "أين أمّك؟"
+          },
+          "lines": [
+            {
+              "speaker": "Dihya",
+              "entryId": "3c020000-0000-4000-8000-000000000033"
+            },
+            {
+              "speaker": "Aksil",
+              "entryId": "3c020000-0000-4000-8000-000000000034"
+            },
+            {
+              "speaker": "Dihya",
+              "entryId": "3c020000-0000-4000-8000-000000000035"
+            },
+            {
+              "speaker": "Aksil",
+              "entryId": "3c010000-0000-4000-8000-000000000007"
+            },
+            {
+              "speaker": "Aksil",
+              "entryId": "3c020000-0000-4000-8000-000000000007"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "6c020000-0000-4000-8000-000000000001",
+      "title": {
+        "en": "Family check",
+        "fr": "Bilan : la famille",
+        "ar": "مراجعة: العائلة"
+      },
+      "questions": [
+        {
+          "id": "u2q-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c020000-0000-4000-8000-000000000001",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000002",
+            "3c020000-0000-4000-8000-000000000010"
+          ]
+        },
+        {
+          "id": "u2q-2",
+          "type": "pick_audio",
+          "entryId": "3c020000-0000-4000-8000-000000000003",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000004",
+            "3c020000-0000-4000-8000-000000000009"
+          ]
+        },
+        {
+          "id": "u2q-3",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c020000-0000-4000-8000-000000000001",
+            "3c020000-0000-4000-8000-000000000002",
+            "3c020000-0000-4000-8000-000000000009",
+            "3c020000-0000-4000-8000-000000000010"
+          ]
+        },
+        {
+          "id": "u2q-4",
+          "type": "build_sentence",
+          "entryId": "3c020000-0000-4000-8000-000000000007",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000008"
+          ]
+        },
+        {
+          "id": "u2q-5",
+          "type": "fill_blank",
+          "entryId": "3c020000-0000-4000-8000-000000000011",
+          "blankWordIndex": 2,
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000002",
+            "3c020000-0000-4000-8000-000000000003"
+          ]
+        },
+        {
+          "id": "u2q-6",
+          "type": "listen_pick_translation",
+          "entryId": "3c020000-0000-4000-8000-000000000022",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000023",
+            "3c020000-0000-4000-8000-000000000013"
+          ]
+        },
+        {
+          "id": "u2q-7",
+          "type": "pick_audio",
+          "entryId": "3c020000-0000-4000-8000-000000000017",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000018",
+            "3c020000-0000-4000-8000-000000000020"
+          ]
+        },
+        {
+          "id": "u2q-8",
+          "type": "speak",
+          "entryId": "3c020000-0000-4000-8000-000000000012"
+        },
+        {
+          "id": "u2q-9",
+          "type": "fill_blank",
+          "entryId": "3c020000-0000-4000-8000-000000000014",
+          "blankWordIndex": 2,
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000010",
+            "3c020000-0000-4000-8000-000000000001"
+          ]
+        },
+        {
+          "id": "u2q-10",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c020000-0000-4000-8000-000000000017",
+            "3c020000-0000-4000-8000-000000000018",
+            "3c020000-0000-4000-8000-000000000019",
+            "3c020000-0000-4000-8000-000000000021"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6c020000-0000-4000-8000-000000000002",
+      "title": {
+        "en": "Family challenge",
+        "fr": "Défi : la famille",
+        "ar": "تحدّي العائلة"
+      },
+      "questions": [
+        {
+          "id": "u2b-1",
+          "type": "listen_pick_translation",
+          "entryId": "3c020000-0000-4000-8000-000000000033",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000034",
+            "3c020000-0000-4000-8000-000000000030"
+          ]
+        },
+        {
+          "id": "u2b-2",
+          "type": "pick_audio",
+          "entryId": "3c020000-0000-4000-8000-000000000028",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000029",
+            "3c020000-0000-4000-8000-000000000025"
+          ]
+        },
+        {
+          "id": "u2b-3",
+          "type": "build_sentence",
+          "entryId": "3c020000-0000-4000-8000-000000000034",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000033"
+          ]
+        },
+        {
+          "id": "u2b-4",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c020000-0000-4000-8000-000000000025",
+            "3c020000-0000-4000-8000-000000000026",
+            "3c020000-0000-4000-8000-000000000027",
+            "3c020000-0000-4000-8000-000000000029"
+          ]
+        },
+        {
+          "id": "u2b-5",
+          "type": "fill_blank",
+          "entryId": "3c020000-0000-4000-8000-000000000035",
+          "blankWordIndex": 2,
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000025",
+            "3c020000-0000-4000-8000-000000000028"
+          ]
+        },
+        {
+          "id": "u2b-6",
+          "type": "listen_pick_translation",
+          "entryId": "3c020000-0000-4000-8000-000000000031",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000021",
+            "3c020000-0000-4000-8000-000000000020"
+          ]
+        },
+        {
+          "id": "u2b-7",
+          "type": "pick_audio",
+          "entryId": "3c020000-0000-4000-8000-000000000015",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000016"
+          ]
+        },
+        {
+          "id": "u2b-8",
+          "type": "build_sentence",
+          "entryId": "3c020000-0000-4000-8000-000000000035",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000008"
+          ]
+        },
+        {
+          "id": "u2b-9",
+          "type": "speak",
+          "entryId": "3c020000-0000-4000-8000-000000000030"
+        },
+        {
+          "id": "u2b-10",
+          "type": "fill_blank",
+          "entryId": "3c020000-0000-4000-8000-000000000033",
+          "blankWordIndex": 2,
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000027",
+            "3c020000-0000-4000-8000-000000000024"
+          ]
+        },
+        {
+          "id": "u2b-11",
+          "type": "listen_pick_translation",
+          "entryId": "3c020000-0000-4000-8000-000000000024",
+          "distractorEntryIds": [
+            "3c020000-0000-4000-8000-000000000021",
+            "3c020000-0000-4000-8000-000000000031"
+          ]
+        },
+        {
+          "id": "u2b-12",
+          "type": "match_pairs",
+          "entryIds": [
+            "3c020000-0000-4000-8000-000000000003",
+            "3c020000-0000-4000-8000-000000000004",
+            "3c020000-0000-4000-8000-000000000031",
+            "3c020000-0000-4000-8000-000000000020"
+          ]
+        }
+      ]
+    }
+  ],
+  "levels": [
+    {
+      "id": "8c020000-0000-4000-8000-000000000001",
+      "position": 0,
+      "type": "lesson",
+      "title": {
+        "en": "Mother and father",
+        "fr": "Mère et père",
+        "ar": "الأم والأب"
+      },
+      "lesson_id": "5c020000-0000-4000-8000-000000000001",
+      "quiz_id": null,
+      "map_x": 0.5,
+      "map_y": 0.08
+    },
+    {
+      "id": "8c020000-0000-4000-8000-000000000002",
+      "position": 1,
+      "type": "lesson",
+      "title": {
+        "en": "Brothers and sisters",
+        "fr": "Frères et sœurs",
+        "ar": "الإخوة والأخوات"
+      },
+      "lesson_id": "5c020000-0000-4000-8000-000000000002",
+      "quiz_id": null,
+      "map_x": 0.28,
+      "map_y": 0.26
+    },
+    {
+      "id": "8c020000-0000-4000-8000-000000000003",
+      "position": 2,
+      "type": "lesson",
+      "title": {
+        "en": "Men and women",
+        "fr": "Hommes et femmes",
+        "ar": "الرجال والنساء"
+      },
+      "lesson_id": "5c020000-0000-4000-8000-000000000003",
+      "quiz_id": null,
+      "map_x": 0.7,
+      "map_y": 0.44
+    },
+    {
+      "id": "8c020000-0000-4000-8000-000000000004",
+      "position": 3,
+      "type": "lesson",
+      "title": {
+        "en": "Your family",
+        "fr": "Ta famille",
+        "ar": "عائلتك"
+      },
+      "lesson_id": "5c020000-0000-4000-8000-000000000004",
+      "quiz_id": null,
+      "map_x": 0.3,
+      "map_y": 0.62
+    },
+    {
+      "id": "8c020000-0000-4000-8000-000000000005",
+      "position": 4,
+      "type": "quiz",
+      "title": {
+        "en": "Checkpoint",
+        "fr": "Étape",
+        "ar": "محطة"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c020000-0000-4000-8000-000000000001",
+      "map_x": 0.68,
+      "map_y": 0.78
+    },
+    {
+      "id": "8c020000-0000-4000-8000-000000000006",
+      "position": 5,
+      "type": "boss",
+      "title": {
+        "en": "Final challenge",
+        "fr": "Défi final",
+        "ar": "التحدي الأخير"
+      },
+      "lesson_id": null,
+      "quiz_id": "6c020000-0000-4000-8000-000000000002",
+      "map_x": 0.5,
+      "map_y": 0.92
+    }
+  ]
+}

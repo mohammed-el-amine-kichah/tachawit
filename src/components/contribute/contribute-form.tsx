@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useMediaRecorder } from "@/hooks/use-media-recorder";
 import { localize } from "@/i18n/localize";
+import { Link } from "@/i18n/navigation";
 import { playOnce } from "@/lib/audio/bus";
 import type { LocalizedText } from "@/lib/content/localized-text";
 import { contributionKinds, type ContributionKind } from "@/lib/culture/contribution";
@@ -119,7 +120,16 @@ export function ContributeForm({ regions }: { regions: { id: string; name: Local
         </div>
       )}
 
-      {kind === "recording" && (
+      {kind === "recording" && !account && (
+        <p className="rounded-2xl bg-muted/50 p-4 text-sm">
+          {t("signInToRecord")}{" "}
+          <Link href="/login" className="font-medium text-primary underline underline-offset-4">
+            {t("signInLink")}
+          </Link>
+        </p>
+      )}
+
+      {kind === "recording" && account && (
         <div className="flex flex-col gap-3 rounded-2xl bg-muted/50 p-4">
           {audio ? (
             <div className="flex flex-wrap items-center gap-2">
@@ -234,7 +244,7 @@ export function ContributeForm({ regions }: { regions: { id: string; name: Local
         </p>
       )}
 
-      <Button type="submit" size="lg" disabled={pending || (kind === "recording" && (!audio || !consent))} className="h-12 self-start rounded-xl px-6 text-base">
+      <Button type="submit" size="lg" disabled={pending || (kind === "recording" && (!account || !audio || !consent))} className="h-12 self-start rounded-xl px-6 text-base">
         {pending ? t("sending") : t("send")}
       </Button>
     </form>

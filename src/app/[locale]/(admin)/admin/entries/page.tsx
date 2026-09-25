@@ -1,8 +1,8 @@
-import { AudioLinesIcon, PlusIcon, UploadIcon } from "lucide-react";
+import { PlusIcon, UploadIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { PageHeader } from "@/components/admin/page-header";
-import { StatusBadge } from "@/components/admin/status-badge";
+import { EntryList } from "@/components/admin/entries/entry-list";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { localize } from "@/i18n/localize";
@@ -67,35 +67,21 @@ export default async function EntriesPage({ searchParams }: PageProps<"/[locale]
       {rows.length === 0 ? (
         <p className="rounded-xl border border-dashed px-4 py-10 text-center text-muted-foreground">{t("empty")}</p>
       ) : (
-        <ul className="divide-y rounded-xl bg-card ring-1 ring-border">
-          {rows.map((row) => {
+        <EntryList
+          rows={rows.map((row) => {
             const meaning = localizedTextSchema.safeParse(row.translations);
             const region = row.regions ? localizedTextSchema.safeParse(row.regions.name) : null;
-            return (
-              <li key={row.id}>
-                <Link href={`/admin/entries/${row.id}`} className="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 px-4 py-3 hover:bg-muted/50 sm:grid-cols-[1.2fr_1.5fr_auto_auto]">
-                  <span className="min-w-0">
-                    <span className="block truncate font-semibold" dir="ltr" lang="shy-Latn">
-                      {row.text_latin}
-                    </span>
-                    <span className="block truncate text-sm text-muted-foreground">
-                      {[row.text_arabic, row.text_tifinagh].filter(Boolean).join(" · ")}
-                    </span>
-                  </span>
-                  <span className="col-span-2 truncate text-sm sm:col-span-1">
-                    {meaning.success ? localize(meaning.data, locale)?.text : ""}
-                    {region?.success && <span className="text-muted-foreground"> · {localize(region.data, locale)?.text}</span>}
-                  </span>
-                  <span className="flex items-center gap-1 text-sm text-muted-foreground" title={t("recordingsCount", { count: row.audio_clips.length })}>
-                    <AudioLinesIcon aria-hidden className="size-4" />
-                    {row.audio_clips.length}
-                  </span>
-                  <StatusBadge status={row.status} />
-                </Link>
-              </li>
-            );
+            return {
+              id: row.id,
+              latin: row.text_latin,
+              scripts: [row.text_arabic, row.text_tifinagh].filter(Boolean).join(" · "),
+              meaning: meaning.success ? (localize(meaning.data, locale)?.text ?? "") : "",
+              region: region?.success ? (localize(region.data, locale)?.text ?? null) : null,
+              clips: row.audio_clips.length,
+              status: row.status,
+            };
           })}
-        </ul>
+        />
       )}
 
       {total > PAGE_SIZE && (

@@ -38,11 +38,13 @@ select is_empty(
 
 select is_empty(
   $$ select r.id from public.lessons l, public.referenced_entry_ids(l.steps) r(id)
-     where not exists (select 1 from public.entries e where e.id = r.id and e.status = 'published')
+     where l.status = 'published'
+       and not exists (select 1 from public.entries e where e.id = r.id and e.status = 'published')
      union
      select r.id from public.quizzes q, public.referenced_entry_ids(q.questions) r(id)
-     where not exists (select 1 from public.entries e where e.id = r.id and e.status = 'published') $$,
-  'lessons and quizzes only reference published entries'
+     where q.status = 'published'
+       and not exists (select 1 from public.entries e where e.id = r.id and e.status = 'published') $$,
+  'published lessons and quizzes only reference published entries'
 );
 
 select is_empty(
@@ -59,7 +61,8 @@ select is_empty(
 );
 
 select is_empty(
-  $$ select 1 from public.entries where coalesce(notes, '') not like '[PLACEHOLDER]%' $$,
+  $$ select 1 from public.entries
+     where id::text like '30000000-0000-4000-8000-%' and coalesce(notes, '') not like '[PLACEHOLDER]%' $$,
   'every seeded entry is clearly marked as placeholder content'
 );
 

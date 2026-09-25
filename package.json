@@ -13,7 +13,10 @@
     "test:db": "supabase test db",
     "db:start": "supabase start",
     "db:reset": "supabase db reset",
-    "db:types": "supabase gen types typescript --local > src/lib/supabase/types.ts"
+    "db:types": "supabase gen types typescript --local > src/lib/supabase/types.ts",
+    "content:check": "vitest run tests/content",
+    "content:import:local": "pnpm content:check && node scripts/import-core-curriculum.mjs --local",
+    "content:import:production": "pnpm content:check && node scripts/import-core-curriculum.mjs --production"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

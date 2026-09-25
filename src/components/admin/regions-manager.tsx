@@ -3,7 +3,7 @@
 import { Trash2Icon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
-import { deleteRegion, saveRegion } from "@/app/actions/admin/speakers";
+import { deleteRegion, saveRegion } from "@/app/actions/admin/regions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

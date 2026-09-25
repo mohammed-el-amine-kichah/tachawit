@@ -32,7 +32,7 @@ export async function rejectSubmission(submissionId: string, note: string): Prom
 
 /**
  * Approves a contribution. Words and variations become draft entries (reviewed before publishing);
- * recordings become draft clips from a speaker created with the consent the contributor gave.
+ * recordings become draft clips credited to the contributor's own speaker profile.
  */
 export async function approveSubmission(submissionId: string, edits: z.input<typeof editsSchema>): Promise<ActionResult> {
   const values = editsSchema.safeParse(edits);
@@ -43,6 +43,15 @@ export async function approveSubmission(submissionId: string, edits: z.input<typ
     if (error) return { ok: false, error: adminError(error) };
     if (s.status !== "pending") return { ok: false, error: "invalid" };
     const v = values.data;
+
+    // Recordings are credited to the contributor's own speaker profile, with the consent they gave
+    // there. Checked first, so nothing is created when it is missing.
+    const recordingPath = s.kind === "recording" && s.audio_consent ? s.audio_path : null;
+    const { data: speaker } =
+      recordingPath && s.submitter_id
+        ? await supabase.from("speakers").select("id, consent_given").eq("id", s.submitter_id).maybeSingle()
+        : { data: null };
+    if (recordingPath && !speaker?.consent_given) return { ok: false, error: "consent_required" };
 
     let entryId: string | null = s.related_entry_id;
     // Recordings of unknown words become an entry only when a meaning is given; otherwise the clip
@@ -70,8 +79,8 @@ export async function approveSubmission(submissionId: string, edits: z.input<typ
       entryId = entry.id;
     }
 
-    if (s.kind === "recording" && s.audio_path && s.audio_consent) {
-      const download = await supabase.storage.from("submissions").download(s.audio_path);
+    if (recordingPath && speaker) {
+      const download = await supabase.storage.from("submissions").download(recordingPath);
       if (download.error) return { ok: false, error: "not_found" };
       const original = await download.data.arrayBuffer();
       let converted;
@@ -80,21 +89,8 @@ export async function approveSubmission(submissionId: string, edits: z.input<typ
       } catch {
         return { ok: false, error: "failed" };
       }
-      const { data: speaker, error: speakerError } = await supabase
-        .from("speakers")
-        .insert({
-          display_name: s.contributor_name ?? "Contributor",
-          region_id: s.region_id,
-          village: s.village,
-          consent_given: true,
-          consent_date: s.created_at.slice(0, 10),
-        })
-        .select("id")
-        .single();
-      if (speakerError) return { ok: false, error: adminError(speakerError) };
-
       const base = `clips/${randomUUID()}`;
-      const ext = s.audio_path.split(".").pop() ?? "webm";
+      const ext = recordingPath.split(".").pop() ?? "webm";
       const originalPath = `uploads/${randomUUID()}.${ext}`;
       const uploads = await Promise.all([
         supabase.storage.from("audio").upload(`${base}.m4a`, converted.normal, { contentType: "audio/mp4", cacheControl: "31536000" }),
