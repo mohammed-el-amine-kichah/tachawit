@@ -13,13 +13,13 @@ const bodySchema = z.object({
   startMs: z.number().nonnegative(),
   endMs: z.number().positive(),
   durationMs: z.number().positive(),
-  speakerId: z.uuid(),
   entryId: z.uuid().nullable(),
 });
 
 /**
  * Turns an original recording (already uploaded to the private "audio-originals" bucket by the
- * admin) into web-friendly and slow versions, then creates a draft clip. Admins only.
+ * admin) into web-friendly and slow versions, then creates a draft clip credited to that admin as
+ * the speaker. Admins only.
  */
 export async function POST(request: NextRequest) {
   let admin;
@@ -32,9 +32,13 @@ export async function POST(request: NextRequest) {
 
   const body = bodySchema.safeParse(await request.json().catch(() => null));
   if (!body.success) return NextResponse.json({ error: "invalid" }, { status: 400 });
-  const { originalPath, speakerId, entryId, durationMs } = body.data;
+  const { originalPath, entryId, durationMs } = body.data;
   const trim = clampTrim(body.data.startMs, body.data.endMs, durationMs);
-  const { supabase } = admin;
+  const { supabase, userId } = admin;
+
+  // Admins record in their own voice, so they need their own speaker profile.
+  const { data: speaker } = await supabase.from("speakers").select("id").eq("id", userId).maybeSingle();
+  if (!speaker) return NextResponse.json({ error: "no_speaker" }, { status: 409 });
 
   const download = await supabase.storage.from("audio-originals").download(originalPath);
   if (download.error) return NextResponse.json({ error: "not_found" }, { status: 404 });
@@ -61,7 +65,7 @@ export async function POST(request: NextRequest) {
     .from("audio_clips")
     .insert({
       entry_id: entryId,
-      speaker_id: speakerId,
+      speaker_id: userId,
       storage_path: `${base}.m4a`,
       slow_storage_path: `${base}-slow.m4a`,
       original_path: originalPath,

@@ -8,13 +8,14 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useMediaRecorder } from "@/hooks/use-media-recorder";
+import { Link } from "@/i18n/navigation";
 import { clampTrim } from "@/lib/audio/ffmpeg";
 import { computePeaks } from "@/lib/audio/peaks";
 import { createBrowserSupabase } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
-import { ChoiceSelect } from "../choice-select";
 
-export type SpeakerOption = { id: string; name: string; consent: boolean };
+/** The signed-in admin's own speaker profile: recordings added here are credited to them. */
+export type OwnVoice = { name: string; consent: boolean };
 
 const EXTENSIONS: Record<string, string> = {
   "audio/webm": "webm",
@@ -41,16 +42,16 @@ function audioType(file: Blob & { name?: string }): string | null {
 type Loaded = { blob: Blob; type: string; buffer: AudioBuffer; peaks: number[]; durationMs: number };
 
 /**
- * Add a recording: drop or pick a file, or record in the browser; trim it; choose the speaker.
+ * Add a recording: drop or pick a file, or record in the browser; trim it. It is credited to the admin
+ * who adds it, as the speaker.
  * The original is kept privately and a web version (plus a slow one) is made on the server.
  */
-export function AudioUploader({ entryId, speakers, onDone }: { entryId: string | null; speakers: SpeakerOption[]; onDone?: () => void }) {
+export function AudioUploader({ entryId, voice, onDone }: { entryId: string | null; voice: OwnVoice | null; onDone?: () => void }) {
   const t = useTranslations("Admin.audio");
   const router = useRouter();
   const recorder = useMediaRecorder(30);
   const [loaded, setLoaded] = useState<Loaded | null>(null);
   const [trim, setTrim] = useState({ startMs: 0, endMs: 0 });
-  const [speakerId, setSpeakerId] = useState(speakers.find((s) => s.consent)?.id ?? speakers[0]?.id ?? "");
   const [busy, setBusy] = useState(false);
   const [dragging, setDragging] = useState(false);
   const [previewing, setPreviewing] = useState(false);
@@ -105,7 +106,7 @@ export function AudioUploader({ entryId, speakers, onDone }: { entryId: string |
   };
 
   const save = async () => {
-    if (!loaded || !speakerId) return;
+    if (!loaded) return;
     setBusy(true);
     stopPreview();
     try {
@@ -115,7 +116,7 @@ export function AudioUploader({ entryId, speakers, onDone }: { entryId: string |
       const response = await fetch("/api/admin/audio", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ originalPath, ...trim, durationMs: loaded.durationMs, speakerId, entryId }),
+        body: JSON.stringify({ originalPath, ...trim, durationMs: loaded.durationMs, entryId }),
       });
       if (!response.ok) throw new Error(((await response.json().catch(() => ({}))) as { error?: string }).error ?? "failed");
       toast.success(t("added"));
@@ -130,7 +131,16 @@ export function AudioUploader({ entryId, speakers, onDone }: { entryId: string |
     }
   };
 
-  if (speakers.length === 0) return <p className="text-sm text-muted-foreground">{t("needSpeaker")}</p>;
+  if (!voice) {
+    return (
+      <div className="flex flex-col items-start gap-3">
+        <p className="text-sm text-muted-foreground">{t("needVoice")}</p>
+        <Button asChild variant="outline">
+          <Link href="/profile">{t("setUpVoice")}</Link>
+        </Button>
+      </div>
+    );
+  }
 
   if (!loaded) {
     return (
@@ -193,6 +203,7 @@ export function AudioUploader({ entryId, speakers, onDone }: { entryId: string |
           <p className="text-sm text-muted-foreground">{t("recordUnsupported")}</p>
         )}
         {recorder.state === "denied" && <p className="text-sm text-destructive">{t("micDenied")}</p>}
+        <p className="text-xs text-muted-foreground">{t("ownVoiceOnly")}</p>
       </div>
     );
   }
@@ -229,19 +240,13 @@ export function AudioUploader({ entryId, speakers, onDone }: { entryId: string |
         {t("previewTrim")}
       </Button>
 
-      <div className="flex flex-col gap-1">
-        <Label htmlFor="speaker">{t("speaker")}</Label>
-        <ChoiceSelect
-          id="speaker"
-          value={speakerId}
-          onChange={setSpeakerId}
-          options={speakers.map((s) => ({ value: s.id, label: s.consent ? s.name : `${s.name} · ${t("noConsent")}` }))}
-        />
-        {!speakers.find((s) => s.id === speakerId)?.consent && <p className="text-sm text-muted-foreground">{t("noConsentHint")}</p>}
+      <div className="flex flex-col gap-1 text-sm">
+        <p className="font-medium">{t("recordingAs", { name: voice.name })}</p>
+        {!voice.consent && <p className="text-muted-foreground">{t("noConsentHint")}</p>}
       </div>
 
       <div className="flex flex-wrap gap-2">
-        <Button type="button" onClick={() => void save()} disabled={busy || !speakerId}>
+        <Button type="button" onClick={() => void save()} disabled={busy}>
           {busy ? t("processing") : t("save")}
         </Button>
         <Button

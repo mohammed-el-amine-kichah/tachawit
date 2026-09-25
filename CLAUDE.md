@@ -64,7 +64,7 @@ docs/
 - `units` → `levels` (map nodes: lesson / quiz / review / boss / story, with x/y position and unlock rule)
 - `entries` (word/phrase): `text_latin`, `text_arabic`, `text_tifinagh`, translations (en/fr/ar), dialect/region tag
 - `audio_clips` (linked to entry + speaker; optional slow version and word timestamps)
-- `speakers` (one per user account, same id; region/village, **consent + date required before audio is published**; users manage their own speaker profile and consent, admins only pick a consenting speaker)
+- `speakers` (one per user account, same id; region/village, **consent + date required before audio is published**; users manage their own speaker profile and consent; admins record in their own voice, and approved contributions are credited to their sender)
 - `lessons` and `quizzes` = ordered steps/questions stored as typed JSON, validated with Zod
 - `user_progress`, `srs_items`, `submissions`, `culture_notes`
 - Everything publishable has `status: 'draft' | 'published'`. Learners only ever see `published`.

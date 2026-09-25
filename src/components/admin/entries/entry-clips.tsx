@@ -6,11 +6,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import type { AdminClip } from "@/lib/admin/queries";
-import { AudioUploader, type SpeakerOption } from "../audio/audio-uploader";
+import { AudioUploader, type OwnVoice } from "../audio/audio-uploader";
 import { ClipRow } from "../audio/clip-row";
 
 /** The recordings of one entry, and adding new ones. */
-export function EntryClips({ entryId, entryText, clips, speakers }: { entryId: string; entryText: string; clips: AdminClip[]; speakers: SpeakerOption[] }) {
+export function EntryClips({ entryId, entryText, clips, voice }: { entryId: string; entryText: string; clips: AdminClip[]; voice: OwnVoice | null }) {
   const t = useTranslations("Admin.audio");
   const [open, setOpen] = useState(false);
   return (
@@ -31,7 +31,7 @@ export function EntryClips({ entryId, entryText, clips, speakers }: { entryId: s
               <DialogTitle>{t("add")}</DialogTitle>
               <DialogDescription dir="ltr">{entryText}</DialogDescription>
             </DialogHeader>
-            <AudioUploader entryId={entryId} speakers={speakers} onDone={() => setOpen(false)} />
+            <AudioUploader entryId={entryId} voice={voice} onDone={() => setOpen(false)} />
           </DialogContent>
         </Dialog>
       </div>

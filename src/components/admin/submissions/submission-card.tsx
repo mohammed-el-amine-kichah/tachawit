@@ -40,7 +40,7 @@ export type SubmissionView = {
 /** One contribution: listen, adjust, then approve (as drafts) or reject. */
 export function SubmissionCard({ submission: s, regions }: { submission: SubmissionView; regions: { id: string; name: LocalizedText }[] }) {
   const t = useTranslations("Admin.submissions");
-  const kinds = useTranslations("Contribute.kinds");
+  const kinds = useTranslations("Admin.submissions.kinds");
   const format = useFormatter();
   const locale = useLocale();
   const { run, pending } = useAdminAction();

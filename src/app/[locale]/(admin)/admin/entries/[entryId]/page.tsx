@@ -5,7 +5,7 @@ import { EntryClips } from "@/components/admin/entries/entry-clips";
 import { EntryEditor } from "@/components/admin/entries/entry-editor";
 import { PageHeader } from "@/components/admin/page-header";
 import { getEntryForEditing, listRegions } from "@/lib/admin/queries";
-import { speakerOptions } from "@/lib/admin/speaker-options";
+import { ownVoice } from "@/lib/admin/own-voice";
 import { localizedTextSchema, parseLocalizedText } from "@/lib/content/localized-text";
 
 export default async function EditEntryPage({ params }: PageProps<"/[locale]/admin/entries/[entryId]">) {
@@ -13,7 +13,7 @@ export default async function EditEntryPage({ params }: PageProps<"/[locale]/adm
   if (!z.uuid().safeParse(entryId).success) notFound();
   const t = await getTranslations("Admin.entries");
   const nav = await getTranslations("Admin.nav");
-  const [data, regions, speakers] = await Promise.all([getEntryForEditing(entryId), listRegions(), speakerOptions()]);
+  const [data, regions, voice] = await Promise.all([getEntryForEditing(entryId), listRegions(), ownVoice()]);
   if (!data) notFound();
   const translations = localizedTextSchema.safeParse(data.entry.translations);
 
@@ -27,7 +27,7 @@ export default async function EditEntryPage({ params }: PageProps<"/[locale]/adm
           clips={data.clips}
           regions={regions.map((r) => ({ ...r, name: parseLocalizedText(r.name) }))}
         />
-        <EntryClips entryId={data.entry.id} entryText={data.entry.text_latin} clips={data.clips} speakers={speakers} />
+        <EntryClips entryId={data.entry.id} entryText={data.entry.text_latin} clips={data.clips} voice={voice} />
       </div>
     </>
   );

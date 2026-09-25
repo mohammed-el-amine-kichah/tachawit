@@ -6,10 +6,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import type { AdminClip } from "@/lib/admin/queries";
-import { AudioUploader, type SpeakerOption } from "./audio-uploader";
+import { AudioUploader, type OwnVoice } from "./audio-uploader";
 import { ClipRow } from "./clip-row";
 
-export function AudioLibrary({ clips, speakers }: { clips: AdminClip[]; speakers: SpeakerOption[] }) {
+export function AudioLibrary({ clips, voice }: { clips: AdminClip[]; voice: OwnVoice | null }) {
   const t = useTranslations("Admin.audio");
   const [open, setOpen] = useState(false);
   return (
@@ -26,7 +26,7 @@ export function AudioLibrary({ clips, speakers }: { clips: AdminClip[]; speakers
             <DialogTitle>{t("upload")}</DialogTitle>
             <DialogDescription>{t("uploadLead")}</DialogDescription>
           </DialogHeader>
-          <AudioUploader entryId={null} speakers={speakers} onDone={() => setOpen(false)} />
+          <AudioUploader entryId={null} voice={voice} onDone={() => setOpen(false)} />
         </DialogContent>
       </Dialog>
       {clips.length === 0 ? (

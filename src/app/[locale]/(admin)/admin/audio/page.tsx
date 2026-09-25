@@ -4,7 +4,7 @@ import { AudioLibrary } from "@/components/admin/audio/audio-library";
 import { PageHeader } from "@/components/admin/page-header";
 import { Link } from "@/i18n/navigation";
 import { listClips } from "@/lib/admin/queries";
-import { speakerOptions } from "@/lib/admin/speaker-options";
+import { ownVoice } from "@/lib/admin/own-voice";
 import { cn } from "@/lib/utils";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,7 +18,7 @@ export default async function AudioPage({ searchParams }: PageProps<"/[locale]/a
   const t = await getTranslations("Admin.audio");
   const { filter: raw } = await searchParams;
   const filter = FILTERS.find((f) => f === raw) ?? "all";
-  const [clips, speakers] = await Promise.all([listClips(filter), speakerOptions()]);
+  const [clips, voice] = await Promise.all([listClips(filter), ownVoice()]);
   return (
     <>
       <PageHeader title={t("title")} description={t("lead")} />
@@ -34,7 +34,7 @@ export default async function AudioPage({ searchParams }: PageProps<"/[locale]/a
           </Link>
         ))}
       </nav>
-      <AudioLibrary clips={clips} speakers={speakers} />
+      <AudioLibrary clips={clips} voice={voice} />
     </>
   );
 }

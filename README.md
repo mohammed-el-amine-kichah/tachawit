@@ -45,8 +45,8 @@ After changing migrations, run `pnpm db:reset` (re-applies migrations and seed) 
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | `.env.local`, Vercel | Supabase API URL (local: `http://127.0.0.1:54321`) |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | `.env.local`, Vercel | Publishable (anon) key. Safe in the browser, since every table is protected by RLS |
+| `SUPABASE_SECRET_KEY` | `.env.local`, Vercel | Server-only secret key. Lists the words still missing audio on the Contribute page (it can read drafts, so only their id and meaning are returned). Without it, speakers record words of their own choice |
 | `NEXT_PUBLIC_SITE_URL` | Vercel | Public address of the site (e.g. `https://tachawit.app`), used in sign-in links. Optional locally |
-| `SUBMISSION_HASH_SALT` | Vercel | Secret used to hash contributors' IP addresses for rate limiting (any long random string) |
 | `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID` | shell env when running `pnpm db:start` | Optional: Google sign-in for local Supabase |
 | `SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET` | shell env when running `pnpm db:start` | Optional: Google sign-in for local Supabase |
 
@@ -122,7 +122,7 @@ Create an OAuth client in Google Cloud (type *Web application*) with the redirec
    pnpm exec supabase db push     # migrations only; the placeholder seed is not pushed
    ```
 2. In the Supabase dashboard, under *Authentication → URL Configuration*, set the site URL to your domain and add `https://<your-domain>/api/auth/callback` to the redirect URLs. Enable Google if you want it (see above).
-3. Import the repo into Vercel and set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL` (used for the sitemap, links in emails and social previews) and `SUBMISSION_HASH_SALT`.
+3. Import the repo into Vercel and set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL` (used for the sitemap, links in emails and social previews) and `SUPABASE_SECRET_KEY`.
 4. Create the first admin (see above), then replace the placeholder content: ask native speakers to sign up and turn on *Lend your voice* in their profile, then add entries and audio, and build lessons in the admin panel.
 5. `sitemap.xml` and `robots.txt` are generated from the published content; submit the sitemap to search engines if you want the culture articles indexed.
 
