@@ -8,6 +8,7 @@ import type { EntryRow } from "@/lib/lesson/view";
 import { LocalizedFields } from "../localized-fields";
 import { EntriesField, EntryField } from "./entry-field";
 import { draftOf, formOf } from "./localized-draft";
+import { ChoiceSelect } from "../choice-select";
 
 const ids = (value: unknown) => (Array.isArray(value) ? (value as string[]) : []);
 
@@ -57,20 +58,14 @@ export function QuestionEditor({ question, rows, onChange }: { question: DraftIt
             {answerField}
             <div className="flex flex-col gap-1">
               <Label htmlFor={`${question.id}-blank`}>{t("blankWord")}</Label>
-              <select
+              <ChoiceSelect
                 id={`${question.id}-blank`}
-                dir="ltr"
-                value={Number(question.blankWordIndex ?? 0)}
-                onChange={(e) => set({ blankWordIndex: Number(e.target.value) })}
-                className="h-10 rounded-md border border-input bg-background px-3 text-sm"
+                value={String(question.blankWordIndex ?? 0)}
+                onChange={(v) => set({ blankWordIndex: Number(v) })}
                 disabled={words.length === 0}
-              >
-                {words.map((word, index) => (
-                  <option key={index} value={index}>
-                    {index + 1}. {word}
-                  </option>
-                ))}
-              </select>
+                dir="ltr"
+                options={words.map((word, index) => ({ value: String(index), label: `${index + 1}. ${word}` }))}
+              />
             </div>
             {distractors(1)}
           </>

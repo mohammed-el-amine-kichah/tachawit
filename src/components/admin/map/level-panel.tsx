@@ -2,23 +2,29 @@
 
 import { ArrowDownIcon, ArrowUpIcon, EyeIcon, EyeOffIcon, PencilIcon, Trash2Icon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState, useTransition } from "react";
+import { toast } from "sonner";
 import { deleteLevel, moveLevel, saveLevel, setLevelStatus } from "@/app/actions/admin/map";
 import { LevelIcon } from "@/components/map/level-icon";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { localize } from "@/i18n/localize";
 import { Link } from "@/i18n/navigation";
 import { levelBlockers } from "@/lib/admin/readiness";
+import type { LevelFormInput } from "@/lib/admin/schemas";
 import { levelTypes } from "@/lib/content/enums";
 import type { LocalizedText } from "@/lib/content/localized-text";
 import type { UnlockRule } from "@/lib/content/unlock-rule";
 import type { LevelType } from "@/lib/supabase/queries/units";
 import { cn } from "@/lib/utils";
+import { ChoiceSelect } from "../choice-select";
 import { ConfirmButton } from "../confirm-button";
 import { LocalizedFields, toLocalizedForm } from "../localized-fields";
+import { SaveIndicator } from "../save-indicator";
 import { StatusBadge } from "../status-badge";
 import { useAdminAction } from "../use-admin-action";
 import { NewContentForLevel } from "./new-content-for-level";
@@ -35,8 +41,9 @@ export type PanelLevel = {
 
 type Option = { id: string; title: LocalizedText; status: "draft" | "published" };
 
-const selectClassName = "h-10 w-full rounded-md border border-input bg-background px-3 text-sm";
+const RULES = ["previous_completed", "always", "levels_completed", "unit_stars"] as const;
 
+/** A level's settings. Changes save themselves a moment after the last edit, like every other editor. */
 function LevelForm({
   level,
   others,
@@ -53,35 +60,72 @@ function LevelForm({
   unitId: string;
 }) {
   const t = useTranslations("Admin.map");
+  const e = useTranslations("Admin.errors");
   const lt = useTranslations("LevelType");
   const locale = useLocale();
+  const router = useRouter();
   const { run, pending } = useAdminAction();
   const [type, setType] = useState(level.type);
   const [title, setTitle] = useState(toLocalizedForm(level.title));
   const [lessonId, setLessonId] = useState(level.lesson_id ?? "");
   const [quizId, setQuizId] = useState(level.quiz_id ?? "");
   const [rule, setRule] = useState<UnlockRule>(level.unlockRule);
+  const [moveTo, setMoveTo] = useState(unitId);
+  const values: LevelFormInput = { type, title, lesson_id: lessonId, quiz_id: quizId, unlock_rule: rule };
+  const json = JSON.stringify(values);
+  const [savedJson, setSavedJson] = useState(json);
+  const [saving, startSaving] = useTransition();
+  const dirty = json !== savedJson;
+  const latest = useRef(values);
   const contentKind = type === "lesson" || type === "story" ? "lesson" : type === "quiz" || type === "boss" ? "quiz" : null;
   const contentId = contentKind === "lesson" ? lessonId : quizId;
   const optionLabel = (o: Option) => `${localize(o.title, locale)?.text ?? o.id.slice(0, 8)}${o.status === "draft" ? ` · ${t("draft")}` : ""}`;
+  const unitTitle = (id: string) => localize(units.find((u) => u.id === id)?.title, locale)?.text ?? id.slice(0, 8);
+
+  useEffect(() => {
+    latest.current = JSON.parse(json) as LevelFormInput;
+  }, [json]);
+
+  const save = () => {
+    const snapshot = latest.current;
+    startSaving(async () => {
+      const result = await saveLevel(level.id, snapshot);
+      // Half-finished settings (say, "chosen levels" with none ticked yet) wait quietly for the next edit.
+      if (!result.ok) return void (result.error !== "invalid" && toast.error(e(result.error)));
+      setSavedJson(JSON.stringify(snapshot));
+      router.refresh();
+    });
+  };
+
+  useEffect(() => {
+    if (!dirty) return;
+    const timer = setTimeout(save, 1500);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- save reads the latest values through a ref
+  }, [json, dirty]);
+
+  // Publishing saves pending edits first, so they are never lost.
+  const setStatus = (on: boolean) =>
+    run(
+      async () => {
+        if (dirty) {
+          const saved = await saveLevel(level.id, latest.current);
+          if (!saved.ok) return saved;
+          setSavedJson(JSON.stringify(latest.current));
+        }
+        return setLevelStatus(level.id, on ? "published" : "draft");
+      },
+      { success: on ? t("levelPublished") : t("levelUnpublished") },
+    );
 
   return (
-    <form
-      className="flex flex-col gap-4"
-      onSubmit={(event) => {
-        event.preventDefault();
-        run(() => saveLevel(level.id, { type, title, lesson_id: lessonId, quiz_id: quizId, unlock_rule: rule }), { success: t("levelSaved") });
-      }}
-    >
+    <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <label className="flex items-center gap-2 text-sm font-medium">
-          <Switch
-            checked={level.status === "published"}
-            disabled={pending}
-            onCheckedChange={(on) => run(() => setLevelStatus(level.id, on ? "published" : "draft"), { success: on ? t("levelPublished") : t("levelUnpublished") })}
-          />
+          <Switch checked={level.status === "published"} disabled={pending} onCheckedChange={setStatus} />
           {t("published")}
         </label>
+        <SaveIndicator state={saving ? "saving" : dirty ? "pending" : "saved"} />
         <ConfirmButton
           trigger={
             <Button type="button" variant="ghost" size="sm" disabled={pending}>
@@ -98,31 +142,19 @@ function LevelForm({
 
       <div className="flex flex-col gap-1">
         <Label htmlFor="level-type">{t("type")}</Label>
-        <select id="level-type" className={selectClassName} value={type} onChange={(e) => setType(e.target.value as LevelType)}>
-          {levelTypes.map((value) => (
-            <option key={value} value={value}>
-              {lt(value)}
-            </option>
-          ))}
-        </select>
+        <ChoiceSelect id="level-type" value={type} onChange={(v) => v && setType(v)} options={levelTypes.map((value) => ({ value, label: lt(value) }))} />
       </div>
 
       {contentKind && (
         <div className="flex flex-col gap-1">
           <Label htmlFor="level-content">{t(contentKind)}</Label>
-          <select
+          <ChoiceSelect
             id="level-content"
-            className={selectClassName}
             value={contentId}
-            onChange={(e) => (contentKind === "lesson" ? setLessonId : setQuizId)(e.target.value)}
-          >
-            <option value="">—</option>
-            {(contentKind === "lesson" ? lessons : quizzes).map((o) => (
-              <option key={o.id} value={o.id}>
-                {optionLabel(o)}
-              </option>
-            ))}
-          </select>
+            onChange={contentKind === "lesson" ? setLessonId : setQuizId}
+            noneLabel="—"
+            options={(contentKind === "lesson" ? lessons : quizzes).map((o) => ({ value: o.id, label: optionLabel(o) }))}
+          />
           <div className="flex flex-wrap gap-1">
             {contentId && (
               <Button asChild variant="ghost" size="sm">
@@ -141,30 +173,23 @@ function LevelForm({
 
       <fieldset className="flex flex-col gap-2">
         <legend className="mb-1 text-sm font-medium">{t("unlock")}</legend>
-        <select
+        <ChoiceSelect
           aria-label={t("unlock")}
-          className={selectClassName}
           value={rule.type}
-          onChange={(e) => {
-            const value = e.target.value as UnlockRule["type"];
+          onChange={(value) => {
+            if (!value) return;
             setRule(value === "levels_completed" ? { type: value, levelIds: [] } : value === "unit_stars" ? { type: value, minStars: 3 } : { type: value });
           }}
-        >
-          {(["previous_completed", "always", "levels_completed", "unit_stars"] as const).map((value) => (
-            <option key={value} value={value}>
-              {t(`rules.${value}`)}
-            </option>
-          ))}
-        </select>
+          options={RULES.map((value) => ({ value, label: t(`rules.${value}`) }))}
+        />
         {rule.type === "levels_completed" && (
           <div className="flex flex-col gap-1 rounded-lg bg-muted/50 p-3">
             {others.map((other) => (
               <label key={other.id} className="flex items-center gap-2 text-sm">
-                <input
-                  type="checkbox"
+                <Checkbox
                   checked={rule.levelIds.includes(other.id)}
-                  onChange={(e) =>
-                    setRule({ type: "levels_completed", levelIds: e.target.checked ? [...rule.levelIds, other.id] : rule.levelIds.filter((id) => id !== other.id) })
+                  onCheckedChange={(on) =>
+                    setRule({ type: "levels_completed", levelIds: on === true ? [...rule.levelIds, other.id] : rule.levelIds.filter((id) => id !== other.id) })
                   }
                 />
                 {other.label}
@@ -180,7 +205,7 @@ function LevelForm({
               max={60}
               aria-label={t("minStars")}
               value={rule.minStars}
-              onChange={(e) => setRule({ type: "unit_stars", minStars: Math.max(1, Number(e.target.value) || 1) })}
+              onChange={(ev) => setRule({ type: "unit_stars", minStars: Math.max(1, Number(ev.target.value) || 1) })}
               className="w-24"
             />
             <span className="text-sm text-muted-foreground">{t("minStars")}</span>
@@ -188,21 +213,27 @@ function LevelForm({
         )}
       </fieldset>
 
-      <div className="flex flex-col gap-1">
-        <Label htmlFor="level-unit">{t("moveTo")}</Label>
-        <select id="level-unit" className={selectClassName} value={unitId} onChange={(e) => run(() => moveLevel(level.id, e.target.value), { success: t("levelMoved") })}>
-          {units.map((u) => (
-            <option key={u.id} value={u.id}>
-              {localize(u.title, locale)?.text ?? u.id.slice(0, 8)}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <Button type="submit" disabled={pending} className="self-start">
-        {t("saveLevel")}
-      </Button>
-    </form>
+      {units.length > 1 && (
+        <div className="flex flex-col gap-1">
+          <Label htmlFor="level-unit">{t("moveTo")}</Label>
+          <div className="flex gap-2">
+            <ChoiceSelect id="level-unit" value={moveTo} onChange={(v) => v && setMoveTo(v)} options={units.map((u) => ({ value: u.id, label: unitTitle(u.id) }))} />
+            <ConfirmButton
+              trigger={
+                <Button type="button" variant="outline" className="h-10" disabled={pending || moveTo === unitId}>
+                  {t("moveLevel")}
+                </Button>
+              }
+              title={t("moveLevelTitle", { unit: unitTitle(moveTo) })}
+              description={t("moveLevelLead")}
+              confirmLabel={t("moveLevel")}
+              destructive={false}
+              onConfirm={() => run(() => moveLevel(level.id, moveTo), { success: t("levelMoved") })}
+            />
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -286,7 +317,7 @@ export function LevelPanel({
         <div className="flex flex-col gap-4 rounded-2xl bg-card p-4 ring-1 ring-border">
           <Visibility level={selected} unitStatus={unitStatus} lessons={lessons} quizzes={quizzes} />
           <LevelForm
-            key={JSON.stringify(selected)}
+            key={selected.id}
             level={selected}
             others={levels.filter((l) => l.id !== selected.id).map((l) => ({ id: l.id, label: labelOf(l, levels.indexOf(l)) }))}
             lessons={lessons}

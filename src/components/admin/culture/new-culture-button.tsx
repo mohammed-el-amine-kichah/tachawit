@@ -15,6 +15,7 @@ import type { CultureCategory } from "@/lib/supabase/queries/culture";
 import { LocalizedFields } from "../localized-fields";
 import { emptyLocalized } from "../localized-form";
 import { useAdminAction } from "../use-admin-action";
+import { ChoiceSelect } from "../choice-select";
 
 export function NewCultureButton() {
   const t = useTranslations("Admin.culture");
@@ -50,13 +51,12 @@ export function NewCultureButton() {
             </div>
             <div className="flex flex-col gap-1">
               <Label htmlFor="new-culture-category">{t("category")}</Label>
-              <select id="new-culture-category" value={values.category} onChange={(e) => setValues({ ...values, category: e.target.value as CultureCategory })} className="h-9 rounded-md border border-input bg-background px-3 text-sm">
-                {cultureCategories.map((c) => (
-                  <option key={c} value={c}>
-                    {cats(c)}
-                  </option>
-                ))}
-              </select>
+              <ChoiceSelect
+                id="new-culture-category"
+                value={values.category}
+                onChange={(v) => v && setValues({ ...values, category: v })}
+                options={cultureCategories.map((c) => ({ value: c, label: cats(c) }))}
+              />
             </div>
           </div>
           <Button type="submit" disabled={pending} className="self-start">

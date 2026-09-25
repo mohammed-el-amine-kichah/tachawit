@@ -14,24 +14,31 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-/** Destructive actions always ask first. */
+/** Destructive or surprising actions always ask first. */
 export function ConfirmButton({
   trigger,
   title,
   description,
   confirmLabel,
   onConfirm,
+  destructive = true,
+  open,
+  onOpenChange,
 }: {
-  trigger: ReactNode;
+  /** Leave out to open it from elsewhere (a menu item) through `open`. */
+  trigger?: ReactNode;
   title: string;
   description: string;
   confirmLabel: string;
   onConfirm: () => void;
+  destructive?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }) {
   const t = useTranslations("Admin");
   return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
+      {trigger && <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>}
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>{title}</AlertDialogTitle>
@@ -39,7 +46,7 @@ export function ConfirmButton({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm} className="bg-destructive text-white hover:bg-destructive/90">
+          <AlertDialogAction onClick={onConfirm} className={destructive ? "bg-destructive text-white hover:bg-destructive/90" : undefined}>
             {confirmLabel}
           </AlertDialogAction>
         </AlertDialogFooter>

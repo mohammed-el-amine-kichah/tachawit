@@ -14,6 +14,7 @@ import type { LocalizedText } from "@/lib/content/localized-text";
 import { LocalizedFields } from "../localized-fields";
 import { toLocalizedForm } from "../localized-form";
 import { useAdminAction } from "../use-admin-action";
+import { ChoiceSelect } from "../choice-select";
 
 export type SubmissionView = {
   id: string;
@@ -102,14 +103,13 @@ export function SubmissionCard({ submission: s, regions }: { submission: Submiss
           </div>
           <div className="flex flex-col gap-1">
             <Label htmlFor={`${s.id}-region`}>{t("region")}</Label>
-            <select id={`${s.id}-region`} value={edits.region_id} onChange={(e) => setEdits({ ...edits, region_id: e.target.value })} className="h-9 rounded-md border border-input bg-background px-3 text-sm">
-              <option value="">—</option>
-              {regions.map((r) => (
-                <option key={r.id} value={r.id}>
-                  {localize(r.name, locale)?.text}
-                </option>
-              ))}
-            </select>
+            <ChoiceSelect
+              id={`${s.id}-region`}
+              value={edits.region_id}
+              onChange={(region_id) => setEdits({ ...edits, region_id })}
+              noneLabel="—"
+              options={regions.map((r) => ({ value: r.id, label: localize(r.name, locale)?.text ?? r.id.slice(0, 8) }))}
+            />
           </div>
           <div className="sm:col-span-3">
             <LocalizedFields id={`${s.id}-meaning`} label={t("meaning")} value={edits.translations} onChange={(translations) => setEdits({ ...edits, translations })} />

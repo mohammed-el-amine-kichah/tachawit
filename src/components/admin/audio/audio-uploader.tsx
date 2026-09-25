@@ -12,6 +12,7 @@ import { clampTrim } from "@/lib/audio/ffmpeg";
 import { computePeaks } from "@/lib/audio/peaks";
 import { createBrowserSupabase } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
+import { ChoiceSelect } from "../choice-select";
 
 export type SpeakerOption = { id: string; name: string; consent: boolean };
 
@@ -230,13 +231,12 @@ export function AudioUploader({ entryId, speakers, onDone }: { entryId: string |
 
       <div className="flex flex-col gap-1">
         <Label htmlFor="speaker">{t("speaker")}</Label>
-        <select id="speaker" value={speakerId} onChange={(e) => setSpeakerId(e.target.value)} className="h-10 rounded-md border border-input bg-background px-3 text-sm">
-          {speakers.map((s) => (
-            <option key={s.id} value={s.id}>
-              {s.consent ? s.name : `${s.name} · ${t("noConsent")}`}
-            </option>
-          ))}
-        </select>
+        <ChoiceSelect
+          id="speaker"
+          value={speakerId}
+          onChange={setSpeakerId}
+          options={speakers.map((s) => ({ value: s.id, label: s.consent ? s.name : `${s.name} · ${t("noConsent")}` }))}
+        />
         {!speakers.find((s) => s.id === speakerId)?.consent && <p className="text-sm text-muted-foreground">{t("noConsentHint")}</p>}
       </div>
 

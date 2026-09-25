@@ -17,6 +17,7 @@ import { ImageField } from "../entries/image-field";
 import { LocalizedFields, toLocalizedForm } from "../localized-fields";
 import { StatusBadge } from "../status-badge";
 import { useAdminAction } from "../use-admin-action";
+import { ChoiceSelect } from "../choice-select";
 
 export type EditableUnit = {
   id: string;
@@ -95,13 +96,12 @@ export function UnitForm({ unit }: { unit: EditableUnit }) {
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-1">
           <Label htmlFor="unit-theme">{t("theme")}</Label>
-          <select id="unit-theme" value={values.map_theme} onChange={(e) => setValues({ ...values, map_theme: e.target.value as MapTheme })} className="h-10 rounded-md border border-input bg-background px-3 text-sm">
-            {mapThemes.map((theme) => (
-              <option key={theme} value={theme}>
-                {themes(theme)}
-              </option>
-            ))}
-          </select>
+          <ChoiceSelect
+            id="unit-theme"
+            value={values.map_theme}
+            onChange={(v) => v && setValues({ ...values, map_theme: v })}
+            options={mapThemes.map((theme) => ({ value: theme, label: themes(theme) }))}
+          />
         </div>
         <div className="flex flex-col gap-1">
           <Label htmlFor="unit-slug">{t("slug")}</Label>

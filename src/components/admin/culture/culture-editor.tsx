@@ -15,12 +15,15 @@ import { cultureCategories } from "@/lib/content/enums";
 import type { LocalizedText } from "@/lib/content/localized-text";
 import type { CultureCategory } from "@/lib/supabase/queries/culture";
 import { ConfirmButton } from "../confirm-button";
+import { EditorStatusBar } from "../editor-status-bar";
 import { ImageField } from "../entries/image-field";
 import { LocalizedFields } from "../localized-fields";
 import { toLocalizedForm, type LocalizedFormValue } from "../localized-form";
 import { StatusBadge } from "../status-badge";
 import { useAdminAction } from "../use-admin-action";
+import { useUnsavedGuard } from "../use-unsaved-guard";
 import { MarkdownEditor } from "./markdown-editor";
+import { ChoiceSelect } from "../choice-select";
 
 const LANGS = [
   { key: "en", lang: "en", dir: "ltr" },
@@ -48,7 +51,7 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
   const locale = useLocale();
   const router = useRouter();
   const { run, pending } = useAdminAction();
-  const [values, setValues] = useState({
+  const [values, setValues] = useState(() => ({
     slug: note.slug,
     category: note.category,
     title: toLocalizedForm(note.title),
@@ -56,7 +59,12 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
     body: toLocalizedForm(note.body),
     cover_image_path: note.cover_image_path ?? "",
     unit_id: note.unit_id ?? "",
-  });
+  }));
+  const json = JSON.stringify(values);
+  const [savedJson, setSavedJson] = useState(json);
+  const dirty = json !== savedJson;
+  const markSaved = () => setSavedJson(json);
+  useUnsavedGuard(dirty);
 
   // Publishing or unpublishing keeps unsaved edits instead of silently dropping them.
   const saveThenSetStatus = async (next: "draft" | "published") => {
@@ -69,42 +77,39 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
       className="flex flex-col gap-6"
       onSubmit={(e) => {
         e.preventDefault();
-        run(() => saveCultureNote(note.id, values), { success: t("saved") });
+        run(() => saveCultureNote(note.id, values), { success: t("saved"), onSuccess: markSaved });
       }}
     >
-      <div className="flex flex-wrap items-center gap-3 rounded-xl bg-muted/60 px-4 py-3">
-        <StatusBadge status={note.status} />
-        <div className="ms-auto flex flex-wrap gap-2">
-          <Button type="submit" disabled={pending}>
-            {t("save")}
+      <EditorStatusBar status={<StatusBadge status={note.status} />} saveState={pending ? "saving" : dirty ? "unsaved" : "saved"}>
+        <Button type="submit" disabled={pending || !dirty}>
+          {t("save")}
+        </Button>
+        {note.status === "draft" ? (
+          <Button
+            type="button"
+            disabled={pending}
+            className="bg-success text-success-foreground hover:bg-success/90"
+            onClick={() => run(() => saveThenSetStatus("published"), { success: t("published"), onSuccess: markSaved })}
+          >
+            {t("publish")}
           </Button>
-          {note.status === "draft" ? (
-            <Button
-              type="button"
-              disabled={pending}
-              className="bg-success text-success-foreground hover:bg-success/90"
-              onClick={() => run(() => saveThenSetStatus("published"), { success: t("published") })}
-            >
-              {t("publish")}
+        ) : (
+          <Button type="button" variant="outline" disabled={pending} onClick={() => run(() => saveThenSetStatus("draft"), { success: t("unpublished"), onSuccess: markSaved })}>
+            {t("unpublish")}
+          </Button>
+        )}
+        <ConfirmButton
+          trigger={
+            <Button type="button" variant="ghost" size="icon" aria-label={t("delete")}>
+              <Trash2Icon aria-hidden />
             </Button>
-          ) : (
-            <Button type="button" variant="outline" disabled={pending} onClick={() => run(() => saveThenSetStatus("draft"), { success: t("unpublished") })}>
-              {t("unpublish")}
-            </Button>
-          )}
-          <ConfirmButton
-            trigger={
-              <Button type="button" variant="ghost" size="icon" aria-label={t("delete")}>
-                <Trash2Icon aria-hidden />
-              </Button>
-            }
-            title={t("deleteTitle")}
-            description={t("deleteLead")}
-            confirmLabel={t("delete")}
-            onConfirm={() => run(() => deleteCultureNote(note.id), { success: t("deleted"), onSuccess: () => router.push(getPathname({ href: "/admin/culture", locale })) })}
-          />
-        </div>
-      </div>
+          }
+          title={t("deleteTitle")}
+          description={t("deleteLead")}
+          confirmLabel={t("delete")}
+          onConfirm={() => run(() => deleteCultureNote(note.id), { success: t("deleted"), onSuccess: () => router.push(getPathname({ href: "/admin/culture", locale })) })}
+        />
+      </EditorStatusBar>
 
       <LocalizedFields id="culture-title" label={t("title")} required value={values.title} onChange={(title) => setValues({ ...values, title })} />
       <LocalizedFields id="culture-summary" label={t("summary")} multiline value={values.summary} onChange={(summary) => setValues({ ...values, summary })} />
@@ -112,13 +117,12 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
       <div className="grid gap-4 sm:grid-cols-3">
         <div className="flex flex-col gap-1">
           <Label htmlFor="culture-category">{t("category")}</Label>
-          <select id="culture-category" value={values.category} onChange={(e) => setValues({ ...values, category: e.target.value as CultureCategory })} className="h-10 rounded-md border border-input bg-background px-3 text-sm">
-            {cultureCategories.map((c) => (
-              <option key={c} value={c}>
-                {cats(c)}
-              </option>
-            ))}
-          </select>
+          <ChoiceSelect
+            id="culture-category"
+            value={values.category}
+            onChange={(v) => v && setValues({ ...values, category: v })}
+            options={cultureCategories.map((c) => ({ value: c, label: cats(c) }))}
+          />
         </div>
         <div className="flex flex-col gap-1">
           <Label htmlFor="culture-slug">{t("slug")}</Label>
@@ -126,14 +130,13 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
         </div>
         <div className="flex flex-col gap-1">
           <Label htmlFor="culture-unit">{t("unit")}</Label>
-          <select id="culture-unit" value={values.unit_id} onChange={(e) => setValues({ ...values, unit_id: e.target.value })} className="h-10 rounded-md border border-input bg-background px-3 text-sm">
-            <option value="">—</option>
-            {units.map((u) => (
-              <option key={u.id} value={u.id}>
-                {localize(u.title, locale)?.text}
-              </option>
-            ))}
-          </select>
+          <ChoiceSelect
+            id="culture-unit"
+            value={values.unit_id}
+            onChange={(v) => setValues({ ...values, unit_id: v })}
+            noneLabel="—"
+            options={units.map((u) => ({ value: u.id, label: localize(u.title, locale)?.text ?? u.id.slice(0, 8) }))}
+          />
         </div>
       </div>
 
@@ -144,7 +147,11 @@ export function CultureEditor({ note, units }: { note: EditableNote; units: { id
           value={values.cover_image_path}
           onChange={(cover_image_path) => {
             setValues({ ...values, cover_image_path });
-            run(() => setCultureCover(note.id, cover_image_path || null), { success: img(cover_image_path ? "attached" : "removed") });
+            // The cover saves on its own; it shouldn't leave the rest of the form looking unsaved.
+            run(() => setCultureCover(note.id, cover_image_path || null), {
+              success: img(cover_image_path ? "attached" : "removed"),
+              onSuccess: () => setSavedJson((saved) => JSON.stringify({ ...JSON.parse(saved), cover_image_path })),
+            });
           }}
         />
       </div>

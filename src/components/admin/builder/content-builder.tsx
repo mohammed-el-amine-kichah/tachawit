@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, EyeIcon, LoaderIcon, PlusIcon, Trash2Icon } from "lucide-react";
+import { EyeIcon, PencilIcon, PlusIcon, Trash2Icon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { deleteContent, saveContent, setContentStatus } from "@/app/actions/admin/content";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { localize } from "@/i18n/localize";
 import { getPathname, Link } from "@/i18n/navigation";
 import { blankQuestion, blankStep, itemIssues, nextId, referencedEntryIds, type DraftItem } from "@/lib/admin/builder";
@@ -15,12 +16,15 @@ import type { LessonStepType } from "@/lib/content/lesson";
 import { localizedTextSchema } from "@/lib/content/localized-text";
 import type { QuizQuestionType } from "@/lib/content/quiz";
 import type { CultureNoteRow, EntryRow } from "@/lib/lesson/view";
+import { cn } from "@/lib/utils";
 import { ConfirmButton } from "../confirm-button";
+import { EditorStatusBar } from "../editor-status-bar";
 import { LocalizedFields, type LocalizedFormValue } from "../localized-fields";
 import { PublishChecklist } from "../publish/publish-checklist";
 import { ReadinessBanner } from "../publish/readiness-banner";
 import { useReadiness } from "../publish/use-readiness";
 import { StatusBadge } from "../status-badge";
+import { useUnsavedGuard } from "../use-unsaved-guard";
 import { BuilderPreview } from "./builder-preview";
 import { ItemList } from "./item-list";
 import { MapLinks, type MapLevel, type UnitOption } from "./map-links";
@@ -69,9 +73,11 @@ export function ContentBuilder({
   const issues = useMemo(() => itemIssues(kind, items), [kind, items]);
   const complete = items.length > 0 && Object.keys(issues).length === 0;
   const latest = useRef({ title, items });
+  useUnsavedGuard(dirty && !draft);
   const selected = items.find((i) => i.id === selectedId) ?? null;
   const readiness = useReadiness(kind, content.id, `${content.status}:${savedJson}:${mapLevels.map((l) => l.id).join()}`);
   const [checklistOpen, setChecklistOpen] = useState(false);
+  const [pane, setPane] = useState<"edit" | "preview">("edit");
 
   useEffect(() => {
     latest.current = { title, items };
@@ -151,64 +157,49 @@ export function ContentBuilder({
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap items-center gap-3 rounded-xl bg-muted/60 px-4 py-3">
-        <StatusBadge status={content.status} />
-        <span aria-live="polite" className="flex items-center gap-1 text-sm text-muted-foreground">
-          {saving ? (
-            <>
-              <LoaderIcon aria-hidden className="size-4 animate-spin" /> {t("saving")}
-            </>
-          ) : !dirty ? (
-            <>
-              <CheckIcon aria-hidden className="size-4" /> {t("allSaved")}
-            </>
-          ) : draft ? (
-            t("autosaving")
-          ) : (
-            t("unsaved")
-          )}
-        </span>
-        {!complete && <span className="text-sm text-destructive">{t("incomplete", { count: Object.keys(issues).length || 1 })}</span>}
-        <div className="ms-auto flex flex-wrap gap-2">
-          <Button asChild variant="outline">
-            <Link href={`/preview/${kind}/${content.id}`} target="_blank">
-              <EyeIcon aria-hidden />
-              {t("fullPreview")}
-            </Link>
+      <EditorStatusBar
+        status={<StatusBadge status={content.status} />}
+        saveState={saving ? "saving" : !dirty ? "saved" : draft ? "pending" : "unsaved"}
+        notices={!complete && <span className="text-sm text-destructive">{t("incomplete", { count: Object.keys(issues).length || 1 })}</span>}
+      >
+        <Button asChild variant="outline">
+          <Link href={`/preview/${kind}/${content.id}`} target="_blank">
+            <EyeIcon aria-hidden />
+            {t("fullPreview")}
+          </Link>
+        </Button>
+        {!draft && (
+          <Button type="button" onClick={() => save(false)} disabled={saving || !dirty}>
+            {t("saveChanges")}
           </Button>
-          {!draft && (
-            <Button type="button" onClick={() => save(false)} disabled={saving || !dirty}>
-              {t("saveChanges")}
+        )}
+        {draft ? (
+          <Button type="button" onClick={openChecklist} disabled={changing || !complete} className="bg-success text-success-foreground hover:bg-success/90">
+            {t("publish")}
+          </Button>
+        ) : (
+          <Button type="button" variant="outline" onClick={unpublish} disabled={changing}>
+            {t("unpublish")}
+          </Button>
+        )}
+        <ConfirmButton
+          trigger={
+            <Button type="button" variant="ghost" size="icon" aria-label={t("delete")} disabled={changing}>
+              <Trash2Icon aria-hidden />
             </Button>
-          )}
-          {draft ? (
-            <Button type="button" onClick={openChecklist} disabled={changing || !complete} className="bg-success text-success-foreground hover:bg-success/90">
-              {t("publish")}
-            </Button>
-          ) : (
-            <Button type="button" variant="outline" onClick={unpublish} disabled={changing}>
-              {t("unpublish")}
-            </Button>
-          )}
-          <ConfirmButton
-            trigger={
-              <Button type="button" variant="ghost" size="icon" aria-label={t("delete")} disabled={changing}>
-                <Trash2Icon aria-hidden />
-              </Button>
-            }
-            title={t("deleteTitle")}
-            description={t("deleteLead")}
-            confirmLabel={t("delete")}
-            onConfirm={() =>
-              startChanging(async () => {
-                const result = await deleteContent(kind, content.id);
-                if (!result.ok) return void toast.error(e(result.error));
-                router.push(getPathname({ href: kind === "lesson" ? "/admin/lessons" : "/admin/quizzes", locale }));
-              })
-            }
-          />
-        </div>
-      </div>
+          }
+          title={t("deleteTitle")}
+          description={t("deleteLead")}
+          confirmLabel={t("delete")}
+          onConfirm={() =>
+            startChanging(async () => {
+              const result = await deleteContent(kind, content.id);
+              if (!result.ok) return void toast.error(e(result.error));
+              router.push(getPathname({ href: kind === "lesson" ? "/admin/lessons" : "/admin/quizzes", locale }));
+            })
+          }
+        />
+      </EditorStatusBar>
 
       {readiness.state && <ReadinessBanner state={readiness.state} onReview={openChecklist} />}
       <MapLinks kind={kind} contentId={content.id} levels={mapLevels} units={units} />
@@ -248,7 +239,27 @@ export function ContentBuilder({
           </DropdownMenu>
         </section>
 
-        <section aria-label={t("editor")} className="rounded-2xl bg-card p-5 ring-1 ring-border">
+        {/* Below xl the editor and the preview share one column: switch between them instead of scrolling. */}
+        <ToggleGroup
+          type="single"
+          variant="outline"
+          size="sm"
+          value={pane}
+          onValueChange={(value) => (value === "edit" || value === "preview") && setPane(value)}
+          aria-label={t("paneLabel")}
+          className="xl:hidden"
+        >
+          <ToggleGroupItem value="edit">
+            <PencilIcon aria-hidden />
+            {t("editor")}
+          </ToggleGroupItem>
+          <ToggleGroupItem value="preview">
+            <EyeIcon aria-hidden />
+            {t("preview")}
+          </ToggleGroupItem>
+        </ToggleGroup>
+
+        <section aria-label={t("editor")} className={cn("rounded-2xl bg-card p-5 ring-1 ring-border", pane === "preview" && "hidden xl:block")}>
           {selected ? (
             <div className="flex flex-col gap-4">
               <h2 className="font-sans text-lg font-semibold">{types(selected.type as never)}</h2>
@@ -264,7 +275,7 @@ export function ContentBuilder({
           )}
         </section>
 
-        <aside className="xl:sticky xl:top-6 xl:self-start">
+        <aside className={cn("xl:sticky xl:top-6 xl:self-start", pane === "edit" && "hidden xl:block")}>
           <BuilderPreview kind={kind} item={selected} rows={rows} notes={notes} />
         </aside>
       </div>

@@ -1,12 +1,13 @@
 "use client";
 
-import { AlertTriangleIcon, Clock3Icon, LinkIcon, StarIcon, Trash2Icon } from "lucide-react";
+import { AlertTriangleIcon, Clock3Icon, EllipsisIcon, LinkIcon, StarIcon, Trash2Icon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import { deleteClip, linkClip, setClipStatus, setPrimaryClip } from "@/app/actions/admin/clips";
 import { PlayButton } from "@/components/audio/play-button";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
 import { useAudioPlayer } from "@/hooks/use-audio-player";
 import { Link } from "@/i18n/navigation";
@@ -18,13 +19,16 @@ import { useAdminAction } from "../use-admin-action";
 import { EntryPicker } from "./entry-picker";
 import { TimestampEditor } from "./timestamp-editor";
 
-/** One recording: listen, publish, make primary, set word timings, link, delete. */
+/** One recording: listen, publish and make primary up front; word timings, linking and deleting in its menu. */
 export function ClipRow({ clip, entryText, showEntry }: { clip: AdminClip; entryText: string | null; showEntry?: boolean }) {
   const t = useTranslations("Admin.audio");
   const player = useAudioPlayer(clip.audio);
   const { run, pending } = useAdminAction();
   const [timingsOpen, setTimingsOpen] = useState(false);
   const [linkOpen, setLinkOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  // Audio from a speaker without consent can never be published (the database refuses it too).
+  const canPublish = clip.speaker?.consent === true;
   const text = entryText ?? clip.entry?.text_latin ?? null;
   const words = useMemo(() => (text ? splitWords(text) : []), [text]);
 
@@ -61,7 +65,7 @@ export function ClipRow({ clip, entryText, showEntry }: { clip: AdminClip; entry
       <label className="flex items-center gap-2 text-sm">
         <Switch
           checked={clip.status === "published"}
-          disabled={pending}
+          disabled={pending || (!canPublish && clip.status === "draft")}
           onCheckedChange={(on) => run(() => setClipStatus(clip.id, on ? "published" : "draft"), { success: on ? t("published") : t("unpublished") })}
         />
         {t("publishedLabel")}
@@ -81,14 +85,34 @@ export function ClipRow({ clip, entryText, showEntry }: { clip: AdminClip; entry
         </Button>
       )}
 
-      {text && (
-        <Dialog open={timingsOpen} onOpenChange={setTimingsOpen}>
-          <DialogTrigger asChild>
-            <Button type="button" variant="ghost" size="sm">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button type="button" variant="ghost" size="icon" aria-label={t("more")}>
+            <EllipsisIcon aria-hidden />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          {text && (
+            <DropdownMenuItem onSelect={() => setTimingsOpen(true)}>
               <Clock3Icon aria-hidden />
               {t("timings")}
-            </Button>
-          </DialogTrigger>
+            </DropdownMenuItem>
+          )}
+          {showEntry && (
+            <DropdownMenuItem onSelect={() => setLinkOpen(true)}>
+              <LinkIcon aria-hidden />
+              {clip.entry ? t("relink") : t("link")}
+            </DropdownMenuItem>
+          )}
+          <DropdownMenuItem variant="destructive" disabled={pending} onSelect={() => setDeleteOpen(true)}>
+            <Trash2Icon aria-hidden />
+            {t("delete")}
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      {text && (
+        <Dialog open={timingsOpen} onOpenChange={setTimingsOpen}>
           <DialogContent className="max-w-lg">
             <DialogHeader>
               <DialogTitle>{t("timings")}</DialogTitle>
@@ -108,12 +132,6 @@ export function ClipRow({ clip, entryText, showEntry }: { clip: AdminClip; entry
 
       {showEntry && (
         <Dialog open={linkOpen} onOpenChange={setLinkOpen}>
-          <DialogTrigger asChild>
-            <Button type="button" variant="ghost" size="sm">
-              <LinkIcon aria-hidden />
-              {clip.entry ? t("relink") : t("link")}
-            </Button>
-          </DialogTrigger>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>{t("link")}</DialogTitle>
@@ -128,11 +146,8 @@ export function ClipRow({ clip, entryText, showEntry }: { clip: AdminClip; entry
       )}
 
       <ConfirmButton
-        trigger={
-          <Button type="button" variant="ghost" size="icon" aria-label={t("delete")} disabled={pending}>
-            <Trash2Icon aria-hidden />
-          </Button>
-        }
+        open={deleteOpen}
+        onOpenChange={setDeleteOpen}
         title={t("deleteTitle")}
         description={t("deleteLead")}
         confirmLabel={t("delete")}

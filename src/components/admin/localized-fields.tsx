@@ -1,9 +1,10 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 import type { LocalizedFormValue } from "./localized-form";
 
 export { emptyLocalized, toLocalizedForm, type LocalizedFormValue } from "./localized-form";
@@ -14,7 +15,7 @@ const FIELDS = [
   { key: "ar", lang: "ar", dir: "rtl" },
 ] as const;
 
-/** One input per UI language, each in its own direction. */
+/** One tab per UI language, the current one first; a dot on each tab shows whether it is filled in. */
 export function LocalizedFields({
   id,
   label,
@@ -31,29 +32,42 @@ export function LocalizedFields({
   required?: boolean;
 }) {
   const t = useTranslations("Admin.languages");
+  const locale = useLocale();
   const Field = multiline ? Textarea : Input;
+  const fields = [...FIELDS].sort((a, b) => Number(b.key === locale) - Number(a.key === locale));
+
   return (
     <fieldset className="flex flex-col gap-2">
       <legend className="mb-1 text-sm font-medium">
         {label}
         {required && <span className="text-muted-foreground"> · {t("atLeastOne")}</span>}
       </legend>
-      <div className="grid gap-2 sm:grid-cols-2">
-        {FIELDS.map(({ key, lang, dir }) => (
-          <div key={key} className="flex flex-col gap-1">
-            <Label htmlFor={`${id}-${key}`} className="text-xs text-muted-foreground">
-              {t(key)}
-            </Label>
+      <Tabs defaultValue={fields[0].key}>
+        <TabsList>
+          {fields.map(({ key }) => {
+            const filled = value[key].trim() !== "";
+            return (
+              <TabsTrigger key={key} value={key} className="gap-1.5 px-3">
+                {t(key)}
+                <span aria-hidden className={cn("size-1.5 rounded-full", filled ? "bg-success" : "ring-1 ring-muted-foreground/60")} />
+                <span className="sr-only">{t(filled ? "filled" : "empty")}</span>
+              </TabsTrigger>
+            );
+          })}
+        </TabsList>
+        {fields.map(({ key, lang, dir }) => (
+          <TabsContent key={key} value={key}>
             <Field
               id={`${id}-${key}`}
+              aria-label={`${label} (${t(key)})`}
               lang={lang}
               dir={dir}
               value={value[key]}
               onChange={(event) => onChange({ ...value, [key]: event.target.value })}
             />
-          </div>
+          </TabsContent>
         ))}
-      </div>
+      </Tabs>
     </fieldset>
   );
 }

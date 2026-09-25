@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, LoaderIcon, SparklesIcon, Trash2Icon, TriangleAlertIcon } from "lucide-react";
+import { SparklesIcon, Trash2Icon, TriangleAlertIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
@@ -19,10 +19,13 @@ import { isPartOfSpeech, partsOfSpeech } from "@/lib/content/enums";
 import type { LocalizedText } from "@/lib/content/localized-text";
 import { getPublicStorageUrl } from "@/lib/supabase/storage";
 import { ConfirmButton } from "../confirm-button";
+import { EditorStatusBar } from "../editor-status-bar";
 import { LocalizedFields, toLocalizedForm, type LocalizedFormValue } from "../localized-fields";
 import { StatusBadge } from "../status-badge";
+import { useUnsavedGuard } from "../use-unsaved-guard";
 import { EntryPreview, previewTranslations } from "./entry-preview";
 import { ImageField } from "./image-field";
+import { ChoiceSelect } from "../choice-select";
 
 type Region = { id: string; slug: string; name: LocalizedText };
 
@@ -54,8 +57,6 @@ function toForm(entry: EditableEntry | null): FormValues {
   };
 }
 
-const selectClassName = "h-10 w-full rounded-md border border-input bg-background px-3 text-sm";
-
 /** Create or edit a word or phrase. Drafts save themselves; publishing is always explicit. */
 export function EntryEditor({ entry, clips, regions }: { entry: EditableEntry | null; clips: AdminClip[]; regions: Region[] }) {
   const t = useTranslations("Admin.entries");
@@ -71,6 +72,7 @@ export function EntryEditor({ entry, clips, regions }: { entry: EditableEntry | 
   const dirty = JSON.stringify(values) !== JSON.stringify(saved);
   const draft = entry?.status !== "published";
   const latest = useRef(values);
+  useUnsavedGuard(dirty && (!entry || !draft));
 
   const set = <K extends keyof FormValues>(key: K, value: FormValues[K]) => setValues((v) => ({ ...v, [key]: value }));
 
@@ -144,58 +146,48 @@ export function EntryEditor({ entry, clips, regions }: { entry: EditableEntry | 
           save(false);
         }}
       >
-        <div className="flex flex-wrap items-center gap-3 rounded-xl bg-muted/60 px-4 py-3">
-          {entry ? <StatusBadge status={entry.status} /> : <span className="text-sm font-medium">{t("new")}</span>}
-          <span aria-live="polite" className="flex items-center gap-1 text-sm text-muted-foreground">
-            {saving ? (
-              <>
-                <LoaderIcon aria-hidden className="size-4 animate-spin" /> {t("saving")}
-              </>
-            ) : entry && !dirty ? (
-              <>
-                <CheckIcon aria-hidden className="size-4" /> {t("allSaved")}
-              </>
-            ) : dirty && entry ? (
-              draft ? t("autosaving") : t("unsaved")
-            ) : null}
-          </span>
-          {entry && !audible && (
-            <span className="flex items-center gap-1 text-sm">
-              <TriangleAlertIcon aria-hidden className="size-4 text-gold-foreground dark:text-gold" />
-              {p("entryNoAudio")}
-            </span>
+        <EditorStatusBar
+          status={entry ? <StatusBadge status={entry.status} /> : <span className="text-sm font-medium">{t("new")}</span>}
+          saveState={!entry ? null : saving ? "saving" : !dirty ? "saved" : draft ? "pending" : "unsaved"}
+          notices={
+            entry &&
+            !audible && (
+              <span className="flex items-center gap-1 text-sm">
+                <TriangleAlertIcon aria-hidden className="size-4 text-gold-foreground dark:text-gold" />
+                {p("entryNoAudio")}
+              </span>
+            )
+          }
+        >
+          {(!entry || !draft) && (
+            <Button type="submit" disabled={saving || (!!entry && !dirty)}>
+              {entry ? t("saveChanges") : t("create")}
+            </Button>
           )}
-          <div className="ms-auto flex flex-wrap gap-2">
-            {(!entry || !draft) && (
-              <Button type="submit" disabled={saving || (!!entry && !dirty)}>
-                {entry ? t("saveChanges") : t("create")}
+          {entry &&
+            (draft ? (
+              <Button type="button" onClick={() => changeStatus("published")} disabled={changing} className="bg-success text-success-foreground hover:bg-success/90">
+                {t("publish")}
               </Button>
-            )}
-            {entry &&
-              (draft ? (
-                <Button type="button" onClick={() => changeStatus("published")} disabled={changing} className="bg-success text-success-foreground hover:bg-success/90">
-                  {t("publish")}
+            ) : (
+              <Button type="button" variant="outline" onClick={() => changeStatus("draft")} disabled={changing}>
+                {t("unpublish")}
+              </Button>
+            ))}
+          {entry && (
+            <ConfirmButton
+              trigger={
+                <Button type="button" variant="ghost" size="icon" aria-label={t("delete")} disabled={changing}>
+                  <Trash2Icon aria-hidden />
                 </Button>
-              ) : (
-                <Button type="button" variant="outline" onClick={() => changeStatus("draft")} disabled={changing}>
-                  {t("unpublish")}
-                </Button>
-              ))}
-            {entry && (
-              <ConfirmButton
-                trigger={
-                  <Button type="button" variant="ghost" size="icon" aria-label={t("delete")} disabled={changing}>
-                    <Trash2Icon aria-hidden />
-                  </Button>
-                }
-                title={t("deleteTitle")}
-                description={t("deleteLead")}
-                confirmLabel={t("delete")}
-                onConfirm={remove}
-              />
-            )}
-          </div>
-        </div>
+              }
+              title={t("deleteTitle")}
+              description={t("deleteLead")}
+              confirmLabel={t("delete")}
+              onConfirm={remove}
+            />
+          )}
+        </EditorStatusBar>
 
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="flex flex-col gap-1 sm:col-span-3">
@@ -231,30 +223,23 @@ export function EntryEditor({ entry, clips, regions }: { entry: EditableEntry | 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="flex flex-col gap-1">
             <Label htmlFor="part_of_speech">{t("partOfSpeech")}</Label>
-            <select
+            <ChoiceSelect
               id="part_of_speech"
-              className={selectClassName}
               value={values.part_of_speech}
-              onChange={(ev) => set("part_of_speech", isPartOfSpeech(ev.target.value) ? ev.target.value : "")}
-            >
-              <option value="">{t("none")}</option>
-              {partsOfSpeech.map((p) => (
-                <option key={p} value={p}>
-                  {pos(p)}
-                </option>
-              ))}
-            </select>
+              onChange={(v) => set("part_of_speech", v)}
+              noneLabel={t("none")}
+              options={partsOfSpeech.map((p) => ({ value: p, label: pos(p) }))}
+            />
           </div>
           <div className="flex flex-col gap-1">
             <Label htmlFor="region_id">{t("region")}</Label>
-            <select id="region_id" className={selectClassName} value={values.region_id} onChange={(ev) => set("region_id", ev.target.value)}>
-              <option value="">{t("none")}</option>
-              {regions.map((r) => (
-                <option key={r.id} value={r.id}>
-                  {localize(r.name, locale)?.text ?? r.slug}
-                </option>
-              ))}
-            </select>
+            <ChoiceSelect
+              id="region_id"
+              value={values.region_id}
+              onChange={(v) => set("region_id", v)}
+              noneLabel={t("none")}
+              options={regions.map((r) => ({ value: r.id, label: localize(r.name, locale)?.text ?? r.slug }))}
+            />
           </div>
         </div>
 

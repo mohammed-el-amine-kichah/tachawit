@@ -346,7 +346,9 @@
       "en": "Anglais",
       "fr": "Français",
       "ar": "Arabe",
-      "atLeastOne": "au moins une"
+      "atLeastOne": "au moins une",
+      "filled": "rempli",
+      "empty": "vide"
     },
     "errors": {
       "forbidden": "Tu n’as pas la permission de faire ça.",
@@ -410,10 +412,6 @@
       "publishedToast": "Publié. Les apprenants peuvent le voir.",
       "unpublishedToast": "Repassé en brouillon.",
       "deleted": "Supprimé.",
-      "saving": "Enregistrement…",
-      "allSaved": "Tout est enregistré",
-      "autosaving": "Enregistrement dans un instant…",
-      "unsaved": "Modifications non enregistrées",
       "saveChanges": "Enregistrer",
       "create": "Créer le brouillon",
       "publish": "Publier",
@@ -496,7 +494,8 @@
       "delete": "Supprimer",
       "deleteTitle": "Supprimer cet enregistrement ?",
       "deleteLead": "Les fichiers audio seront aussi supprimés. C’est définitif.",
-      "deleted": "Supprimé."
+      "deleted": "Supprimé.",
+      "more": "Plus d’actions"
     },
     "timings": {
       "help": "Les coupures découpent l’enregistrement en mots. Fais glisser une coupure là où un mot commence ou finit, ou sélectionne-la et utilise les flèches. Touche un mot pour n’entendre que lui.",
@@ -605,10 +604,6 @@
       "questionCount": "{count, plural, one {# question} other {# questions}}",
       "usedBy": "{count, plural, =0 {pas sur la carte} one {sur # niveau} other {sur # niveaux}}",
       "editLead": "Construis-la étape par étape. Les brouillons s’enregistrent tout seuls ; les apprenants la voient une fois publiée et placée sur la carte.",
-      "saving": "Enregistrement…",
-      "allSaved": "Tout est enregistré",
-      "autosaving": "Enregistrement dans un instant…",
-      "unsaved": "Modifications non enregistrées",
       "incomplete": "{count, plural, one {# élément à compléter} other {# éléments à compléter}}",
       "fullPreview": "Tester comme un apprenant",
       "saveChanges": "Enregistrer",
@@ -677,7 +672,8 @@
       "addToMapLead": "Ajoute un nouveau niveau brouillon à la fin de l’unité, qui affiche déjà ce contenu.",
       "unit": "Unité",
       "addToUnit": "Ajouter à {unit}",
-      "addedToMap": "Ajouté à {unit} comme niveau brouillon."
+      "addedToMap": "Ajouté à {unit} comme niveau brouillon.",
+      "paneLabel": "Afficher"
     },
     "map": {
       "unitsTitle": "Carte et unités",
@@ -700,7 +696,6 @@
       "nodeLabel": "{label}, {x} % en largeur, {y} % en hauteur",
       "published": "Publié",
       "draft": "brouillon",
-      "levelSaved": "Niveau enregistré.",
       "levelPublished": "Niveau publié.",
       "levelUnpublished": "Niveau repassé en brouillon.",
       "deleteLevel": "Supprimer le niveau",
@@ -721,7 +716,6 @@
       "minStars": "étoiles nécessaires",
       "moveTo": "Unité",
       "levelMoved": "Niveau déplacé.",
-      "saveLevel": "Enregistrer le niveau",
       "unitSettings": "Réglages de l’unité",
       "unitTitle": "Titre",
       "unitDescription": "Description",
@@ -742,7 +736,10 @@
       "openInBuilder": "Ouvrir dans l’éditeur",
       "newLessonForLevel": "Nouvelle leçon",
       "newQuizForLevel": "Nouveau quiz",
-      "newContentForLevelLead": "Crée un brouillon, le place sur ce niveau et ouvre l’éditeur."
+      "newContentForLevelLead": "Crée un brouillon, le place sur ce niveau et ouvre l’éditeur.",
+      "moveLevel": "Déplacer",
+      "moveLevelTitle": "Déplacer ce niveau vers {unit} ?",
+      "moveLevelLead": "Il est placé à la fin de la carte de cette unité, avec ses réglages. Les apprenants gardent leurs résultats."
     },
     "culture": {
       "listTitle": "Articles culturels",
@@ -887,6 +884,12 @@
         "no_content": "aucune leçon ni aucun quiz n’est choisi",
         "unit_draft": "l’unité est un brouillon"
       }
+    },
+    "editor": {
+      "saving": "Enregistrement…",
+      "allSaved": "Tout est enregistré",
+      "autosaving": "Enregistrement dans un instant…",
+      "unsaved": "Modifications non enregistrées"
     }
   },
   "MapTheme": {

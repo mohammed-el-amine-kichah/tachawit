@@ -13,6 +13,7 @@ import { ImageField } from "../entries/image-field";
 import { LocalizedFields } from "../localized-fields";
 import { EntryField } from "./entry-field";
 import { draftOf, formOf } from "./localized-draft";
+import { ChoiceSelect } from "../choice-select";
 
 type Line = { speaker: string; entryId: string };
 export type NoteOption = { id: string; slug: string; title: unknown };
@@ -43,22 +44,16 @@ export function StepEditor({
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
             <Label htmlFor={`${step.id}-note`}>{t("linkedNote")}</Label>
-            <select
+            <ChoiceSelect
               id={`${step.id}-note`}
               value={String(step.cultureNoteId ?? "")}
-              onChange={(e) => set({ cultureNoteId: e.target.value || undefined })}
-              className="h-10 rounded-md border border-input bg-background px-3 text-sm"
-            >
-              <option value="">{t("noLinkedNote")}</option>
-              {notes.map((note) => {
+              onChange={(v) => set({ cultureNoteId: v || undefined })}
+              noneLabel={t("noLinkedNote")}
+              options={notes.map((note) => {
                 const title = localizedTextSchema.safeParse(note.title);
-                return (
-                  <option key={note.id} value={note.id}>
-                    {title.success ? localize(title.data, locale)?.text : note.slug}
-                  </option>
-                );
+                return { value: note.id, label: (title.success ? localize(title.data, locale)?.text : null) ?? note.slug };
               })}
-            </select>
+            />
             <p className="text-xs text-muted-foreground">{t("linkedNoteHint")}</p>
           </div>
           <LocalizedFields id={`${step.id}-title`} label={t("noteTitle")} value={formOf(step.title)} onChange={(v) => set({ title: draftOf(v) })} />

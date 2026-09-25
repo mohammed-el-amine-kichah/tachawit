@@ -346,7 +346,9 @@
       "en": "English",
       "fr": "French",
       "ar": "Arabic",
-      "atLeastOne": "at least one"
+      "atLeastOne": "at least one",
+      "filled": "filled in",
+      "empty": "empty"
     },
     "errors": {
       "forbidden": "You don’t have permission to do this.",
@@ -410,10 +412,6 @@
       "publishedToast": "Published. Learners can see it now.",
       "unpublishedToast": "Moved back to draft.",
       "deleted": "Deleted.",
-      "saving": "Saving…",
-      "allSaved": "All changes saved",
-      "autosaving": "Saving shortly…",
-      "unsaved": "Unsaved changes",
       "saveChanges": "Save changes",
       "create": "Create draft",
       "publish": "Publish",
@@ -496,7 +494,8 @@
       "delete": "Delete",
       "deleteTitle": "Delete this recording?",
       "deleteLead": "The audio files are deleted too. This can’t be undone.",
-      "deleted": "Deleted."
+      "deleted": "Deleted.",
+      "more": "More actions"
     },
     "timings": {
       "help": "The cuts split the recording into words. Drag a cut to where a word starts or ends, or select it and use the arrow keys. Tap a word to hear just that part.",
@@ -605,10 +604,6 @@
       "questionCount": "{count, plural, one {# question} other {# questions}}",
       "usedBy": "{count, plural, =0 {not on the map} one {on # level} other {on # levels}}",
       "editLead": "Build it step by step. Drafts save themselves; learners see it once it’s published and placed on the map.",
-      "saving": "Saving…",
-      "allSaved": "All changes saved",
-      "autosaving": "Saving shortly…",
-      "unsaved": "Unsaved changes",
       "incomplete": "{count, plural, one {# item needs attention} other {# items need attention}}",
       "fullPreview": "Preview as a learner",
       "saveChanges": "Save changes",
@@ -677,7 +672,8 @@
       "addToMapLead": "Adds a new draft level at the end of the unit, already showing this.",
       "unit": "Unit",
       "addToUnit": "Add to {unit}",
-      "addedToMap": "Added to {unit} as a draft level."
+      "addedToMap": "Added to {unit} as a draft level.",
+      "paneLabel": "Show"
     },
     "map": {
       "unitsTitle": "Map & units",
@@ -700,7 +696,6 @@
       "nodeLabel": "{label}, {x}% across, {y}% down",
       "published": "Published",
       "draft": "draft",
-      "levelSaved": "Level saved.",
       "levelPublished": "Level published.",
       "levelUnpublished": "Level moved back to draft.",
       "deleteLevel": "Delete level",
@@ -721,7 +716,6 @@
       "minStars": "stars needed",
       "moveTo": "Unit",
       "levelMoved": "Level moved.",
-      "saveLevel": "Save level",
       "unitSettings": "Unit settings",
       "unitTitle": "Title",
       "unitDescription": "Description",
@@ -742,7 +736,10 @@
       "openInBuilder": "Open in the builder",
       "newLessonForLevel": "New lesson",
       "newQuizForLevel": "New quiz",
-      "newContentForLevelLead": "Creates a draft, puts it on this level and opens the builder."
+      "newContentForLevelLead": "Creates a draft, puts it on this level and opens the builder.",
+      "moveLevel": "Move",
+      "moveLevelTitle": "Move this level to {unit}?",
+      "moveLevelLead": "It goes to the end of that unit’s map with its settings. Learners keep their results."
     },
     "culture": {
       "listTitle": "Culture articles",
@@ -887,6 +884,12 @@
         "no_content": "no lesson or quiz is chosen",
         "unit_draft": "the unit is a draft"
       }
+    },
+    "editor": {
+      "saving": "Saving…",
+      "allSaved": "All changes saved",
+      "autosaving": "Saving shortly…",
+      "unsaved": "Unsaved changes"
     }
   },
   "MapTheme": {

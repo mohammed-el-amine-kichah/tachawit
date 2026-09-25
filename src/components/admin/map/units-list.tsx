@@ -18,6 +18,7 @@ import type { MapTheme } from "@/lib/supabase/queries/units";
 import { emptyLocalized, LocalizedFields } from "../localized-fields";
 import { StatusBadge } from "../status-badge";
 import { useAdminAction } from "../use-admin-action";
+import { ChoiceSelect } from "../choice-select";
 
 type UnitRow = { id: string; title: LocalizedText; status: "draft" | "published"; levels: number; published: number };
 
@@ -71,13 +72,12 @@ export function UnitsList({ units: serverUnits }: { units: UnitRow[] }) {
               </div>
               <div className="flex flex-col gap-1">
                 <Label htmlFor="new-unit-theme">{t("theme")}</Label>
-                <select id="new-unit-theme" value={draft.map_theme} onChange={(e) => setDraft({ ...draft, map_theme: e.target.value as MapTheme })} className="h-9 rounded-md border border-input bg-background px-3 text-sm">
-                  {mapThemes.map((theme) => (
-                    <option key={theme} value={theme}>
-                      {themes(theme)}
-                    </option>
-                  ))}
-                </select>
+                <ChoiceSelect
+                  id="new-unit-theme"
+                  value={draft.map_theme}
+                  onChange={(v) => v && setDraft({ ...draft, map_theme: v })}
+                  options={mapThemes.map((theme) => ({ value: theme, label: themes(theme) }))}
+                />
               </div>
             </div>
             <Button type="submit" disabled={pending} className="self-start">

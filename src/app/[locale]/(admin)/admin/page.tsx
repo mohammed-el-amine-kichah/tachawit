@@ -39,7 +39,7 @@ export default async function AdminDashboard() {
         <Card icon={BookAIcon} value={c.entries} label={t("entries")} detail={t("published", { count: c.publishedEntries })} href="/admin/entries" />
         <Card icon={AudioLinesIcon} value={c.clips} label={t("clips")} detail={t("published", { count: c.publishedClips })} href="/admin/audio" />
         <Card icon={MicIcon} value={c.speakers} label={t("speakers")} detail={t("withConsent", { count: c.consenting })} href="/admin/speakers" />
-        <Card icon={InboxIcon} value={c.pending} label={t("pending")} />
+        <Card icon={InboxIcon} value={c.pending} label={t("pending")} href="/admin/submissions" />
         <Card icon={BookOpenIcon} value={c.lessons + c.quizzes} label={t("lessonsAndQuizzes")} detail={t("units", { count: c.units })} />
         <Card icon={UsersIcon} value={c.learners} label={t("learners")} href="/admin/users" />
         <Card icon={TrophyIcon} value={c.completions} label={t("completions")} />
